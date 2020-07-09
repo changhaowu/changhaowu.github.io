@@ -1,11 +1,19 @@
 [
   
     {
-      "title"    : "Welcome to Jekyll!",
+      "title"    : "Understanding Convolutional Neural Networks with A Mathematical Model!",
       "category" : "",
-      "tags"     : "Jekyll",
-      "url"      : "/2018/05/29/welcome-to-jekyll/",
-      "date"     : "2018-05-29 00:00:00 +0800"
+      "tags"     : "CNN",
+      "url"      : "/2020/07/03/Understanding-Convolutional-Neural-Networks-with-A-Mathematical-Model/",
+      "date"     : "2020-07-03 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Patch-Based Model in Real World SIngle Image Super-Resolution",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2020/06/09/Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/",
+      "date"     : "2020-06-09 00:00:00 +0800"
     } 
   
 ]
