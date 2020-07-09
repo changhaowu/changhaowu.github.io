@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Understanding Convolutional Neural Networks with A Mathematical Model!"
+date: 2020-07-09 16:04:00 +0300
+image: F1.jpg
+tags: Jekyll
+---
 ## Understanding Convolutional Neural Networks with A Mathematical Model
 
 [TOC]
