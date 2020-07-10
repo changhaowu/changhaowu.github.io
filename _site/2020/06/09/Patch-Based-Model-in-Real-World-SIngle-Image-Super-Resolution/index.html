@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Patch-Based Model in Real World SIngle Image Super-Resolution</title>
-  <meta name='description' content='Minimalistic Theme for Jekyll'>
+  <meta name='description' content='Karl Wu's Blog'>
 
   <link rel="canonical" href="http://localhost:4000/2020/06/09/Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/">
   <link rel="alternate" type="application/rss+xml" title="Karl Wu&#39;s Blog" href="/feed.xml">
@@ -61,7 +61,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
           <div class="logo">
             <a class="logo__link" href="/">
             
-              <img class="logo__image" src="/images/Gajalaka.png" alt="Karl Wu's Blog">
+              <img class="logo__image" src="/images/icon/Gajalaka.png" alt="Karl Wu's Blog">
             
             </a>
           </div>
@@ -81,17 +81,25 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 
                   
                 
-                  
-                
-                  
-                
-                  
-                
-                  
-                
                 <li class="nav__item">
-                  <a href="/styleguide/" class="nav__link">Style Guide</a>
+                  <a href="/about/" class="nav__link">About</a>
                 </li>
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
                 
                   
                 
@@ -158,6 +166,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				<h1 class="post__title">Patch-Based Model in Real World SIngle Image Super-Resolution</h1>
 				<div class="post-info">
 					
+					<span class="post-tags">
+						posted in
+						
+							<a href="/tag/Computer Vision" class="post-tags__tag">Computer Vision</a>
+						
+					</span>
+					
 					<span class="post__meta">
 						<span class="post__date"> on <a href="">
 							<time datetime="2020-06-09T00:00:00+08:00">Jun 09, 2020</time></a>
@@ -219,7 +234,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 <p>在<a href="https://www.researchgate.net/publication/276034240_Linear_Methods_for_Image_Interpolation">Linear Methods for Image Interpolation</a>一文中，给出了如下的Prediction Model的形式：</p>
 
-<p>$v_{m,n}$是所谓的采样图像，是以pixel的格式给出的，那么插值的目的其实是找到$v$的潜在函数
+<p>$ v_{m,n} $是所谓的采样图像，是以pixel的格式给出的，那么插值的目的其实是找到$v$的潜在函数
 \(v_{m,n}=u(m,n)\;for\;all\;m,n \in Z\)
 然后可以定义线性算子$Z$把$v$映射到$Z(v)$</p>
 
@@ -258,7 +273,7 @@ u(x, y) &amp;=(1-\langle x\rangle)(1-\langle y\rangle) v_{\lfloor x\rfloor,\lflo
 \left.+(1-\langle x\rangle)\langle y\rangle v_{\lfloor x\rfloor,\lfloor y\rfloor+1}+\langle x\rangle\langle y\rangle v_{\lfloor x\rfloor+1,\lfloor y\rfloor+1}+1\right\rangle
 \end{aligned}
 $$
-​	其插值核形式为：
+​    其插值核形式为：
 $$
 K(x,y)=K_1(x)K_1(y), K_1(t)=(1-|t|)^+=max(1-|t|,0)
 $$
@@ -343,24 +358,24 @@ $$
 
 \[Y=SHX\]
 
-<p>​	    对于每个patch $y$ ,去寻找对应的稀疏表示 $\alpha$ ，$F$ 是一个特征提取器（一般采用高通滤波器，因为人眼对于高		频信息更加敏感，因此在视觉上，复建的消费会更好），满足：
+<p>​        对于每个patch $y$ ,去寻找对应的稀疏表示 $\alpha$ ，$F$ 是一个特征提取器（一般采用高通滤波器，因为人眼对于高        频信息更加敏感，因此在视觉上，复建的消费会更好），满足：
 \(\begin{aligned}
 \min \|\boldsymbol{\alpha}\|_{0} \;\; \text  { s.t. }  \left\|F \boldsymbol{D}_{l} \boldsymbol{\alpha}-F \boldsymbol{y}\right\|_{2}^{2} \leq \epsilon 
 \end{aligned}\)
-​		 但是由于0-范数难以优化，选择1-范数做近似：
+​         但是由于0-范数难以优化，选择1-范数做近似：
 \(\begin{array}{c||c}
 \min_{\alpha} \|\boldsymbol{\alpha}\|_{1} \;\;  \text { s.t. }  \left\|F \boldsymbol{D}_{l} \boldsymbol{\alpha}-F \boldsymbol{y}\right\|_{2}^{2} \leq \epsilon
 \end{array}\)
-​		由拉格朗日乘子法提供了等价的形式，其中 $ \lambda$ 用来平衡稀疏性和对 $ y$ 的近似的准确度：
+​        由拉格朗日乘子法提供了等价的形式，其中 $ \lambda$ 用来平衡稀疏性和对 $ y$ 的近似的准确度：
 \(\begin{array}{c||c}
 \min \lambda\|\boldsymbol{\alpha}\|_{1} + \left\|F \boldsymbol{D}_{l} \boldsymbol{\alpha}-F \boldsymbol{y}\right\|_{2}^{2} 
 \end{array}\)
-​		上述算法是对于单个的局部的patch来说的，但是复建出的图像，需要在比较大的局部尺度内有比较好的光滑		性，因此规定 $\omega$ 是上一个复建的patch的结果， 而 $P$ 提取了复建patch间重叠的区域，满足：
+​        上述算法是对于单个的局部的patch来说的，但是复建出的图像，需要在比较大的局部尺度内有比较好的光滑        性，因此规定 $\omega$ 是上一个复建的patch的结果， 而 $P$ 提取了复建patch间重叠的区域，满足：
 \(\begin{array}{c||c}
 \min \|\boldsymbol{\alpha}\|_{1} \text { s.t. } &amp; \left\|F \boldsymbol{D}_{l} \boldsymbol{\alpha}-F \boldsymbol{y}\right\|_{2}^{2} \leq \epsilon_{1} \\
 &amp; \left\|P \boldsymbol{D}_{h} \boldsymbol{\alpha}-\boldsymbol{w}\right\|_{2}^{2} \leq \epsilon_{2}
 \end{array}\)
-​		而同样的，有等价形式:
+​        而同样的，有等价形式:
 $$
 \begin{array}{c||c}
 \min_{\alpha} \lambda|\boldsymbol{\alpha}|<em>{1} + \left| \tilde{\boldsymbol{D}} \boldsymbol{\alpha}- \tilde{\boldsymbol{y}}\right|</em>{2}^{2} 
@@ -373,11 +388,11 @@ F \boldsymbol{D}<em>{l} <br />
 F \boldsymbol{y} <br />
 \beta \boldsymbol{w}
 \end{array}\right]
-\(​		同时之前的约束中，并没有要求 $F \boldsymbol{D}_{l} $ 和 $\alpha$ 之间的相似度， 为了消除由此导致的差异，把之前的得到的复建		图像 $X_0$ 加上约束：\)
+\(​        同时之前的约束中，并没有要求 $F \boldsymbol{D}_{l} $ 和 $\alpha$ 之间的相似度， 为了消除由此导致的差异，把之前的得到的复建        图像 $X_0$ 加上约束：\)
 \begin{align}
 \boldsymbol{X}^*= argmin_{X} |SH\boldsymbol{X}-\boldsymbol{Y}|<em>{2}^{2} + c|\boldsymbol{X}-\boldsymbol{X_0}|</em>{2}^{2}
 \end{align}
-\(​		然后上式提供解：\)
+\(​        然后上式提供解：\)
 \begin{align}
 \boldsymbol{X}<em>{t+1}=\boldsymbol{X}</em>{t}+\nu\left[H^{T} S^{T}\left(\boldsymbol{Y}-S H \boldsymbol{X}<em>{t}\right)+c\left(X-X</em>{0}\right)\right]
 \end{align}
@@ -392,19 +407,19 @@ $$</p>
 &amp; \text { s.t. }\left\|D_{i}\right\|_{2}^{2} \leq 1, i=1,2, \ldots, K
 \end{align}\]
 
-<p>​		然后按照如下算法训练基于 $X$ 的字典</p>
+<p>​        然后按照如下算法训练基于 $X$ 的字典</p>
 
 <p><img src="/Users/karlwu/Desktop/GAN/SRGAN&amp;VAE/image/Screen Shot 2020-06-10 at 8.11.13 PM.png" alt="Screen Shot 2020-06-10 at 8.11.13 PM" style="zoom:47%;" /></p>
 
-<p>​	而在SRSR中，HR图像和LR图像是对于两个字典的，并且有数据集$X^h,Y^l$</p>
+<p>​    而在SRSR中，HR图像和LR图像是对于两个字典的，并且有数据集$X^h,Y^l$</p>
 
-<p>​	对于HR图像而言，$\boldsymbol{D_h}= \arg \min <em>{{\boldsymbol{D_h}, \boldsymbol{Z}}}|X^h-\boldsymbol{D_h} Z|</em>{2}^{2}+\lambda|Z|_{1}$</p>
+<p>​    对于HR图像而言，$\boldsymbol{D_h}= \arg \min <em>{{\boldsymbol{D_h}, \boldsymbol{Z}}}|X^h-\boldsymbol{D_h} Z|</em>{2}^{2}+\lambda|Z|_{1}$</p>
 
-<p>​	而对于LR图像而言，$\boldsymbol{D_l}= \arg \min <em>{{\boldsymbol{D_l}, \boldsymbol{Z}}}|Y^l-\boldsymbol{D_l} Z|</em>{2}^{2}+\lambda|Z|_{1}$</p>
+<p>​    而对于LR图像而言，$\boldsymbol{D_l}= \arg \min <em>{{\boldsymbol{D_l}, \boldsymbol{Z}}}|Y^l-\boldsymbol{D_l} Z|</em>{2}^{2}+\lambda|Z|_{1}$</p>
 
-<p>​	为了同步优化，组合一下有优化目标：
+<p>​    为了同步优化，组合一下有优化目标：
 \(min_{\{\boldsymbol{D_h},\boldsymbol{D_l},Z\}}\frac{1}{N}\|X^h-\boldsymbol{D_h} Z\|_{2}^{2}+\frac{1}{M}\|Y^l-\boldsymbol{D_l} Z\|_{2}^{2}+\lambda(\frac{1}{M}+\frac{1}{M})\|Z\|_{1}\)
-​	而经过训练的字典内部的信息可视化后如下，确实有点CNN Visualization卷积那味啊，后面在SRCNN中也将证	明其等价性。</p>
+​    而经过训练的字典内部的信息可视化后如下，确实有点CNN Visualization卷积那味啊，后面在SRCNN中也将证    明其等价性。</p>
 
 <p><img src="/Users/karlwu/Desktop/GAN/SRGAN&amp;VAE/image/Screen Shot 2020-06-10 at 6.47.54 PM.png" alt="Screen Shot 2020-06-10 at 6.47.54 PM" style="zoom:80%;" /></p>
 
@@ -552,6 +567,16 @@ $W_3$ 对应 $n_2$ 个 filter，尺寸为 $(f_2,f_2,c)$</p>
 						<div class="recent-posts">
 							<div class="recent-posts__content">			
 								
+									<a class="recent-posts__image wow fadeIn" href="/2020/07/03/Markov-Decision-Process-in-Reinforcement-Learning/"
+										style="background-image: url('/images/cover/F5.jpg')"></a>
+								
+									<p class="recent-posts__title"><a href="/2020/07/03/Markov-Decision-Process-in-Reinforcement-Learning/">Markov Decision Process in Reinforcement Learning</a></p>
+							</div>
+						</div>
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
 									<a class="recent-posts__image wow fadeIn" href="/2020/06/09/Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/"
 										style="background-image: url('/images/F3.jpg')"></a>
 								
@@ -600,6 +625,10 @@ $W_3$ 对应 $n_2$ 个 filter，尺寸为 $(f_2,f_2,c)$</p>
 		</div>
 	</div>
 </div>
+
+
+
+
     </div>
     <!-- end wrapper-page -->
   </main> 
@@ -612,7 +641,7 @@ $W_3$ 对应 $n_2$ 个 filter，尺寸为 $(f_2,f_2,c)$</p>
     <div class="col col-12">
       <!-- begin footer -->
       
-        <footer class="footer footer-image" style="background-image: url('/images/A1.jpg')">
+        <footer class="footer footer-image" style="background-image: url('/images/cover/A1.jpg')">
           <div class="contact wow fadeInUp">
   <ul class="contact__list list-reset">
     
@@ -623,17 +652,13 @@ $W_3$ 对应 $n_2$ 个 filter，尺寸为 $(f_2,f_2,c)$</p>
       <li class="contact__item"><a href="https://facebook.com/" class="contact__link"><i class="ion ion-logo-facebook"></i></a></li>
     
   
-    
-      <li class="contact__item"><a href="https://dribbble.com/" class="contact__link"><i class="ion ion-logo-dribbble"></i></a></li>
-    
+     
   
     
       <li class="contact__item"><a href="https://instagram.com/" class="contact__link"><i class="ion ion-logo-instagram"></i></a></li>
     
   
-    
-      <li class="contact__item"><a href="https://pinterest.com/" class="contact__link"><i class="ion ion-logo-pinterest"></i></a></li>
-    
+     
   </ul>
 </div>
             <div class="copyright wow fadeInUp" data-wow-delay=".2s">2020 &copy; <a href="/" class="copyright__link">Karl Wu's Blog</a>. Crafted & Designed by <a href="https://artemsheludko.github.io" class="copyright__link">Artem Sheludko</a>.</div>
@@ -664,5 +689,33 @@ $W_3$ 对应 $n_2$ 个 filter，尺寸为 $(f_2,f_2,c)$</p>
 <script src="/js/common.js"></script>
 <!-- end javascript files -->
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: [
+      "MathMenu.js",
+      "MathZoom.js",
+      "AssistiveMML.js",
+      "a11y/accessibility-menu.js"
+    ],
+    jax: ["input/TeX", "output/CommonHTML"],
+    TeX: {
+      extensions: [
+        "tex2jax.js",  // HERE
+        "MathMenu.js",
+        "MathZoom.js",
+        "AssistiveMML.js",
+        "a11y/accessibility-menu.js"
+      ],
+      tex2jax: {      // AND HERE
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']]
+      },
+      jax: ["input/TeX", "output/CommonHTML"],
+    }
+  });
+</script>
 
 </html>

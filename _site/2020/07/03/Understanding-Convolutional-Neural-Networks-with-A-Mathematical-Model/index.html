@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Understanding Convolutional Neural Networks with A Mathematical Model!</title>
-  <meta name='description' content='Minimalistic Theme for Jekyll'>
+  <meta name='description' content='Karl Wu's Blog'>
 
   <link rel="canonical" href="http://localhost:4000/2020/07/03/Understanding-Convolutional-Neural-Networks-with-A-Mathematical-Model/">
   <link rel="alternate" type="application/rss+xml" title="Karl Wu&#39;s Blog" href="/feed.xml">
@@ -61,7 +61,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
           <div class="logo">
             <a class="logo__link" href="/">
             
-              <img class="logo__image" src="/images/Gajalaka.png" alt="Karl Wu's Blog">
+              <img class="logo__image" src="/images/icon/Gajalaka.png" alt="Karl Wu's Blog">
             
             </a>
           </div>
@@ -81,17 +81,25 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 
                   
                 
-                  
-                
-                  
-                
-                  
-                
-                  
-                
                 <li class="nav__item">
-                  <a href="/styleguide/" class="nav__link">Style Guide</a>
+                  <a href="/about/" class="nav__link">About</a>
                 </li>
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
                 
                   
                 
@@ -334,6 +342,16 @@ y_{k}\left(\mathbf{x}_{r}-\mu_{r} \mathbf{1}, \mathbf{a}_{r, k}\right) &amp;=y_{
 						<div class="recent-posts">
 							<div class="recent-posts__content">			
 								
+									<a class="recent-posts__image wow fadeIn" href="/2020/07/03/Markov-Decision-Process-in-Reinforcement-Learning/"
+										style="background-image: url('/images/cover/F5.jpg')"></a>
+								
+									<p class="recent-posts__title"><a href="/2020/07/03/Markov-Decision-Process-in-Reinforcement-Learning/">Markov Decision Process in Reinforcement Learning</a></p>
+							</div>
+						</div>
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
 									<a class="recent-posts__image wow fadeIn" href="/2020/06/09/Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/"
 										style="background-image: url('/images/F3.jpg')"></a>
 								
@@ -382,6 +400,10 @@ y_{k}\left(\mathbf{x}_{r}-\mu_{r} \mathbf{1}, \mathbf{a}_{r, k}\right) &amp;=y_{
 		</div>
 	</div>
 </div>
+
+
+
+
     </div>
     <!-- end wrapper-page -->
   </main> 
@@ -394,7 +416,7 @@ y_{k}\left(\mathbf{x}_{r}-\mu_{r} \mathbf{1}, \mathbf{a}_{r, k}\right) &amp;=y_{
     <div class="col col-12">
       <!-- begin footer -->
       
-        <footer class="footer footer-image" style="background-image: url('/images/A1.jpg')">
+        <footer class="footer footer-image" style="background-image: url('/images/cover/A1.jpg')">
           <div class="contact wow fadeInUp">
   <ul class="contact__list list-reset">
     
@@ -405,17 +427,13 @@ y_{k}\left(\mathbf{x}_{r}-\mu_{r} \mathbf{1}, \mathbf{a}_{r, k}\right) &amp;=y_{
       <li class="contact__item"><a href="https://facebook.com/" class="contact__link"><i class="ion ion-logo-facebook"></i></a></li>
     
   
-    
-      <li class="contact__item"><a href="https://dribbble.com/" class="contact__link"><i class="ion ion-logo-dribbble"></i></a></li>
-    
+     
   
     
       <li class="contact__item"><a href="https://instagram.com/" class="contact__link"><i class="ion ion-logo-instagram"></i></a></li>
     
   
-    
-      <li class="contact__item"><a href="https://pinterest.com/" class="contact__link"><i class="ion ion-logo-pinterest"></i></a></li>
-    
+     
   </ul>
 </div>
             <div class="copyright wow fadeInUp" data-wow-delay=".2s">2020 &copy; <a href="/" class="copyright__link">Karl Wu's Blog</a>. Crafted & Designed by <a href="https://artemsheludko.github.io" class="copyright__link">Artem Sheludko</a>.</div>
@@ -446,5 +464,33 @@ y_{k}\left(\mathbf{x}_{r}-\mu_{r} \mathbf{1}, \mathbf{a}_{r, k}\right) &amp;=y_{
 <script src="/js/common.js"></script>
 <!-- end javascript files -->
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: [
+      "MathMenu.js",
+      "MathZoom.js",
+      "AssistiveMML.js",
+      "a11y/accessibility-menu.js"
+    ],
+    jax: ["input/TeX", "output/CommonHTML"],
+    TeX: {
+      extensions: [
+        "tex2jax.js",  // HERE
+        "MathMenu.js",
+        "MathZoom.js",
+        "AssistiveMML.js",
+        "a11y/accessibility-menu.js"
+      ],
+      tex2jax: {      // AND HERE
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']]
+      },
+      jax: ["input/TeX", "output/CommonHTML"],
+    }
+  });
+</script>
 
 </html>

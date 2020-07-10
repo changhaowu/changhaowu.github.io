@@ -3,6 +3,7 @@ layout: post
 title: "Patch-Based Model in Real World SIngle Image Super-Resolution"
 date: 2020-06-09
 image: images/F3.jpg
+tags: [Computer Vision]
 ---
 > 深度学习在计算机视觉大成功的当下，我们也需要严格审慎的看待深度学习的各项应用，与handcraft的传统方法在特定问题上的比较，优化目标和现实目标的配准，以及深度学习超分辨率模型内部问题的解析。这篇文章主要关注超分辨率（SR）中单图像超分辨率（SISR）中Patch based model的应用，有前深度学习时代的SRSR(Super Resolution Via Sparse Representation)和SRCNN(Super Resolution Convolutional Nerual Network)
 
@@ -40,7 +41,7 @@ Prediction Model从Image Prior来看，是不使用数据集训练的，SR映射
 
 在[Linear Methods for Image Interpolation](https://www.researchgate.net/publication/276034240_Linear_Methods_for_Image_Interpolation)一文中，给出了如下的Prediction Model的形式：
 
-$v_{m,n}$是所谓的采样图像，是以pixel的格式给出的，那么插值的目的其实是找到$v$的潜在函数
+$ v_{m,n} $是所谓的采样图像，是以pixel的格式给出的，那么插值的目的其实是找到$v$的潜在函数
 $$
 v_{m,n}=u(m,n)\;for\;all\;m,n \in Z
 $$
@@ -50,9 +51,7 @@ $$
 2. $v^N$表示v被限制在$\{-N,...,N\}^2$，局部性：$$Z(v)(x, y)=\lim_{N\to\infty}Z(v^N)(x, y)$$ 
 
 那么在这样的条件下，如果有一个线性的，平移不变的，局部的算子$Z$，可以找到插值核函数$K\in L^1$
-$$
-Z(v)(x, y)=\sum_{m,n \in Z} v_{m,n}K(x-m,y-n)
-$$
+$$ Z(v)(x, y)=\sum_{m,n \in Z} v_{m,n}K(x-m,y-n) $$
 一般在$K$上，还会被设计有一些很好的性质，比如$K$被设计成一个张量积，$K(x,y)=K_1(x)K_2(y)$，其中$K_1$是对称的
 
 ![Screen Shot 2020-06-10 at 11.07.53 AM](/Users/karlwu/Desktop/GAN/SRGAN&VAE/image/Screen Shot 2020-06-10 at 11.07.53 AM.png)
@@ -85,7 +84,7 @@ u(x, y) &=(1-\langle x\rangle)(1-\langle y\rangle) v_{\lfloor x\rfloor,\lfloor y
 \left.+(1-\langle x\rangle)\langle y\rangle v_{\lfloor x\rfloor,\lfloor y\rfloor+1}+\langle x\rangle\langle y\rangle v_{\lfloor x\rfloor+1,\lfloor y\rfloor+1}+1\right\rangle
 \end{aligned}
 $$
-​	其插值核形式为：
+​    其插值核形式为：
 $$
 K(x,y)=K_1(x)K_1(y), K_1(t)=(1-|t|)^+=max(1-|t|,0)
 $$
@@ -144,32 +143,32 @@ $$
 Y=SHX
 $$
 
-​	    对于每个patch $y$ ,去寻找对应的稀疏表示 $\alpha$ ，$F$ 是一个特征提取器（一般采用高通滤波器，因为人眼对于高		频信息更加敏感，因此在视觉上，复建的消费会更好），满足：
+​        对于每个patch $y$ ,去寻找对应的稀疏表示 $\alpha$ ，$F$ 是一个特征提取器（一般采用高通滤波器，因为人眼对于高        频信息更加敏感，因此在视觉上，复建的消费会更好），满足：
 $$
 \begin{aligned}
 \min \|\boldsymbol{\alpha}\|_{0} \;\; \text  { s.t. }  \left\|F \boldsymbol{D}_{l} \boldsymbol{\alpha}-F \boldsymbol{y}\right\|_{2}^{2} \leq \epsilon 
 \end{aligned}
 $$
-​		 但是由于0-范数难以优化，选择1-范数做近似：
+​         但是由于0-范数难以优化，选择1-范数做近似：
 $$
 \begin{array}{c||c}
 \min_{\alpha} \|\boldsymbol{\alpha}\|_{1} \;\;  \text { s.t. }  \left\|F \boldsymbol{D}_{l} \boldsymbol{\alpha}-F \boldsymbol{y}\right\|_{2}^{2} \leq \epsilon
 \end{array}
 $$
-​		由拉格朗日乘子法提供了等价的形式，其中 $ \lambda$ 用来平衡稀疏性和对 $ y$ 的近似的准确度：
+​        由拉格朗日乘子法提供了等价的形式，其中 $ \lambda$ 用来平衡稀疏性和对 $ y$ 的近似的准确度：
 $$
 \begin{array}{c||c}
 \min \lambda\|\boldsymbol{\alpha}\|_{1} + \left\|F \boldsymbol{D}_{l} \boldsymbol{\alpha}-F \boldsymbol{y}\right\|_{2}^{2} 
 \end{array}
 $$
-​		上述算法是对于单个的局部的patch来说的，但是复建出的图像，需要在比较大的局部尺度内有比较好的光滑		性，因此规定 $\omega$ 是上一个复建的patch的结果， 而 $P$ 提取了复建patch间重叠的区域，满足：
+​        上述算法是对于单个的局部的patch来说的，但是复建出的图像，需要在比较大的局部尺度内有比较好的光滑        性，因此规定 $\omega$ 是上一个复建的patch的结果， 而 $P$ 提取了复建patch间重叠的区域，满足：
 $$
 \begin{array}{c||c}
 \min \|\boldsymbol{\alpha}\|_{1} \text { s.t. } & \left\|F \boldsymbol{D}_{l} \boldsymbol{\alpha}-F \boldsymbol{y}\right\|_{2}^{2} \leq \epsilon_{1} \\
 & \left\|P \boldsymbol{D}_{h} \boldsymbol{\alpha}-\boldsymbol{w}\right\|_{2}^{2} \leq \epsilon_{2}
 \end{array}
 $$
-​		而同样的，有等价形式:
+​        而同样的，有等价形式:
 $$
 \begin{array}{c||c}
 \min_{\alpha} \lambda\|\boldsymbol{\alpha}\|_{1} + \left\| \tilde{\boldsymbol{D}} \boldsymbol{\alpha}- \tilde{\boldsymbol{y}}\right\|_{2}^{2} 
@@ -183,13 +182,13 @@ F \boldsymbol{y} \\
 \beta \boldsymbol{w}
 \end{array}\right]
 $$
-​		同时之前的约束中，并没有要求 $F \boldsymbol{D}_{l} $ 和 $\alpha$ 之间的相似度， 为了消除由此导致的差异，把之前的得到的复建		图像 $X_0$ 加上约束：
+​        同时之前的约束中，并没有要求 $F \boldsymbol{D}_{l} $ 和 $\alpha$ 之间的相似度， 为了消除由此导致的差异，把之前的得到的复建        图像 $X_0$ 加上约束：
 $$
 \begin{align}
 \boldsymbol{X}^*= argmin_{X} \|SH\boldsymbol{X}-\boldsymbol{Y}\|_{2}^{2} + c\|\boldsymbol{X}-\boldsymbol{X_0}\|_{2}^{2}
 \end{align}
 $$
-​		然后上式提供解：
+​        然后上式提供解：
 $$
 \begin{align}
 \boldsymbol{X}_{t+1}=\boldsymbol{X}_{t}+\nu\left[H^{T} S^{T}\left(\boldsymbol{Y}-S H \boldsymbol{X}_{t}\right)+c\left(X-X_{0}\right)\right]
@@ -205,21 +204,21 @@ $$
 \end{align}
 $$
 
-​		然后按照如下算法训练基于 $X$ 的字典
+​        然后按照如下算法训练基于 $X$ 的字典
 
 <img src="/Users/karlwu/Desktop/GAN/SRGAN&amp;VAE/image/Screen Shot 2020-06-10 at 8.11.13 PM.png" alt="Screen Shot 2020-06-10 at 8.11.13 PM" style="zoom:47%;" />
 
-​	而在SRSR中，HR图像和LR图像是对于两个字典的，并且有数据集$X^h,Y^l$
+​    而在SRSR中，HR图像和LR图像是对于两个字典的，并且有数据集$X^h,Y^l$
 
-​	对于HR图像而言，$\boldsymbol{D_h}= \arg \min _{\{\boldsymbol{D_h}, \boldsymbol{Z}\}}\|X^h-\boldsymbol{D_h} Z\|_{2}^{2}+\lambda\|Z\|_{1}$
+​    对于HR图像而言，$\boldsymbol{D_h}= \arg \min _{\{\boldsymbol{D_h}, \boldsymbol{Z}\}}\|X^h-\boldsymbol{D_h} Z\|_{2}^{2}+\lambda\|Z\|_{1}$
 
-​	而对于LR图像而言，$\boldsymbol{D_l}= \arg \min _{\{\boldsymbol{D_l}, \boldsymbol{Z}\}}\|Y^l-\boldsymbol{D_l} Z\|_{2}^{2}+\lambda\|Z\|_{1}$
+​    而对于LR图像而言，$\boldsymbol{D_l}= \arg \min _{\{\boldsymbol{D_l}, \boldsymbol{Z}\}}\|Y^l-\boldsymbol{D_l} Z\|_{2}^{2}+\lambda\|Z\|_{1}$
 
-​	为了同步优化，组合一下有优化目标：
+​    为了同步优化，组合一下有优化目标：
 $$
 min_{\{\boldsymbol{D_h},\boldsymbol{D_l},Z\}}\frac{1}{N}\|X^h-\boldsymbol{D_h} Z\|_{2}^{2}+\frac{1}{M}\|Y^l-\boldsymbol{D_l} Z\|_{2}^{2}+\lambda(\frac{1}{M}+\frac{1}{M})\|Z\|_{1}
 $$
-​	而经过训练的字典内部的信息可视化后如下，确实有点CNN Visualization卷积那味啊，后面在SRCNN中也将证	明其等价性。
+​    而经过训练的字典内部的信息可视化后如下，确实有点CNN Visualization卷积那味啊，后面在SRCNN中也将证    明其等价性。
 
 <img src="/Users/karlwu/Desktop/GAN/SRGAN&amp;VAE/image/Screen Shot 2020-06-10 at 6.47.54 PM.png" alt="Screen Shot 2020-06-10 at 6.47.54 PM" style="zoom:80%;" />
 
@@ -293,6 +292,7 @@ SRCNN在结构上很mind-simplicity，而在设计上采用全卷积的设计。
   <img src="/Users/karlwu/Desktop/GAN/SRGAN&amp;VAE/image/Screen Shot 2020-06-11 at 10.19.14 AM.png" alt="Screen Shot 2020-06-11 at 10.19.14 AM" style="zoom:60%;" />
 
   
+
 
 
 

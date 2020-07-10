@@ -9,9 +9,17 @@
     } ,
   
     {
+      "title"    : "Markov Decision Process in Reinforcement Learning",
+      "category" : "",
+      "tags"     : "Reinforcement Learning",
+      "url"      : "/2020/07/03/Markov-Decision-Process-in-Reinforcement-Learning/",
+      "date"     : "2020-07-03 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Patch-Based Model in Real World SIngle Image Super-Resolution",
       "category" : "",
-      "tags"     : "",
+      "tags"     : "Computer Vision",
       "url"      : "/2020/06/09/Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/",
       "date"     : "2020-06-09 00:00:00 +0800"
     } 
