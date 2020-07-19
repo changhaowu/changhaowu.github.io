@@ -1,0 +1,157 @@
+I"�<h4 id="符号">符号</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Notation</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\( t \quad\)</td>
+      <td>time</td>
+    </tr>
+    <tr>
+      <td>\(y\)</td>
+      <td>altitude</td>
+    </tr>
+    <tr>
+      <td>\(v \quad\)</td>
+      <td>velocity, positive upwards</td>
+    </tr>
+    <tr>
+      <td>\(F \quad\)</td>
+      <td>total force, positive upwards</td>
+    </tr>
+    <tr>
+      <td>\(D \quad\)</td>
+      <td>aerodynamic drag</td>
+    </tr>
+    <tr>
+      <td>\(T \quad\)</td>
+      <td>propulsive thrust</td>
+    </tr>
+    <tr>
+      <td>\(\Delta t \quad\)</td>
+      <td>time step</td>
+    </tr>
+    <tr>
+      <td>\(\rho\)</td>
+      <td>air density</td>
+    </tr>
+    <tr>
+      <td>\(g\)</td>
+      <td>gravitational acceleration</td>
+    </tr>
+    <tr>
+      <td>\(m\)</td>
+      <td>mass</td>
+    </tr>
+    <tr>
+      <td>\(C_{D}\quad\)</td>
+      <td>drag coefficient</td>
+    </tr>
+    <tr>
+      <td>\(A \quad\)</td>
+      <td>drag reference area</td>
+    </tr>
+    <tr>
+      <td>\(\dot{m}_{\text {fuel }}\)</td>
+      <td>fuel mass flow rate</td>
+    </tr>
+    <tr>
+      <td>\(u_{e} \quad\)</td>
+      <td>exhaust velocity</td>
+    </tr>
+    <tr>
+      <td>\(i\)</td>
+      <td>time index</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="火箭模型">火箭模型</h4>
+
+<p>自己去运算，甚至搭建一个火箭是一件很有意思的事情。无论是哪一种火箭，其受力基本上都是三种，火箭发动机产生的推力，火箭在大气中收到的阻力，以及火箭附近的星体对其的引力：</p>
+
+<p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/rktfor.gif" alt="rktfor" style="zoom:80%;" /></p>
+
+<h4 id="模型火箭模型">模型火箭模型</h4>
+
+<p>最简单的系统，就是不考虑地心地固坐标系的情况下，讲地面考虑成平地，同时忽略质量的瞬时变动，继续使用牛顿第二系统去建立模型，只能适用于小型模型火箭，往往不会进入地球轨道，同时其极限高度也比较小，往往被限制在对流层内，因此阻力中的大气情况比较好估算。</p>
+
+<p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/rktflight.gif" alt="rktflight" style="zoom:80%;" /></p>
+
+<p>建立其动力模型：</p>
+
+\[\begin{array}{l}
+\left\{\begin{array}{l}
+y^{\prime}=v \cos (\theta) \\
+x^{\prime}=v \sin (\theta) \\
+m \vec{v}^{\prime}=\vec{T}-\vec{D}-\vec{G} \\
+m v_{y}^{\prime}=(T-D)\cos(\theta)-G\\
+m v_{x}^{\prime}=(T-D)\sin(\theta) \\
+D=\rho c_D A v^2 \\
+m^{\prime}=-{m}_{f u e l}^{\prime} \\
+T = m^{\prime}_{f u e l} u_{e} \\
+m^{\prime}_{f u e l} = c \\
+G = mg\frac{R_e^2}{(y+R_e)^2}
+\end{array}\right. \\
+\end{array}\]
+
+<p>到达最高点当：\(\frac{d \theta}{d t}=0\)</p>
+
+<h4 id="轨道火箭模型">轨道火箭模型</h4>
+
+<p>如果要考虑到轨道火箭甚至向火星发射的火箭，由于其入轨后在地表的投影，距离发射基地已经有相当的距离，不能把地球处理成平地，而需要以地心为中心，建立地心地固坐标系（这部分以NASA在1998年发射的火星气象卫星作为图例）</p>
+
+<p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/launch2.gif" alt="launch2" style="zoom:80%;" /></p>
+
+<p>气象火箭在SECO-1阶段大致进入轨道，而在地图上的体现如下图，为状态1到状态2:</p>
+
+<p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/msp98track93.gif" alt="msp98track93" style="zoom:60%;" /></p>
+
+<p>为此可视化的得出，需要采用如地心地固坐标系这样的处理：</p>
+
+<p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/ECEF.png" alt="ECEF" style="zoom:55%;" /></p>
+
+<p>为了方便处理，暂时不考虑地球各点微弱的重力差异，就将地球处理成一个完美球形，地表 \(g\) 值就取 \(9.80665m/s\)</p>
+
+<p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/ECEF.JPG" alt="ECEF" style="zoom:15%;" /></p>
+
+<p>建立其对应的模型：</p>
+
+\[\begin{array}{l}
+\left\{\begin{array}{l}
+\tan \theta=\frac{R d \rho}{d R}\Rightarrow R \frac{\varphi^{\prime}}{R^{\prime}}=\frac{\varphi^{\prime}}{\ln R^{\prime}} \\
+d v=\frac{R d\varphi}{\sin \theta} \Rightarrow v^{\prime} \sin \theta=R \varphi^{\prime} \\
+v^{\prime}\cos \theta=R^{\prime} \\
+m \nu^{\prime}=F=T-D-G \\
+D=\rho c_D A v^2 \\
+m=-\dot{m}_{f u e l} \\
+T=\dot{m}_{f u e l} u_{e} \\
+G = mg\frac{R_e^2}{R^2} \\
+
+\end{array}\right. \\
+\end{array}\]
+
+<p>当考虑到轨道火箭喷出的气体速度较大的时候，牛顿第二定理不再适用，应当考虑动量定理，因此修正方程：</p>
+
+\[\begin{array}{l}
+\left\{\begin{array}{l}
+\tan \theta=\frac{R d \rho}{d R}\Rightarrow R \frac{\varphi^{\prime}}{R^{\prime}}=\frac{\varphi^{\prime}}{\ln R^{\prime}} \\
+d v=\frac{R d\varphi}{\sin \theta} \Rightarrow v^{\prime} \sin \theta=R \varphi^{\prime} \\
+v^{\prime}\cos \theta=R^{\prime} \\
+\begin{array}{l}
+m d v-d m_{f u e l}=(T-D-G) d t  \Rightarrow 
+m v^{\prime}-m^{\prime} u_{e}=T-D-G
+\end{array} \\
+D=\rho c_D A v^2 \\
+m=-\dot{m}_{f u e l} \\
+T=\dot{m}_{f u e l} u_{e} \\
+G = mg\frac{R_e^2}{R^2}
+\end{array}\right. \\
+\end{array}\]
+
+:ET
