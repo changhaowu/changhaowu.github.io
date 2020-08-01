@@ -17,14 +17,6 @@
     } ,
   
     {
-      "title"    : "Launch A Rocket",
-      "category" : "",
-      "tags"     : "Numerical Computation",
-      "url"      : "/2020/07/11/Launching-a-Rocket/",
-      "date"     : "2020-07-11 00:00:00 +0800"
-    } ,
-  
-    {
       "title"    : "Understanding Convolutional Neural Networks with A Mathematical Model",
       "category" : "",
       "tags"     : "CNN",
