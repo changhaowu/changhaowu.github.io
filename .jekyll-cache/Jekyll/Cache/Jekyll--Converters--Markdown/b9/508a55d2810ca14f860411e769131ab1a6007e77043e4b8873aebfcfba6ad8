@@ -1,4 +1,4 @@
-I"W�<h4 id="符号">符号</h4>
+I"��<h4 id="符号">符号</h4>
 
 <table>
   <thead>
@@ -257,18 +257,15 @@ G = mg\frac{R_e^2}{(y+R_e)^2}
 
 <p>​				 整理后得出：</p>
 
-\[\begin{array}{l}
-\left\{\begin{array}{l}
-y^{\prime}=v_y  \\
-x^{\prime}=v_x  \\
-v^{\prime}_{y}= (- \frac{m^{\prime}}{m} u_{e} - \frac{\rho c_D A}{m}v^2)cos(\theta) - g\frac{R_e^2}{(y+R_e)^2} \\
-v^{\prime}_{x}= (- \frac{m^{\prime}}{m} u_{e} - \frac{\rho c_D A}{m}v^2)sin(\theta) \\
-{\theta} = {\arctan(\frac{v_x}{v_y})} \\
-m^{\prime}= -c \\
-\end{array}\right. \\
-\end{array}\]
+\[\left\{\begin{array}{l}
+y^{\prime}=v_{\|} \cos (\theta) \\
+x^{\prime}=v_{\|} \sin (\theta) \\
+v_{\|}^{\prime}=\left(-\frac{m^{\prime}}{m} u_{e}-\frac{\rho c_{D} A}{m} v^{2}\right)-g \frac{R_{s}^{2}}{\left(y+R_{e}\right)^{2}} \cos (\theta) \\
+\theta^{\prime}=g \frac{\sin (\theta)}{v_{\|}} \\
+m^{\prime}=-c
+\end{array}\right.\]
 
-<p>​				到达最高点当：\(\frac{d \theta}{d t}=0\)</p>
+<p>​				到达最高点当：\(\frac{d \theta}{d t}=0\)，然后开始下落</p>
 
 <ul>
   <li>
@@ -330,13 +327,17 @@ C_{D} &amp;=0.35
 \(\begin{array}{l}
 \left\{\begin{array}{l}
 m_{\text {fuel }} &amp;= 0 \\
-theta &amp;= 84（D）\\
+theta &amp;= 6（D）\\
 V_{0} &amp;=100 \mathrm{m} / \mathrm{s} \\
 \end{array}\right. \\
 \end{array}\)
-这样的模型设定，就是炮弹的轨迹：</p>
+这样的模型设定，就是炮弹飞行的轨迹：</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/ballistic model.png" alt="ballistic model" style="zoom:20%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Ballistic Filight.png" alt="Ballistic Filight.png" style="zoom:20%;" /></p>
+
+    <p>而其飞行速度变化的状态为:</p>
+
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Ballistic Filight Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:20%;" /></p>
   </li>
   <li>
     <p>然后是比较小推力的火箭，推力的调节是依靠燃料喷射速度的，这和发动机的设计有关
@@ -344,23 +345,35 @@ V_{0} &amp;=100 \mathrm{m} / \mathrm{s} \\
 \left\{\begin{array}{l}
 m_{\text {fuel }} &amp;= 0.05 \\
 theta &amp;= 6（D）\\
-V_{0} &amp;=0 \mathrm{m} / \mathrm{s} \\
+V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
 \end{array}\right. \\
 \end{array}\)</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/low_thrust.png" alt="low" style="zoom:26.9%;" /></p>
+    <p>这样的模型设定，就是比较低推力模型火箭飞行的轨迹：</p>
+
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Lower Powered Model Rocket Trajectory.png" alt="Higher Powered Model Rocket Trajectory" style="zoom:90%;" /></p>
+
+    <p>而其飞行速度变化的状态为:</p>
+
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Lower Powered Model Rocket Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:90%;" /></p>
   </li>
   <li>
     <p>最后是高推力火箭
 \(\begin{array}{l}
 \left\{\begin{array}{l}
-m_{\text {fuel }} &amp;= 0.12 \\
+m_{\text {fuel }} &amp;= 0.36 \\
 theta &amp;= 6（D）\\
-V_{0} &amp;=0 \mathrm{m} / \mathrm{s} \\
+V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
 \end{array}\right. \\
 \end{array}\)</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/high_thrust.png" alt="high_thrust" style="zoom:26%;" /></p>
+    <p>这样的模型设定，就是比较高推力模型火箭飞行的轨迹：</p>
+
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Higher Powered Model Rocket Trajectory.png" alt="Higher Powered Model Rocket Trajectory" style="zoom:90%;" /></p>
+
+    <p>而其飞行速度变化的状态为:</p>
+
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Higher Powered Model Rocket Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:95%;" /></p>
   </li>
 </ul>
 
@@ -586,75 +599,75 @@ V_{0} &amp;=0 \mathrm{m} / \mathrm{s} \\
           </thead>
           <tbody>
             <tr>
-              <td style="text-align: center">$m_{rocket}$</td>
+              <td style="text-align: center">\(m_{rocket}\)</td>
               <td style="text-align: center">33800.0</td>
             </tr>
             <tr>
-              <td style="text-align: center">$m_{fuel1}$</td>
+              <td style="text-align: center">\(m_{fuel1}\)</td>
               <td style="text-align: center">367500.0</td>
             </tr>
             <tr>
-              <td style="text-align: center">$m_{fuel2}$</td>
+              <td style="text-align: center">\(m_{fuel2}\)</td>
               <td style="text-align: center">140000.0</td>
             </tr>
             <tr>
-              <td style="text-align: center">$t_{inject_1}$</td>
+              <td style="text-align: center">\(t_{inject_1}\)</td>
               <td style="text-align: center">330.0</td>
             </tr>
             <tr>
-              <td style="text-align: center">$t_{inject_2}$</td>
+              <td style="text-align: center">\(t_{inject_2}\)</td>
               <td style="text-align: center">810.0</td>
             </tr>
             <tr>
-              <td style="text-align: center">$v_{limit1}$</td>
+              <td style="text-align: center">\(v_{limit1}\)</td>
               <td style="text-align: center">100.0</td>
             </tr>
             <tr>
-              <td style="text-align: center">$v_{limit2}$</td>
+              <td style="text-align: center">\(v_{limit2}\)</td>
               <td style="text-align: center">400.0</td>
             </tr>
             <tr>
-              <td style="text-align: center">$v_{limit3}$</td>
+              <td style="text-align: center">\(v_{limit3}\)</td>
               <td style="text-align: center">6000.0</td>
             </tr>
             <tr>
-              <td style="text-align: center">$p_{e}$</td>
-              <td style="text-align: center">9.7$\times$1000000</td>
+              <td style="text-align: center">\(p_{e}\)</td>
+              <td style="text-align: center">9.7\(\times\)1000000</td>
             </tr>
             <tr>
-              <td style="text-align: center">$massflow$</td>
+              <td style="text-align: center">\(massflow\)</td>
               <td style="text-align: center">273.6</td>
             </tr>
             <tr>
-              <td style="text-align: center">$Area_{chamber}$</td>
-              <td style="text-align: center">pi $\times$ 0.92^2</td>
+              <td style="text-align: center">\(Area_{chamber}\)</td>
+              <td style="text-align: center">pi \(\times\) 0.92^2</td>
             </tr>
             <tr>
-              <td style="text-align: center">$u_e$</td>
+              <td style="text-align: center">\(u_e\)</td>
               <td style="text-align: center">3413</td>
             </tr>
             <tr>
-              <td style="text-align: center">$T1$</td>
+              <td style="text-align: center">\(T1\)</td>
               <td style="text-align: center">6806000</td>
             </tr>
             <tr>
-              <td style="text-align: center">$T2$</td>
+              <td style="text-align: center">\(T2\)</td>
               <td style="text-align: center">934000</td>
             </tr>
             <tr>
-              <td style="text-align: center">$R0$</td>
+              <td style="text-align: center">\(R0\)</td>
               <td style="text-align: center">6400000.0</td>
             </tr>
             <tr>
-              <td style="text-align: center">$k_{aero}$</td>
-              <td style="text-align: center">3.7^2 $\times$0.25$\times$ 1/2</td>
+              <td style="text-align: center">\(k_{aero}\)</td>
+              <td style="text-align: center">3.7^2 \(\times\)0.25\(\times\) 1/2</td>
             </tr>
             <tr>
-              <td style="text-align: center">$v_0$</td>
+              <td style="text-align: center">\(v_0\)</td>
               <td style="text-align: center">10.0</td>
             </tr>
             <tr>
-              <td style="text-align: center">$theta0$</td>
+              <td style="text-align: center">\(theta0\)</td>
               <td style="text-align: center">6</td>
             </tr>
           </tbody>
@@ -667,31 +680,92 @@ V_{0} &amp;=0 \mathrm{m} / \mathrm{s} \\
     </ul>
   </li>
   <li>
-    <p>然后是坠落的情况，由于其没有进入第一宇宙速度而坠落了
-|   parameter   |          value         |
-| :————–: | :—————————-: |
-|   $m_{rocket}$   |            33800.0             |
-|   $m_{fuel1}$    |            367500.0            |
-|   $m_{fuel2}$    |            140000.0            |
-|  $t_{inject_1}$  |             330.0              |
-|  $t_{inject_2}$  |             720.0              |
-|   $v_{limit1}$   |             100.0              |
-|   $v_{limit2}$   |             400.0              |
-|   $v_{limit3}$   |             6000.0             |
-|     $p_{e}$      |       9.7$\times$1000000       |
-|    $massflow$    |             273.6              |
-| $Area_{chamber}$ |       pi $\times$ 0.92^2       |
-|      $u_e$       |              3413              |
-|       $T1$       |            6806000             |
-|       $T2$       |             934000             |
-|       $R0$       |           6400000.0            |
-|    $k_{aero}$    | 3.7^2 $\times$0.25$\times$ 1/2 |
-|      $v_0$       |              10.0              |
-|     $theta0$     |               6                |</p>
+    <p>然后是坠落的情况，由于其没有进入第一宇宙速度而坠落了</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;img src="/images/2020-07-20-Rocket-Modelling-Python/orbitin.png" alt="orbitfall" style="zoom:30%;" /&gt;
- {:refdef}
-</code></pre></div>    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center">parameter</th>
+          <th style="text-align: center">value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: center">\(m_{rocket}\)</td>
+          <td style="text-align: center">33800.0</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(m_{fuel1}\)</td>
+          <td style="text-align: center">367500.0</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(m_{fuel2}\)</td>
+          <td style="text-align: center">140000.0</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(t_{inject_1}\)</td>
+          <td style="text-align: center">330.0</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(t_{inject_2}\)</td>
+          <td style="text-align: center">720.0</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(v_{limit1}\)</td>
+          <td style="text-align: center">100.0</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(v_{limit2}\)</td>
+          <td style="text-align: center">400.0</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(v_{limit3}\)</td>
+          <td style="text-align: center">6000.0</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(p_{e}\)</td>
+          <td style="text-align: center">9.7\(\times\)1000000</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(massflow\)</td>
+          <td style="text-align: center">273.6</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(Area_{chamber}\)</td>
+          <td style="text-align: center">pi \(\times\) 0.92^2</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(u_e\)</td>
+          <td style="text-align: center">3413</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(T1\)</td>
+          <td style="text-align: center">6806000</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(T2\)</td>
+          <td style="text-align: center">934000</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(R0\)</td>
+          <td style="text-align: center">6400000.0</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(k_{aero}\)</td>
+          <td style="text-align: center">3.7^2 \(\times\)0.25\(\times\) 1/2</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(v_0\)</td>
+          <td style="text-align: center">10.0</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">\(theta0\)</td>
+          <td style="text-align: center">6</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/orbitin.png" alt="orbitfall" style="zoom:30%;" /></p>
   </li>
 </ul>
 
