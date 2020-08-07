@@ -1,4 +1,4 @@
-I"�<h4 id="符号">符号</h4>
+I"��<h4 id="符号">符号</h4>
 
 <table>
   <thead>
@@ -313,7 +313,7 @@ m_{i+1} &amp;=m_{i}+\left(-\dot{m}_{\text {fuel }_{i}}\right)\left(t_{i+1}-t_{i}
     <p>然后就是不同的发射的参数设定：</p>
   </li>
   <li>
-    <p>​首先是</p>
+    <p>首先是</p>
 
 \[\begin{array}{l}
 \left\{\begin{array}{l}
@@ -332,14 +332,15 @@ V_{0} &amp;=100 \mathrm{m} / \mathrm{s} \\
     <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Ballistic Filight Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:70%;" /></p>
   </li>
   <li>
-    <p>然后是比较小推力的火箭，推力的调节是依靠燃料喷射速度的，这和发动机的设计有关
-\(\begin{array}{l}
+    <p>然后是比较小推力的火箭，推力的调节是依靠燃料喷射速度的，这和发动机的设计有关</p>
+
+\[\begin{array}{l}
 \left\{\begin{array}{l}
 m_{\text {fuel }} &amp;= 0.05 \\
 theta &amp;= 6（D）\\
 V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
 \end{array}\right. \\
-\end{array}\)</p>
+\end{array}\]
 
     <p>这样的模型设定，就是比较低推力模型火箭飞行的轨迹：</p>
 
@@ -350,14 +351,15 @@ V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
     <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Lower Powered Model Rocket Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:70%;" /></p>
   </li>
   <li>
-    <p>最后是高推力火箭
-\(\begin{array}{l}
+    <p>最后是高推力火箭</p>
+
+\[\begin{array}{l}
 \left\{\begin{array}{l}
 m_{\text {fuel }} &amp;= 0.36 \\
 theta &amp;= 6（D）\\
 V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
 \end{array}\right. \\
-\end{array}\)</p>
+\end{array}\]
 
     <p>这样的模型设定，就是比较高推力模型火箭飞行的轨迹：</p>
 
@@ -757,7 +759,7 @@ V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
       </tbody>
     </table>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/orbitin.png" alt="orbitfall" style="zoom:30%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/orbitin.png" alt="orbitfall" style="zoom:30%;" /><img src="/Users/karlwu/Documents/GitHub/changhaowu.github.io/images/2020-07-20-Rocket-Modelling-Python/Rocket Fail.png" alt="Rocket Fail" /></p>
   </li>
 </ul>
 

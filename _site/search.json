@@ -1,43 +1,11 @@
 [
   
     {
-      "title"    : "火箭模型建立",
+      "title"    : "运用𝒑𝒚𝒕𝒉𝒐𝒏和数学建模研究火箭发射轨迹",
       "category" : "",
       "tags"     : "Numerical Computation",
-      "url"      : "/2020/07/20/Rocket-Modelling-Python/",
+      "url"      : "/2020/07/20/%E8%BF%90%E7%94%A8%F0%9D%92%91%F0%9D%92%9A%F0%9D%92%95%F0%9D%92%89%F0%9D%92%90%F0%9D%92%8F%E5%92%8C%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%A0%94%E7%A9%B6%E7%81%AB%E7%AE%AD%E5%8F%91%E5%B0%84%E8%BD%A8%E8%BF%B9/",
       "date"     : "2020-07-20 00:00:00 +0800"
-    } ,
-  
-    {
-      "title"    : "Variational Autoencoder",
-      "category" : "",
-      "tags"     : "Generative Model",
-      "url"      : "/2020/07/14/Variational-Autoencoder/",
-      "date"     : "2020-07-14 00:00:00 +0800"
-    } ,
-  
-    {
-      "title"    : "Understanding Convolutional Neural Networks with A Mathematical Model",
-      "category" : "",
-      "tags"     : "CNN",
-      "url"      : "/2020/07/03/Understanding-Convolutional-Neural-Networks-with-A-Mathematical-Model/",
-      "date"     : "2020-07-03 00:00:00 +0800"
-    } ,
-  
-    {
-      "title"    : "Markov Decision Process in Reinforcement Learning",
-      "category" : "",
-      "tags"     : "Reinforcement Learning",
-      "url"      : "/2020/07/03/Markov-Decision-Process-in-Reinforcement-Learning/",
-      "date"     : "2020-07-03 00:00:00 +0800"
-    } ,
-  
-    {
-      "title"    : "Patch-Based Model in Real World SIngle Image Super-Resolution",
-      "category" : "",
-      "tags"     : "Computer Vision",
-      "url"      : "/2020/06/09/Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/",
-      "date"     : "2020-06-09 00:00:00 +0800"
     } 
   
 ]

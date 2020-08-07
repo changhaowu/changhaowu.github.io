@@ -1,4 +1,4 @@
-I"��<h4 id="符号">符号</h4>
+I"�<h4 id="符号">符号</h4>
 
 <table>
   <thead>
@@ -166,132 +166,123 @@ v_{1}=\sqrt{\frac{G M}{R}}\]
     <h5 id="模型火箭的结构">模型火箭的结构</h5>
 
     <p>下面是模型火箭根据推力进行的分级（Estes标准）。火箭燃料最高等级为O，但是G级以上的就被分类成为高推力火箭</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: left">Class</th>
+          <th style="text-align: left">Total Impulse (Metric Standard)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left">1/4A</td>
+          <td style="text-align: left">0.313-0.625 N·s</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">1/2A</td>
+          <td style="text-align: left">0.626-1.25 N·s</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">A</td>
+          <td style="text-align: left">1.26-2.50 N·s</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">B</td>
+          <td style="text-align: left">2.51-5.0 N·s</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">C</td>
+          <td style="text-align: left">5.01-10 N·s</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">D</td>
+          <td style="text-align: left">10.01-20 N·s</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">E</td>
+          <td style="text-align: left">20.01-40 N·s</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">F</td>
+          <td style="text-align: left">40.01-80 N·s</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">G</td>
+          <td style="text-align: left">80.01-160 N·s</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>物理上最大的黑火药模型火箭发动机一般到E级，因为黑火药块比较脆。如果大型黑火药发动机是火箭的更高推力的发动机，比如说超过了建议的最大起飞重量，又或者有过多的加热/冷却循环（例如，在高温的密闭发动机中），则推进剂装药可能会出现细碎的裂痕。这些裂痕增加了推进剂接触空气表面积，因此当发动机点火时，推进剂燃烧得更快，并产生比发动机内部正常的内腔压力更大的压力。该压力可能会超过发动机外壳的强度（一般是纸板），并导致电机爆裂。爆裂的电动机可能会对模型火箭造成损害，范围从简单的电动机管或车身管破裂到回收系统的猛烈弹射（偶尔会着火）</p>
+
+    <p>下图为模型火箭的发动机结构：</p>
+
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/220px-Model-rocket-engine.png" alt="220px-Model-rocket-engine" style="zoom:80%;" /></p>
+
+    <p>因此，额定功率高于D到E的火箭发动机通常使用由高氯酸铵，铝粉和硬质塑料外壳中包含的橡胶状粘合剂物质制成的复合推进剂。这种推进剂类似于航天飞机的固体火箭助推器中使用的推进剂，不像黑火药那么脆弱，从而提高了发动机的可靠性和推进剂的稳定性。这些电动机的等级大小从D到O不等。复合电动机每单位重量产生的脉冲（特定脉冲）比黑粉电动机更大。 还提供可再装的复合推进剂电动机。这些是商业生产的电动机，需要用户将推进剂颗粒，O形圈和垫圈（以容纳膨胀气体）组装，延迟颗粒和喷射电荷到特殊的不易碎的铝制电动机机壳中，该机壳具有旋入式或卡入式端部（封闭）。可重装电动机的优点是成本：首先，由于主壳体是可重用的，因此重装成本明显低于相同脉冲的一次性电动机。其次，大型复合发动机的组装劳动强度大且难以自动化。将这项任务分担给消费者可以节省成本。可重装电动机从D级到O级都有。
+  电动机用电火柴进行电点火，火柴包括短长度的热原涂层镍铬合金，铜或铝桥线，将其推入喷嘴，并用防火棉，橡皮筋，塑料塞子或胶带将其固定在适当的位置。推进剂的顶部是跟踪延迟装药，该装药会产生烟雾，但实际上不会产生推力，这是因为火箭减速并飞弧。延迟电荷耗尽后，它会点燃喷射电荷，用于部署恢复系统。</p>
   </li>
-</ul>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">Class</th>
-      <th style="text-align: left">Total Impulse (Metric Standard)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">1/4A</td>
-      <td style="text-align: left">0.313-0.625 N·s</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">1/2A</td>
-      <td style="text-align: left">0.626-1.25 N·s</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">A</td>
-      <td style="text-align: left">1.26-2.50 N·s</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">B</td>
-      <td style="text-align: left">2.51-5.0 N·s</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">C</td>
-      <td style="text-align: left">5.01-10 N·s</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">D</td>
-      <td style="text-align: left">10.01-20 N·s</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">E</td>
-      <td style="text-align: left">20.01-40 N·s</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">F</td>
-      <td style="text-align: left">40.01-80 N·s</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">G</td>
-      <td style="text-align: left">80.01-160 N·s</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>​		物理上最大的黑火药模型火箭发动机一般到E级，因为黑火药块比较脆。如果大型黑火药发动机是火箭的更高推力的发动机，比如说超过了建议的最大起飞重量，又或者有过多的加热/冷却循环（例如，在高温的密闭发动机中），则推进剂装药可能会出现细碎的裂痕。这些裂痕增加了推进剂接触空气表面积，因此当发动机点火时，推进剂燃烧得更快，并产生比发动机内部正常的内腔压力更大的压力。该压力可能会超过发动机外壳的强度（一般是纸板），并导致电机爆裂。爆裂的电动机可能会对模型火箭造成损害，范围从简单的电动机管或车身管破裂到回收系统的猛烈弹射（偶尔会着火）</p>
-
-<p>​		下图为模型火箭的发动机结构：</p>
-
-<p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/220px-Model-rocket-engine.png" alt="220px-Model-rocket-engine" style="zoom:80%;" /></p>
-
-<p>​		因此，额定功率高于D到E的火箭发动机通常使用由高氯酸铵，铝粉和硬质塑料外壳中包含的橡胶状粘合剂物质制成的复合推进剂。这种推进剂类似于航天飞机的固体火箭助推器中使用的推进剂，不像黑火药那么脆弱，从而提高了发动机的可靠性和推进剂的稳定性。这些电动机的等级大小从D到O不等。复合电动机每单位重量产生的脉冲（特定脉冲）比黑粉电动机更大。 还提供可再装的复合推进剂电动机。这些是商业生产的电动机，需要用户将推进剂颗粒，O形圈和垫圈（以容纳膨胀气体）组装，延迟颗粒和喷射电荷到特殊的不易碎的铝制电动机机壳中，该机壳具有旋入式或卡入式端部（封闭）。可重装电动机的优点是成本：首先，由于主壳体是可重用的，因此重装成本明显低于相同脉冲的一次性电动机。其次，大型复合发动机的组装劳动强度大且难以自动化。将这项任务分担给消费者可以节省成本。可重装电动机从D级到O级都有。 电动机用电火柴进行电点火，火柴包括短长度的热原涂层镍铬合金，铜或铝桥线，将其推入喷嘴，并用防火棉，橡皮筋，塑料塞子或胶带将其固定在适当的位置。推进剂的顶部是跟踪延迟装药，该装药会产生烟雾，但实际上不会产生推力，这是因为火箭减速并飞弧。延迟电荷耗尽后，它会点燃喷射电荷，用于部署恢复系统。</p>
-
-<ul>
   <li>
     <h5 id="模型火箭的物理模型">模型火箭的物理模型</h5>
 
-    <p>​		最简单的系统，就是不考虑地心地固坐标系的情况下，讲地面考虑成平地，同时忽略质量的瞬时变动，继续使用牛顿第二系统去建立模型，只能适用于小型模型火箭，往往不会进入地球轨道，同时其极限高度也比较小，往往被限制在对流层内，因此阻力中的大气情况比较好估算，直接采用地表的大气压即可</p>
+    <p>最简单的系统，就是不考虑地心地固坐标系的情况下，讲地面考虑成平地，同时忽略质量的瞬时变动，继续使用牛顿第二系统去建立模型，只能适用于小型模型火箭，往往不会进入地球轨道，同时其极限高度也比较小，往往被限制在对流层内，因此阻力中的大气情况比较好估算，直接采用地表的大气压即可</p>
 
     <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/rktflight.gif" alt="rktflight" style="zoom:80%;" /></p>
 
-    <p>​		现在做的火箭模型不考虑回收的环节</p>
+    <p>现在做的火箭模型不考虑回收的环节</p>
 
-    <p>​		因此是一个有一定发射的初始角度，可能有一个初速度，在运动过程中受推力，重力和空气动力学力三个力影响</p>
+    <p>因此是一个有一定发射的初始角度，可能有一个初速度，在运动过程中受推力，重力和空气动力学力三个力影响</p>
 
-    <p>​		建立其动力模型：</p>
-  </li>
-</ul>
+    <p>建立其动力模型：</p>
 
 \[\begin{array}{l}
-\left\{\begin{array}{l}
-y^{\prime}=v \cos (\theta) \\
-x^{\prime}=v \sin (\theta) \\
-m \vec{v}^{\prime}=\vec{T}-\vec{D}-\vec{G} \\
-m v_{y}^{\prime}=(T-D)\cos(\theta)-G\\
-m v_{x}^{\prime}=(T-D)\sin(\theta) \\
-D=\frac{1}{2}\rho c_D A v^2 \\
-m^{\prime}=-{m}_{f u e l}^{\prime} \\
-T = m^{\prime}_{f u e l} u_{e} \\
-m^{\prime}_{f u e l} = c \\
-G = mg\frac{R_e^2}{(y+R_e)^2}
-\end{array}\right. \\
-\end{array}\]
+  \left\{\begin{array}{l}
+  y^{\prime}=v \cos (\theta) \\
+  x^{\prime}=v \sin (\theta) \\
+  m \vec{v}^{\prime}=\vec{T}-\vec{D}-\vec{G} \\
+  m v_{y}^{\prime}=(T-D)\cos(\theta)-G\\
+  m v_{x}^{\prime}=(T-D)\sin(\theta) \\
+  D=\frac{1}{2}\rho c_D A v^2 \\
+  m^{\prime}=-{m}_{f u e l}^{\prime} \\
+  T = m^{\prime}_{f u e l} u_{e} \\
+  m^{\prime}_{f u e l} = c \\
+  G = mg\frac{R_e^2}{(y+R_e)^2}
+  \end{array}\right. \\
+  \end{array}\]
 
-<p>​				 整理后得出：</p>
+    <p>整理后得出：</p>
 
 \[\left\{\begin{array}{l}
-y^{\prime}=v_{\|} \cos (\theta) \\
-x^{\prime}=v_{\|} \sin (\theta) \\
-v_{\|}^{\prime}=\left(-\frac{m^{\prime}}{m} u_{e}-\frac{\rho c_{D} A}{m} v^{2}\right)-g \frac{R_{s}^{2}}{\left(y+R_{e}\right)^{2}} \cos (\theta) \\
-\theta^{\prime}=g \frac{\sin (\theta)}{v_{\|}} \\
-m^{\prime}=-c
-\end{array}\right.\]
+  y^{\prime}=v_{\|} \cos (\theta) \\
+  x^{\prime}=v_{\|} \sin (\theta) \\
+  v_{\|}^{\prime}=\left(-\frac{m^{\prime}}{m} u_{e}-\frac{\rho c_{D} A}{m} v^{2}\right)-g \frac{R_{s}^{2}}{\left(y+R_{e}\right)^{2}} \cos (\theta) \\
+  \theta^{\prime}=g \frac{\sin (\theta)}{v_{\|}} \\
+  m^{\prime}=-c
+  \end{array}\right.\]
 
-<p>​				到达最高点当：\(\frac{d \theta}{d t}=0\)，然后开始下落</p>
-
-<ul>
+    <p>到达最高点当：\(\frac{d \theta}{d t}=0\)，然后开始下落</p>
+  </li>
   <li>
     <h5 id="模型火箭的数值计算">模型火箭的数值计算</h5>
     <ul>
       <li>
         <p>数值计算模型</p>
 
-        <p>​		当考虑阻力时，就无法显式的计算出模型火箭的发射轨迹了，因此需要数值计算</p>
+        <p>当考虑阻力时，就无法显式的计算出模型火箭的发射轨迹了，因此需要数值计算</p>
 
         <p>考虑离散化的模型：
 \(\begin{aligned} t &amp; \rightarrow t_{i} \\ h(t) &amp; \rightarrow h_{i} \\ V(t) &amp; \rightarrow V_{i} \end{aligned}\)</p>
         <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/discretation_h.png" alt="dis		cretation_h" style="zoom:67%;" /></p>
 
-        <p>​		而运动方程可以做离散化处理成：</p>
-      </li>
-    </ul>
-  </li>
-</ul>
+        <p>而运动方程可以做离散化处理成：</p>
 
 \[\dot{y}_{i}=\frac{d y}{d t} \simeq \frac{\Delta y}{\Delta t}=\frac{y_{i+1}-y_{i}}{t_{i+1}-t_{i}} \\
 \dot{x}_{i}=\frac{d x}{d t} \simeq \frac{\Delta x}{\Delta t}=\frac{x_{i+1}-x_{i}}{t_{i+1}-t_{i}} \\
 \dot{V}_{i}=\frac{d V}{d t} \simeq \frac{\Delta V}{\Delta t}=\frac{V_{i+1}-V_{i}}{t_{i+1}-t_{i}} \\
 \dot{m}_{i}=\frac{d m}{d t} \simeq \frac{\Delta m}{\Delta t}=\frac{m_{i+1}-m_{i}}{t_{i+1}-t_{i}}\]
 
-<p>​						然后就可以得出根据时间 \(t\) 插值：</p>
+        <p>然后就可以得出根据时间 \(t\) 插值：</p>
 
 \[\begin{aligned} 
 y_{i+1} &amp;=y_{i}+\left(V_{i}\right)\sin(\theta)\left(t_{i+1}-t_{i}\right) \\ 
@@ -299,81 +290,84 @@ x_{i+1} &amp;=x_{i}+\left(V_{i}\right)\cos(\theta)\left(t_{i+1}-t_{i}\right) \\
 \theta_{i} &amp;= \arctan(\frac{y_{i+1}-y_i}{x_{i+1}-x_i})\\
 V_{i+1} &amp;=V_{i}+\left(-g-\frac{1}{2} \rho V_{i}\left|V_{i}\right| \frac{C_{D} A}{m_{i}}+\frac{V_{i}}{\left|V_{i}\right|} \frac{\dot{m}_{\text {fuel }} u_{e_{i}}}{m_{i}}\right)\left(t_{i+1}-t_{i}\right) \\ 
 m_{i+1} &amp;=m_{i}+\left(-\dot{m}_{\text {fuel }_{i}}\right)\left(t_{i+1}-t_{i}\right) \end{aligned}\]
-
-<ul>
+      </li>
+    </ul>
+  </li>
   <li>
     <p>模型结果</p>
 
     <p>火箭的物理参数设定：</p>
+
+\[\begin{array}{l}
+  \left\{\begin{array}{l}
+  h_{0} &amp;=0 \mathrm{m}\\ 
+  m_{0} &amp;=0.15 \mathrm{kg} \\ 
+  m_{\text {fuel }} &amp;=0.03 \mathrm{kg} \\ 
+  u_{e} &amp;=550 \mathrm{m} / \mathrm{s} \\ 
+  A &amp;=0.001 \mathrm{m}^{2} \\ 
+  \rho &amp;=1.22 \mathrm{kg} / \mathrm{m}^{3} \\ 
+  C_{D} &amp;=0.35 
+  \end{array}\right. \\
+  \end{array}\]
+
+    <p>然后就是不同的发射的参数设定：</p>
   </li>
-</ul>
-
-<p>\(\begin{array}{l}
-\left\{\begin{array}{l}
-h_{0} &amp;=0 \mathrm{m}\\ 
-m_{0} &amp;=0.15 \mathrm{kg} \\ 
-m_{\text {fuel }} &amp;=0.03 \mathrm{kg} \\ 
-u_{e} &amp;=550 \mathrm{m} / \mathrm{s} \\ 
-A &amp;=0.001 \mathrm{m}^{2} \\ 
-\rho &amp;=1.22 \mathrm{kg} / \mathrm{m}^{3} \\ 
-C_{D} &amp;=0.35 
-\end{array}\right. \\
-\end{array}\)
-​		然后就是不同的发射的参数设定：</p>
-
-<ul>
   <li>
-    <p>​	首先是 
-\(\begin{array}{l}
+    <p>首先是</p>
+
+\[\begin{array}{l}
 \left\{\begin{array}{l}
 m_{\text {fuel }} &amp;= 0 \\
 theta &amp;= 6（D）\\
 V_{0} &amp;=100 \mathrm{m} / \mathrm{s} \\
 \end{array}\right. \\
-\end{array}\)
-这样的模型设定，就是炮弹飞行的轨迹：</p>
+\end{array}\]
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Ballistic Filight.png" alt="Ballistic Filight.png" style="zoom:20%;" /></p>
+    <p>这样的模型设定，就是炮弹飞行的轨迹：</p>
+
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Ballistic Filight.png" alt="Ballistic Filight.png" style="zoom:70%;" /></p>
 
     <p>而其飞行速度变化的状态为:</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Ballistic Filight Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:20%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Ballistic Filight Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:70%;" /></p>
   </li>
   <li>
-    <p>然后是比较小推力的火箭，推力的调节是依靠燃料喷射速度的，这和发动机的设计有关
-\(\begin{array}{l}
+    <p>然后是比较小推力的火箭，推力的调节是依靠燃料喷射速度的，这和发动机的设计有关</p>
+
+\[\begin{array}{l}
 \left\{\begin{array}{l}
 m_{\text {fuel }} &amp;= 0.05 \\
 theta &amp;= 6（D）\\
 V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
 \end{array}\right. \\
-\end{array}\)</p>
+\end{array}\]
 
     <p>这样的模型设定，就是比较低推力模型火箭飞行的轨迹：</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Lower Powered Model Rocket Trajectory.png" alt="Higher Powered Model Rocket Trajectory" style="zoom:90%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Lower Powered Model Rocket Trajectory.png" alt="Higher Powered Model Rocket Trajectory" style="zoom:70%;" /></p>
 
     <p>而其飞行速度变化的状态为:</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Lower Powered Model Rocket Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:90%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Lower Powered Model Rocket Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:70%;" /></p>
   </li>
   <li>
-    <p>最后是高推力火箭
-\(\begin{array}{l}
+    <p>最后是高推力火箭</p>
+
+\[\begin{array}{l}
 \left\{\begin{array}{l}
 m_{\text {fuel }} &amp;= 0.36 \\
 theta &amp;= 6（D）\\
 V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
 \end{array}\right. \\
-\end{array}\)</p>
+\end{array}\]
 
     <p>这样的模型设定，就是比较高推力模型火箭飞行的轨迹：</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Higher Powered Model Rocket Trajectory.png" alt="Higher Powered Model Rocket Trajectory" style="zoom:90%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Higher Powered Model Rocket Trajectory.png" alt="Higher Powered Model Rocket Trajectory" style="zoom:70%;" /></p>
 
     <p>而其飞行速度变化的状态为:</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Higher Powered Model Rocket Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:95%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Higher Powered Model Rocket Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:75%;" /></p>
   </li>
 </ul>
 
@@ -383,7 +377,7 @@ V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
   <li>
     <h5 id="轨道火箭的历史">轨道火箭的历史</h5>
 
-    <p>​		在轨道火箭不到半个多世纪的历史中，人类已经多次发射了轨道火箭：</p>
+    <p>在轨道火箭不到半个多世纪的历史中，人类已经多次发射了轨道火箭：</p>
 
     <table>
       <thead>
@@ -447,20 +441,20 @@ V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
       </tbody>
     </table>
 
-    <p>​		轨道火箭其实很早就有了构想，主要由苏格兰天文学家和 William Leitch 在1861年的论文《穿越太空之旅》中发表了有关使用火箭进行太空旅行的第一个理论建议。Tsiolkovsky 的作品更广为人知（尽管在俄罗斯以外并不广为人知），该书发表于1903年，“通过反应装置对宇宙空间的探索”。Tsiolkovsky 一生中的火箭工作没有得到充分的赞赏。</p>
+    <p>轨道火箭其实很早就有了构想，主要由苏格兰天文学家和 William Leitch 在1861年的论文《穿越太空之旅》中发表了有关使用火箭进行太空旅行的第一个理论建议。Tsiolkovsky 的作品更广为人知（尽管在俄罗斯以外并不广为人知），该书发表于1903年，“通过反应装置对宇宙空间的探索”。Tsiolkovsky 一生中的火箭工作没有得到充分的赞赏。</p>
 
-    <p>​		但是他影响了Sergey Korolev，他成为斯大林领导下的苏联的首席火箭设计师，开发了洲际弹道导弹，携带核武器作为对付美国轰炸机的对策。 1957年10月4日，使用 R-7 Semyorka导弹发射了世界上第一颗人造地球卫星Sputnik 1，并于1961年4月12日在沃斯托克1号发射了第一颗绕地球轨道的载人飞船，航天员就是著名的加加林。</p>
+    <p>但是他影响了Sergey Korolev，他成为斯大林领导下的苏联的首席火箭设计师，开发了洲际弹道导弹，携带核武器作为对付美国轰炸机的对策。 1957年10月4日，使用 R-7 Semyorka导弹发射了世界上第一颗人造地球卫星Sputnik 1，并于1961年4月12日在沃斯托克1号发射了第一颗绕地球轨道的载人飞船，航天员就是著名的加加林。</p>
 
-    <p>​		Robert H. Goddard在1919年发表的论文《A Method of Reaching Altitudes》中，太空飞行成为一种工程可能性。他将de Laval喷嘴应用于液体燃料火箭的效率提高到足以使行星际旅行成为可能。他还在实验室证明火箭可以在太空真空中工作 （！！！但是，他的工作并未受到公众的重视）。 1918年11月11日与德国的停战协定击败了他在第一次世界大战中获得陆军用火箭推进武器合同的尝试。在私人财政支持下，他是1926年第一个发射液体燃料火箭的人。戈达德的论文在他的领域在国际上极具影响力。</p>
+    <p>Robert H. Goddard在1919年发表的论文《A Method of Reaching Altitudes》中，太空飞行成为一种工程可能性。他将de Laval喷嘴应用于液体燃料火箭的效率提高到足以使行星际旅行成为可能。他还在实验室证明火箭可以在太空真空中工作 （！！！但是，他的工作并未受到公众的重视）。 1918年11月11日与德国的停战协定击败了他在第一次世界大战中获得陆军用火箭推进武器合同的尝试。在私人财政支持下，他是1926年第一个发射液体燃料火箭的人。戈达德的论文在他的领域在国际上极具影响力。</p>
 
-    <p>​		在第二次世界大战期间，V-2火箭被研制，并被纳粹德国用作武器。V-2火箭不仅打到了伦敦，同时在1944年6月的一次试飞中，一枚这样的火箭以189公里的高度到达太空，成为人类历史上第一个进入太空的物体。第二次世界大战结束时，Wernher von Braun 在内的大部分V-2的相关科学家都投降了美国，并被派遣到美国的弹道导弹工作，成为了美国陆军弹道导弹局。</p>
+    <p>在第二次世界大战期间，V-2火箭被研制，并被纳粹德国用作武器。V-2火箭不仅打到了伦敦，同时在1944年6月的一次试飞中，一枚这样的火箭以189公里的高度到达太空，成为人类历史上第一个进入太空的物体。第二次世界大战结束时，Wernher von Braun 在内的大部分V-2的相关科学家都投降了美国，并被派遣到美国的弹道导弹工作，成为了美国陆军弹道导弹局。</p>
 
-    <p>​		诸如朱诺一号和阿特拉斯等导弹的这项工作使1958年2月1日发射了第一颗美国卫星Explorer 1，并于1962年2月20日发射了美国第一个在轨道上的 John Glenn ，在第7友谊中。中心的 Von Braun 监督了一种更大的火箭，称为“土星”的研制，该火箭，即阿波罗11号，使美国能够于1969年7月，将两个宇航员尼尔·阿姆斯特朗和巴斯·奥尔德林送上月球并返回。</p>
+    <p>诸如朱诺一号和阿特拉斯等导弹的这项工作使1958年2月1日发射了第一颗美国卫星Explorer 1，并于1962年2月20日发射了美国第一个在轨道上的 John Glenn ，在第7友谊中。中心的 Von Braun 监督了一种更大的火箭，称为“土星”的研制，该火箭，即阿波罗11号，使美国能够于1969年7月，将两个宇航员尼尔·阿姆斯特朗和巴斯·奥尔德林送上月球并返回。</p>
   </li>
   <li>
     <h5 id="轨道火箭的结构">轨道火箭的结构</h5>
 
-    <p>​		模型火箭的设计，当然就比较简单了可以像装满黑色粉末的纸板管一样简单，但是要制造出高效，准确的火箭或导弹，则需要克服许多难题。主要困难包括冷却燃烧室，泵送燃料（在液体燃料的情况下）以及控制和校正运动方向。
+    <p>模型火箭的设计，当然就比较简单了可以像装满黑色粉末的纸板管一样简单，但是要制造出高效，准确的火箭或导弹，则需要克服许多难题。主要困难包括冷却燃烧室，泵送燃料（在液体燃料的情况下）以及控制和校正运动方向。
 ​</p>
   </li>
   <li>
@@ -765,8 +759,7 @@ V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
       </tbody>
     </table>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/orbitin.png" alt="orbitfall" style="zoom:30%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Rocket Fail.png" alt="Rocket Fail" style="zoom:33%;" /></p>
   </li>
 </ul>
-
 :ET
