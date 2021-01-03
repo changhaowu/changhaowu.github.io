@@ -1,0 +1,29 @@
+I"�<h2 id="chapt-1-introduction-notes">Chapt-1-Introduction-Notes</h2>
+
+<h3 id="concept--definition">Concept &amp; Definition</h3>
+
+<p>​		模式识别（Pattern Recongntion）在历史上就是长期被研究的问题，在天文学中有J.Kepler通过研究行星观测的数据总结出了Kepler定理这一经验公式，量子力学中寻找原子谱?（atomic spectra）也同样是一个模式识别问题。模式识别可以被总结为在给出的数据中去寻找该数据的总体的一般的规律，而回到机器学习中，以一个经典的模式识别问题：手写体识别为例，给出一些关于模式识别问题的定义。</p>
+
+<p style="text-align: center;"><img src="/images/2021-01-01-Pattern-Recongntion-and-Machinel-Learning-Chapt-1-Introduction/Zip Codes handwriting.png" alt="Zip Codes handwriting" style="zoom:35%;" /></p>
+
+<p>手写体识别的，输入是 \(28 \times 28\) 的像素图 \(\mathbf{x}\) ，输出是 \(0-9\)的识别数字结果的一个0-1整数向量  \(\mathbf{t}\) ,模式识别问题的任务就是要找出一个映射：</p>
+
+\[\mathbf{y}:\mathbf{x} \in \mathbf{X} \rightarrow \mathbf{t} \in \mathbf{T}\]
+
+<p>在手写体识别问题中，会给出训练集 \(\left\{\mathbf{x}_{1}, \ldots, \mathbf{x}_{N}\right\}\) 和对应的标签 \(\left\{\mathbf{t}_{1}, \ldots, \mathbf{t}_{N}\right\}\) ,通过训练集去训练可调节模型 \(\mathbf{y}\),在通过训练之后，通过一个从与 \(\mathbf{x}\) 同分布中采样获得的测试集去检验模型，具体来说，被检验的模型性能被称为泛化性（Generalization），模型的泛化性是模式识别的中心问题。</p>
+
+<p>​		在实际过程中，在获取 \(\mathbf{x}\) 的几何训练集前，还有一个过程被称为预处理（Pre-poccessing）,预处理目标是提取出对问题关键的信息而过滤对问题无用的信息，这样的好处不少，比如可以减少计算时间。</p>
+
+<p>​		像手写体识别这样的，训练集中有对应的 \(&lt;\mathbf{x},t&gt;\) 给出的模式识别被定义为监督学习 （Supervised Learning ），\(\mathbf{t}\) 可以通过有限的离散的形式表达的被称为分类（classification），而后面给出的曲线拟合的例子，其结果\(\mathbf{t}\) 需要给出连续的形式被称为回归（Regression）</p>
+
+<p>​		当然有些问题，训练集中仅仅给出了 \(\mathbf{x}\) ，则被称为无监督学习（Unsupervised Learning），其根据学习目标，有几个代表性问题，有比如要找出相似的分组比如聚类（Clustering）,又比如找出给出的数据的分布（density estimation），也有从高维空间投影到二维空间这样来做可视化（VIsualization）</p>
+
+<p>​		还有一类问题，训练集是以一个状态（state）给出的，目标是要把给出的状态标定一个合理的值被称为（reward），比如下棋时给出一个棋局，再给出相应的奖励/状态值，来驱动问题，这样就可以做到自动下棋，不深入赘述。</p>
+
+<h3 id="polynomial-curve-fitting">Polynomial Curve Fitting</h3>
+
+<p>​		手写体问题的现行主流解决方案不太数学，于是换一个比较数学的问题，曲线多项式拟合来详细给出一个模式识别问题从给出到解决的过程。</p>
+
+<p>​		该问题为一个监督回归问题，问题给了训练集，以形式：\(\mathbf{x} \equiv\left(x_{1}, \ldots, x_{N}\right)^{\mathrm{T}},
+ \mathbf{t} \equiv\left(t_{1}, \ldots, t_{N}\right)^{\mathrm{T}}\)</p>
+:ET

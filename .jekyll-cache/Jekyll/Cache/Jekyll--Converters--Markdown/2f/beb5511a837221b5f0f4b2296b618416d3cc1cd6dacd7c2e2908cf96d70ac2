@@ -1,0 +1,70 @@
+I"�<h1 id="chapt-1-introduction-notes">Chapt-1-Introduction-Notes</h1>
+
+<h2 id="concept--definition">Concept &amp; Definition</h2>
+
+<p>模式识别（Pattern Recongntion）在历史上就是长期被研究的问题，在天文学中有J.Kepler通过研究行星观测的数据总结出了Kepler定理这一经验公式，量子力学中寻找原子谱（Atomic Spectra）也同样是一个模式识别问题。模式识别可以被总结为在给出的数据中去寻找该数据的总体的一般的规律，而回到机器学习中，以一个经典的模式识别问题：手写体识别为例，给出一些关于模式识别问题的定义。</p>
+
+<p style="text-align: center;"><img src="/images/2021-01-01-Pattern-Recongntion-and-Machinel-Learning-Chapt-1-Introduction/Zip Codes handwriting.png" alt="Zip Codes handwriting" style="zoom:35%;" /></p>
+
+<p>手写体识别的，输入是 \(28 \times 28\) 的像素图 \(\mathbf{x}\) ，输出是 \(0-9\) 的识别数字结果的一个0-1整数向量  \(\mathbf{t}\) ,模式识别问题的任务就是要找出一个映射：</p>
+
+\[\mathbf{y}:\mathbf{x} \in \mathbf{X} \rightarrow \mathbf{t} \in \mathbf{T}\]
+
+<p>在手写体识别问题中，会给出训练集 \(\left\{\mathbf{x}_{1}, \ldots, \mathbf{x}_{N}\right\}\) 和对应的标签 \(\left\{\mathbf{t}_{1}, \ldots, \mathbf{t}_{N}\right\}\) ,通过训练集去训练可调节模型 \(\mathbf{y}\),在通过训练之后，通过一个从与 \(\mathbf{x}\) 同分布中采样获得的测试集去检验模型，具体来说，被检验的模型性能被称为泛化性（Generalization），模型的泛化性是模式识别的中心问题。</p>
+
+<p>在实际过程中，在获取 \(\mathbf{x}\) 的几何训练集前，还有一个过程被称为预处理（Pre-poccessing）,预处理目标是提取出对问题关键的信息而过滤对问题无用的信息，这样的好处不少，比如可以减少计算时间。</p>
+
+<p>像手写体识别这样的，训练集中有对应的 \(&lt;\mathbf{x},\mathbf{t}&gt;\) 给出的模式识别被定义为监督学习 （Supervised Learning ），\(\mathbf{t}\) 可以通过有限的离散的形式表达的被称为分类（classification），而后面给出的曲线拟合的例子，其结果 \(\mathbf{t}\) 需要给出连续的形式被称为回归（Regression）</p>
+
+<p>当然有些问题，训练集中仅仅给出了 \(\mathbf{x}\) ，则被称为无监督学习（Unsupervised Learning），其根据学习目标，有几个代表性问题，有比如要找出相似的分组比如聚类（Clustering）,又比如找出给出的数据的分布（density estimation），也有从高维空间投影到二维空间这样来做可视化（VIsualization）</p>
+
+<p>还有一类问题，训练集是以一个状态（State）给出的，目标是要把给出的状态标定一个合理的值被称为（Reward），比如下棋时给出一个棋局，再给出相应的奖励/状态值，来驱动问题，这样就可以做到自动下棋，不深入赘述。</p>
+
+<h2 id="polynomial-curve-fitting">Polynomial Curve Fitting</h2>
+
+<p>手写体问题的现行主流解决方案不太数学，于是换一个比较数学的问题，曲线多项式拟合来详细给出一个模式识别问题从给出到解决的过程。</p>
+
+<p>该问题为一个监督回归问题，问题给了训练集，以形式：\(\mathbf{x} \equiv\left(x_{1}, \ldots, x_{N}\right)^{\mathrm{T}},
+ \mathbf{t} \equiv\left(t_{1}, \ldots, t_{N}\right)^{\mathrm{T}}\)，而该数据集是通过在 \(y = \sin (2 \pi x)\) 的基础上加一个服从高斯分布的随机误差产生的，这模拟了一般场景的情况，可视化如下：</p>
+
+<p style="text-align: center;"><img src="/images/2021-01-01-Pattern-Recongntion-and-Machinel-Learning-Chapt-1-Introduction/data set visualization.png" alt="data set visualization" style="zoom:35%;" /></p>
+
+<p>曲线拟合问题的目标是给出一个新的 \(\widehat{x}\) 时通过模型 \(y(x,\mathbf{w})\) 给出 \(\widehat{t}\), \(\mathbf{w}\) 为可调节参数，具体来说，多项式拟合采用多项式函数:</p>
+
+\[y(x, \mathbf{w})=w_{0}+w_{1} x+w_{2} x^{2}+\ldots+w_{M} x^{M}=\sum_{j=0}^{M} w_{j} x^{j}\]
+
+<p>该函数对于系数 \(\mathbf{w}\) 来说是线性的，并且有可调节参数  \(\mathbf{M}\) ，任何对模型的优化都应当给出一个标准（citeria），这里采用平方误差：</p>
+
+\[\mathbf{w^{*}=\arg \min_{\mathbf{w}}}E(\mathbf{w})=\arg \min_{\mathbf{w}}\frac{1}{2} \sum_{n=1}^{N}\left\{y\left(x_{n}, \mathbf{w}\right)-t_{n}\right\}^{2}\]
+
+<p>值得注意的是，由于 \(y(x,\mathbf{w})\) 对于 \(\mathbf{w}\) 来说是线性的，于是可知 \(\frac{d E(\mathbf{w})}{d w}\) 是线性的，因此 \(\mathbf{w^{*}}\) 有唯一解，在给出了使 \(E(\mathbf{w})\) 最小的 \(\mathbf{w^{*}}\) 后，就完成了多项式曲线拟合的问题，但具体实践上，还有两个问题有待解决，可调节参数  \(\mathbf{M}\) 的选择以及给出具体的数据集后 \(\mathbf{w^{*}}\) 的计算。</p>
+
+<h3 id="the-choice-of-hyperparameter">The choice of Hyperparameter</h3>
+
+<p>对于问题中的待拟合的函数，\(y = \sin (2 \pi x)\) 其泰勒展开为一个 \(x^{k}\) 的无穷级数，因此直觉上来说，当给出的拟合多项式的可调节参数  \(\mathbf{M}\) 越大，拟合的效果越好。但是实际上，反直觉的是，如同下图所示，在当可调节参数  \(\mathbf{M}\) 为 \(9\) ，即给出的样本数时，反而发生了过拟合现象，也就是说，给出的Citeria其实并没有做到和模型泛化性的等价，反而变成了一个求根问题，当给出  \(9\) 个样本时，参数变成了求过 \(9\) 点的方程。</p>
+
+<p><img src="/images/2021-01-01-Pattern-Recongntion-and-Machinel-Learning-Chapt-1-Introduction/overfit_curfit.png" alt="overfit_curfit" style="zoom:35%;" /></p>
+
+<p>为了修正标准，需要做两件事情，考虑到更加合理的对于泛化性的表达（主要矛盾）和考虑样本量的影响（次要矛盾）</p>
+
+<p>先解决简单的样本量，当固定当可调节参数  \(\mathbf{M}\) 为 \(9\) ，换一个数据量大的训练集，同时为了减少数据量对于标准的影响，采用 RMS (root-mean-squared) 误差：</p>
+
+\[E_{\mathrm{RMS}}=\sqrt{2 E\left(\mathbf{w}^{\star}\right) / N}\]
+
+<p>换了 \(N=15\) 以及  \(N=100\) 的训练集以后，发现过拟合现象减少了</p>
+
+<p><img src="/images/2021-01-01-Pattern-Recongntion-and-Machinel-Learning-Chapt-1-Introduction/More-data-better-generalization.png" alt="More-data-better-generalization" style="zoom:35%;" /></p>
+
+<p>但是往往实际问题中，这种通过增大样本量来解决问题的方案是不可行的</p>
+
+<p>于是回到主要矛盾，对于要求泛化性，需要的是泛化性，但是数值上的标准给出的是尽可能的去拟合样本数据，这其实是不等价的。采用观察试验结果的方法，发现过拟合的 \(\mathbf{w}^{*}\) 在会震荡的非常的厉害，即数值上非常大来满足完全过给出的样本点的要求：</p>
+
+<p><img src="/images/2021-01-01-Pattern-Recongntion-and-Machinel-Learning-Chapt-1-Introduction/Parameter oscillation .png" alt="Parameter oscillation " style="zoom:35%;" /></p>
+
+<p>于是考虑修正误差函数，即限制参数在数值上的大小来换取泛化性，于是考虑</p>
+
+\[\widetilde{E}(\mathbf{w})=\frac{1}{2} \sum_{n=1}^{N}\left\{y\left(x_{n}, \mathbf{w}\right)-t_{n}\right\}^{2}+\frac{\lambda}{2}\|\mathbf{w}\|^{2}\]
+
+<h3 id="curve-fitting-re-visited">Curve fitting Re-visited</h3>
+
+:ET
