@@ -6,10 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Generative Model Part 1：Autoencoders in Generative Model</title>
+  <title>Facts and Logic</title>
   <meta name='description' content='“Thanks for visiting my blog”'>
 
-  <link rel="canonical" href="/2020/08/10/Generative-Model-Part-1-Autoencoders-in-Generative-Model/">
+  <link rel="canonical" href="/2021/01/01/">
   <link rel="alternate" type="application/rss+xml" title="Facts and Logic" href="/feed.xml">
 
   <!-- Fonts -->
@@ -214,157 +214,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   <main class="content" aria-label="Content">
     <!-- begin wrapper-page -->
     <div class="wrapper-page">
-      <div class="container">
-	<div class="row">
-		<div class="col col-12">
-			
-			<div class="post__head wow fadeInUp">
-				<h1 class="post__title">Generative Model Part 1：Autoencoders in Generative Model</h1>
-				<div class="post-info">
-					
-					<span class="post-tags">
-						posted in
-						
-							<a href="/tag/Generative-Model" class="post-tags__tag">Generative-Model</a>
-						
-					</span>
-					
-					<span class="post__meta">
-						<span class="post__date"> on <a href="">
-							<time datetime="2020-08-10T00:00:00+08:00">Aug 10, 2020</time></a>
-						</span>
-						<span class="article__author"> by <a href="/about/">Changhao Wu</a></span>
-					</span>
-				</div>
-			</div>
-
-		</div>
-	</div>
-</div>
-
-<div class="container">
-	<div class="row">
-		<div class="col col-12">
-			
-			<!-- begin post -->
-			<article class="post wow fadeInUp" data-wow-delay=".2s">
-	
-			
-				<div class="post-image" style="background-image: url('/images/cover/C_%20Abstraction3.jpeg')"></div>
-			
-	
-				<div class="post__content">
-					<ul id="toc" class="section-nav">
-<li class="toc-entry toc-h2"><a href="#generative-model-part-1autoencoders-in-generative-model">Generative Model Part 1：Autoencoders in Generative Model</a></li>
-</ul><h2 id="generative-model-part-1autoencoders-in-generative-model">
-<a class="anchor" href="#generative-model-part-1autoencoders-in-generative-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generative Model Part 1：Autoencoders in Generative Model</h2>
-
-
-				</div>
-	
-				<div class="post__share">
-					<ul class="share__list list-reset">
-						<li class="share__item">
-							<a class="share__link share__facebook"
-								href="https://www.facebook.com/sharer/sharer.php?u=/2020/08/10/Generative-Model-Part-1-Autoencoders-in-Generative-Model/"
-								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
-								title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
-						</li>
-					
-						<li class="share__item">
-							<a class="share__link share__twitter"
-								href="https://twitter.com/intent/tweet?text=Generative%20Model%20Part%201:Autoencoders%20in%20Generative%20Model&url=/2020/08/10/Generative-Model-Part-1-Autoencoders-in-Generative-Model/"
-								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
-								title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
-						</li>
-					
-						<li class="share__item">
-							<a class="share__link share__pinterest"
-								href="http://pinterest.com/pin/create/button/?url=/2020/08/10/Generative-Model-Part-1-Autoencoders-in-Generative-Model/&amp;media=/images//images/cover/C_ Abstraction3.jpeg&amp;description=Generative%20Model%20Part%201:Autoencoders%20in%20Generative%20Model"
-								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
-								title="Share on Pinterest" rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="widget-recent">
-					<h5 class="widget__title">Recommended for you</h5>
-					<div class="recent-box">
-						
-						<div class="recent-posts">
-							<div class="recent-posts__content">			
-								
-									<a class="recent-posts__image wow fadeIn" href="/2021/01/01/Pattern-Recongntion-and-Machinel-Learning-Chapt-1/"
-										style="background-image: url('/images/cover/C_Design3.jpeg')"></a>
-								
-									<p class="recent-posts__title"><a href="/2021/01/01/Pattern-Recongntion-and-Machinel-Learning-Chapt-1/">PRML Chapt 1 Introduction Notes</a></p>
-							</div>
-						</div>
-						
-						<div class="recent-posts">
-							<div class="recent-posts__content">			
-								
-									<a class="recent-posts__image wow fadeIn" href="/2020/08/10/Generative-Model-Part-1-Autoencoders-in-Generative-Model/"
-										style="background-image: url('/images/cover/C_%20Abstraction3.jpeg')"></a>
-								
-									<p class="recent-posts__title"><a href="/2020/08/10/Generative-Model-Part-1-Autoencoders-in-Generative-Model/">Generative Model Part 1：Autoencoders in Generative Model</a></p>
-							</div>
-						</div>
-						
-						<div class="recent-posts">
-							<div class="recent-posts__content">			
-								
-									<a class="recent-posts__image wow fadeIn" href="/2020/08/06/Generative-Model-Part-0-Theoretical-Basis-of-Generative-Model/"
-										style="background-image: url('/images/cover/C_%20Abstraction4.jpeg')"></a>
-								
-									<p class="recent-posts__title"><a href="/2020/08/06/Generative-Model-Part-0-Theoretical-Basis-of-Generative-Model/">Generative Model Part 0：Theoretical Basis of Generative Model</a></p>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-
-				<div class="widget-newsletter">
-					<h5 class="newsletter-title wow fadeInUp">Get Interesting News</h5>
-					<div class="newsletter-subtitle wow fadeInUp" data-wow-delay=".2s">Stay up to date! Get all the latest & gretest posts delivered straight to your inbox</div>
-					<form class="newsletter-form validate" action="//"
-						method="POST" id="membedded-subscribe-form" name="membedded-subscribe-form" target="_blank" novalidate>
-						<div class="newsletter-group">
-							<div class="newsletter-group-top">
-								<label class="screen-reader-text" for="mce-EMAIL">Enter your mail address</label>
-								<input class="newsletter-email required email" id="mce-EMAIL" type="text" name="EMAIL" placeholder="Enten your mail">
-							</div>
-							<input class="newsletter-button" id="membedded-subscribe" type="submit" name="subscribe" value="Subscribe">
-						</div>
-					</form>
-				</div>
-	
-	
-				 <!-- begin comments -->
-<div class="comments">
-  <div id="disqus_thread" class="comments__article"></div>
-  <script>
-    (function () {
-      var d = document, s = d.createElement('script');
-      s.src = '//Karl Wu# Add your shortname for Disqus Comment. For example mr-brown.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the
-    <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-  </noscript>
-</div>
-<!-- end comments --> 
-	
-			</article>
-			<!-- end post -->
-		</div>
-	</div>
-</div>
-
-
-
+      <h1>Archive of posts with day ''</h1>
+<ul class="posts">
+  
+    <li>
+      <span class="post-date">Jan 1, 2021</span>
+      <a class="post-link" href="/2021/01/01/Pattern-Recongntion-and-Machinel-Learning-Chapt-1/">PRML Chapt 1 Introduction Notes</a>
+    </li>
+  
+</ul>
 
     </div>
     <!-- end wrapper-page -->

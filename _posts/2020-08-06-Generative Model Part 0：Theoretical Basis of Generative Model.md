@@ -3,7 +3,7 @@ layout: post
 title: "Generative Model Part 0：Theoretical Basis of Generative Model"
 date: 2020-08-06
 image: images/cover/C_ Abstraction4.jpeg                   
-tags: [Generative Model]
+tags: [Generative-Model]
 toc: true
 ---
 

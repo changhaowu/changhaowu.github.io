@@ -3,7 +3,7 @@ layout: post
 title: "Markov Decision Process in Reinforcement Learning"
 date: 2020-07-03
 image: images/cover/F5.jpg
-tags: [Reinforcement Learning]
+tags: [Reinforcement-Learning]
 toc: true
 ---
 
@@ -114,11 +114,11 @@ $$ \begin{aligned} V_{\pi}(s) &= \sum_{a \in \mathcal{A}} \pi(a \vert s) Q_{\pi}
 
 ### 模型的求解
 
-​那么以上定义完成了以后，马尔可夫决策问题就等价于：在时刻 $$t$$ , 以及状态 $$s$$ 下，在决策中去找一个一个策略 $$\pi$$，使得：
+那么以上定义完成了以后，马尔可夫决策问题就等价于：在时刻 $$t$$ , 以及状态 $$s$$ 下，在决策中去找一个一个策略 $$\pi$$，使得：
 ​
 $$ V_{*}(s)=\max_{\pi}V_{\pi}(s) \;\;\; \forall s \in S $$
 
-​那么如果找得到这个最优策略的话：
+那么如果找得到这个最优策略的话：
 
 $$ \begin{aligned} V_{*}(s) &=\max _{a \in \mathcal{A}(s)} q_{\pi_{*}}(s, a) \\
 &=\max _{a} \mathbb{E}_{\pi^{*}}\left[G_{t} \mid S_{t}=s, A_{t}=a\right] \\

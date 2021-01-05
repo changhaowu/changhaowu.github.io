@@ -5,12 +5,14 @@
   .post__title {
     margin-bottom: 20px;
     font-size: 33px;
+    font-family: $heading-font-family;
     line-height: 50px;
   }
 }
 
 .post-info {
   font-size: 14px;
+  font-family: $subheading-font-family;
   line-height: 18px;
   letter-spacing: 0.5px;
   color: $gray;

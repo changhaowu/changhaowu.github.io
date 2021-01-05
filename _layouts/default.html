@@ -3,6 +3,7 @@
 
 {% include head.html %}
 
+
 <body>
 
   {% if site.google-analytics %}
@@ -25,34 +26,8 @@
   {% include footer.html %}
   
   {% include javascripts.html %}
+  
+  {% include mathjax.html %}
 </body>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    extensions: [
-      "MathMenu.js",
-      "MathZoom.js",
-      "AssistiveMML.js",
-      "a11y/accessibility-menu.js"
-    ],
-    jax: ["input/TeX", "output/CommonHTML"],
-    TeX: {
-      extensions: [
-        "tex2jax.js",  // HERE
-        "MathMenu.js",
-        "MathZoom.js",
-        "AssistiveMML.js",
-        "a11y/accessibility-menu.js"
-      ],
-      tex2jax: {      // AND HERE
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']]
-      },
-      jax: ["input/TeX", "output/CommonHTML"],
-    }
-  });
-</script>
 
 </html>

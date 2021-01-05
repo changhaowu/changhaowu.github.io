@@ -1,18 +1,18 @@
-title: Karl Wu's Blog
-logo: "images/icon/Gajalaka.png" # You can add own logo image.
-description: Karl Wu's Blog
+title: Facts and Logic
+logo:  # You can add own logo image.
+description: “Thanks for visiting my blog”
 baseurl: "" # The subpath of your site, e.g. /blog
 url: "" # The base hostname & protocol for your site, e.g. http://example.com
 
 # Author Settings
 author:
-  name: changhao wu
-  bio: 自分の価値は自分で決めることさ, Thanks for visiting my blog
+  name: Changhao Wu
+  bio: Thanks for visiting my blog
 
 # Contact links
 twitter: https://twitter.com/ # Add your Twitter handle
 facebook: https://facebook.com/ # Add your Facebook handle
-#github: https://github.com/changhaowu # your github handle
+github: https://github.com/changhaowu/ # your github handle
 instagram: https://instagram.com/ # Add your Instagram handle
 #pinterest: https://pinterest.com/ # Add your Pinterest handle
 #email: forexample@website.com # Add your Email address
@@ -41,8 +41,22 @@ permalink: pretty
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
-  - jekyll/tagging
+  #- jekyll-tagging
   - jekyll-toc
+  # - jekyll-archives
+  
+#jekyll-archives:
+  #enabled:
+    #- day
+  #layouts:
+    #tag: tag-archive
+  #layout: archive
+  #permalinks:
+    #year: '/:year/'
+    #month: '/:year/:month/'
+    #day: '/:year/:month/:day/'
+    #tag: '/tag/:name/'
+    #category: '/category/:name/'
 
 kramdown:
   input: GFM

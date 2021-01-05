@@ -11,6 +11,7 @@ $base-spacing-unit: 20px;
 // *****************
 $brand-color: #d8534f;
 $dark: #212121;
+$blue: #0516fc;
 $gray: #7f7f7f;
 $light-gray: #eee;
 
@@ -35,15 +36,21 @@ $border-color: $light-gray;
 // *****************
 // Typography
 // *****************
-$base-font-size: 15px;
+$base-font-size: 16px;
 $base-font-style: normal;
 $base-font-variant: normal;
 $base-font-weight: normal;
-$base-font-family: 'Merriweather', serif;
+$base-font-family: 'Noto Sans TC', sans-serif;
 $base-line-height: 26px;
 
 // Headings
-$heading-font-family: 'Fjalla One', Helvetica Neue, Helvetica, Arial, sans-serif;
+$heading-font-family: 'Shadows Into Light', cursive;
+
+// SubHeadings
+$subheading-font-family: 'Dancing Script',cursive;
+
+//sectiontitles
+$sectiontitle-font-family: 'Caveat', cursive;
 
 $font-size-h1:  36px;
 $font-size-h2:  28px;

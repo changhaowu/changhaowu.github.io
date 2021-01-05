@@ -8,6 +8,7 @@
 .article__title {
   margin-bottom: 20px;
   font-size: 21px;
+  font-family: $heading-font-family;
 
   a {
     &:hover {
@@ -19,12 +20,14 @@
 .article__excerpt {
   margin-bottom: 20px;
   font-size: 15px;
+  font-family: $base-font-family;
   line-height: 25px;
   color: $gray;
 }
 
 .article-info {
   font-size: 13px;
+  font-family: $subheading-font-family;
   line-height: 18px;
   letter-spacing: 0.5px;
   color: $gray;

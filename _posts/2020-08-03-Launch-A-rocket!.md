@@ -3,7 +3,7 @@ layout: post
 title: "Launch A rocket!"
 date: 2020-07-20
 image: images/cover/A3.jpg
-tags: [Numerical Computation]
+tags: [Numerical-Computation]
 toc: true
 
 ---

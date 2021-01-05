@@ -3,7 +3,7 @@ layout: post
 title: "Patch-Based Model in Real World SIngle Image Super-Resolution"
 date: 2020-06-28
 image: images/cover/F3.jpg
-tags: [Computer Vision]
+tags: [Computer-Vision]
 toc: true
 ---
 
