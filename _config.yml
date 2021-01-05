@@ -2,7 +2,7 @@ title: Facts and Logic
 logo:  # You can add own logo image.
 description: “Thanks for visiting my blog”
 baseurl: "" # The subpath of your site, e.g. /blog
-url: "" # The base hostname & protocol for your site, e.g. http://example.com
+url: "https://changhaowu.github.io/" # The base hostname & protocol for your site, e.g. http://example.com
 
 # Author Settings
 author:
