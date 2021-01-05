@@ -40,23 +40,27 @@ markdown: kramdown
 permalink: pretty
 plugins:
   - jekyll-paginate
-  - jekyll-sitemap
-  #- jekyll-tagging
+  - jekyll/tagging
   - jekyll-toc
-  # - jekyll-archives
+  - jekyll-archives
   
-#jekyll-archives:
-  #enabled:
-    #- day
-  #layouts:
-    #tag: tag-archive
-  #layout: archive
-  #permalinks:
+jekyll-archives:
+  enabled:
+    -month
+    -year
+  layouts:
+    tag: tag-archive
+  layout: archive
+  permalinks:
     #year: '/:year/'
     #month: '/:year/:month/'
     #day: '/:year/:month/:day/'
     #tag: '/tag/:name/'
     #category: '/category/:name/'
+    
+url: "https://changhaowu.github.io/" # the base hostname & protocol for your site
+plugins:
+  - jekyll-sitemap
 
 kramdown:
   input: GFM
@@ -77,6 +81,7 @@ include:
   - _pages
 
 
+
 # Tags
 tag_page_dir:         tag
 tag_page_layout:      tag_page
@@ -85,3 +90,4 @@ tag_permalink_style:  pretty
 sass:
   sass_dir: _sass
   style: compressed
+  

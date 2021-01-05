@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: https://changhaowu.github.io//sitemap.xml
