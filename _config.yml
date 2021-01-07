@@ -43,6 +43,8 @@ plugins:
   - jekyll/tagging
   - jekyll-toc
   - jekyll-archives
+  - jekyll-sitemap
+  #- jekyll-spaceship
   
 jekyll-archives:
   enabled:
@@ -61,6 +63,7 @@ jekyll-archives:
 url: "https://changhaowu.github.io/" # the base hostname & protocol for your site
 plugins:
   - jekyll-sitemap
+  
 
 kramdown:
   input: GFM
