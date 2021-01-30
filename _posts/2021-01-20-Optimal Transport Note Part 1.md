@@ -1,0 +1,249 @@
+---
+layout: post
+title: "Optimal Transport Note:Part 1"
+date: 2021-01-20 
+image: /images/cover/C_Scenery4.png       
+tags: [Generative-Model]
+toc: true
+---
+
+# Optimal Transport Note: Part 1
+
+## Formulation of Optimal Transport
+
+### Monge Formulation
+
+最优传输的背景是蒙日考虑在建造防御工事时，如何花费最少的劳动力去把四散的土堆运输到其他处的防御工事处，在此之上抽象出了最优传输问题，最优传输问题总共有两种提法，蒙日形式（Monge Formulation）和康托洛维奇形式（Kantorovich Formulation），康托洛维奇形式更加完善，更加适合理论研究，蒙日形式则更加适合应用上的计算。
+
+先给出蒙日形式的最优传输问题：
+
+有概率空间 $$ (X, \Sigma_X , \mu) $$ 和 $$ (Y, \Sigma_Y , \nu) $$ 
+
+定义代价函数 $$c: X \times Y \rightarrow[0,+\infty]$$，测量运输 $$x \in X $$ 到 $$ y \in Y$$ 的代价
+
+定义传输映射 $$T: X \rightarrow Y$$ 将 $$u \in \mathcal{P}(X) $$ 传输到 $$  \nu \in \mathcal{P}(Y)$$，当
+
+$$
+\nu(B)=\mu\left(T^{-1}(B)\right) \quad  \forall \; \nu \text { -measurable } B
+$$
+
+这样定义保证了传输映射必须双射，而测度不变，直观上来说，就是传输映射 $$T$$，从 $$X$$ 中取走多少土，就相应有多少土运到 $$Y$$ 中，如下图所示
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/Visualing_Transport_Map.png" alt="Visualing_Transport_Map" style="zoom:30%;" />
+{:refdef}
+
+在上面的定义下，称 $$T$$ 传输 $$\mu$$ 到 $$\nu$$ ，记 $$\nu=T_{\#} \mu$$
+
+然后对于传输映射就有两条性质：
+
+对于 $$ \mu \in \mathcal{P}(X), T: X \rightarrow Y, S: Y \rightarrow Z $$，以及 $$ f \in L^{1}(Y)$$
+
+1. 变量变换公式：分别在原像集和像集的角度下，（$$f \equiv 1$$ 则为上面的质量不变，推广质量不变到期望不变？）
+
+   $$
+   \int_{Y} f(y) \mathrm{d}\left(T_{\#} \mu\right)(y)=\int_{X} f(T(x)) \mathrm{d} \mu(x)
+   $$
+
+2. 映射复合公式：推广到存在中转站这样的情况下而定义
+
+   $$
+   (S \circ T)_{\#} \mu=S_{\#}\left(T_{\#} \mu\right)
+   $$
+
+上面的定义都很自然又严谨，但是很可惜，由于蒙日形式下要求传输映射 $$T$$ 可逆，其不一定存在
+
+比如在 $$x_{1}$$ 处有 $$1$$ 单位沙堆，而在 $$ y_{1},y_{2} $$ 处分别有两个 $$\frac{1}{2}$$ 单位的防御工事要建造
+
+换言之 $$\mu=\delta_{x_{1}}$$ 而 $$\nu=\frac{1}{2} \delta_{y_{1}}+\frac{1}{2} \delta_{y_{2}}$$ ，由于$$ \nu\left(\left\{y_{1}\right\}\right)=\frac{1}{2} $$，其不可能等于 $$\mu\left(T^{-1}\left(y_{1}\right)\right) \in\{0,1\}$$，因此传输映射 $$T$$ 不存在
+
+于是就可以定义蒙日形式的最优传输问题：$$ T: X \rightarrow Y \text { subject to } \nu=T_{\#} \mu$$
+
+$$
+\text { minimise } \mathbb{M}(T)=\int_{X} c(x, T(x)) \mathrm{d} \mu(x)
+$$
+
+###  Kantorovich Formulation
+
+由于蒙日形式下，定义的最优传输 $$x \mapsto T(x)$$ ，由于传输映射需要保证映射的特性，或者直观上来说， $$x_{1}$$ 处的土堆不能分割，只能全部传输到另一个点 $$y_{1}$$ 处，需要更加灵活的定义
+
+因此康托洛维奇定义了传输计划 $$\pi \in \mathcal{P}(X \times Y)$$ ，传输计划一样要服从传输质量不变性的约束，但在此之上，传输计划使得 $$x_{1}$$ 处的土堆可以运输到多个目的地 $$\{y_{1},...,y_{n}\}$$ 处，只需要满足 $$\mu({x_1})=\nu(\{y_{1},...,y_{n}\})$$ 即可
+
+或者考虑联合分布和边际分布的概念，在概率空间 $$ (X, \Sigma_X , \mu) $$ 和 $$ (Y, \Sigma_Y , \nu) $$ 的基础上，有$$\pi \in \mathcal{P}(X \times Y)$$ ，记 $$\mathrm{d} \pi(x, y)$$ 是从 $$x$$ 传输到 $$y$$ 的质量，服从
+
+$$
+\pi(A \times Y)=\int_{A \times Y} d\pi\left(x,y\right)=\mu(A) \quad \pi(X \times B)=\int_{X \times B} d\pi\left(x,y\right)=\nu(B)
+$$
+
+记 $$\Pi(\mu, \nu)$$ 为传输方案的集合，比起传输映射 $$T$$ 可能不存在的问题，传输计划 $$\Pi(\mu, \nu)$$ 永远非空，因为有一个平凡解 $$\pi^{*}$$ ,取定 $$\{y^*\} \in \Sigma_{Y}$$ ，对应的 $$X$$ 上的起点在满足约束 $$\int_{X } d\pi\left(x,y^*\right)=\nu(y^*)$$ 对 $$ \nu(y^*)$$ 成比例取值即可，如下图所示
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/Trivial_Plan.png" alt="Trivial Pan" style="zoom:40%;" />
+{:refdef}
+
+定义好了传输计划后，就可以定义康托洛维奇形式的最优传输问题：$$ \mu \in \mathcal{P}(X) ,\nu \in \mathcal{P}(Y)$$
+
+$$
+\text { minimise } \mathbb{K}(\pi)=\int_{\mathrm{X} \times Y} c(x, y) \mathrm{d} \pi(x, y) 
+\quad
+\text{subject to} \quad \pi \in \Pi(\mu, \nu)
+$$
+
+下面证明蒙日形式与康托洛维奇形式的关系：假设蒙日形式最优存在，$$T^{\dagger}: X \rightarrow Y$$，定义 $$d \pi(x, y)=\mathrm{d} \mu(x) \delta_{y=T^{\dagger}(x)}$$ 
+
+$$
+\begin{array}{l}
+\pi(A \times Y)=\int_{A} \delta_{T^{\dagger}(x) \in Y} \mathrm{~d} \mu(x)=\mu(A) \\
+\pi(X \times B)=\int_{X} \delta_{T^{\dagger}(x) \in B} \mathrm{~d} \mu(x)=\mu\left(\left(T^{\dagger}\right)^{-1}(B)\right)=T_{\#}^{\dagger} \mu(B)=\nu(B)
+\end{array}
+$$
+
+于是 $$\pi \in \Pi(\mu, \nu)$$ ，
+
+$$
+\int_{X \times Y} c(x, y) \mathrm{d} \pi(x, y)=\int_{X} \int_{Y} c(x, y) \delta_{y=T^{\dagger}(x)} \mathrm{d} y \mathrm{~d} \mu(x)=\int_{X} c\left(x, T^{\dagger}(x)\right) \mathrm{d} \mu(x)
+$$
+
+于是有
+
+$$
+\inf \mathbb{K}(\pi) \leq \inf \mathbb{M}(T)
+$$
+
+而当传输计划与传输映射等价的时候，即 $$d \pi^{\dagger}(x, y)=\mathrm{d} \mu(x) \delta_{y=T^{\dagger}(x)}$$ 时，此时有 $$\inf \mathbb{K}(\pi) = \inf \mathbb{M}(T)$$ ，此时蒙日形式与康托洛维奇形式是等价的
+
+最优传输的一个应用是，利用最优传输的插值：
+
+$$
+\begin{aligned}
+\mu_{t}&=\left((1-t) \mathrm{Id}+t T^{\dagger}\right)_{\#} \mu
+\\
+\mu_{0}(B)&=\left(\mathrm{Id}\right)_{\#} \mu(B)=\mu(\mathrm{Id}^{-1}(B))=\mu(B) 
+\\
+\mu_{1}(B)&=\mu_{1}\left(T^{\dagger-1}(B)\right)=\nu(B)
+\end{aligned}
+$$
+
+ 其效果会比单纯的在欧氏空间中插值：
+
+$$
+\mu_{t}^{E}=(1-t) \mu+t \nu
+$$
+
+在可视化后的效果上更好一些：
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/OT_interpolation.png" alt="OT_interpolation" style="zoom:40%;" />
+{:refdef}
+
+## Special Cases
+
+一般意义下的最优传输问题，还需要康托洛维奇对偶性等工具，但是在此之前，有两种特殊的情况，不用对偶性就可以解决，于是先摘了这些“低垂的果实” X:)
+
+### Optimal Transport in One Dimension
+
+在一维情况下，有概率空间 $$ (X, \Sigma_X , \mu) $$ 和 $$ (Y, \Sigma_Y , \nu) $$ 下，进而利用 $$\mu,\nu$$  可以定义右连续，不减的 $$c.d.f $$ $$F(x),G(y)$$ ，有性质：
+
+$$
+F(x)=\int_{-\infty}^{x} \mathrm{~d} \mu=\mu((-\infty, x])
+\\
+F(-\infty)=0 \quad F(+\infty)=1
+\\
+$$
+
+同时，可以定义广义逆 $$F^{-1}$$ 
+
+$$
+F^{-1}(t)=\inf \{x \in \mathbb{R}: F(x)>t\}
+\\
+F^{-1}(F(x)) \geq x \quad F\left(F^{-1}(t)\right) \geq t
+$$
+
+进一步当 $$F$$ 可逆时
+
+$$
+F^{-1}(F(x))=x \quad F\left(F^{-1}(t)\right)=t
+$$
+
+以上的定义，对于 $$\nu$$ 来说，也是一样的再做一遍
+
+然后就有了 Theorem 2.1
+
+####  Theorem  2.1 
+
+$$\mu, \nu \in \mathcal{P}(\mathbb{R})$$ 其 $$c.d.f$$ 分别是 $$F,G$$， 认为 $$c(x, y)=d(x-y)$$ 是凸的且连续的，$$\pi^{\dagger} \in  \mathcal{P}(\mathbb{R}^{2})$$ 且有 $$c.d.f \quad H(x, y)=\min \{F(x), G(y)\}$$ ，则 $$\pi^{\dagger} \in \Pi(\mu, \nu)$$ 且 $$\pi^{\dagger} $$ 是康托洛维奇形式最优传输问题的解，且在代价函数 $$c(x,y)$$ 下的传输代价为
+
+$$
+\min _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)=\int_{0}^{1} d\left(F^{-1}(t)-G^{-1}(t)\right) \mathrm{d} t
+$$
+
+#### Corollary 2.2
+
+1. 当 $$ c(x, y)=   \lvert x-y  \rvert  $$ ，则最优传输代价也等于两个 $$ c.d.f $$ 的 $$ L^1 $$ 距离：
+
+   $$
+   \inf _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)=\int_{\mathbb{R}}|F(x)-G(x)| \mathrm{d} 
+   $$
+
+   {:refdef: style="text-align: center;"}
+   <img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/abs_cost_equalivence.png" alt="abs_cost_equalivence" style="zoom:40%;" />
+   {:refdef}
+
+   如图所示，描述积分区域可以用两种方法：
+
+   $$
+   \begin{aligned}
+   \mathcal{A} &=\left\{(x, t): \min \left\{F^{-1}(t), G^{-1}(t)\right\} \leq x \leq \max \left\{F^{-1}(t), G^{-1}(t)\right\}, t \in[0,1]\right\} \\ 
+   &= \{(x, t): \min \{F(x), G(x)\} \leq t \leq \max \{F(x), G(x)\}, x \in \mathbb{R}\}
+   \end{aligned}
+   $$
+
+   且 $$ \max \{a, b\}-\min \{a, b\}= \lvert a-b  \rvert$$ 即为代价函数即可证明
+
+2. 若传输计划等价于传输映射 $$\min _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)=\min _{T: T_{\#} \mu=\nu} \mathbb{M}(T)$$ ，则 $$T^{\dagger}=G^{-1} \circ F$$ 是蒙日形式的最优传输映射：
+
+   $$
+   \inf _{T: T_{\#} \mu=\nu} \mathbb{M }(T)=\mathbb{M}\left(T^{\dagger}\right)
+   $$
+
+   1. 第一部分证明 $$T^{\dagger}_{\#} \mu=\nu$$ ：
+
+      利用之前的复合映射公式，知$$T^{\dagger}_{\#} \mu =G_{\#}^{-1}\left(F_{\#} \mu\right)$$ ，由于 $$F$$ 连续 ，$$\exists x_t,\forall t \in (0,1)  ,F\left(x_{t}\right)=t $$  ，于是对于 $$F_{\#} \mu$$ 有：
+      
+      $$
+      \begin{aligned}
+      F_{\#} \mu([0, t]) &=\mu(\{x: F(x) \leq t\}) \\
+      &=\mu\left(\left\{x: x \leq x_{t}\right\}\right) \\
+      &=F\left(x_{t}\right) \\
+      &=t
+      \\
+      &\Rightarrow F_{\#} \mu=\mathcal{L}_{[0,1]}
+      \end{aligned}
+      $$
+      
+      于是问题变成证明 $$T^{\dagger}_{\#} \mu =G_{\#}^{-1}\left(\mathcal{L}_{[0,1]}\right)$$ 
+      
+      $$
+      \begin{aligned}
+      G_{\#}^{-1} \mathcal{L}\left\lfloor_{[0,1]}((-\infty, y])\right.&=\mathcal{L}\left\lfloor_{[0,1]}\left(\left\{t: G^{-1}(t) \leq y\right\}\right)\right.\\
+      &=\mathcal{L}\left\lfloor_{[0,1]}(\{t: G(y) \geq t\})\right.\\
+      &=G(y) \\
+      &=\nu((-\infty, y])
+      \\
+      &\Rightarrow T^{\dagger}_{\#} \mu =G_{\#}^{-1}\left(F_{\#} \mu\right)
+      \end{aligned}
+      $$
+
+   2. 第二部分证明 $$T^{\dagger}$$ 是蒙日形式的最优传输，利用之前的质量不变公式和 $$F_{\#} \mu=\mathcal{L}_{[0,1]}$$
+   
+      $$
+      \begin{aligned}
+      \inf _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi) &=\int_{0}^{1} d\left(F^{-1}(t)-G^{-1}(t)\right) \mathrm{d} t \\
+      &=\int_{\mathbb{R}} d\left(x-G^{-1}(F(x))\right) \mathrm{d} \mu(x) \\
+      &=\int_{\mathbb{R}} d\left(x-T^{\dagger}(x)\right) \mathrm{d} \mu(x) \\
+      & \geq \inf _{T: T_{\#} \mu=\nu} \mathbb{M}(T)
+      \end{aligned}
+      $$
+      
+      同时 $$\inf _{T: T_{\#} \mu=\nu} \mathbb{M}(T) \geq \min _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)$$ ，因此  $$T^{\dagger}=G^{-1} \circ F$$ 是蒙日最优传输
+
