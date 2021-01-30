@@ -252,6 +252,7 @@ $$
 无论是频率主义还是贝叶斯主义， $$p(\mathcal{D} \mid \mathbf{w})$$ 似然函数都很重要，但是在如何看待 $$\mathbf{w}$$ 上，两者是有分歧的，在频率主义中， $$\mathbf{w}$$  认为是一个固定的参数，利用数据去进行估计，而贝叶斯主义则认为， $$\mathbf{w}$$ 是不确定的，有且仅有 $$\mathcal{D}$$ 是观察到的，确定性的，其余的参数都要利用一个关于参数  $$\mathbf{w}$$ 的分布进行描述
 
 一个常用的频率主义的参数估计法就是最大似然估计 $$maximum \; likelihood$$ ， 使得观察到的数据出现的可能性最大的参数就是 $$\mathbf{w}^{*}$$
+
 $$
 \mathbf{w}^{*}=arg\max_{\mathbf{w}} p(\mathcal{D} \mid \mathbf{w})
 $$
@@ -262,16 +263,22 @@ $$
 
 往往发生在输入的向量维度较大的时候，大部分算法都难以避免这个问题。比如下面的分类问题，有数据集 $$\mathcal{D} $$ ，要预测新的点 $$x$$ 的类，一种很朴素的方法就是在根据输入 $$x$$ 附近的格子内，频率最高的类来分类（最近邻算法），如下图所示：
 
+{:refdef: style="text-align: center;"}
 <img src="/images/2021-01-01-Pattern-Recongntion-and-Machinel-Learning-Chapt-1-Introduction/naive_clustering.png" alt="naive_clustering" style="zoom:40%;" />
+{:refdef}
 
 但是尽管简单，该算法本身只需要根据统计最近邻的格子，避免了计算复杂度，但是却仍然对于数据集提出了要求：同样数量的数据集，假设较为均匀的分布在空间内，可能二维内一个体积为1的格子内有较多的数据可以用来分类，同样数量的数据集，在十维的空间的格子，甚至都没有一个数据，直观的情况如下图所示：
 
+{:refdef: style="text-align: center;"}
 <img src="/images/2021-01-01-Pattern-Recongntion-and-Machinel-Learning-Chapt-1-Introduction/scarce_dataset.png" alt="scarce_dataset" style="zoom:40%;" />
+{:refdef}
 
 而如果换一个模型，利用多项式去做拟合边界，在一开始不剪枝的情况下，多项式为：
+
 $$
 y(\mathbf{x}, \mathbf{w})=w_{0}+\sum_{i=1}^{D} w_{i} x_{i}+\sum_{i=1}^{D} \sum_{j=1}^{D} w_{i j} x_{i} x_{j}+\sum_{i=1}^{D} \sum_{j=1}^{D} \sum_{k=1}^{D} w_{i j k} x_{i} x_{j} x_{k}
 $$
+
 可以看出三次项贡献了绝大部分的系数，也就是说，此时模型本身都出现了维度诅咒的问题，同理维度 $$D$$ 的模型，系数的数量为 $$D^M$$ ，复杂度增长的非常快
 
 但是在实践过程中，由于数据有流形分布律，集中在高位空间中的一个低维流形上，因此模型的大部分系数并没有需要训练，但是维度诅咒仍然是需要不可忽视的问题
@@ -281,31 +288,40 @@ $$
 有了概率的方法去描述一件事件的不确定性，进一步的，需要利用决策论来做出最优的决策，下面将一步步的利用一个医学诊疗问题来讨论决策论的一些key idea
 
 现在有一组像素图代表病人的 X-ray 图以及对应的标签  $$\{\mathbf{x},\mathbf{t}\}$$ ，然后要建模去自动诊疗，输入为 $$x$$ ，输出为 $$t=\{0,1\}$$，$$\mathcal{C}_{1}$$ 对应 $$t=0$$ 代表该图为存在癌症，反之 $$\mathcal{C}_{2}$$ 对应 $$t=1$$ 代表该图为没有癌症，于是利用概率建模的话，考虑去建模后验概率 $$p\left( \mathcal{C}_{k} \mid \mathbf{x}\right )$$，利用贝叶斯概率有：
+
 $$
 p\left(\mathcal{C}_{k} \mid \mathbf{x}\right)=\frac{p\left(\mathbf{x} \mid \mathcal{C}_{k}\right) p\left(\mathcal{C}_{k}\right)}{p(\mathbf{x})}
 $$
+
 其中 $$p\left(\mathcal{C}_{k}\right)$$ 为先验概率，那么一种决策方案就是：最小化分类错误的概率，那么就是选后验概率比较大的类即可
 
 下面来研究错误分类的情况，误检率越小越好，在此之前，当分类器训练完成的时候，就可以把概率空间切割成两部分，$$\mathcal{R}_{k}$$ 中的点被分到 $$ \mathcal{C}_{k}$$ 类中，那么误检率就可以写作：
+
 $$
 \begin{aligned}
 p(\text { mistake }) &=p\left(\mathbf{x} \in \mathcal{R}_{1}, \mathcal{C}_{2}\right)+p\left(\mathbf{x} \in \mathcal{R}_{2}, \mathcal{C}_{1}\right) \\
 &=\int_{\mathcal{R}_{1}} p\left(\mathbf{x}, \mathcal{C}_{2}\right) \mathrm{d} \mathbf{x}+\int_{\mathcal{R}_{2}} p\left(\mathbf{x}, \mathcal{C}_{1}\right) \mathrm{d} \mathbf{x}
 \end{aligned}
 $$
+
 后验概率 $$p\left(\mathbf{x} \mid  \mathcal{C}_{1}\right) $$ 和联合概率概率 $$p\left(\mathbf{x}, \mathcal{C}_{1}\right)$$中间差一个系数：
+
 $$
 p\left(\mathbf{x}, \mathcal{C}_{k}\right)=p\left(\mathcal{C}_{k} \mid \mathbf{x}\right) p(\mathbf{x})
 $$
+
  对于任意的 $$x$$，都是一样的，因此后验概率最大等价于联合概率最大。利用估计出的联合分布，在下图中，利用联合概率最大的决策原则将概率空间划分
 
-<img src="/Users/karlwu/Documents/GitHub/changhaowu.github.io/images/2021-01-01-Pattern-Recongntion-and-Machinel-Learning-Chapt-1-Introduction/decision_region.png" alt="decision_region" style="zoom:40%;" />
+{:refdef: style="text-align: center;"}
+<img src="/images/2021-01-01-Pattern-Recongntion-and-Machinel-Learning-Chapt-1-Introduction/decision_region.png" alt="decision_region" style="zoom:40%;" />
+{:refdef}
 
 刚刚的决策原则在很多场景下都是好的，但是在这个问题中会有一些问题：不妨假设一种比较罕见的病症，但是由于宣传，健康人群会自己误判成疑似病例的情况
 
 那么在大部分的输入 $$x$$ 的实际标签都是 $$t=1$$，于是就有一个很朴素，很傻瓜的分类器，把所有的输入都预测为  $$t=1$$ ，也可以在实际生产场景中得到很低的误检率，都是问题是检测器根本就没有做有意义的预测，而少部分的病人就会承担非常大的恶果，这样之前的决策原则就会出问题，考虑引入数学期望，在训练期间，错误标记成 $$t=1$$ 会产生很大的损失
 
 更加普遍的问题的提法应当是当误分类 $$\mathcal{C}_{k}$$ 为 $$\mathcal{C}_{j}$$ 时产生损失 $$L_{k j}$$ ，于是训练过程变成最小化训练集的损失期望：
+
 $$
 \begin{aligned}
 \mathbb{E}[L]&=\sum_{k} \sum_{j} \int_{\mathcal{R}_{j}} L_{k j} p\left(\mathbf{x}, \mathcal{C}_{k}\right) \mathrm{d} \mathbf{x}
