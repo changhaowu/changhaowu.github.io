@@ -247,3 +247,181 @@ $$
       
       同时 $$\inf _{T: T_{\#} \mu=\nu} \mathbb{M}(T) \geq \min _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)$$ ，因此  $$T^{\dagger}=G^{-1} \circ F$$ 是蒙日最优传输
 
+#### Proposition 2.3
+
+定义一个很重要的性质，集合的单调性（这是对于某个测度 $$d$$ ），由简单的一个二维情况做例子：
+
+对于 $$\Gamma \subset \mathbb{R}^{2}$$，$$\forall \left(x_{1}, y_{1}\right),\left(x_{2}, y_{2}\right) \in \Gamma$$ , $$\Gamma$$ 是单调的当：
+
+$$
+d\left(x_{1}-y_{1}\right)+d\left(x_{2}-y_{2}\right) \leq d\left(x_{1}-y_{2}\right)+d\left(x_{2}-y_{1}\right)
+$$
+
+然后是 Proposition 2.3 的内容：
+
+有 $$\mu, \nu \in \mathcal{P}(\mathbb{R})$$，假设在代价函数 $$c(x, y)=d(x-y)$$ 意义下的最优传输计划 $$\pi^{\dagger} \in \Pi(\mu, \nu)$$，对于任何支撑集中的点 $$\left(x_{1}, y_{1}\right),\left(x_{2}, y_{2}\right) \in \operatorname{supp}\left(\pi^{\dagger}\right)$$，有
+
+$$
+d\left(x_{1}-y_{1}\right)+d\left(x_{2}-y_{2}\right) \leq d\left(x_{1}-y_{2}\right)+d\left(x_{2}-y_{1}\right)
+$$
+
+利用反证法证明，若能在支撑集中构造一个 $$\pi^{\dagger}$$ 的下界 $$\pi^{*}$$ ，且证明 $$\pi^{*}  \in \Pi(\mu, \nu)$$
+
+假设在支撑集中存在不单调的点 $$\left(x_{1}, y_{1}\right),\left(x_{2}, y_{2}\right) \in \operatorname{supp}\left(\pi^{\dagger}\right)$$，那么就有：
+
+$$
+d\left(x_{1}-y_{1}\right)+d\left(x_{2}-y_{2}\right)-d\left(x_{1}-y_{2}\right)-d\left(x_{2}-y_{1}\right) \geq \eta
+$$
+
+然后在 $$ (X, \Sigma_X , \mu) $$ 和 $$ (Y, \Sigma_Y , \nu) $$ 上分别构造两个闭区间 $$I_{1}, I_{2}, J_{1}, J_{2}$$，且满足：
+
+1. $$x_{i} \in I_{i}, y_{i} \in J_{i}, i=1,2$$
+2. $$\forall x \in I_{i}, y \in J_{j}, i, j=1,2,d(x-y) \geq d\left(x_{i}-y_{j}\right)-\varepsilon$$ ，且 $$\varepsilon<\frac{\eta}{4}$$
+3. $I_{i} \times J_{j}$ 不相交;
+4. $\pi^{\dagger}\left(I_{1} \times J_{1}\right)=\pi^{\dagger}\left(I_{2} \times J_{2}\right)=\delta>0$
+
+这样的闭区间可以通过取的很小构造出，利用这些小区间去构造比 $$\pi^{\dagger}$$ 小的测度 $$\tilde{\pi}$$，而在小区间之外的部分，则利用原先的最优传输 $$\pi^{\dagger}$$ ，因此还需要定义 $$\pi^{\dagger}$$ 的投影：
+
+$$
+\begin{array}{ll}
+\tilde{\mu}_{1}=P_{\#}^{X} \pi^{\dagger}\left\lfloor I_{1} \times J_{1},\right. & \tilde{\mu}_{2}=P_{\#}^{X} \pi^{\dagger}\left\lfloor I_{2} \times J_{2}\right. \\
+\tilde{\nu}_{1}=P_{\#}^{Y} \pi^{\dagger}\left\lfloor_{I_{1} \times J_{1}},\right. & \tilde{\nu}_{2}=P_{\#}^{Y} \pi^{\dagger}\left\lfloor I_{2} \times J_{2}\right.
+\end{array}
+$$
+
+于是利用最优传输投影 $$\pi^{\dagger}$$ 的测度，构造 $$\tilde{\pi}_{12} \in \Pi\left(\tilde{\mu}_{1}, \tilde{\nu}_{2}\right), \tilde{\pi}_{21} \in \Pi\left(\tilde{\mu}_{2}, \tilde{\nu}_{1}\right)$$，并定义：
+
+$$
+\tilde{\pi}(A \times B)=\left\{\begin{array}{ll}
+\pi^{\dagger}(A \times B) & \text { if }(A \times B) \cap\left(I_{i} \times J_{j}\right)=\emptyset \text { for all } i, j \\
+0 & \text { if } A \times B \subseteq I_{i} \times J_{i} \text { for some } i \\
+\pi^{\dagger}(A \times B)+\tilde{\pi}_{12}(A \times B) & \text { if } A \times B \subseteq I_{1} \times J_{2} \\
+\pi^{\dagger}(A \times B)+\tilde{\pi}_{21}(A \times B) & \text { if } A \times B \subseteq I_{2} \times J_{1}
+\end{array}\right.
+$$
+
+$$\tilde{\pi}$$ 把小区间的测度挖掉，对于 $$(A \times B) \cap\left(I_{i} \times J_{j}\right) \neq \emptyset$$ 且 $$A \times B \nsubseteq\left(I_{i} \times J_{j}\right)$$ 的情况，利用补集定义：
+
+$$
+\tilde{\pi}(A \times B)=\tilde{\pi}\left((A \times B) \cap\left(I_{i} \times J_{j}\right)\right)+\tilde{\pi}\left((A \times B) \cap\left(I_{i} \times J_{j}\right)^{c}\right)
+$$
+
+下验证 $$\tilde{\pi} \in \Pi(\mu, \nu)$$，取 $$\tilde{\pi}(\mathbb{R} \times B)$$ 研究：
+
+1. 当 $$B \cap\left(J_{1} \cup J_{2}\right)=\emptyset$$
+   
+   $$
+   \tilde{\pi}(\mathbb{R} \times B)=\pi^{\dagger}(\mathbb{R} \times B)=\nu(B)
+   $$
+
+2. 当 $$B \subseteq J_{1}$$
+   
+   $$
+   \begin{aligned}
+   \tilde{\pi}(\mathbb{R} \times B) &=\tilde{\pi}\left(\left(\mathbb{R} \backslash\left(I_{1} \cup I_{2}\right)\right) \times B\right)+\tilde{\pi}\left(I_{1} \times B\right)+\tilde{\pi}\left(I_{2} \times B\right) \\
+   &=\pi^{\dagger}\left(\left(\mathbb{R} \backslash\left(I_{1} \cup I_{2}\right)\right) \times B\right)+0+\pi^{\dagger}\left(I_{2} \times B\right)+\tilde{\pi}_{21}\left(I_{2} \times B\right) 
+   \\
+   & \; \Big\Downarrow \; \tilde{\pi}_{21}\left(I_{2} \times B\right)=\tilde{\nu}_{1}(B)=\pi^{\dagger}\left(I_{1} \times\left(B \cap J_{1}\right)\right)=\pi^{\dagger}\left(I_{1} \times B\right)
+   \\
+   &=\pi^{\dagger}\left(\left(\mathbb{R} \backslash I_{1}\right) \times B\right)+\pi^{\dagger}\left(I_{1} \times B\right) \\
+   &=\pi^{\dagger}(\mathbb{R} \times B) \\
+   &=\nu(B)
+   \end{aligned}
+   $$
+   
+   对于 $$B \subseteq J_{2}$$ 是一样的，有 $$\tilde{\pi}(\mathbb{R} \times B)=\nu(B)$$，同理有 $$\tilde{\pi}(A \times \mathbb{R})=\mu(A)$$，推出 $$\tilde{\pi} \in \Pi(\mu, \nu)$$
+
+下证 $$\tilde{\pi}$$ 是最优传输：
+
+$$
+\begin{aligned}
+& \int_{\mathbb{R} \times \mathbb{R}} d(x-y) \mathrm{d} \pi^{\dagger}(x, y)-\int_{\mathbb{R} \times \mathbb{R}} d(x-y) \mathrm{d} \tilde{\pi}(x, y) 
+\\
+&=\int_{I_{1} \times J_{1} \cup I_{2} \times J_{2}} d(x-y) \mathrm{d} \pi^{\dagger}(x, y)-\int_{I_{1} \times J_{2}} d(x-y) \mathrm{d} \tilde{\pi}_{12}(x, y) 
+-\int_{I_{2} \times J_{1}} d(x-y) \mathrm{d} \tilde{\pi}_{21}(x, y) 
+\\
+& \geq \delta\left(d\left(x_{1}-y_{1}\right)-\varepsilon\right)+\delta\left(d\left(x_{2}-y_{2}\right)-\varepsilon\right)-\delta\left(d\left(x_{1}-y_{2}\right)+\varepsilon\right)-\delta\left(d\left(x_{2}-y_{1}\right)+\varepsilon\right) 
+\\
+&\geq \delta(\eta-4 \varepsilon) 
+\\
+&>0
+\end{aligned}
+$$
+
+与 $$\pi^{\dagger}$$ 是最优传输矛盾，因此知道 $$\operatorname{supp}\left(\pi^{\dagger}\right)$$ 在传输代价 $$d$$ 的意义下单调
+
+#### Proof of Theorem 2.1
+
+有传输代价函数 $$d$$ 严格凸，连续，由康托洛维奇传输问题最优解的存在性，知存在 $$\pi^{*} \in \prod(\mu, \nu)$$ 为最优传输计划，下证 $$\pi^{*}=\pi^{\dagger} $$
+
+1.  $$\operatorname{supp}\left(\pi^{\dagger}\right)$$ 在传输代价 $$d$$ 的意义下单调，由传输代价函数 $$d$$ 严格凸， $$\operatorname{supp}\left(\pi^{\dagger}\right)$$ 就有更强的性质：
+   
+   $$
+   \forall \left(x_{1}, y_{1}\right),\left(x_{2}, y_{2}\right) \in \Gamma,  x_{1}<x_{2} \Rightarrow y_{1} \leq y_{2}
+   $$
+   
+   这一点利用 $$d$$ 严格凸证明，反证法假设 $$y_{1} \leq y_{2}$$，设 $$a=x_{1}-y_{1}, b=x_{2}-y_{2},\delta=x_{2}-x_{1}$$，由支撑集单调：
+   
+   $$
+   d(a)+d(b) \leq d(b-\delta)+d(a+\delta) 
+   $$
+   
+   设 $$t=\frac{\delta}{b-a} \in \left( 0,1 \right) $$ ，则有 $$b-\delta=(1-t) b+t a, a+\delta=t b+(1-t) a$$，利用 Jenson 不等式知：
+   
+   $$
+   d(b-\delta)+d(a+\delta)<(1-t) d(b)+t d(a)+t d(b)+(1-t) d(a)=d(b)+d(a)
+   $$
+   
+   这与单调性矛盾，则支撑集有 $$\forall\left(x_{1}, y_{1}\right),\left(x_{2}, y_{2}\right) \in \Gamma, x_{1}<x_{2} \Rightarrow y_{1} \leq y_{2}$$
+
+2. 利用支撑集的性质，可以证明 $$\pi^{*}((-\infty, x],(-\infty, y])=\min \{F(x), G(y)\}$$ ，即 $$\pi^{\dagger}=\pi^{*}$$：
+
+   令 $$A=(-\infty, x] \times(y,+\infty), B=(x,+\infty) \times(-\infty, y]$$，由$$\left(x_{1}, y_{1}\right),\left(x_{2}, y_{2}\right) \in \Gamma , x_{1} \leq x_{2} \Rightarrow y_{1} \leq y_{2}$$，若有 $$\left(x_{0}, y_{0}\right) \in \Gamma$$，则
+   
+   $$
+   \Gamma \subset\left\{(x, y): x \leq x_{0}, y \leq y_{0}\right\} \cup\left\{(x, y): x \geq x_{0}, y \geq y_{0}\right\}
+   $$
+   
+   {:refdef: style="text-align: center;"}
+   <img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/optplan_supp.png" alt="optplan_supp" style="zoom:40%;" />
+    {:refdef}
+   
+   如图所示，由于支撑集的性质，有 $$\pi(A) * \pi(B)=0$$，知道 $$\pi^{*}$$测度不大于：
+   
+   $$
+   \begin{aligned}
+   \pi^{*}((-\infty, x] \times(-\infty, y])=\min \{& \pi^{*}(((-\infty, x] \times(-\infty, y]) \cup A),
+   \left.\pi^{*}(((-\infty, x] \times(-\infty, y]) \cup B)\right\} .
+   \end{aligned}
+   $$
+   
+   进一步的，由于
+   
+   $$
+   \begin{array}{l}
+   \pi^{*}(((-\infty, x] \times(-\infty, y]) \cup A)=\pi((-\infty, x] \times \mathbb{R})=F(x) \\
+   \pi^{*}(((-\infty, x] \times(-\infty, y]) \cup B)=\pi(\mathbb{R} \times(-\infty, y])=G(y)
+   \end{array}
+   $$
+   
+   那么 $$\pi^{*}((-\infty, x] \times(-\infty, y])=\min \{F(x), G(y)\}=\pi^{\dagger}((-\infty, x] \times(-\infty, y])$$，由此可知 $$\pi^{\dagger}$$ 为康托洛维奇最优传输
+
+3.  最后证一维最优传输的等价性，$$\int_{\mathbb{R} \times \mathbb{R}} d(x-y) \mathrm{d} \pi^{\dagger}(x, y)=\int_{0}^{1} d\left(F^{-1}(t)-G^{-1}(t)\right) \mathrm{d} t$$，也等价于 $$\pi^{\dagger}=\left(F^{-1}, G^{-1}\right)_{\#} \mathcal{L}\lfloor[0,1]$$
+   
+   $$
+   \begin{aligned}
+   \left(F^{-1}, G^{-1}\right)_{\#} \mathcal{L}\lfloor[0,1]((-\infty, x] \times(-\infty, y])&=\mathcal{L} L_{[0,1]}\left(\left(F^{-1}, G^{-1}\right)^{-1}((-\infty, x] \times(-\infty, y])\right) \\
+   &=\mathcal{L}\left\lfloor_{[0,1]}\left(\left\{t: F^{-1}(t) \leq x \text { and } G^{-1}(t) \leq y\right\}\right)\right.\\
+   &=\mathcal{L}\lfloor[0,1](\{t: F(x) \geq t \text { and } G(y) \geq t\})\\
+   &=\min \{F(x), G(y)\} \\
+   &=\pi^{\dagger}((-\infty, x] \times(-\infty, y])
+   \end{aligned}
+   $$
+   
+   进一步的，由于变量变换公式：
+   
+   $$
+   \int_{\mathbb{R} \times \mathbb{R}} d(x-y) \mathrm{d} \pi^{\dagger}(x, y)=\int_{\mathbb{R} \times \mathbb{R}} d(x-y) \mathrm{d}\left(\left(F^{-1}, G^{-1}\right)_{\#} \mathcal{L}\right)(x, y)=\int_{0}^{1} d\left(F^{-1}(t)-G^{-1}(t)\right) \mathrm{d} t
+   $$
+   
+

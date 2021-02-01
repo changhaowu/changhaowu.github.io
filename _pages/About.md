@@ -18,6 +18,8 @@ image: images/cover/C_Street4.jpeg
 
 如果您发现一些错误的话，且您不介意分出一部分时间的话，请在博客下面的disqus界面留言，万分感谢
 
+博客的标题：”facts and logic“ 是我非常崇拜的王孟源先生的格言，我希望在这里的写作中也能够贯穿这一点，做出符合事实与逻辑的文字
+
 
 
 #### About the author
