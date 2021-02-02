@@ -1,5 +1,5 @@
 ---
-layout: post
+·layout: post
 title: "Generative Model Part 2：A Survey on Variational Autoencoder"
 date: 2021-01-25
 image: /images/cover/C_ Abstraction3.jpeg         

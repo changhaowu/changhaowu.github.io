@@ -3,7 +3,7 @@ layout: post
 title: "Optimal Transport Note:Part 1"
 date: 2021-01-20 
 image: /images/cover/C_Scenery4.png       
-tags: [Generative-Model]
+tags: [OTNotes]
 toc: true
 ---
 
@@ -425,3 +425,152 @@ $$
    $$
    
 
+### Optimal Transport for Discrete Measures
+
+蒙日形式最优传输，在传输代价 $$d$$ 形式不定时，存在性很难证明，但是在限定一些特殊情况，比如离散测度下，则可以构造蒙日传输映射集非空的情况，其蒙日形式最优传输一定存在，具体设定如下：
+
+等数量，等密度的两个测度 $$\mu=\frac{1}{n} \sum_{i=1}^{n} \delta_{x_{i}},\nu=\frac{1}{n} \sum_{j=1}^{n} \delta_{y_{j}}$$ ,这种情况下蒙日传输映射 $$T: X \rightarrow Y$$ 一定存在，比如 
+
+$$
+T\left(x_{i}\right)=y_{\sigma(i)} \quad \sigma:\{1, \ldots, n\} \rightarrow\{1, \ldots, n\}
+$$
+
+对于巴拿赫空间 $$M$$ 中一个凸，紧的集合 $$B$$ ，定义其极值点集合 $$\mathcal{E}(B)$$，代表那些仅有平凡凸组合的点：
+
+$$
+B \ni \pi=\sum_{i=1}^{m} \alpha_{i} \pi_{i}，\pi \in \mathcal{E}(B) \Leftrightarrow \alpha_{i} \in\{0,1\}
+$$
+
+会有两个结论：
+
+#### Theorem 2.5. Minkowski–Carathéodory Theorem.
+
+$$B \subset \mathbb{R}^{M}$$ 是一个非空，凸的，紧集合，$$\forall  \pi^{\dagger} \in B ,\exists  \; \eta $$ ，其支撑集是$$  \; \mathcal{E}(B)$$ ，对于任意仿射函数 $$f$$ :
+
+$$
+f\left(\pi^{\dagger}\right)=\int f(\pi) \mathrm{d} \eta(\pi)
+$$
+
+或者说，一个凸包 $$B$$ 中的点 $$\pi^{\dagger}$$，利用凸包的极点集$$  \; \mathcal{E}(B)$$ 就可以凸表示，且至多用 $$\operatorname{dim}(B)+1$$ 即可表示，且基与 $$\pi^{\dagger}$$ 无关
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/Caratheodorys_theorem_example.svg.png" alt="Caratheodorys_theorem_example.svg" style="zoom:45%;" />
+ {:refdef}
+
+利用数归证明：假设在 $$d-1$$ 的情况下都可以如此表示
+
+在 $$d$$ 维中，取 $$\pi^{\dagger} \in B，\pi^{\dagger} \notin \mathcal{E}(B)$$，在极点集中取 $$\pi^{(0)} \in \mathcal{E}(B)$$，做线段 $$\left[\pi^{(0)}, \pi^{\dagger}\right]$$ 并延长直到与 $$B$$ 的边界相交为点 $$\xi$$ ，则线段可以表示，其参数集为$$\left\{\theta:(1-\theta) \pi^{(0)}+\theta \pi^{\dagger} \in B\right\}=[0, \alpha]$$，反过来表出 $$\xi=(1-\alpha) \pi^{(0)}+\alpha \pi$$，同时有 $$\pi^{\dagger}=\left(1-\theta_{0}\right) \xi+\theta_{0} \pi^{(0)},\theta_{0}=1-\frac{1}{\alpha}$$ ，由 $$\xi$$ 在边界上，则为 $$d-1$$ 的情况，可以基表示：$$\xi=\sum_{i=1}^{n} \theta_{i} \pi^{(i)}，\sum_{i=1}^{d} \theta_{i}=1$$，因此有
+
+$$
+\pi^{\dagger}=\sum_{i=1}^{d}\left(1-\theta_{0}\right) \theta_{i} \pi^{(i)}+\theta_{0} \pi^{(0)}
+\\
+\left(1-\theta_{0}\right) \sum_{i=1}^{d} \theta_{i}+\theta_{0}=1
+$$
+
+因此可以 $$\pi^{\dagger}$$ 可以凸表示，且 $$\pi^{\dagger}$$ 的选择与 $$ \pi^{(0)}$$ 无关
+
+#### Theorem 2.6. Birkhoff’s theorem
+
+离散形式的最优传输，等价于一个线性规划，可以利用一个 $$\mathbb{R}^{n \times n} $$ 表示，称为 Bistochastic 矩阵，具体来说是：
+
+$$
+B=\left\{\pi \in \mathbb{R}^{n \times n}: \forall i j, \pi_{i j} \geq 0 ; \forall j, \sum_{i=1}^{n} \pi_{i j}=1 ; \forall i, \sum_{j=1}^{n} \pi_{i j}=1\right\}
+$$
+
+Birkhoff’s theorem指出了这样的矩阵的极点集为置换矩阵：
+
+$$
+\mathcal{E}(B)=\left\{\pi \in\{0,1\}^{n \times n}: \forall j, \sum_{i=1}^{n} \pi_{i j}=1 ; \forall i, \sum_{j=1}^{n} \pi_{i j}=1\right\}
+$$
+
+1. 先证明置换矩阵是极值点：
+
+   设矩阵 $$\pi$$，定义 $$\pi_{i j}=\delta_{j=\sigma(i)}$$ 且 $$\pi \notin \mathcal{E}(B)$$，因此存在异于 $$\pi$$ 的两点  $$\pi^{(1)}, \pi^{(2)} \in B$$，且能表达 $$\pi$$ ，为 $$\pi=t \pi^{(1)}+(1-t) \pi^{(2)}，t \in(0,1)$$，取 $$\pi$$ 中为 0 的分量：
+   
+   $$
+   0=\pi_{i j}=t \pi_{i j}^{(1)}+(1-t) \pi_{i j}^{(2)} \Longrightarrow \quad \pi_{i j}^{(2)}=-\frac{\pi_{i j}^{(1)}}{1-t}<0
+   $$
+   
+   这与之前对于传输矩阵的定义矛盾，则置换矩阵一定是极值点
+
+2. 在证明极值点集合 $$\pi \in \mathcal{E}(B)$$ 的元素是置换矩阵：
+
+   - 先证明极值点中元素形式为 $$\pi_{i j} \in\{0,1\}$$：
+
+     取一个极点集中元素 $$\pi \in \mathcal{E}(B)$$，且不满足  $$\pi_{i j} \in\{0,1\}$$，则利用这一点，可以在轮流控制指标 $$i,j$$ 的情况下，利用 $$\sum_{i=1}^{n} \pi_{i j_{1}}=1$$ 和 $$\sum_{j=1}^{n} \pi_{i_{2} j}=1$$ 直到有 $$i_{m}=\imath_{1}$$ 时，比如对于 $$\pi_{i_{1} j_{1}} \in(0,1)$$，$$\exists  \pi_{i_{2} j_{1}} \in(0,1)，s.t \; \sum_{i=1}^{n} \pi_{i j_{1}}=1$$
+
+     于是有两列序列：
+     
+     $$
+     \mathcal{I}=\left\{i_{k} j_{k}: k \in\{1, \ldots, m-1\}\right\} \quad \mathcal{I}^{+}=\left\{i_{k+1} j_{k}: k \in\{1, \ldots, m-1\}\right\}
+     $$
+     
+     其有性质：$$i_{k+1} \neq i_{k} \text { and } j_{k+1} \neq j_{k}$$，并定义在 $$\pi$$ 上定义扰动：
+     
+     $$
+     \pi_{i j}^{(\delta)}=\left\{\begin{array}{ll}
+     \pi_{i_{k} j_{k}}+\delta & \text { if } i j=i_{k} j_{k} \text { for some } k \\
+     \pi_{i_{k+1} j_{k}}-\delta & \text { if } i j=i_{k+1} j_{k} \text { for some } k \\
+     \pi_{i j} & \text { else }
+     \end{array}\right.
+     $$
+     
+     验证 $$\sum_{i=1}^{n} \pi_{i j}^{(\delta)}=\sum_{i=1}^{n} \pi_{i j}+\delta \mid \{i j \in \mathcal{I}: i \in\{1, \ldots, n\}\} \mid -\delta \mid \left\{i j \in \mathcal{I}^{+}: i \in\{1, \ldots, n\}\right\} \mid $$
+
+     由于 $$i j \in \mathcal{I} \Leftrightarrow  \exists  \; i^{\prime} , \; s.t \quad i^{\prime} j \in \mathcal{I}^{+}$$ 可知指标集大小一样，则：
+     
+     $$
+     \sum_{i=1}^{n} \pi_{i j}^{(\delta)}=1，\sum_{j=1}^{n} \pi_{i j}^{(\delta)}=1
+     $$
+     
+     控制扰动 $$\delta=\min \left\{\min \left\{\pi_{i j}, 1-\pi_{i j}\right\}: i j \in \mathcal{I} \cup \mathcal{I}^{+}\right\} \in(0,1)$$ ，则可以定义 $$\pi^{(1)}=\pi^{(-\delta)} \neq \pi^{(2)}=\pi^{(\delta)}$$，且 $$\pi^{(1)}, \pi^{(2)} \in B$$ ，进一步的可以构造出 $$\pi$$:
+     
+     $$
+     \pi=\frac{1}{2} \pi^{(1)}+\frac{1}{2} \pi^{(2)}
+     $$
+     
+     这与极点集的条件矛盾，因此知道极点集中的元素有形式：$$\pi_{i j} \in\{0,1\}$$
+
+   - 在证明这样的 $$\pi$$ 是一个置换，这根据 $$\forall \; i , \exists  \; j^* ,s.t \; \pi_{i j^{*}}=1$$ 就可以得知
+
+#### Theorem 2.7 Existence of Optimal Transport Map of Discrete Measurement
+
+对于离散测度的 $$\mu=\frac{1}{n} \sum_{i=1}^{n} \delta_{x_{i}}, \nu=\frac{1}{n} \sum_{j=1}^{n} \delta_{y_{j}} $$，存在蒙日形式的最优传输映射
+
+在 $$c_{i j}=c\left(x_{i}, y_{j}\right)$$ 意义下，利用 Bistochastic 矩阵，$$B=\left\{\pi \in \mathbb{R}^{n \times n}: \forall i j, \pi_{i j} \geq 0 ; \forall j, \sum_{i=1}^{n} \pi_{i j}=1 ; \forall i, \sum_{j=1}^{n} \pi_{i j}=1\right\}$$，康托洛维奇离散形式可以写成：
+
+$$
+\text { minimise } \frac{1}{n} \sum_{i, j} c_{i j} \pi_{i j} \quad \text { over } \pi \in B
+$$
+
+存在 $$M$$ 为康托洛维奇形式的最小，$$\varepsilon>0$$ 有并做一个逼近 $$\pi^{\varepsilon} \in B$$
+
+$$
+M \geq \sum_{i j} c_{i j} \pi^{\varepsilon}-\varepsilon
+$$
+
+令 $$f(\pi)=\sum_{i j} c_{i j} \pi_{i j}$$，由 $$B$$ 是紧的，凸的，存在一个支撑集为$$\mathcal{E}(B)$$ 的测度 $$\eta$$ ，由 Minkowski–Carathéodory Theorem 知：
+
+$$
+f\left(\pi^{\varepsilon}\right)=\int f(\pi) \mathrm{d} \eta(\pi)
+$$
+
+因此，可以放下界：
+
+$$
+M \geq \int \sum_{i j} c_{i j} \pi_{i j} \mathrm{~d} \eta(\pi)-\varepsilon \geq \inf _{\pi \in \mathcal{E}(B)} \sum_{i j} c_{i j} \pi_{i j}-\varepsilon \geq M-\varepsilon
+$$
+
+取 $$\varepsilon \rightarrow 0$$，则 $$\inf _{\pi \in \mathcal{E}(B)} \sum_{i j} c_{i j} \pi_{i j}=M$$，由 $$ \mathcal{E}(B)$$ 紧，则 $$\pi^{\dagger} \in \mathcal{E}(B)$$，由 Birkhoff’s theorem 知极值点为置换矩阵，于是康托洛维奇最优传输可以写成一个置换矩阵 $$\sigma^{\dagger}:\{1, \ldots, n\} \rightarrow\{1, \ldots, n\} $$  $$ \pi_{i j}^{\dagger}=\delta_{j=\sigma^{\dagger}(i)}$$，因此可以定义蒙日传输 $$T^{\dagger}: X \rightarrow Y$$：
+
+$$
+T^{\dagger}\left(x_{i}\right)=y_{\sigma}(i)
+$$
+
+当定义一个普通的康托洛维奇传输计划 $$\pi_{i j}=\delta_{y_{j}=T\left(x_{i}\right)}$$ 可知：
+
+$$
+\sum_{i=1}^{n} c\left(x_{i}, T\left(x_{i}\right)\right)=\sum_{i j} c_{i j} \pi_{i j} \geq \sum_{i j} c_{i j} \pi_{i j}^{\dagger}=\sum_{i=1}^{n} c\left(x_{i}, T^{\dagger}\left(x_{i}\right)\right)
+$$
+
+由此蒙日形式等价于康托洛维奇形式，$$T^{\dagger}$$ 是蒙日最优传输
