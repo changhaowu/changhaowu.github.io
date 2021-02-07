@@ -1,5 +1,5 @@
 ---
-·layout: post
+layout: post
 title: "Generative Model Part 2：A Survey on Variational Autoencoder"
 date: 2021-01-25
 image: /images/cover/C_ Abstraction3.jpeg         
@@ -80,3 +80,17 @@ $$
 $$
 \mathcal{D}=\left\{\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(N)}\right\} \equiv\left\{\mathbf{x}^{(i)}\right\}_{i=1}^{N} \equiv \mathbf{x}^{(1: N)}
 $$
+
+因此，利用取log分解连乘有：
+$$
+\log p_{\boldsymbol{\theta}}(\mathcal{D})=\sum_{\mathbf{x} \in \mathcal{D}} \log p_{\boldsymbol{\theta}}(\mathbf{x})
+$$
+
+#### 1.4.2 Maximum Likelihood and Minibatch SGD
+
+在 ML 标准中，优化在给出标准后，取寻找最优参数 $$\theta^*$$ 使得标准最优，比如
+$$
+\theta^* = \arg\min_{\theta} \sum_{\mathbf{x} \in \mathcal{D}} \log p_{\boldsymbol{\theta}}(\mathbf{x})
+$$
+而常用的求解算法是随机梯度下降算法（SGD），当在整个数据集上进行一次梯度计算的话， 称为 batch gradient descent，但是当数据集很大的时候，更加适合用 
+

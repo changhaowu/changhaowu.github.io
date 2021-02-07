@@ -1,0 +1,201 @@
+I"J.<h1 id="optimal-transport-note-part-2">Optimal Transport Note: Part 2</h1>
+
+<h2 id="kantorovich-duality">Kantorovich Duality</h2>
+
+<p>自然的，康托洛维奇最优的离散形式是一个标准的线性规划中的运输问题，那么很自然的，联想到应当可以定义康托洛维奇形式的对偶形式</p>
+
+<h3 id="kantorovich-duality-1">Kantorovich Duality</h3>
+
+<h4 id="theorem-31-kantorovich-duality">Theorem 3.1. Kantorovich Duality</h4>
+
+<p>有 Polish space 和其上的测度 \((X, \mu)\) 和 \((Y, \nu)\) ，有传输代价函数 \(c: X \times Y \rightarrow[0,+\infty]\) 是 lower semi continuous的函数</p>
+
+<p>类似之前的定义康托洛维奇传输代价 \(\mathbb{K}(\pi)\) ，在此之外再定义一个康托洛维奇对偶传输代价 \(\mathbb{J}(\varphi, \psi)\) 与相应空间 \((\varphi, \psi) \in \Phi_{c}\)：</p>
+
+\[\mathbb{J}: L^{1}(\mu) \times L^{1}(\nu) \rightarrow \mathbb{R}, \quad \mathbb{J}(\varphi, \psi)=\int_{X} \varphi \mathrm{d} \mu+\int_{Y} \psi \mathrm{d} \nu
+\\
+\Phi_{c}=\left\{(\varphi, \psi) \in L^{1}(\mu) \times L^{1}(\nu): \varphi(x)+\psi(y) \leq c(x, y)\right\}\]
+
+<p>有 \(\mu \text { -almost } x \in X\) 且  \(\nu \text { -almost  } y \in Y\) 成立的不等式：</p>
+
+\[\min _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)=\sup _{(\varphi, \psi) \in \Phi_{c}} \mathbb{J}(\varphi, \psi)\]
+
+<p>此为康托洛维奇对偶性的定义，若套用一个具体场景的话，不妨用 \(shippers \; problem\) 的例子</p>
+
+<p>煤矿主可以选择自己从矿 \(x\) 运输到工厂 \(y\)，这样所付出的的运输代价为 \(c(x,y)\) ，船主提出比起矿主自己运，可以由他来运，仅需要在起点和终点付出一笔装船费和卸货费为 \(\varphi(x),\psi(y)\)，当然为了使方案有说服力，显然几乎处处 \(\varphi(x)+\psi(y) \leq c(x, y)\) ，才能够使得矿主接受方案。那么康托洛维奇对偶性就是在说：最优传输代价应当等于由他人来运的成本价，下面在比较强的条件下给出证明：</p>
+
+<p>设康托洛维奇最优传输代价 \(M = \inf _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)\)，也可以进一步写成：</p>
+
+\[M=\inf _{\pi \in \mathcal{M}_{+}(X \times Y)} \sup _{(\varphi, \psi)}\left(\int_{X \times Y} c(x, y) \mathrm{d} \pi+\int_{X} \varphi \mathrm{d}\left(\mu-P_{\#}^{X} \pi\right)+\int_{Y} \psi \mathrm{d}\left(\nu-P_{\#}^{Y} \pi\right)\right)\]
+
+<p>由于 \((\varphi, \psi) \in C_{b}^{0}(X) \times C_{b}^{0}(Y)\)，则对于函数 \(\sup _{\varphi \in C_{b}^{0}(X)} \int_{X} \varphi \mathrm{d}\left(\mu-P_{\#}^{X} \pi\right)\) 有性质：</p>
+
+\[\sup _{\varphi \in C_{b}^{0}(X)} \int_{X} \varphi \mathrm{d}\left(\mu-P_{\#}^{X} \pi\right)=\left\{\begin{array}{ll}
++\infty &amp; \text { if } \mu \neq P_{\#}^{X} \pi \\
+0 &amp; \text { else. }
+\end{array}\right.\]
+
+<p>因此为了取到下界，\(\mu,\nu\) 被限制在 \(P_{\#}^{X} \pi=\mu\) 和 \(P_{\#}^{X} \pi=\mu\) 上，即 \(\pi \in \Pi(\mu, \nu)\)，若假设 \(MiniMax=MaxMini\)，进一步整理则有：</p>
+
+\[M=\sup _{(\varphi, \psi)}\left(\int_{X} \varphi \mathrm{d} \mu+\int_{Y} \psi \mathrm{d} \nu+\inf _{\pi \in \mathcal{M}_{+}(X \times Y)} \int_{X \times Y} c(x, y)-\varphi(x)-\psi(y) \mathrm{d} \pi\right)\]
+
+<p>当 \(\varphi(x)+\psi(y) \leq c(x, y)\) 处处成立时，可以知道当 \((\varphi, \psi) \in \Phi_{c}\)，取 \(\pi \equiv 0 \in \mathcal{M}_{+}(X \times Y)\) 就可以使</p>
+
+\[\inf _{\pi \in \mathcal{M}_{+}(X \times Y)} \int_{X \times Y} c(x, y)-\varphi(x)-\psi(y) \mathrm{d} \pi=0\]
+
+<p>则有康托洛维奇对偶性成立：</p>
+
+\[\inf _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)=\sup _{(\varphi, \psi) \in \Phi_{c}} \int_{X} \varphi(x) \mathrm{d} \mu(x)+\int_{Y} \psi(y) \mathrm{d} \nu(y)\]
+
+<h3 id="fenchel-rockafeller-duality">Fenchel-Rockafeller Duality</h3>
+
+<p>之前在证明中用到的 Minimax Principle，即 \(sup \; inf = inf \; sup\)，这在凸函数时才成立，下面给出一些与凸函数相关的结果</p>
+
+<p>赋范线性空间 \(E\) 上有凸函数 \(\Theta: E \rightarrow \mathbb{R} \cup\{+\infty\}\)，其勒让德变换定义为：</p>
+
+\[\Theta^{*}\left(z^{*}\right)=\sup _{z \in E}\left(\left\langle z^{*}, z\right\rangle-\Theta(z)\right)\]
+
+<p>勒让德变换的低维形式，可以理解变换到导数，及其对应的 \(y\) 轴截距：</p>
+
+<p>\(\quad \quad \quad \quad (x, f(x)) \stackrel{\text { Lengendre }}{\longrightarrow}\left(p, f^{*}(p)\right) \quad \quad \quad \quad \quad\)            <img src="/images/2021-01-29-Optimal-Transport-Note-Part-2/400px-LegendreTransform1.png" alt="400px-LegendreTransform1" style="zoom:70%;" /></p>
+
+<h4 id="theorem-32-fenchel-rockafellar-duality">Theorem 3.2. Fenchel-Rockafellar Duality</h4>
+
+<p>利用勒让德变换，可以定义  Fenchel-Rockafellar 对偶</p>
+
+<p>赋范线性空间 \(E\) 上有凸函数 \(\Theta , \Xi : E \rightarrow \mathbb{R} \cup\{+\infty\}\)，若存在 \(z_{0} \in E,s.t \; \Theta\left(z_{0}\right)&lt;\infty, \Xi\left(z_{0}\right)&lt;\infty\) 且 \(\Theta\) 在 \(z_{0}\)，则：
+\(\inf _{E}(\Theta+\Xi)=\max _{z^{*} \in E^{*}}\left(-\Theta^{*}\left(-z^{*}\right)-\Xi^{*}\left(z^{*}\right)\right) .\)</p>
+
+<h4 id="lemma-33">Lemma 3.3</h4>
+
+<p>假设赋范线性空间 \(E\)：</p>
+
+<ol>
+  <li>
+    <p>有凸函数 \(\Theta: E \rightarrow \mathbb{R} \cup\{+\infty\}\)，定义 \(epigraph \; A\) 也是凸的
+\(A=\{(z, t) \in E \times \mathbb{R}: t \geq \Theta(z)\}\)</p>
+  </li>
+  <li>
+    <p>有凹函数 \(\Theta: E \rightarrow \mathbb{R} \cup\{+\infty\}\)，定义 \(hypograph \; A\) 也是凹的
+\(B=\{(z, t) \in E \times \mathbb{R}: t \leq \Theta(z)\}\)</p>
+  </li>
+  <li>
+    <p>\(C \subset E\) 是凸集，则 \(C\) 的内点 \(\operatorname{int}(C)\) 是凸的</p>
+  </li>
+  <li>
+    <p>\(D \subset E\) 是凸集且 \(int(C) \neq \emptyset\) ，则 \(\bar{D}=\overline{\operatorname{int}(D)}\)</p>
+  </li>
+</ol>
+
+<h4 id="theorem-34-hahn-banach-theorem分离定理">Theorem 3.4. Hahn-Banach Theorem（分离定理）</h4>
+
+<p>\(E\) 是拓扑向量空间，有非空，不相交，凸子集 \(A, B \subset E\) ，且有 \(A\) 是开集，则存在一个分离超平面分开 \(A, B\)</p>
+
+<h4 id="proof-of--fenchel-rockafellar-duality">Proof of  Fenchel-Rockafellar Duality</h4>
+
+<p>通过勒让德变换可以写出：</p>
+
+\[-\Theta^{*}\left(-z^{*}\right)-\Xi^{*}\left(z^{*}\right)=\inf _{x, y \in E}\left(\Theta(x)+\Xi(y)+\left\langle z^{*}, x-y\right\rangle\right)\]
+
+<p>选择 \(y=x\) 则有：</p>
+
+\[\inf _{x \in E}(\Theta(x)+\Xi(x)) \geq \sup _{z^{*} \in E^{*}}\left(-\Theta^{*}\left(-z^{*}\right)-\Xi^{*}\left(z^{*}\right)\right)\]
+
+<p>设 \(M=\inf (\Theta+\Xi)\) ，这里证明完成了一半，下证 \(\sup _{z^{*} \in E^{*}}\left(-\Theta^{*}\left(-z^{*}\right)-\Xi^{*}\left(z^{*}\right)\right) \geq M\)</p>
+
+<p>设集合 \(A, B\)，且由引理知 \(A, B\) 是凸的</p>
+
+\[\begin{array}{l}
+A=\{(x, \lambda) \in E \times \mathbb{R}: \lambda \geq \Theta(x)\} \\
+B=\{(y, \sigma) \in E \times \mathbb{R}: \sigma \leq M-\Xi(y)\} .
+\end{array}\]
+
+<p>定义 \(C=\operatorname{int}(A)\) ，由引理知 \(C\) 也是凸的，且由于 \(C=\operatorname{int}(A)\)，知对于 \((x, \lambda) \in C\)</p>
+
+\[\lambda&gt;\Theta(x) \Rightarrow \lambda+\Xi(x)&gt;\Theta(x)+\Xi(x) \geq M\]
+
+<p>因此 \(B,C\) 不相交，且知 \(B,C\) 是凸的，非空的，由分离定理知存在超平面 \(\Phi(x, \lambda)=f(x)+k \lambda （linear \;f）\)分离 \(B,C\)</p>
+
+\[\begin{aligned}
+\forall(x, \lambda) &amp; \in C, &amp; &amp; f(x)+k \lambda \geq \alpha \\
+\forall(x, \lambda) &amp; \in B, &amp; &amp; f(x)+k \lambda \leq \alpha
+\end{aligned}\]
+
+<p>进一步的构造点列 \(\left(x_{n}, \lambda_{n}\right) \in C\) 逼近 \((x, \lambda) \in C\) ，\(\left(x_{n}, \lambda_{n}\right) \rightarrow(x, \lambda)\)，因此可知 \(f(x)+k \lambda \leftarrow f\left(x_{n}\right)+k \lambda_{n} \geq \alpha\) ，即：</p>
+
+\[\begin{array}{ll}
+\forall(x, \lambda) \in A, &amp; f(x)+k \lambda \geq \alpha \\
+\forall(x, \lambda) \in B, &amp; f(x)+k \lambda \leq \alpha
+\end{array}\]
+
+<p>当取一个 \(\left(z_{0}, \lambda\right) \in A\) 当 \(\lambda\) 充分大时，可知 \(k \geq 0\)</p>
+
+<p>下证 \(k&gt;0\)，利用反证法，当 \(k=0\)，有</p>
+
+\[\begin{aligned}
+\forall(x, \lambda) \in A, &amp; f(x) \geq \alpha &amp; \Longrightarrow &amp; f(x) \geq \alpha &amp; \forall x \in \operatorname{Dom}(\Theta) \\
+\forall(x, \lambda) \in B, &amp; f(x) \leq \alpha &amp; \Longrightarrow &amp; f(x) \leq \alpha &amp; \forall x \in \operatorname{Dom}(\Xi) .
+\end{aligned}\]
+
+<p>若有一个 \(z_{0}\)，有 \(\operatorname{Dom}(\Xi) \ni z_{0} \in \operatorname{Dom}(\Theta)\)，则 \(f\left(z_{0}\right)=\alpha\)，由 \(\Theta\) 的连续性就可以取一个邻域
+\(B\left(z_{0}, r\right) \subset \operatorname{Dom}(\Theta)\)，在其中的点 \(z_{0}+\delta z\) ，\(\| z \|&lt;r，|\delta|&lt;1\) 满足：</p>
+
+\[f\left(z_{0}+\delta z\right) \geq \alpha \quad \Longrightarrow \quad f\left(z_{0}\right)+\delta f(z) \geq \alpha \quad \Longrightarrow \quad \delta f(z) \geq 0\]
+
+<p>由于对于 \(\delta \in(-1,1)\)都满足，因此 \(f(z)=0 \text ， z \in B(0, r)\)，那么如此一样的在 \(E\) 上取满足的点，就有 \(f \equiv 0 \text { on } E\)，这会导致无意义的超平面，因此 \(k &gt; 0\)</p>
+
+<p>于是对于 \((z, \Theta(z)) \in A\) 有：</p>
+
+\[\begin{aligned}
+\Theta^{*}\left(-\frac{f}{k}\right) &amp;=\sup _{z \in E}\left(-\frac{f(z)}{k}-\Theta(z)\right) \\
+&amp;=-\frac{1}{k} \inf _{z \in E}(f(z)+k \Theta(z)) \\
+&amp; \leq-\frac{\alpha}{k}
+\end{aligned}\]
+
+<p>同时对 \((z, M-\Xi(z)) \in B\) 有：</p>
+
+\[\begin{aligned}
+\Xi^{*}\left(\frac{f}{k}\right) &amp;=\sup _{z \in E}\left(\frac{f(z)}{k}-\Xi(z)\right) \\
+&amp;=-M+\frac{1}{k} \sup _{z \in E}(f(z)+k(M-\Xi(z))) \\
+&amp; \leq-M+\frac{\alpha}{k}
+\end{aligned}\]
+
+<p>这可以导出不等式的另一半：</p>
+
+\[M \geq \sup _{z^{*} \in E^{*}}\left(-\Theta^{*}\left(-z^{*}\right)-\Xi^{*}\left(z^{*}\right)\right) \geq-\Theta^{*}\left(-\frac{f}{k}\right)-\Xi^{*}\left(\frac{f}{k}\right) \geq \frac{\alpha}{k}+M-\frac{\alpha}{k}=M\]
+
+<p>于是 Fenchel-Rockafellar 对偶得证，在 \(z^{*}=\frac{f}{k}\) 取最大值时：</p>
+
+\[\inf _{x \in E}(\Theta(x)+\Xi(x))=M=\sup _{z^{*} \in E^{*}}\left(-\Theta^{*}\left(-z^{*}\right)-\Xi^{*}\left(z^{*}\right)\right)\]
+
+<h3 id="proof-of-kantorovich-duality">Proof of Kantorovich Duality</h3>
+
+<p>康托洛维奇对偶性的证明分成两部分</p>
+
+<ol>
+  <li>
+    <p>对于 \(\sup _{(\varphi, \psi) \in \Phi_{c}} J(\varphi, \psi) \leq \inf _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)\)，这部分在 \(p\)-almost 意义下证明即可：</p>
+
+    <p>对于 \((\varphi, \psi) \in \Phi_{C}\)，\(\pi \in \Pi(\mu, \nu)\)，取 \(A \subset X ， B \subset Y \; s.t \; \mu(A)=1,\nu(B)=1\)，以及代价不等式成立：
+\(\varphi(x)+\psi(y) \leq c(x, y) \quad \forall(x, y) \in A \times B\)
+有 \(\pi\left(A^{c} \times B^{c}\right) \leq \pi\left(A^{c} \times Y\right)+\pi\left(X \times B^{c}\right)=\mu\left(A^{c}\right)+\nu\left(B^{c}\right)=0\)，进一步有：
+\(\begin{aligned}
+\pi(A \times B) &amp;=\pi(X \times B)-\pi\left(A^{c} \times B\right) \\
+&amp;=\nu(B)-\pi\left(A^{c} \times Y\right)+\pi\left(A^{c} \times B^{c}\right) \\
+&amp;=1-\mu\left(A^{c}\right)+\pi\left(A^{c} \times B^{c}\right) \\
+&amp;=1
+\end{aligned}\)
+于是代价不等式在 \(\pi-\text { almost } (x, y)\) 成立：
+\(\mathbb{J}(\varphi, \psi)=\int_{X} \varphi \mathrm{d} \mu+\int_{Y} \psi \mathrm{d} \nu=\int_{X \times Y} \varphi(x)+\psi(y) \mathrm{d} \pi(x, y) \leq \int_{X \times Y} c(x, y) \mathrm{d} \pi(x, y)\)</p>
+  </li>
+  <li>
+    <p>另一半证明在 \(X, Y\) 是紧集， \(c\) 连续的条件下证明：</p>
+
+    <p>\(E=C_{b}^{0}(X \times Y)\) 有非负测度，于是有对偶空间 \(E^{*}=\mathcal{M}(X \times Y)\)，定义： 
+$$</p>
+
+    <p>$$</p>
+  </li>
+</ol>
+
+:ET
