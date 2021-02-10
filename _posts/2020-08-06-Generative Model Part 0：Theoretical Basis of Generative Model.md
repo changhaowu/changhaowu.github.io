@@ -20,3 +20,4 @@ x=f(z)
 $$
 
 ​		生成模型可以是确定的（deterministic）的，也可以是随机生成的（stochastic）的，非常有名的模型 $$VAE$$，先从deterministic的模型开始，生成模型，可以以平面的方法进行观察，从平面的角度来说，
+

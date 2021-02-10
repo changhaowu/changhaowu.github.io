@@ -1,6 +1,22 @@
 [
   
     {
+      "title"    : "Computational Optimal Transport Note Part 1: Theoretical Foundations",
+      "category" : "",
+      "tags"     : "OTNotes",
+      "url"      : "/2021/02/02/Computational-Optimal-Transport-Note-Part-1/",
+      "date"     : "2021-02-02 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "Computational Optimal Transport Note Part 0: Introduction",
+      "category" : "",
+      "tags"     : "OTNotes",
+      "url"      : "/2021/02/01/Computational-Optimal-Transport-Note-Part-0/",
+      "date"     : "2021-02-01 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Optimal Transport Note:Part 2",
       "category" : "",
       "tags"     : "OTNotes",

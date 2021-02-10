@@ -1,0 +1,173 @@
+I"�2<h1 id="computational-optimal-transport-note-part-1-theoretical-foundations">Computational Optimal Transport Note Part 1: Theoretical Foundations</h1>
+
+<p>这一部分主要叙述关于计算最优传输的理论部分，和一般的数学问题一样，也是从最简单的情况开始一步步泛化 ，第一步是从两个 \(\sum\) 中的概率向量 \((\mathbf{a}, \mathbf{b})\) 出发的，而后拓展到两个离散测度 \((\alpha, \beta)\)，进一步到普通的两个任意测度的问题框架下</p>
+
+<h2 id="histograms-and-measures">Histograms and Measures</h2>
+
+<p>这一部分中，分别在离散情况和连续情况下，叙述了最优传输中，如何数学地定义空间中运输的起始地和目的地，及其上相应的需要搬运的质量</p>
+
+<p>在问题设定下，直方图（Histogram）和概率向量（Probability vector）是两个等价的概念，对于 \(\mathbf{a} \in \Sigma_{n}\)，都表示：</p>
+
+\[\Sigma_{n} \stackrel{\text { def. }}{=}\left\{\mathbf{a} \in \mathbb{R}_{+}^{n}: \sum_{i=1}^{n} \mathbf{a}_{i}=1\right\} .\]
+
+<p>这是离散的概率向量，其与离散测度的区别在于，离散测度进一步约束 \(\mathbf{a} \in \Sigma_{n}\) 中要求非负性的条件，改成通过 DIrac 脉冲函数定义：</p>
+
+\[\alpha=\sum_{i=1}^{n} \mathbf{a}_{i} \delta_{x_{i}}\]
+
+<p>其中 \(x_{1}, \ldots, x_{n} \in \mathcal{X}\) 代表位置，而 \(\text { a } = （\mathbf{a}_{i}）\) 代表权重要求 \(\mathbf{a}_{i} &gt; 0\)，这避免了没有意义的位置 \(x_{i}\) 存在</p>
+
+<p>那么进一步的，就想把离散测度拓展到连续测度的情况，而最优传输的框架，一个很大的优点是，离散的情况和连续的情况，是可以在一个框架内进行研究的：</p>
+
+<p>定义连续情况下的积分：对于在空间 \(\mathcal{X}\) 任意的拉东测度 \(\mathcal{M}(\mathcal{X})\)，\(f \in \mathcal{C}(\mathcal{X})\)，在这个框架下，对于 \(f \in \mathcal{C}(\mathcal{X})\) 的积分对应一个离散测度 \(\alpha\) 的求和</p>
+
+\[\int_{\mathcal{X}} f(x) \mathrm{d} \alpha(x)=\sum_{i=1}^{n} \mathbf{a}_{i} f\left(x_{i}\right)\]
+
+<p>定义连续情况下的测度变换：若令 \(\mathcal{X}=\mathbb{R}^{d}\)，有测度 \(\alpha\)，其相对应勒贝格测度有 \(\mathrm{d} \alpha(x)=\rho_{\alpha}(x) \mathrm{d} x\)，\(\rho_{\alpha}=\frac{\mathrm{d} \alpha}{\mathrm{d} x}\)：</p>
+
+\[\forall h \in \mathcal{C}\left(\mathbb{R}^{d}\right), \quad \int_{\mathbb{R}^{d}} h(x) \mathrm{d} \alpha(x)=\int_{\mathbb{R}^{d}} h(x) \rho_{\alpha}(x) \mathrm{d} x\]
+
+<p>对 \(\alpha\) 做进一步的说明：</p>
+
+<ul>
+  <li>\(\alpha \in \mathcal{M}(\mathcal{X})\) 这个约束对于最优传输是很弱的，这不足以不要求测度是以 Dirac 函数的和或者一个密度函数给出，有时候相应的需要在上面的函数进行一些补充，当 \(\mathcal{X}\) 不是紧空间，补充要求 \(f\) 有一个紧的支撑集</li>
+  <li>对应于之前离散的概率测度，\(\alpha \in \mathcal{M}_{+}^{1}(\mathcal{X})\) 为连续情况下的概率测度，\(\alpha(\mathcal{X})=\int_{\mathcal{X}} \mathrm{d} \alpha=1\)</li>
+</ul>
+
+<p>一些直观的可视化：</p>
+
+<p style="text-align: center;"><img src="/images/2021-02-02-Computational-Optimal-Transport-Note-Part-1/Discrete_histogram_density.png" alt="Discrete_histogram_density" style="zoom:40%;" /></p>
+
+<h2 id="assignment-and-monge-problem">Assignment and Monge Problem</h2>
+
+<p>这一部分开始定义蒙日最优传输问题，离散的情况，利用代价矩阵定义，有一个离散的特殊情况，当目的地与起始地数目一致，其上质量平分质量，对应一个置换；连续的情况需要定义前向算子（Push-forward），而利用前向算子有结论：空间中的一个测度对应一个随机变量</p>
+
+<h3 id="discrete-setting">Discrete Setting</h3>
+
+<p>首先是离散的情况，给出代价矩阵 \(\left(\mathbf{C}_{i, j}\right)_{i \in  [n] , j \in [ m ]}\)，和两个离散测度 \(\alpha=\sum_{i=1}^{n} \mathbf{a}_{i} \delta_{x_{i}} \quad \text { and } \quad \beta=\sum_{j=1}^{m} \mathbf{b}_{j} \delta_{y_{j}}\)</p>
+
+<p>要去求一个映射 \(T:\left\{x_{1}, \ldots, x_{n}\right\} \rightarrow\left\{y_{1}, \ldots, y_{m}\right\}\)，其满足条件：</p>
+
+\[\forall j \in [ m ], \quad \mathbf{b}_{j}=\sum_{i: T\left(x_{i}\right)=y_{j}} \mathbf{a}_{i}\]
+
+<p>可以记作 \(T_{\#} \alpha=\beta\) ，当然这个映射是满射的，可视化传输映射如下图：</p>
+
+<p style="text-align: center;"><img src="/images/2021-02-02-Computational-Optimal-Transport-Note-Part-1/Transport_Map_Visualization.png" alt="Transport_Map_Visualization" style="zoom:40%;" /></p>
+
+<p>有了传输映射的定义，可以进一步定义蒙日最优传输问题，求取最小化传输代价的前向映射 \(T\)</p>
+
+\[\min _{T}\left\{\sum_{i} c\left(x_{i}, T\left(x_{i}\right)\right): T_{\#} \alpha=\beta\right\} \quad (x, y) \in \mathcal{X} \times \mathcal{Y}\]
+
+<p>在离散情况下，可以指标映射 \(\sigma: [ n ] \rightarrow[m]\) ，定义逆 inverse 为 \(\sigma^{-1}(j)\) 映射到 \(j\) 的指标，则有约束：</p>
+
+\[\sum_{i \in \sigma^{-1}(j)} \mathbf{a}_{i}=\mathbf{b}_{j}\]
+
+<p>当 \(n=m\) 且 \(\mathbf{a}_{i}=\mathbf{b}_{j}=1 / n\)，之前在最优传输笔记中的结论有，这样的情况下，传输映射 \(T\) 是一个双射，其是一个置换</p>
+
+<p>当 \(n&lt;m\) 时，蒙日传输映射不一定存在，就比如可视化蒙日传输映射中的图例，若反向要求 \(y\) 到 \(x\) 的蒙日传输，这是不存在的</p>
+
+<h3 id="pushing-forward-operator">Pushing-forward Operator</h3>
+
+<p>对于一个连续映射：\(T: \mathcal{X} \rightarrow \mathcal{Y}\)，可以再进一步的定义一个分布的映射（Pushing-forward Operator） \(T_{\#}: \mathcal{M}(\mathcal{X}) \rightarrow \mathcal{M}(\mathcal{Y})\)，比如离散的情况下，前向算子就是把 \(\alpha\) 的支撑集变换位置；</p>
+
+\[T_{\#} \alpha \stackrel{\text { def. }}{=} \sum_{i} \mathbf{a}_{i} \delta_{T\left(x_{i}\right)}\]
+
+<p>对于 \(T: \mathcal{X} \rightarrow \mathcal{Y}\)，前向算子满足坐标变换公式：</p>
+
+\[\forall h \in \mathcal{C}(\mathcal{Y}), \quad \int_{\mathcal{Y}} h(y) \mathrm{d} \beta(y)=\int_{\mathcal{X}} h(T(x)) \mathrm{d} \alpha(x)\]
+
+<p>当然最朴素的，就是质量不变公式：\(\forall \; \beta \text { measurable }  B \subset \mathcal{Y}\)：</p>
+
+\[\beta(B)=\alpha(\{x \in \mathcal{X}: T(x) \in B\})=\alpha\left(T^{-1}(B)\right)\]
+
+<p>由于质量不变，因此前向算子的变换仍然是一个测度，即：</p>
+
+\[\alpha \in \mathcal{M}_{+}^{1}(\mathcal{X}) \Rightarrow T_{\#} \alpha \in \mathcal{M}_{+}^{1}(\mathcal{Y})\]
+
+<h3 id="pull-back-operator">Pull-back Operator</h3>
+
+<p>有后向算子，定义在函数上： \(T^{\#}: \mathcal{C}(\mathcal{Y}) \rightarrow \mathcal{C}(\mathcal{X})\)，当然为了满足类似前向算子的坐标变换公式，定义为 \(\forall g \in \mathcal{C}(\mathcal{Y})\)，\(T^{\#} g=g \circ T\)</p>
+
+\[\forall(\alpha, g) \in \mathcal{M}(\mathcal{X}) \times \mathcal{C}(\mathcal{Y}), \quad \int_{\mathcal{Y}} g \mathrm{~d}\left(T_{\#} \alpha\right)=\int_{\mathcal{X}}\left(T^{\#} g\right) \mathrm{d} \alpha\]
+
+<p>值得注意的是，后向算子定义在函数上，前向算子定义在测度上，这是不一样的：</p>
+
+<p style="text-align: center;"><img src="/images/2021-02-02-Computational-Optimal-Transport-Note-Part-1/Push_forward_pull_back.png" alt="Push_forward_pull_back" style="zoom:40%;" /></p>
+
+<h3 id="measures-and-random-variables">Measures and random variables</h3>
+
+<p>一个 Radon 测度和一个随机变量是等价的，下面证明：</p>
+
+<p>随机变量 \(X: \Omega \rightarrow \mathcal{X}\)，而概率空间上有概率测度 \((\Omega, \mathbb{P})\)，对应的有 Radon 测度 \(\alpha \in \mathcal{M}_{+}^{1}(\mathcal{X})\)，由于概率测度的大小定义为：</p>
+
+\[\forall A \in \mathcal{X}, P\left(X^{-1}(A)\right)=\alpha(A)\]
+
+<p>因此可以把 \(\alpha\) 看作 \(\alpha=X_{\#} \mathbb{P}\)，由于事件域是固定的，因此 Radon 测度和随机变量是一一对应的</p>
+
+<p>进一步的，复合映射也是成立的，对于 \(Y=T(X):\)</p>
+
+\[\omega \in \Omega \rightarrow T(X(\omega)) \in Y\]
+
+<p>因此这是一个前向的复合，进一步的，在 \(Y\) 中抽样 \(y\) 等价于在 \(X\) 中抽样 \(x\) 后计算 \(y=T(x)\)</p>
+
+<h3 id="arbitrary-setting">Arbitrary Setting</h3>
+
+<p>通过定义前向算子，就可以定义任意测度情况下的蒙日最优传输问题，有概率测度 \((\alpha, \beta)\)，其支撑集为 \((\mathcal{X}, \mathcal{Y})\)，寻求传输映射 \(T: \mathcal{X} \rightarrow \mathcal{Y}\) 使传输代价最小：</p>
+
+\[\min _{T}\left\{\int_{\mathcal{X}} c(x, T(x)) \mathrm{d} \alpha(x): T_{\#} \alpha=\beta\right\}\]
+
+<h2 id="kantorovich-relaxation">Kantorovich Relaxation</h2>
+
+<p>在蒙日形式最优传输中，最大的问题就是一个始发地 \(x_i\) 不能对应多个目的地 \(y_j\)，康托洛维奇形式摆脱了原先的传输映射应当是一个确定性（deterministic）的想法，变成一个随机性（probabilistic）的想法（可能说的是，原本传输映射非零的条件在康托洛维奇形式中松弛了，从 \(x_i\) 对应 \(y_j\) 的传输可能是0，这一点原本在传输映射中是不会发生的，用非零的松弛换了可以表示一个始发地可以传输到多个目的地的想法）</p>
+
+<p>首先是概率向量的情况：</p>
+
+<p>具体来说，是通过建立一个耦合矩阵 \(\mathbf{P} \in \mathbb{R}_{+}^{n \times m}\) 来替代原先的传输映射，为了符合传输的特性，定义传输计划 \(\mathbf{U}(\mathbf{a}, \mathbf{b})\) 为：</p>
+
+\[\mathbf{U}(\mathbf{a}, \mathbf{b}) \stackrel{\text { def. }}{=}\left\{\mathbf{P} \in \mathbb{R}_{+}^{n \times m}: \mathbf{P} \mathbb{1}_{m}=\mathbf{a} \text { and } \mathbf{P}^{\mathrm{T}} \mathbb{1}_{n}=\mathbf{b}\right\}
+\\
+\mathbf{P} \mathbb{1}_{m}=\left(\sum_{j} \mathbf{P}_{i, j}\right)_{i} \in \mathbb{R}^{n} \quad 
+
+\quad \mathbf{P}^{\mathrm{T}} \mathbb{1}_{n}=\left(\sum_{i} \mathbf{P}_{i, j}\right)_{j} \in \mathbb{R}^{m}\]
+
+<p>由于这样的定义，比起蒙日形式定义条件导致的不对称性，康托洛维奇形式是对称的，即：</p>
+
+\[\mathbf{P} \in \mathbf{U}(\mathbf{a}, \mathbf{b}) \Rightarrow \mathbf{P}^{\mathrm{T}} \in \mathbf{U}(\mathbf{b}, \mathbf{a})\]
+
+<p>具体的定义康托洛维奇形式最优传输问题：</p>
+
+\[\mathrm{L}_{\mathrm{C}}(\mathrm{a}, \mathrm{b}) \stackrel{\mathrm{def.}}{=} \min _{\mathbf{P} \in \mathrm{U}(\mathrm{a}, \mathrm{b})}\langle\mathbf{C}, \mathbf{P}\rangle \stackrel{\mathrm{def}}{=} \sum_{i, j} \mathbf{C}_{i, j} \mathbf{P}_{i, j}\]
+
+<p>这是一个线性规划问题，因此可以知道，康托洛维奇形式最优传输计划不一定是唯一的</p>
+
+<p>正如之前最优传输笔记中提到的，当蒙日形式存在的时候，康托洛维奇形式可能比蒙日形式的传输代价更小，以指派问题为例子：</p>
+
+<p>对于置换 \(\sigma \in \operatorname{Perm}(n)\)，可以定义传输映射：</p>
+
+\[\forall(i, j) \in [ n ]^{2}, \quad\left(\mathbf{P}_{\sigma}\right)_{i, j}=\left\{\begin{array}{l}
+1 / n \quad \text { if } \quad j=\sigma_{i} \\
+0 \quad \text { otherwise. }
+\end{array}\right.\]
+
+<p>则蒙日形式的传输代价为：</p>
+
+\[\left\langle\mathbf{C}, \mathbf{P}_{\sigma}\right\rangle=\frac{1}{n} \sum_{i=1}^{n} \mathbf{C}_{i, \sigma_{i}}\]
+
+<p>而通过康托洛维奇形式来定义的话</p>
+
+\[\mathbf{P} \in \mathbf{U}\left(\mathbb{1}_{n} / n, \mathbb{1}_{n} / n\right) \quad \mathbf{P}^{*}=\arg \min _{\mathbf{P} \in \mathbf{U}\left(\mathbb{1}_{n} / n, \mathbb{1}_{n} / n\right)}\langle\mathbf{C}, \mathbf{P}\rangle\]
+
+<p>可以知道，置换矩阵集合是 \(\mathbf{U}\left(\mathbb{1}_{n} / n, \mathbb{1}_{n} /n \right)\) 的子集，因此在指派问题中，康托洛维奇最优传输代价不大于蒙日最优传输问题：</p>
+
+\[\mathrm{L}_{\mathbf{C}}\left(\mathbb{1}_{n} / n, \mathbb{1}_{n} / n\right) \leq \min _{\sigma \in \operatorname{Perm}(n)}\left\langle\mathbf{C}, \mathbf{P}_{\sigma}\right\rangle\]
+
+<p>其他的最优传输问题也是一个道理，更不要说如果蒙日形式不存在时了，如下图左边的指派问题：</p>
+
+<p style="text-align: center;"><img src="/images/2021-02-02-Computational-Optimal-Transport-Note-Part-1/assignment_plus.png" alt="assignment_plus" style="zoom:40%;" /></p>
+
+<p>通过上面定义的概率向量的情况，离散测度的情况是类似定义的</p>
+
+<p>有离散测度 \(\alpha, \beta\) 及其支撑集，在支撑集上定义传输代价矩阵 \(\mathrm{C}_{i, j} \stackrel{\text { def. }}{=} c\left(x_{i}, y_{j}\right)\)，离散测度的康托洛维奇传输问题等价于概率向量的情况
+\(\mathcal{L}_{c}(\alpha, \beta) \stackrel{\text { def. }}{=} \mathrm{L}_{\mathbf{C}}(\mathbf{a}, \mathbf{b})\)
+ 然后是一般形式的康托洛维奇传输问题：</p>
+
+:ET
