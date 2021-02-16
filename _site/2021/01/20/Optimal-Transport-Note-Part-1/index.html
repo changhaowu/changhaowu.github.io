@@ -240,8 +240,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				<div class="post-image" style="background-image: url('/images/cover/C_Scenery4.png')"></div>
 			
 	
-				<div>
-                  <div id="table-of-contents">
+				<div class="post__content">
                     <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h1"><a href="#optimal-transport-note-part-1">Optimal Transport Note: Part 1</a>
 <ul>
@@ -273,14 +272,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
 </ul>
 </li>
-</ul>
-                  </div>
-                  <div id="markdown-content">
-                    <h1 id="optimal-transport-note-part-1">Optimal Transport Note: Part 1</h1>
+</ul><h1 id="optimal-transport-note-part-1">
+<a class="anchor" href="#optimal-transport-note-part-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Optimal Transport Note: Part 1</h1>
 
-<h2 id="formulation-of-optimal-transport">Formulation of Optimal Transport</h2>
+<h2 id="formulation-of-optimal-transport">
+<a class="anchor" href="#formulation-of-optimal-transport" aria-hidden="true"><span class="octicon octicon-link"></span></a>Formulation of Optimal Transport</h2>
 
-<h3 id="monge-formulation">Monge Formulation</h3>
+<h3 id="monge-formulation">
+<a class="anchor" href="#monge-formulation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Monge Formulation</h3>
 
 <p>最优传输的背景是蒙日考虑在建造防御工事时，如何花费最少的劳动力去把四散的土堆运输到其他处的防御工事处，在此之上抽象出了最优传输问题，最优传输问题总共有两种提法，蒙日形式（Monge Formulation）和康托洛维奇形式（Kantorovich Formulation），康托洛维奇形式更加完善，更加适合理论研究，蒙日形式则更加适合应用上的计算。</p>
 
@@ -296,7 +295,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 <p>这样定义保证了传输映射必须双射，而测度不变，直观上来说，就是传输映射 \(T\)，从 \(X\) 中取走多少土，就相应有多少土运到 \(Y\) 中，如下图所示</p>
 
-<p style="text-align: center;"><img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/Visualing_Transport_Map.png" alt="Visualing_Transport_Map" style="zoom:30%;" /></p>
+<p style="text-align: center;"><img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/Visualing_Transport_Map.png" alt="Visualing_Transport_Map" style="zoom:30%;"></p>
 
 <p>在上面的定义下，称 \(T\) 传输 \(\mu\) 到 \(\nu\) ，记 \(\nu=T_{\#} \mu\)</p>
 
@@ -327,7 +326,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 \[\text { minimise } \mathbb{M}(T)=\int_{X} c(x, T(x)) \mathrm{d} \mu(x)\]
 
-<h3 id="kantorovich-formulation">Kantorovich Formulation</h3>
+<h3 id="kantorovich-formulation">
+<a class="anchor" href="#kantorovich-formulation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Kantorovich Formulation</h3>
 
 <p>由于蒙日形式下，定义的最优传输 \(x \mapsto T(x)\) ，由于传输映射需要保证映射的特性，或者直观上来说， \(x_{1}\) 处的土堆不能分割，只能全部传输到另一个点 \(y_{1}\) 处，需要更加灵活的定义</p>
 
@@ -339,7 +339,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 <p>记 \(\Pi(\mu, \nu)\) 为传输方案的集合，比起传输映射 \(T\) 可能不存在的问题，传输计划 \(\Pi(\mu, \nu)\) 永远非空，因为有一个平凡解 \(\pi^{*}\) ,取定 \(\{y^*\} \in \Sigma_{Y}\) ，对应的 \(X\) 上的起点在满足约束 \(\int_{X } d\pi\left(x,y^*\right)=\nu(y^*)\) 对 \(\nu(y^*)\) 成比例取值即可，如下图所示</p>
 
-<p style="text-align: center;"><img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/Trivial_Plan.png" alt="Trivial Pan" style="zoom:40%;" /></p>
+<p style="text-align: center;"><img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/Trivial_Plan.png" alt="Trivial Pan" style="zoom:40%;"></p>
 
 <p>定义好了传输计划后，就可以定义康托洛维奇形式的最优传输问题：\(\mu \in \mathcal{P}(X) ,\nu \in \mathcal{P}(Y)\)</p>
 
@@ -380,13 +380,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 <p>在可视化后的效果上更好一些：</p>
 
-<p style="text-align: center;"><img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/OT_interpolation.png" alt="OT_interpolation" style="zoom:40%;" /></p>
+<p style="text-align: center;"><img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/OT_interpolation.png" alt="OT_interpolation" style="zoom:40%;"></p>
 
-<h2 id="special-cases">Special Cases</h2>
+<h2 id="special-cases">
+<a class="anchor" href="#special-cases" aria-hidden="true"><span class="octicon octicon-link"></span></a>Special Cases</h2>
 
 <p>一般意义下的最优传输问题，还需要康托洛维奇对偶性等工具，但是在此之前，有两种特殊的情况，不用对偶性就可以解决，于是先摘了这些“低垂的果实” X:)</p>
 
-<h3 id="optimal-transport-in-one-dimension">Optimal Transport in One Dimension</h3>
+<h3 id="optimal-transport-in-one-dimension">
+<a class="anchor" href="#optimal-transport-in-one-dimension" aria-hidden="true"><span class="octicon octicon-link"></span></a>Optimal Transport in One Dimension</h3>
 
 <p>在一维情况下，有概率空间 \((X, \Sigma_X , \mu)\) 和 \((Y, \Sigma_Y , \nu)\) 下，进而利用 \(\mu,\nu\)  可以定义右连续，不减的 \(c.d.f\) \(F(x),G(y)\) ，有性质：</p>
 
@@ -409,13 +411,15 @@ F^{-1}(F(x)) \geq x \quad F\left(F^{-1}(t)\right) \geq t\]
 
 <p>然后就有了 Theorem 2.1</p>
 
-<h4 id="theorem--21">Theorem  2.1</h4>
+<h4 id="theorem--21">
+<a class="anchor" href="#theorem--21" aria-hidden="true"><span class="octicon octicon-link"></span></a>Theorem  2.1</h4>
 
 <p>\(\mu, \nu \in \mathcal{P}(\mathbb{R})\) 其 \(c.d.f\) 分别是 \(F,G\)， 认为 \(c(x, y)=d(x-y)\) 是凸的且连续的，\(\pi^{\dagger} \in  \mathcal{P}(\mathbb{R}^{2})\) 且有 \(c.d.f \quad H(x, y)=\min \{F(x), G(y)\}\) ，则 \(\pi^{\dagger} \in \Pi(\mu, \nu)\) 且 \(\pi^{\dagger}\) 是康托洛维奇形式最优传输问题的解，且在代价函数 \(c(x,y)\) 下的传输代价为</p>
 
 \[\min _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)=\int_{0}^{1} d\left(F^{-1}(t)-G^{-1}(t)\right) \mathrm{d} t\]
 
-<h4 id="corollary-22">Corollary 2.2</h4>
+<h4 id="corollary-22">
+<a class="anchor" href="#corollary-22" aria-hidden="true"><span class="octicon octicon-link"></span></a>Corollary 2.2</h4>
 
 <ol>
   <li>
@@ -423,7 +427,7 @@ F^{-1}(F(x)) \geq x \quad F\left(F^{-1}(t)\right) \geq t\]
 
 \[\inf _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)=\int_{\mathbb{R}}|F(x)-G(x)| \mathrm{d}\]
 
-    <p style="text-align: center;"><img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/abs_cost_equalivence.png" alt="abs_cost_equalivence" style="zoom:40%;" /></p>
+    <p style="text-align: center;"><img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/abs_cost_equalivence.png" alt="abs_cost_equalivence" style="zoom:40%;"></p>
 
     <p>如图所示，描述积分区域可以用两种方法：</p>
 
@@ -481,7 +485,8 @@ G_{\#}^{-1} \mathcal{L}\left\lfloor_{[0,1]}((-\infty, y])\right.&amp;=\mathcal{L
   </li>
 </ol>
 
-<h4 id="proposition-23">Proposition 2.3</h4>
+<h4 id="proposition-23">
+<a class="anchor" href="#proposition-23" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proposition 2.3</h4>
 
 <p>定义一个很重要的性质，集合的单调性（这是对于某个测度 \(d\) ），由简单的一个二维情况做例子：</p>
 
@@ -575,7 +580,8 @@ G_{\#}^{-1} \mathcal{L}\left\lfloor_{[0,1]}((-\infty, y])\right.&amp;=\mathcal{L
 
 <p>与 \(\pi^{\dagger}\) 是最优传输矛盾，因此知道 \(\operatorname{supp}\left(\pi^{\dagger}\right)\) 在传输代价 \(d\) 的意义下单调</p>
 
-<h4 id="proof-of-theorem-21">Proof of Theorem 2.1</h4>
+<h4 id="proof-of-theorem-21">
+<a class="anchor" href="#proof-of-theorem-21" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proof of Theorem 2.1</h4>
 
 <p>有传输代价函数 \(d\) 严格凸，连续，由康托洛维奇传输问题最优解的存在性，知存在 \(\pi^{*} \in \prod(\mu, \nu)\) 为最优传输计划，下证 \(\pi^{*}=\pi^{\dagger}\)</p>
 
@@ -603,7 +609,7 @@ G_{\#}^{-1} \mathcal{L}\left\lfloor_{[0,1]}((-\infty, y])\right.&amp;=\mathcal{L
 
 \[\Gamma \subset\left\{(x, y): x \leq x_{0}, y \leq y_{0}\right\} \cup\left\{(x, y): x \geq x_{0}, y \geq y_{0}\right\}\]
 
-    <p style="text-align: center;"><img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/optplan_supp.png" alt="optplan_supp" style="zoom:40%;" /></p>
+    <p style="text-align: center;"><img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/optplan_supp.png" alt="optplan_supp" style="zoom:40%;"></p>
 
     <p>如图所示，由于支撑集的性质，有 \(\pi(A) * \pi(B)=0\)，知道 \(\pi^{*}\)测度不大于：</p>
 
@@ -638,7 +644,8 @@ G_{\#}^{-1} \mathcal{L}\left\lfloor_{[0,1]}((-\infty, y])\right.&amp;=\mathcal{L
 
 \[\int_{\mathbb{R} \times \mathbb{R}} d(x-y) \mathrm{d} \pi^{\dagger}(x, y)=\int_{\mathbb{R} \times \mathbb{R}} d(x-y) \mathrm{d}\left(\left(F^{-1}, G^{-1}\right)_{\#} \mathcal{L}\right)(x, y)=\int_{0}^{1} d\left(F^{-1}(t)-G^{-1}(t)\right) \mathrm{d} t\]
 
-<h3 id="optimal-transport-for-discrete-measures">Optimal Transport for Discrete Measures</h3>
+<h3 id="optimal-transport-for-discrete-measures">
+<a class="anchor" href="#optimal-transport-for-discrete-measures" aria-hidden="true"><span class="octicon octicon-link"></span></a>Optimal Transport for Discrete Measures</h3>
 
 <p>蒙日形式最优传输，在传输代价 \(d\) 形式不定时，存在性很难证明，但是在限定一些特殊情况，比如离散测度下，则可以构造蒙日传输映射集非空的情况，其蒙日形式最优传输一定存在，具体设定如下：</p>
 
@@ -652,7 +659,8 @@ G_{\#}^{-1} \mathcal{L}\left\lfloor_{[0,1]}((-\infty, y])\right.&amp;=\mathcal{L
 
 <p>会有两个结论：</p>
 
-<h4 id="theorem-25-minkowskicarathéodory-theorem">Theorem 2.5. Minkowski–Carathéodory Theorem.</h4>
+<h4 id="theorem-25-minkowskicarathéodory-theorem">
+<a class="anchor" href="#theorem-25-minkowskicarath%C3%A9odory-theorem" aria-hidden="true"><span class="octicon octicon-link"></span></a>Theorem 2.5. Minkowski–Carathéodory Theorem.</h4>
 
 <p>\(B \subset \mathbb{R}^{M}\) 是一个非空，凸的，紧集合，\(\forall  \pi^{\dagger} \in B ,\exists  \; \eta\) ，其支撑集是\(\; \mathcal{E}(B)\) ，对于任意仿射函数 \(f\) :</p>
 
@@ -660,7 +668,7 @@ G_{\#}^{-1} \mathcal{L}\left\lfloor_{[0,1]}((-\infty, y])\right.&amp;=\mathcal{L
 
 <p>或者说，一个凸包 \(B\) 中的点 \(\pi^{\dagger}\)，利用凸包的极点集\(\; \mathcal{E}(B)\) 就可以凸表示，且至多用 \(\operatorname{dim}(B)+1\) 即可表示，且基与 \(\pi^{\dagger}\) 无关</p>
 
-<p style="text-align: center;"><img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/Caratheodorys_theorem_example.svg.png" alt="Caratheodorys_theorem_example.svg" style="zoom:45%;" /></p>
+<p style="text-align: center;"><img src="/images/2021-01-20-Optimal-Transport-Note-Part-1/Caratheodorys_theorem_example.svg.png" alt="Caratheodorys_theorem_example.svg" style="zoom:45%;"></p>
 
 <p>利用数归证明：假设在 \(d-1\) 的情况下都可以如此表示</p>
 
@@ -672,7 +680,8 @@ G_{\#}^{-1} \mathcal{L}\left\lfloor_{[0,1]}((-\infty, y])\right.&amp;=\mathcal{L
 
 <p>因此可以 \(\pi^{\dagger}\) 可以凸表示，且 \(\pi^{\dagger}\) 的选择与 \(\pi^{(0)}\) 无关</p>
 
-<h4 id="theorem-26-birkhoffs-theorem">Theorem 2.6. Birkhoff’s theorem</h4>
+<h4 id="theorem-26-birkhoffs-theorem">
+<a class="anchor" href="#theorem-26-birkhoffs-theorem" aria-hidden="true"><span class="octicon octicon-link"></span></a>Theorem 2.6. Birkhoff’s theorem</h4>
 
 <p>离散形式的最优传输，等价于一个线性规划，可以利用一个 \(\mathbb{R}^{n \times n}\) 表示，称为 Bistochastic 矩阵，具体来说是：</p>
 
@@ -732,7 +741,8 @@ G_{\#}^{-1} \mathcal{L}\left\lfloor_{[0,1]}((-\infty, y])\right.&amp;=\mathcal{L
   </li>
 </ol>
 
-<h4 id="theorem-27-existence-of-optimal-transport-map-of-discrete-measurement">Theorem 2.7 Existence of Optimal Transport Map of Discrete Measurement</h4>
+<h4 id="theorem-27-existence-of-optimal-transport-map-of-discrete-measurement">
+<a class="anchor" href="#theorem-27-existence-of-optimal-transport-map-of-discrete-measurement" aria-hidden="true"><span class="octicon octicon-link"></span></a>Theorem 2.7 Existence of Optimal Transport Map of Discrete Measurement</h4>
 
 <p>对于离散测度的 \(\mu=\frac{1}{n} \sum_{i=1}^{n} \delta_{x_{i}}, \nu=\frac{1}{n} \sum_{j=1}^{n} \delta_{y_{j}}\)，存在蒙日形式的最优传输映射</p>
 
@@ -762,10 +772,11 @@ G_{\#}^{-1} \mathcal{L}\left\lfloor_{[0,1]}((-\infty, y])\right.&amp;=\mathcal{L
 
 <p>由此蒙日形式等价于康托洛维奇形式，\(T^{\dagger}\) 是蒙日最优传输</p>
 
-<h2 id="reference">Reference</h2>
+<h2 id="reference">
+<a class="anchor" href="#reference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reference</h2>
 
-                  </div>
                 </div>
+                
 	
 				<div class="post__share">
 					<ul class="share__list list-reset">

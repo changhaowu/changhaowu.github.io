@@ -240,8 +240,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				<div class="post-image" style="background-image: url('/images/cover/A3.jpg')"></div>
 			
 	
-				<div>
-                  <div id="table-of-contents">
+				<div class="post__content">
                     <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h4"><a href="#符号">符号</a></li>
 <li class="toc-entry toc-h4"><a href="#火箭模型">火箭模型</a>
@@ -280,10 +279,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 </li>
 </ul>
 </li>
-</ul>
-                  </div>
-                  <div id="markdown-content">
-                    <h4 id="符号">符号</h4>
+</ul><h4 id="符号">
+<a class="anchor" href="#%E7%AC%A6%E5%8F%B7" aria-hidden="true"><span class="octicon octicon-link"></span></a>符号</h4>
 
 <table>
   <thead>
@@ -356,42 +353,45 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   </tbody>
 </table>
 
-<h4 id="火箭模型">火箭模型</h4>
+<h4 id="火箭模型">
+<a class="anchor" href="#%E7%81%AB%E7%AE%AD%E6%A8%A1%E5%9E%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>火箭模型</h4>
 
 <p>自己去运算，甚至搭建一个火箭模型，是一件很有意思的事情。无论是SpaceX还是最近的天问一号，无一不是</p>
 
 <p>无论是哪一种火箭，其受力基本上都是三种，火箭发动机产生的推力，火箭在大气中收到的阻力，以及火箭附近的星体对其的引力：</p>
 
-<p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/rktfor.gif" alt="rktfor" style="zoom:60%;" /></p>
+<p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/rktfor.gif" alt="rktfor" style="zoom:60%;"></p>
 
 <ul>
   <li>
-    <h5 id="推力">推力</h5>
+    <h5 id="推力">
+<a class="anchor" href="#%E6%8E%A8%E5%8A%9B" aria-hidden="true"><span class="octicon octicon-link"></span></a>推力</h5>
 
     <p>推力一般通过发动机产生燃烧燃料后，向运动方向后方喷出，由喷出气体的动量产生的推力和发动机腔体内部压力和大气压力两部分组成：</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/rockth.gif" alt="rockth" style="zoom:60%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/rockth.gif" alt="rockth" style="zoom:60%;"></p>
 
     <p>由上式可知，火箭的推力主要来自于两部分，第一部分是高速喷出的气体，这部分由牛顿第三定律的推导，转化成了推力，值得一提的是，为了增加喷出的质量（气体流）的速度，设计师往往在火箭的腔体上做特别的设计，以加强火箭的气体喷出速度，另外火箭发动机腔体内部的高压和外部较为稀薄的气压，产生的气压差，这一部分也会增加一部分推力，但是推力的主体是第一部分产生的力</p>
   </li>
   <li>
-    <h5 id="重力">重力</h5>
+    <h5 id="重力">
+<a class="anchor" href="#%E9%87%8D%E5%8A%9B" aria-hidden="true"><span class="octicon octicon-link"></span></a>重力</h5>
 
     <p>重力本质上是行星对于火箭的引力，因此高推力火箭需要计算高度对于重力的影响，而在火箭入轨后，引力充当了向心力的作用，也因此，放射的火箭有三种情况，采用<a href="https://zh.wikipedia.org/wiki/%E7%89%9B%E9%A1%BF%E5%A4%A7%E7%82%AE">牛顿大炮</a>的叙事：</p>
 
     <ul>
       <li>入轨时未达到第一宇宙速度：
-        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Newtonsmountainv=6000.gif" alt="Newtonsmountainv=6000" style="zoom:100%;" /></p>
+        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Newtonsmountainv=6000.gif" alt="Newtonsmountainv=6000" style="zoom:100%;"></p>
       </li>
       <li>
         <p>入轨时达到第一宇宙速度但是未能超过第二宇宙速度（逃逸速度）：</p>
 
-        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Newtonsmountainv=8000.gif" alt="Newtonsmountainv=6000" style="zoom:100%;" /></p>
+        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Newtonsmountainv=8000.gif" alt="Newtonsmountainv=6000" style="zoom:100%;"></p>
       </li>
       <li>
         <p>如果速度非常快，火箭将会沿着一个抛物线（当速度恰好为第二宇宙速度）或者双曲线（当速度大于第二宇宙速度）轨道逃离地球。</p>
 
-        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Newtonsmountainv=10000.gif" alt="Newtonsmountainv=6000" style="zoom:100%;" /></p>
+        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Newtonsmountainv=10000.gif" alt="Newtonsmountainv=6000" style="zoom:100%;"></p>
 
         <p>于是，考虑轨道火箭的发射，在足够的海拔高度处，大气非常的稀薄以至于可以无视，同时火箭的发动机熄火没有推力的情况下，火箭是只受一个引力的，于是轨道火箭的发射，就变成了在计算好的合适的高度，使得火箭以一个合适的速度进入轨道：</p>
 
@@ -401,7 +401,8 @@ v_{1}=\sqrt{\frac{G M}{R}}\]
     </ul>
   </li>
   <li>
-    <h5 id="空气动力学力">空气动力学力</h5>
+    <h5 id="空气动力学力">
+<a class="anchor" href="#%E7%A9%BA%E6%B0%94%E5%8A%A8%E5%8A%9B%E5%AD%A6%E5%8A%9B" aria-hidden="true"><span class="octicon octicon-link"></span></a>空气动力学力</h5>
 
     <p>最后一部分是空气动力学的力，往往有两个力，一个是阻力，一个是升力，值得一提的两点</p>
 
@@ -418,7 +419,7 @@ v_{1}=\sqrt{\frac{G M}{R}}\]
 
         <p>其中 \(\rho\) 的值由下表提供：</p>
 
-        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/atmosmet.gif" alt="atmosmet" style="zoom:70%;" /></p>
+        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/atmosmet.gif" alt="atmosmet" style="zoom:70%;"></p>
 
         <p>查阅SpaceX的资料可以知道Falcon火箭的 \(C_d\) 和几何参数进而推算 \(A\)</p>
       </li>
@@ -426,11 +427,13 @@ v_{1}=\sqrt{\frac{G M}{R}}\]
   </li>
 </ul>
 
-<h4 id="模型火箭模型">模型火箭模型</h4>
+<h4 id="模型火箭模型">
+<a class="anchor" href="#%E6%A8%A1%E5%9E%8B%E7%81%AB%E7%AE%AD%E6%A8%A1%E5%9E%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>模型火箭模型</h4>
 
 <ul>
   <li>
-    <h5 id="模型火箭的历史">模型火箭的历史</h5>
+    <h5 id="模型火箭的历史">
+<a class="anchor" href="#%E6%A8%A1%E5%9E%8B%E7%81%AB%E7%AE%AD%E7%9A%84%E5%8E%86%E5%8F%B2" aria-hidden="true"><span class="octicon octicon-link"></span></a>模型火箭的历史</h5>
 
     <p>严格的来说，火箭的原型很早就有了，可以追溯到中国的南宋时期，其制造的黑火药推进剂的飞行物，被投入战争中使用，宋朝时的火箭没有正经的发射架，是通过弩来发射的，其构造有一个带孔的管子，里面填充了黑火药和一个棍子来帮助火箭姿态稳定，然后在接下来的几百年间，逐步改进。</p>
 
@@ -448,7 +451,8 @@ v_{1}=\sqrt{\frac{G M}{R}}\]
     </ul>
   </li>
   <li>
-    <h5 id="模型火箭的结构">模型火箭的结构</h5>
+    <h5 id="模型火箭的结构">
+<a class="anchor" href="#%E6%A8%A1%E5%9E%8B%E7%81%AB%E7%AE%AD%E7%9A%84%E7%BB%93%E6%9E%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>模型火箭的结构</h5>
 
     <p>下面是模型火箭根据推力进行的分级（Estes标准）。火箭燃料最高等级为O，但是G级以上的就被分类成为高推力火箭</p>
 
@@ -503,17 +507,18 @@ v_{1}=\sqrt{\frac{G M}{R}}\]
 
     <p>下图为模型火箭的发动机结构：</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/220px-Model-rocket-engine.png" alt="220px-Model-rocket-engine" style="zoom:80%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/220px-Model-rocket-engine.png" alt="220px-Model-rocket-engine" style="zoom:80%;"></p>
 
     <p>因此，额定功率高于D到E的火箭发动机通常使用由高氯酸铵，铝粉和硬质塑料外壳中包含的橡胶状粘合剂物质制成的复合推进剂。这种推进剂类似于航天飞机的固体火箭助推器中使用的推进剂，不像黑火药那么脆弱，从而提高了发动机的可靠性和推进剂的稳定性。这些电动机的等级大小从D到O不等。复合电动机每单位重量产生的脉冲（特定脉冲）比黑粉电动机更大。 还提供可再装的复合推进剂电动机。这些是商业生产的电动机，需要用户将推进剂颗粒，O形圈和垫圈（以容纳膨胀气体）组装，延迟颗粒和喷射电荷到特殊的不易碎的铝制电动机机壳中，该机壳具有旋入式或卡入式端部（封闭）。可重装电动机的优点是成本：首先，由于主壳体是可重用的，因此重装成本明显低于相同脉冲的一次性电动机。其次，大型复合发动机的组装劳动强度大且难以自动化。将这项任务分担给消费者可以节省成本。可重装电动机从D级到O级都有。
   电动机用电火柴进行电点火，火柴包括短长度的热原涂层镍铬合金，铜或铝桥线，将其推入喷嘴，并用防火棉，橡皮筋，塑料塞子或胶带将其固定在适当的位置。推进剂的顶部是跟踪延迟装药，该装药会产生烟雾，但实际上不会产生推力，这是因为火箭减速并飞弧。延迟电荷耗尽后，它会点燃喷射电荷，用于部署恢复系统。</p>
   </li>
   <li>
-    <h5 id="模型火箭的物理模型">模型火箭的物理模型</h5>
+    <h5 id="模型火箭的物理模型">
+<a class="anchor" href="#%E6%A8%A1%E5%9E%8B%E7%81%AB%E7%AE%AD%E7%9A%84%E7%89%A9%E7%90%86%E6%A8%A1%E5%9E%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>模型火箭的物理模型</h5>
 
     <p>最简单的系统，就是不考虑地心地固坐标系的情况下，讲地面考虑成平地，同时忽略质量的瞬时变动，继续使用牛顿第二系统去建立模型，只能适用于小型模型火箭，往往不会进入地球轨道，同时其极限高度也比较小，往往被限制在对流层内，因此阻力中的大气情况比较好估算，直接采用地表的大气压即可</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/rktflight.gif" alt="rktflight" style="zoom:80%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/rktflight.gif" alt="rktflight" style="zoom:80%;"></p>
 
     <p>现在做的火箭模型不考虑回收的环节</p>
 
@@ -549,7 +554,8 @@ v_{1}=\sqrt{\frac{G M}{R}}\]
     <p>到达最高点当：\(\frac{d \theta}{d t}=0\)，然后开始下落</p>
   </li>
   <li>
-    <h5 id="模型火箭的数值计算">模型火箭的数值计算</h5>
+    <h5 id="模型火箭的数值计算">
+<a class="anchor" href="#%E6%A8%A1%E5%9E%8B%E7%81%AB%E7%AE%AD%E7%9A%84%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97" aria-hidden="true"><span class="octicon octicon-link"></span></a>模型火箭的数值计算</h5>
     <ul>
       <li>
         <p>数值计算模型</p>
@@ -558,7 +564,7 @@ v_{1}=\sqrt{\frac{G M}{R}}\]
 
         <p>考虑离散化的模型：
 \(\begin{aligned} t &amp; \rightarrow t_{i} \\ h(t) &amp; \rightarrow h_{i} \\ V(t) &amp; \rightarrow V_{i} \end{aligned}\)</p>
-        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/discretation_h.png" alt="dis		cretation_h" style="zoom:67%;" /></p>
+        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/discretation_h.png" alt="dis		cretation_h" style="zoom:67%;"></p>
 
         <p>而运动方程可以做离散化处理成：</p>
 
@@ -610,11 +616,11 @@ V_{0} &amp;=100 \mathrm{m} / \mathrm{s} \\
 
     <p>这样的模型设定，就是炮弹飞行的轨迹：</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Ballistic Filight.png" alt="Ballistic Filight.png" style="zoom:70%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Ballistic%20Filight.png" alt="Ballistic Filight.png" style="zoom:70%;"></p>
 
     <p>而其飞行速度变化的状态为:</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Ballistic Filight Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:70%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Ballistic%20Filight%20Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:70%;"></p>
   </li>
   <li>
     <p>然后是比较小推力的火箭，推力的调节是依靠燃料喷射速度的，这和发动机的设计有关</p>
@@ -629,11 +635,11 @@ V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
 
     <p>这样的模型设定，就是比较低推力模型火箭飞行的轨迹：</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Lower Powered Model Rocket Trajectory.png" alt="Higher Powered Model Rocket Trajectory" style="zoom:70%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Lower%20Powered%20Model%20Rocket%20Trajectory.png" alt="Higher Powered Model Rocket Trajectory" style="zoom:70%;"></p>
 
     <p>而其飞行速度变化的状态为:</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Lower Powered Model Rocket Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:70%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Lower%20Powered%20Model%20Rocket%20Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:70%;"></p>
   </li>
   <li>
     <p>最后是高推力火箭</p>
@@ -648,19 +654,21 @@ V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
 
     <p>这样的模型设定，就是比较高推力模型火箭飞行的轨迹：</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Higher Powered Model Rocket Trajectory.png" alt="Higher Powered Model Rocket Trajectory" style="zoom:70%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Higher%20Powered%20Model%20Rocket%20Trajectory.png" alt="Higher Powered Model Rocket Trajectory" style="zoom:70%;"></p>
 
     <p>而其飞行速度变化的状态为:</p>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Higher Powered Model Rocket Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:75%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Higher%20Powered%20Model%20Rocket%20Velocity.png" alt="Ballistic Filight Velocity.png" style="zoom:75%;"></p>
   </li>
 </ul>
 
-<h4 id="轨道火箭模型">轨道火箭模型</h4>
+<h4 id="轨道火箭模型">
+<a class="anchor" href="#%E8%BD%A8%E9%81%93%E7%81%AB%E7%AE%AD%E6%A8%A1%E5%9E%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>轨道火箭模型</h4>
 
 <ul>
   <li>
-    <h5 id="轨道火箭的历史">轨道火箭的历史</h5>
+    <h5 id="轨道火箭的历史">
+<a class="anchor" href="#%E8%BD%A8%E9%81%93%E7%81%AB%E7%AE%AD%E7%9A%84%E5%8E%86%E5%8F%B2" aria-hidden="true"><span class="octicon octicon-link"></span></a>轨道火箭的历史</h5>
 
     <p>在轨道火箭不到半个多世纪的历史中，人类已经多次发射了轨道火箭：</p>
 
@@ -737,22 +745,25 @@ V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
     <p>诸如朱诺一号和阿特拉斯等导弹的这项工作使1958年2月1日发射了第一颗美国卫星Explorer 1，并于1962年2月20日发射了美国第一个在轨道上的 John Glenn ，在第7友谊中。中心的 Von Braun 监督了一种更大的火箭，称为“土星”的研制，该火箭，即阿波罗11号，使美国能够于1969年7月，将两个宇航员尼尔·阿姆斯特朗和巴斯·奥尔德林送上月球并返回。</p>
   </li>
   <li>
-    <h5 id="轨道火箭的结构">轨道火箭的结构</h5>
+    <h5 id="轨道火箭的结构">
+<a class="anchor" href="#%E8%BD%A8%E9%81%93%E7%81%AB%E7%AE%AD%E7%9A%84%E7%BB%93%E6%9E%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>轨道火箭的结构</h5>
 
     <p>模型火箭的设计，当然就比较简单了可以像装满黑色粉末的纸板管一样简单，但是要制造出高效，准确的火箭或导弹，则需要克服许多难题。主要困难包括冷却燃烧室，泵送燃料（在液体燃料的情况下）以及控制和校正运动方向。
 ​</p>
   </li>
   <li>
-    <h5 id="组件">组件</h5>
+    <h5 id="组件">
+<a class="anchor" href="#%E7%BB%84%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>组件</h5>
 
     <p>火箭由推进剂，放置推进剂的地方（例如推进剂箱）和喷嘴组成。它们可能还具有一个或多个火箭发动机，方向稳定装置（例如鳍片，游标发动机或用于推力矢量的发动机万向架，陀螺仪）以及将这些组件固定在一起的结构（通常为单壳）。旨在用于高速大气的火箭弹还具有空气动力学整流罩，例如前锥体，通常可容纳有效载荷。</p>
 
     <p>除了这些组件之外，火箭还可以具有许多其他组件，例如尾翼，着陆用的降落伞，甚至在某种意义上还可以是人（载人火箭），往往火箭会安装有制导系统。</p>
   </li>
   <li>
-    <h5 id="火箭发动机">火箭发动机</h5>
+    <h5 id="火箭发动机">
+<a class="anchor" href="#%E7%81%AB%E7%AE%AD%E5%8F%91%E5%8A%A8%E6%9C%BA" aria-hidden="true"><span class="octicon octicon-link"></span></a>火箭发动机</h5>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/170px-Viking_5C_rocketengine.jpg" alt="170px-Viking_5C_rocketengine" style="zoom:120%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/170px-Viking_5C_rocketengine.jpg" alt="170px-Viking_5C_rocketengine" style="zoom:120%;"></p>
 
     <p>火箭发动机采用喷射推进原理。为火箭提供动力的火箭发动机种类繁多。当前大多数火箭是化学动力火箭（通常是内燃机，但有些采用可分解的单推进剂），可喷射热流。火箭发动机可以使用气体推进剂，固体推进剂，液体推进剂或固体和液体的混合混合物。一些火箭使用的热量或压力来自推进剂的化学反应以外的来源，例如蒸汽火箭，太阳能火箭，核热火箭发动机或简单的加压火箭，例如水火箭或冷气推进器。对于可燃推进剂，在燃烧室内的燃料和氧化剂之间会引发化学反应，并且所产生的热气体会从火箭向后的一端从一个或多个火箭发动机喷嘴中加速出来。这些气体通过发动机的加速在燃烧室和喷嘴上施加力（“推力”），从而推动车辆行驶（根据牛顿第三定律）。这实际上是由于喷嘴孔使燃烧室壁上的力（压力乘以面积）不平衡所致。在其他任何方向都没有这种情况。喷嘴的形状还通过沿着火箭的轴线引导废气而产生力。</p>
   </li>
@@ -764,11 +775,13 @@ V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
     <p>或者，可以使用可以在外部加热的惰性推进剂，例如蒸汽火箭，太阳热火箭或核热火箭。对于较小的，性能较低的火箭（例如姿态控制推进器），它们不需要较高的性能，可以将加压流体用作推进剂，使其仅通过推进喷嘴逸出航天器。</p>
   </li>
   <li>
-    <h5 id="轨道火箭的发射阶段">轨道火箭的发射阶段</h5>
+    <h5 id="轨道火箭的发射阶段">
+<a class="anchor" href="#%E8%BD%A8%E9%81%93%E7%81%AB%E7%AE%AD%E7%9A%84%E5%8F%91%E5%B0%84%E9%98%B6%E6%AE%B5" aria-hidden="true"><span class="octicon octicon-link"></span></a>轨道火箭的发射阶段</h5>
 
     <ul>
       <li>
-        <h6 id="发射">发射</h6>
+        <h6 id="发射">
+<a class="anchor" href="#%E5%8F%91%E5%B0%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>发射</h6>
 
         <p>火箭是目前能够到达轨道或超越轨道的唯一手段。其他非火箭航天发射技术尚未建立，或仍缺乏轨道速度。航天飞机的火箭发射通常从一个太空港（宇宙飞船）开始，宇宙飞船可能配备了用于垂直火箭发射的发射装置和发射台，以及用于运载火箭和机翼航天飞机起降的跑道。出于噪声和安全原因，太空港的位置远离人类居住。洲际弹道导弹有各种特殊的发射设施。</p>
 
@@ -777,7 +790,8 @@ V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
         <p>发射台是固定的结构，旨在派遣机载车辆。它通常由发射塔和火焰沟组成。它被用于架设，加油和维护运载火箭的设备所包围。在发射之前，火箭可能重达数百吨。 STS-1上的哥伦比亚号航天飞机起飞时重2030吨（4480000磅）。</p>
       </li>
       <li>
-        <h6 id="进入太空">进入太空</h6>
+        <h6 id="进入太空">
+<a class="anchor" href="#%E8%BF%9B%E5%85%A5%E5%A4%AA%E7%A9%BA" aria-hidden="true"><span class="octicon octicon-link"></span></a>进入太空</h6>
 
         <p>最常用的外层空间定义是指距离地球表面100公里（62英里）的卡尔曼线以外的所有事物。美国有时将外层空间定义为海拔超过50英里（80公里）的所有事物。</p>
 
@@ -786,7 +800,8 @@ V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
         <p>对于载人发射系统，经常安装发射逃生系统，以使宇航员在紧急情况下能够逃生。</p>
       </li>
       <li>
-        <h6 id="离开轨道">离开轨道</h6>
+        <h6 id="离开轨道">
+<a class="anchor" href="#%E7%A6%BB%E5%BC%80%E8%BD%A8%E9%81%93" aria-hidden="true"><span class="octicon octicon-link"></span></a>离开轨道</h6>
 
         <p>对月球和行星际航行而言，实现封闭的轨道不是必须的。俄国早期的航天器没有进入轨道就成功地达到了很高的高度。美国宇航局曾经考虑将阿波罗飞行任务直接发射到月球轨道上，但采取了先进入临时停车轨道然后在几条轨道上分别燃烧然后再飞向月球轨道的策略。这会增加推进剂的成本，因为停放轨道的近地点必须足够高以防止再次进入，而直接注入的近地点会任意低，因为它将永远无法到达。</p>
 
@@ -803,27 +818,29 @@ V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
     </ul>
   </li>
   <li>
-    <h5 id="轨道火箭的物理模型">轨道火箭的物理模型</h5>
+    <h5 id="轨道火箭的物理模型">
+<a class="anchor" href="#%E8%BD%A8%E9%81%93%E7%81%AB%E7%AE%AD%E7%9A%84%E7%89%A9%E7%90%86%E6%A8%A1%E5%9E%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>轨道火箭的物理模型</h5>
 
     <ul>
       <li>
-        <h6 id="模型建立">模型建立</h6>
+        <h6 id="模型建立">
+<a class="anchor" href="#%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>模型建立</h6>
 
         <p>如果要考虑到轨道火箭甚至向火星发射的火箭，由于其入轨后在地表的投影，距离发射基地已经有相当的距离，不能把地球处理成平地，而需要以地心为中心，建立地心地固坐标系（这部分以NASA在1998年发射的火星气象卫星作为图例）</p>
 
-        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/launch2.gif" alt="launch2" style="zoom:70%;" /></p>
+        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/launch2.gif" alt="launch2" style="zoom:70%;"></p>
 
         <p>气象火箭在SECO-1阶段大致进入轨道，而在地图上的体现如下图，为状态1到状态2:</p>
 
-        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/msp98track93.gif" alt="msp98track93" style="zoom:55%;" /></p>
+        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/msp98track93.gif" alt="msp98track93" style="zoom:55%;"></p>
 
         <p>为此可视化的得出，需要采用如地心地固坐标系这样的处理：</p>
 
-        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/ECEF.png" alt="ECEF" style="zoom:55%;" /></p>
+        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/ECEF.png" alt="ECEF" style="zoom:55%;"></p>
 
         <p>为了方便处理，暂时不考虑地球各点微弱的重力差异，就将地球处理成一个完美球形，地表 \(g\) 值就取 \(9.80665m/s\)</p>
 
-        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/JJ6aZ.png" alt="JJ6Z" style="zoom:55%;" /></p>
+        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/JJ6aZ.png" alt="JJ6Z" style="zoom:55%;"></p>
 
         <p>考虑火箭的速度与轨道平行，这样有两个好处：</p>
         <ul>
@@ -865,7 +882,8 @@ V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
   \end{array}\]
       </li>
       <li>
-        <h6 id="数值计算结果">数值计算结果</h6>
+        <h6 id="数值计算结果">
+<a class="anchor" href="#%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C" aria-hidden="true"><span class="octicon octicon-link"></span></a>数值计算结果</h6>
 
         <p>计算的情况是两种，一种是进入轨道的设定</p>
 
@@ -954,7 +972,7 @@ V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
 
         <p>其发射以后，会进入一个封闭的轨道为：</p>
 
-        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/orbitin.png" alt="orbitin" style="zoom:30%;" /></p>
+        <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/orbitin.png" alt="orbitin" style="zoom:30%;"></p>
       </li>
     </ul>
   </li>
@@ -1044,12 +1062,12 @@ V_{0} &amp;=0.1 \mathrm{m} / \mathrm{s} \\
       </tbody>
     </table>
 
-    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Rocket Fail.png" alt="Rocket Fail" style="zoom:53%;" /></p>
+    <p style="text-align: center;"><img src="/images/2020-07-20-Rocket-Modelling-Python/Rocket%20Fail.png" alt="Rocket Fail" style="zoom:53%;"></p>
   </li>
 </ul>
 
-                  </div>
                 </div>
+                
 	
 				<div class="post__share">
 					<ul class="share__list list-reset">

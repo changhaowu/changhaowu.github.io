@@ -40,14 +40,10 @@ layout: default
 				<div class="post-image" style="background-image: url('{{ page.image | relative_url }}')"></div>
 			{% endif %}
 	
-				<div>
-                  <div id="table-of-contents">
-                    {% toc %}
-                  </div>
-                  <div id="markdown-content">
-                    {{ content }}
-                  </div>
+				<div class="post__content">
+                    {{ content | toc }}
                 </div>
+                
 	
 				<div class="post__share">
 					<ul class="share__list list-reset">
