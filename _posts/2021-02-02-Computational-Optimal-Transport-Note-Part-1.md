@@ -344,12 +344,16 @@ $$
 对于传统的距离定义，比如 $$L^{2}$$ 距离，要求两个测度的支撑集一致 $$\operatorname{supp}(\alpha) = \operatorname{supp}(\beta)$$ ，最优传输定义的距离不要求这么严格，进一步的，就算 $$\operatorname{supp}(\alpha) = \operatorname{supp}(\beta)$$ 的情况下，强行扩张定义域，使得积分可积，也有可以体现最优传输距离比较好的例子：
 
 研究离散均匀分布 $$\alpha$$， 定义在 $$\{0,1 / N, 2 / N, \ldots, 1\}$$ 上：
+
 $$
 \alpha=\sum_{i=1}^{N} \frac{1}{N} \delta x_{i} \quad \operatorname{supp}(\alpha)=\{0,1 / N,..., 1\}
 $$
+
 和连续均匀分布 $$\beta=U(0,1)$$，从实践的角度上来说，当 $$N \rightarrow \infty$$ 时，两个分布几乎是一样的：
 
+{:refdef: style="text-align: center;"}
 <img src="/images/2021-02-02-Computational-Optimal-Transport-Note-Part-1/Uniform-Distribution-Types.png" alt="Uniform-Distribution-Types" style="zoom:100%;" />
+{:refdef}
 
 但是取 $$L^2$$ 距离的话， $$L^2(\alpha,\beta)=1$$，对比最优传输距离为 $$\mathcal{W}_{p}(\alpha,\beta)=1/N$$，非常好的体现了两个分布渐进一致的性质，或者说，当 $$N \rightarrow \infty$$ 时有， $$ \alpha \rightarrow \beta$$ （弱收敛）
 
@@ -360,19 +364,146 @@ $$\mathcal{W}_{p}$$ 是弱收敛的距离，定义弱收敛：在紧空间中 $$
 #### Translations
 
 最优传输距离，可以分离出 Translation 算子的影响，即把空间中的点沿一个向量变换 $$\tau $$ ：
+
 $$
 T_{\tau}: x \mapsto x-\tau
 $$
+
 则进一步可以利用 $$T_{\tau}$$ 去定义前向算子变换分布 $$T_{\tau \#} \alpha$$，发现变换的效果可以分离出来：
+
 $$
 \mathcal{W}_{2}\left(T_{\tau {\#}} \alpha, T_{\tau {\#}} \beta\right)^{2}=\mathcal{W}_{2}(\alpha, \beta)^{2}-2\left\langle\tau-\tau^{\prime}, \mathbf{m}_{\alpha}-\mathbf{m}_{\beta}\right\rangle+\left\|\tau-\tau^{\prime}\right\|^{2}
 $$
+
 这里的 $$\mathbf{m}_{\alpha} \stackrel{\text { def. }}{=} \int_{\mathcal{X}} x \mathrm{~d} \alpha(x) \in \mathbb{R}^{d}$$ 是分布 $$\alpha$$ 的期望，那么特别的有：
+
 $$
 \mathcal{W}_{2}(\alpha, \beta)^{2}=\mathcal{W}_{2}(\tilde{\alpha}, \tilde{\beta})^{2}+\left\|\mathbf{m}_{\alpha}-\mathbf{m}_{\beta}\right\|^{2}
 $$
+
 这里的 $$(\tilde{\alpha}, \tilde{\beta})$$ 是期望为原点的分布，计算上的性质很好
 
-#### Underlying Geometry
+## Dual Problem
 
-最优传输距离能够根据
+康托洛维奇问题是通过定义对偶问题：
+
+$$
+\mathrm{L}_{\mathbf{C}}(\mathbf{a}, \mathbf{b})=\max _{(\mathbf{f}, \mathbf{g}) \in \mathbf{R}(\mathbf{C})}\langle\mathbf{f}, \mathbf{a}\rangle+\langle\mathbf{g}, \mathbf{b}\rangle
+\\
+\mathbf{R}(\mathbf{C}) \stackrel{\text { def }}{=}\left\{(\mathbf{f}, \mathbf{g}) \in \mathbb{R}^{n} \times \mathbb{R}^{m}: \forall(i, j) \in [ n ] \times [ n ], \mathbf{f} \oplus \mathbf{g} \leq \mathbf{C}\right\} .
+$$
+
+康托洛维奇对偶性可以由拉格朗日对偶性得出，通过拉格朗日对偶性转化 $$\mathbf{R}(\mathbf{C}) $$ ，下面证明这仍然是原问题：
+
+$$
+\min _{\mathbf{P} \geq 0} \max _{(\mathbf{f}, \mathbf{g}) \in \mathbb{R}^{n} \times \mathbb{R}^{m}}\langle\mathbf{C}, \mathbf{P}\rangle+\left\langle\mathbf{a}-\mathbf{P} \mathbb{1}_{m}, \mathbf{f}\right\rangle+\left\langle\mathbf{b}-\mathbf{P}^{\mathrm{T}} \mathbb{1}_{n}, \mathbf{g}\right\rangle
+$$
+
+当考虑有限维的线性规划时，可以转换 $$\min\max$$ 为 $$\max\min$$ 有：
+
+$$
+\max _{(\mathbf{f}, \mathbf{g}) \in \mathbb{R}^{n} \times \mathbb{R}^{m}}\langle\mathbf{a}, \mathbf{f}\rangle+\langle\mathbf{b}, \mathbf{g}\rangle+\min _{\mathbf{P} \geq 0}\left\langle\mathbf{C}-\mathbf{f} \mathbb{1}_{m}{ }^{\mathrm{T}}-\mathbb{1}_{n} \mathbf{g}^{\mathrm{T}}, \mathbf{P}\right\rangle
+$$
+
+由于是取 $$\min$$ ，可以知：
+
+$$
+\min _{\mathbf{P} \geq 0}\langle\mathbf{Q}, \mathbf{P}\rangle=\left\{\begin{array}{ll}
+0 & \text { if } \quad \mathbf{Q} \geq 0 \\
+-\infty & \text { otherwise }
+\end{array}\right.
+$$
+
+因此这个条件等价于 $$\mathbf{C}-\mathbf{f} \mathbb{1}_{m}{ }^{\mathrm{T}}-\mathbb{1}_{n} \mathbf{g}^{\mathrm{T}}=\mathbf{C}-\mathbf{f} \oplus \mathbf{g} \geq 0$$，这仍然是康托洛维奇对偶性问题，通过拉格朗日对偶性知到康托洛维奇最优传输计划的支撑集在正好达成对偶性的集合中：
+
+$$
+\left\{(i, j) \in  [n] \times [m]: \mathbf{P}_{i, j}>0\right\} 
+\subset
+\left\{(i, j) \in [n] \times [m]: \mathbf{f}_{i}+\mathbf{g}_{j}=\mathbf{C}_{i, j}\right\}
+$$
+
+### Intuitive Presentation
+
+康托洛维奇对偶性，也可以由一个例子来把握一下，由之前的在最优传输笔记中所写的一样，康托洛维奇形式的原问题可以入如是理解：最小的代价去把矿上的资源推到各地的工厂中，问题的解为最优传输计划 $$\mathrm{P}^{\star}$$，最优传输代价为 $$\left\langle\mathbf{P}^{\star}, \mathbf{C}\right\rangle$$
+
+当然也有存在这样的情况：矿主不是自己运的，（因为他不会算最优传输方案这样的理由）而是委托给别人运（当然假设这个世界中，自己运的实际代价不小于别人运的实际代价），转运商的方案是在矿$$i$$ 收一笔装载费用 $$\mathbf{f}_{i}$$ ，而在工厂 $$j$$ 收一笔卸货费 $$\mathbf{g}_{j}$$，而同时有两个分布 $$\mathbf{a}$$ 和 $$\mathbf{b}$$ 代表需要装走的矿物的分布和需要接受的工厂量的分布，则转运方案的费用是 $$\langle\mathbf{f}, \mathbf{a}\rangle+\langle\mathbf{g}, \mathbf{b}\rangle$$ 
+
+当然，转运商给出的方案一定会使自己牟利最大，因此可以知道转运商的方案的成本下界就是最优传输方案，矿主自己需要把运输价钱给压低，最好的办法是算出原问题的最优传输代价 $$\mathrm{L}_{\mathbf{C}}(\mathbf{a}, \mathbf{b})$$，当然出于某些技术性问题，他不能算出具体的方案，此时有替代方案 :
+
+比较 $$\mathrm{C}_{i, j}$$ 为矿主自己运 $$i \rightarrow j$$ 的代价，转运商的方案中对应为 $$\mathbf{f}_{i}+\mathbf{g}_{j}$$ ，若出现了 $$\mathbf{f}_{i}+\mathbf{g}_{j} > \mathrm{C}_{i, j}$$ 的情况，则这部分就是有压价空间的
+
+换一个角度，已知矿主的压价方案，出于转运商的角度，首先他自己不会给出超过矿主自己运还贵的方案去做这件事情，对于任意传输方案 $$\mathbf{P}$$，有边际分布 $$\mathbf{a},\mathbf{b}$$，自然有约束：
+
+$$
+\begin{aligned}
+\sum_{i, j} \mathbf{P}_{i, j} \mathbf{C}_{i, j} & \geq \sum_{i, j} \mathbf{P}_{i, j}\left(\mathbf{f}_{i}+\mathbf{g}_{j}\right)=\left(\sum_{i} \mathbf{f}_{i} \sum_{j} \mathbf{P}_{i, j}\right)+\left(\sum_{j} \mathbf{g}_{j} \sum_{i} \mathbf{P}_{i, j}\right) \\
+&=\langle\mathbf{f}, \mathbf{a}\rangle+\langle\mathbf{g}, \mathbf{b}\rangle
+\end{aligned}
+$$
+
+同时在满足这样的方案 $$\mathbf{f},\mathbf{g}$$ 中，为了不给矿主压价空间，满足 $$\mathbf{f}_{i}+\mathbf{g}_{j} \leq \mathbf{C}_{i, j}$$，即康托洛维奇形式的约束 $$ \mathbf{f} \oplus \mathbf{g} \leq \mathbf{C}$$
+
+下图可视化的展示了康托洛维奇形式原问题和对偶问题的关系：
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2021-02-02-Computational-Optimal-Transport-Note-Part-1/Primal_Dual.png" alt="Primal_Dual" style="zoom:40%;" />
+{:refdef}
+
+进一步的，对偶问题也可以推广到任意的测度上：
+
+$$
+\mathcal{L}_{c}(\alpha, \beta)=\sup _{(f, g) \in \mathcal{R}(c)} \int_{\mathcal{X}} f(x) \mathrm{d} \alpha(x)+\int_{\mathcal{Y}} g(y) \mathrm{d} \beta(y)
+\\
+\mathcal{R}(c) \stackrel{\text { def. }}{=}\{(f, g) \in \mathcal{C}(\mathcal{X}) \times \mathcal{C}(\mathcal{Y}): \forall(x, y), f(x)+g(y) \leq c(x, y)\}
+$$
+
+同时依然有最优传输的支撑集在对偶问题可行集和原问题可行集中交集中：
+
+$$
+\operatorname{Supp}(\pi) \subset\{(x, y) \in \mathcal{X} \times \mathcal{Y}: f(x)+g(y)=c(x, y)\}
+$$
+
+上面的有约束情况，在 $$\alpha,\beta$$ 构成分布，即：$$\int_{\mathcal{X}} \mathrm{d} \alpha=\int_{\mathcal{Y}} \mathrm{d} \beta=1$$，可以转化成无约束形式：
+
+$$
+\mathcal{L}_{c}(\alpha, \beta)=\sup _{(f, g) \in \mathcal{C}(\mathcal{X}) \times \mathcal{C}(\mathcal{Y})} \int_{\mathcal{X}} f \mathrm{~d} \alpha+\int_{\mathcal{Y}} g \mathrm{~d} \beta+\min _{\mathcal{X} \otimes \mathcal{Y}}(c-f \oplus g)
+$$
+
+## Brenier Theorem
+
+康托洛维奇形式和蒙日形式等价性是非常重要的，至少到现在，证明其等价性需要证明在某些情况下，蒙日形式给出了康托洛维奇形式的一个下界，这其实很难做到。Brenier Theorem 给出条件：在 $$R^{d}$$ 中，传输距离定义为 $$p=2$$ 的情况，两个测度中至少测度 $$\alpha$$ 有一个能定义 $$\rho_{\alpha}$$，且有二阶矩，则在这样的条件下，康托洛维奇形式和蒙日形式是等价的
+
+具体一些的话，在 $$\mathcal{X}=\mathcal{Y}=\mathbb{R}^{d}$$ 中有代价函数 $$c(x, y)=\|x-y\|^{2}$$，其中至少一个测度 $$\alpha$$ 有一个能定义 $$\rho_{\alpha}$$，且有二阶矩 康托洛维奇最优传输是唯一的，且其支撑集和蒙日传输的支撑集是一样的，为 $$\{(x, T(x)), T: \mathbb{R}^{d} \rightarrow \mathbb{R}^{d} \} $$，而康托洛维奇传输计划可以表示为 $$\pi=(\mathrm{Id}, T)_{\#}\alpha $$，比如：
+
+$$
+\forall h \in \mathcal{C}(\mathcal{X} \times \mathcal{Y}), \quad \int_{\mathcal{X} \times \mathcal{Y}} h(x, y) \mathrm{d} \pi(x, y)=\int_{\mathcal{X}} h(x, T(x)) \mathrm{d} \alpha(x)
+$$
+
+进一步的，还可以给出蒙日传输映射 $$T$$ 的形式，通过一个凸函数 $$\varphi(x)$$ 定义，为其梯度 $$T(x)=\nabla \varphi(x)$$，而 $$\varphi(x)$$ 由之前康托洛维奇对偶形式中的 $$f$$ 给出：$$\varphi(x)=\frac{\|x\|^{2}}{2}-f(x)$$ 。简要的过一遍证明的主体：
+
+康托洛维奇传输代价有等价形式：$$\int c \mathrm{~d} \pi=C_{\alpha, \beta}-2 \int\langle x, y\rangle \mathrm{d} \pi(x, y)$$，而由于测度 $$\alpha,\beta$$ 已知，$$C_{\alpha, \beta}=\int\|x\|^{2} \mathrm{~d} \alpha(x)+\int\|y\|^{2} \mathrm{~d} \beta(y)$$ 这部分为常数，问题就等价于去求解：
+
+$$
+\max _{\pi \in \mathcal{U}(\alpha, \beta)} \int_{\mathcal{X} \times \mathcal{Y}}\langle x, y\rangle \mathrm{d} \pi(x, y)
+$$
+
+利用对偶性可以写出：
+
+$$
+\min _{(\varphi, \psi)}\left\{\int_{\mathcal{X}} \varphi \mathrm{d} \alpha+\int_{\mathcal{Y}} \psi \mathrm{d} \beta: \forall(x, y), \quad \varphi(x)+\psi(y) \geq\langle x, y\rangle\right\}
+$$
+
+可以知道 $$(\varphi, \psi)$$ 和 $$(f, g)$$ 的关系满足 $$(\varphi, \psi)=\left(\frac{\|\cdot\|^{2}}{2}-f, \frac{\|\cdot\|^{2}}{2}-g \right) $$
+
+利用勒让德变换可知：$$\varphi^{*}(y) \stackrel{\text { def. }}{=} \sup _{x}\langle x, y\rangle-\varphi(x)$$，利用勒让德变换，定义约束 $$\forall y, \quad \psi(y) \geq \varphi^{*}(y) \stackrel{\text { def. }}{=} \sup _{x}\langle x, y\rangle-\varphi(x)$$。令 $$\psi=\varphi^{*}$$，则可以变换优化目标为：
+
+$$
+\min _{\varphi} \int_{\mathcal{X}} \varphi \mathrm{d} \alpha+\int_{\mathcal{Y}} \varphi^{*} \mathrm{~d} \beta
+$$
+
+可知 $$\varphi^{*}$$ 是凸的，那么上述的变换再做一次的话，则有 $$\varphi = \varphi^{* *}$$，那么在这样的约束条件下，知道 $$ \left\{(x, y): \varphi(x)+\varphi^{*}(y)=\langle x, y\rangle\right\}$$ 是凸的，上述集合是最优传输 $$\pi$$ 的支撑集，同时也是勒让德变换的最优解，因此 $$y \in \partial \varphi(x)$$
+
+由于 $$\varphi $$ 是凸的，则几乎处处可微，由于 $$\alpha$$ 是一个密度，所以它也几乎处处可微，则可以定义最优传输 $$\pi=(\mathrm{Id}, \nabla \varphi)_{\#} \alpha$$
+
+
+

@@ -92,5 +92,5 @@ $$
 $$
 \theta^* = \arg\min_{\theta} \sum_{\mathbf{x} \in \mathcal{D}} \log p_{\boldsymbol{\theta}}(\mathbf{x})
 $$
-而常用的求解算法是随机梯度下降算法（SGD），当在整个数据集上进行一次梯度计算的话， 称为 batch gradient descent，但是当数据集很大的时候，更加适合用 
+而常用的求解算法是随机梯度下降算法（SGD），当在整个数据集上进行一次梯度计算的话， 称为 batch gradient descent，但是当数据集很大的时候，更加适合用 minibatch SGD 来处理
 
