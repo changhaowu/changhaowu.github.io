@@ -4,8 +4,12 @@ title: "Optimal Transport Note:Part 1"
 date: 2021-01-20 
 image: /images/cover/C_Scenery4.png       
 tags: [OTNotes]
-toc: true
+toc: false
 ---
+
+{: class="table-of-content"}
+* TOC
+{:toc}
 
 # Optimal Transport Note: Part 1
 

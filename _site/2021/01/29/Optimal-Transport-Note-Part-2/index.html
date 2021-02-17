@@ -241,42 +241,36 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			
 	
 				<div class="post__content">
-                    <ul id="toc" class="section-nav">
-<li class="toc-entry toc-h1"><a href="#optimal-transport-note-part-2">Optimal Transport Note: Part 2</a>
-<ul>
-<li class="toc-entry toc-h2"><a href="#kantorovich-duality">Kantorovich Duality</a>
-<ul>
-<li class="toc-entry toc-h3"><a href="#kantorovich-duality-1">Kantorovich Duality</a>
-<ul>
-<li class="toc-entry toc-h4"><a href="#theorem-31-kantorovich-duality">Theorem 3.1. Kantorovich Duality</a></li>
+                    <ul class="table-of-content" id="markdown-toc">
+  <li><a href="#optimal-transport-note-part-2" id="markdown-toc-optimal-transport-note-part-2">Optimal Transport Note: Part 2</a>    <ul>
+      <li><a href="#kantorovich-duality" id="markdown-toc-kantorovich-duality">Kantorovich Duality</a>        <ul>
+          <li><a href="#kantorovich-duality-1" id="markdown-toc-kantorovich-duality-1">Kantorovich Duality</a>            <ul>
+              <li><a href="#theorem-31-kantorovich-duality" id="markdown-toc-theorem-31-kantorovich-duality">Theorem 3.1. Kantorovich Duality</a></li>
+            </ul>
+          </li>
+          <li><a href="#fenchel-rockafeller-duality" id="markdown-toc-fenchel-rockafeller-duality">Fenchel-Rockafeller Duality</a>            <ul>
+              <li><a href="#theorem-32-fenchel-rockafellar-duality" id="markdown-toc-theorem-32-fenchel-rockafellar-duality">Theorem 3.2. Fenchel-Rockafellar Duality</a></li>
+              <li><a href="#lemma-33" id="markdown-toc-lemma-33">Lemma 3.3</a></li>
+              <li><a href="#theorem-34-hahn-banach-theorem分离定理" id="markdown-toc-theorem-34-hahn-banach-theorem分离定理">Theorem 3.4. Hahn-Banach Theorem（分离定理）</a></li>
+              <li><a href="#proof-of--fenchel-rockafellar-duality" id="markdown-toc-proof-of--fenchel-rockafellar-duality">Proof of  Fenchel-Rockafellar Duality</a></li>
+            </ul>
+          </li>
+          <li><a href="#proof-of-kantorovich-duality" id="markdown-toc-proof-of-kantorovich-duality">Proof of Kantorovich Duality</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li class="toc-entry toc-h3"><a href="#fenchel-rockafeller-duality">Fenchel-Rockafeller Duality</a>
-<ul>
-<li class="toc-entry toc-h4"><a href="#theorem-32-fenchel-rockafellar-duality">Theorem 3.2. Fenchel-Rockafellar Duality</a></li>
-<li class="toc-entry toc-h4"><a href="#lemma-33">Lemma 3.3</a></li>
-<li class="toc-entry toc-h4"><a href="#theorem-34-hahn-banach-theorem分离定理">Theorem 3.4. Hahn-Banach Theorem（分离定理）</a></li>
-<li class="toc-entry toc-h4"><a href="#proof-of--fenchel-rockafellar-duality">Proof of  Fenchel-Rockafellar Duality</a></li>
-</ul>
-</li>
-<li class="toc-entry toc-h3"><a href="#proof-of-kantorovich-duality">Proof of Kantorovich Duality</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul><h1 id="optimal-transport-note-part-2">
-<a class="anchor" href="#optimal-transport-note-part-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Optimal Transport Note: Part 2</h1>
 
-<h2 id="kantorovich-duality">
-<a class="anchor" href="#kantorovich-duality" aria-hidden="true"><span class="octicon octicon-link"></span></a>Kantorovich Duality</h2>
+<h1 id="optimal-transport-note-part-2">Optimal Transport Note: Part 2</h1>
+
+<h2 id="kantorovich-duality">Kantorovich Duality</h2>
 
 <p>自然的，康托洛维奇最优的离散形式是一个标准的线性规划中的运输问题，那么很自然的，联想到应当可以定义康托洛维奇形式的对偶形式</p>
 
-<h3 id="kantorovich-duality-1">
-<a class="anchor" href="#kantorovich-duality-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Kantorovich Duality</h3>
+<h3 id="kantorovich-duality-1">Kantorovich Duality</h3>
 
-<h4 id="theorem-31-kantorovich-duality">
-<a class="anchor" href="#theorem-31-kantorovich-duality" aria-hidden="true"><span class="octicon octicon-link"></span></a>Theorem 3.1. Kantorovich Duality</h4>
+<h4 id="theorem-31-kantorovich-duality">Theorem 3.1. Kantorovich Duality</h4>
 
 <p>有 Polish space 和其上的测度 \((X, \mu)\) 和 \((Y, \nu)\) ，有传输代价函数 \(c: X \times Y \rightarrow[0,+\infty]\) 是 lower semi continuous的函数</p>
 
@@ -317,8 +311,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 \[\inf _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)=\sup _{(\varphi, \psi) \in \Phi_{c}} \int_{X} \varphi(x) \mathrm{d} \mu(x)+\int_{Y} \psi(y) \mathrm{d} \nu(y)\]
 
-<h3 id="fenchel-rockafeller-duality">
-<a class="anchor" href="#fenchel-rockafeller-duality" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fenchel-Rockafeller Duality</h3>
+<h3 id="fenchel-rockafeller-duality">Fenchel-Rockafeller Duality</h3>
 
 <p>之前在证明中用到的 Minimax Principle，即 \(sup \; inf = inf \; sup\)，这在凸函数时才成立，下面给出一些与凸函数相关的结果</p>
 
@@ -328,18 +321,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 <p>勒让德变换的低维形式，可以理解变换到导数，及其对应的 \(y\) 轴截距：</p>
 
-<p>\(\quad \quad \quad \quad (x, f(x)) \stackrel{\text { Lengendre }}{\longrightarrow}\left(p, f^{*}(p)\right) \quad \quad \quad \quad \quad\)            <img src="/images/2021-01-29-Optimal-Transport-Note-Part-2/400px-LegendreTransform1.png" alt="400px-LegendreTransform1" style="zoom:70%;"></p>
+<p>\(\quad \quad \quad \quad (x, f(x)) \stackrel{\text { Lengendre }}{\longrightarrow}\left(p, f^{*}(p)\right) \quad \quad \quad \quad \quad\)            <img src="/images/2021-01-29-Optimal-Transport-Note-Part-2/400px-LegendreTransform1.png" alt="400px-LegendreTransform1" style="zoom:70%;" /></p>
 
-<h4 id="theorem-32-fenchel-rockafellar-duality">
-<a class="anchor" href="#theorem-32-fenchel-rockafellar-duality" aria-hidden="true"><span class="octicon octicon-link"></span></a>Theorem 3.2. Fenchel-Rockafellar Duality</h4>
+<h4 id="theorem-32-fenchel-rockafellar-duality">Theorem 3.2. Fenchel-Rockafellar Duality</h4>
 
 <p>利用勒让德变换，可以定义  Fenchel-Rockafellar 对偶</p>
 
 <p>赋范线性空间 \(E\) 上有凸函数 \(\Theta , \Xi : E \rightarrow \mathbb{R} \cup\{+\infty\}\)，若存在 \(z_{0} \in E,s.t \; \Theta\left(z_{0}\right)&lt;\infty, \Xi\left(z_{0}\right)&lt;\infty\) 且 \(\Theta\) 在 \(z_{0}\)，则：
 \(\inf _{E}(\Theta+\Xi)=\max _{z^{*} \in E^{*}}\left(-\Theta^{*}\left(-z^{*}\right)-\Xi^{*}\left(z^{*}\right)\right) .\)</p>
 
-<h4 id="lemma-33">
-<a class="anchor" href="#lemma-33" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lemma 3.3</h4>
+<h4 id="lemma-33">Lemma 3.3</h4>
 
 <p>假设赋范线性空间 \(E\)：</p>
 
@@ -360,13 +351,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   </li>
 </ol>
 
-<h4 id="theorem-34-hahn-banach-theorem分离定理">
-<a class="anchor" href="#theorem-34-hahn-banach-theorem%E5%88%86%E7%A6%BB%E5%AE%9A%E7%90%86" aria-hidden="true"><span class="octicon octicon-link"></span></a>Theorem 3.4. Hahn-Banach Theorem（分离定理）</h4>
+<h4 id="theorem-34-hahn-banach-theorem分离定理">Theorem 3.4. Hahn-Banach Theorem（分离定理）</h4>
 
 <p>\(E\) 是拓扑向量空间，有非空，不相交，凸子集 \(A, B \subset E\) ，且有 \(A\) 是开集，则存在一个分离超平面分开 \(A, B\)</p>
 
-<h4 id="proof-of--fenchel-rockafellar-duality">
-<a class="anchor" href="#proof-of--fenchel-rockafellar-duality" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proof of  Fenchel-Rockafellar Duality</h4>
+<h4 id="proof-of--fenchel-rockafellar-duality">Proof of  Fenchel-Rockafellar Duality</h4>
 
 <p>通过勒让德变换可以写出：</p>
 
@@ -443,8 +432,7 @@ B=\{(y, \sigma) \in E \times \mathbb{R}: \sigma \leq M-\Xi(y)\} .
 
 \[\inf _{x \in E}(\Theta(x)+\Xi(x))=M=\sup _{z^{*} \in E^{*}}\left(-\Theta^{*}\left(-z^{*}\right)-\Xi^{*}\left(z^{*}\right)\right)\]
 
-<h3 id="proof-of-kantorovich-duality">
-<a class="anchor" href="#proof-of-kantorovich-duality" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proof of Kantorovich Duality</h3>
+<h3 id="proof-of-kantorovich-duality">Proof of Kantorovich Duality</h3>
 
 <p>康托洛维奇对偶性的证明分成两部分</p>
 

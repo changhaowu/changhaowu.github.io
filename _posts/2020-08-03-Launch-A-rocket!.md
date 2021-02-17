@@ -4,8 +4,12 @@ title: "Launch A rocket!"
 date: 2020-07-20
 image: images/cover/A3.jpg
 tags: [Numerical-Computation]
-toc: true
+toc: false
 ---
+{: class="table-of-content"}
+* TOC
+{:toc}
+
 #### 符号
 
 | Notation                    | Meaning                       |

@@ -4,11 +4,15 @@ title: "Computational Optimal Transport Note Part 0: Introduction"
 date: 2021-02-01
 image: /images/cover/C_Scenery3.jpeg   
 tags: [OTNotes]
-toc: true
+toc: false
 published: true
 
 
 ---
+
+{: class="table-of-content"}
+* TOC
+{:toc}
 
 # Computational Optimal Transport Note Part 0: Introduction
 

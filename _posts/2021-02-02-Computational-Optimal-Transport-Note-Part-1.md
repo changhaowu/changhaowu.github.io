@@ -4,10 +4,14 @@ title: "Computational Optimal Transport Note Part 1: Theoretical Foundations"
 date: 2021-02-02
 image: /images/cover/C_Scenery7.jpeg   
 tags: [OTNotes]
-toc: true
+toc: false
 published: true
 
 ---
+
+{: class="table-of-content"}
+* TOC
+{:toc}
 
 # Computational Optimal Transport Note Part 1: Theoretical Foundations
 

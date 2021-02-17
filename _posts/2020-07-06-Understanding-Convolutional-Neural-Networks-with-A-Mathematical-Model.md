@@ -4,8 +4,12 @@ title: "Understanding Convolutional Neural Networks with A Mathematical Model"
 date: 2020-07-03
 image: images/cover/F1.jpg
 tags: [CNN]
-toc: true
+toc: false
 ---
+{: class="table-of-content"}
+* TOC
+{:toc}
+
 ## Understanding Convolutional Neural Networks with A Mathematical Model
 
 

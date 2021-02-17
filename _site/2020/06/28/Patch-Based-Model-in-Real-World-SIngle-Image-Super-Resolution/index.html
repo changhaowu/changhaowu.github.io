@@ -241,60 +241,55 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			
 	
 				<div class="post__content">
-                    <ul id="toc" class="section-nav">
-<li class="toc-entry toc-h1"><a href="#introduction">Introduction</a></li>
-<li class="toc-entry toc-h1"><a href="#single-image-super-resolution-models">Single Image Super Resolution Models</a>
-<ul>
-<li class="toc-entry toc-h2"><a href="#prediction-model">Prediction Model</a>
-<ul>
-<li class="toc-entry toc-h3"><a href="#interpolation-kernels">Interpolation Kernels</a></li>
-<li class="toc-entry toc-h3"><a href="#nearest-neighbor">Nearest Neighbor</a></li>
-<li class="toc-entry toc-h3"><a href="#bilinear">Bilinear</a></li>
-<li class="toc-entry toc-h3"><a href="#bicubic">Bicubic</a></li>
+                    <ul class="table-of-content" id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#single-image-super-resolution-models" id="markdown-toc-single-image-super-resolution-models">Single Image Super Resolution Models</a>    <ul>
+      <li><a href="#prediction-model" id="markdown-toc-prediction-model">Prediction Model</a>        <ul>
+          <li><a href="#interpolation-kernels" id="markdown-toc-interpolation-kernels">Interpolation Kernels</a></li>
+          <li><a href="#nearest-neighbor" id="markdown-toc-nearest-neighbor">Nearest Neighbor</a></li>
+          <li><a href="#bilinear" id="markdown-toc-bilinear">Bilinear</a></li>
+          <li><a href="#bicubic" id="markdown-toc-bicubic">Bicubic</a></li>
+        </ul>
+      </li>
+      <li><a href="#patch-based-model" id="markdown-toc-patch-based-model">Patch-based Model</a>        <ul>
+          <li><a href="#sparse-representation-super-resolution" id="markdown-toc-sparse-representation-super-resolution">Sparse Representation Super-Resolution</a></li>
+          <li><a href="#super-resolution-convolutional-neural-network" id="markdown-toc-super-resolution-convolutional-neural-network">Super Resolution Convolutional Neural Network</a></li>
+        </ul>
+      </li>
+      <li><a href="#参考文献" id="markdown-toc-参考文献">参考文献</a></li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li class="toc-entry toc-h2"><a href="#patch-based-model">Patch-based Model</a>
-<ul>
-<li class="toc-entry toc-h3"><a href="#sparse-representation-super-resolution">Sparse Representation Super-Resolution</a></li>
-<li class="toc-entry toc-h3"><a href="#super-resolution-convolutional-neural-network">Super Resolution Convolutional Neural Network</a></li>
-</ul>
-</li>
-<li class="toc-entry toc-h2"><a href="#参考文献">参考文献</a></li>
-</ul>
-</li>
-</ul><p>深度学习在计算机视觉大成功的当下，我们也需要严格审慎的看待深度学习的各项应用，与handcraft的传统方法在特定问题上的比较，优化目标和现实目标的配准，以及深度学习超分辨率模型内部问题的解析。这篇文章主要关注超分辨率（SR）中单图像超分辨率（SISR）中Patch based model的应用，有前深度学习时代的SRSR(Super Resolution Via Sparse Representation)和SRCNN(Super Resolution Convolutional Nerual Network)，然后是基于统计模型的SRGAN和其加强版SRGAN</p>
 
-<h1 id="introduction">
-<a class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h1>
+<p>深度学习在计算机视觉大成功的当下，我们也需要严格审慎的看待深度学习的各项应用，与handcraft的传统方法在特定问题上的比较，优化目标和现实目标的配准，以及深度学习超分辨率模型内部问题的解析。这篇文章主要关注超分辨率（SR）中单图像超分辨率（SISR）中Patch based model的应用，有前深度学习时代的SRSR(Super Resolution Via Sparse Representation)和SRCNN(Super Resolution Convolutional Nerual Network)，然后是基于统计模型的SRGAN和其加强版SRGAN</p>
+
+<h1 id="introduction">Introduction</h1>
 
 <p>这篇文章主要注重于Statistical Model中的CNN和GAN在SR问题上的应用，当然会涉及一部分用来做SR的传统插值算法，比如基于Prediction Models的bilinear, bicubic。</p>
 
-<p><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen%20Shot%202020-06-09%20at%203.24.55%20PM.png" alt="Screen Shot 2020-06-09 at 3.24.55 PM"></p>
+<p><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen Shot 2020-06-09 at 3.24.55 PM.png" alt="Screen Shot 2020-06-09 at 3.24.55 PM" /></p>
 
 <p><a href="https://en.wikipedia.org/wiki/Super-resolution_imaging">SR(Super-resolution)</a>，其实是很大的一个研究方向，本文中注重于空间域中的SISR(SIngle Image Super-Resolution)，即单图像超分辨率，SISR不考虑视频的每帧图片之前的互信息，相反的，只能利用单图像的信息和模型中携带的先验信息（prior）做超分辨率。SISR，可以说是一个很有意思且有应用空间的的课题。</p>
 
 <p>这个问题，目标描述起来很实在的，就是所谓把低分辨率（LR）的图像变成高分辨率（HR）的图像，同时保证HR图像有不错的观感。很自然的可以想到，生活中会存在一些图片，由于传送过程中的有损压缩，我们看到时是低分辨率的，人看起来非常的不愉悦，就比如要想办法把右边的莲花恢复成左边那样的，这是很有价值的应用。</p>
 
-<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/resolution.jpg" alt="resolution" style="zoom:67%;"></p>
+<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/resolution.jpg" alt="resolution" style="zoom:67%;" /></p>
 
 <p>SR问题的有趣之处，也在于这一点，从HR到LR很容易，有各种算法来实现，但是反过来，从LR空间映回去到HR空间的映射，不仅映射本身很难处理，而且这个问题是病态问题，基于同一个比如MSE的误差，其实一个LR的图片，在HR空间里可能对应着一个流形，这就引出了问题，视觉上的最好，不应当是这样一个HR空间中的流形上的每个点，而是个别的，要找到一个优化目标，能够量化所谓看起来自然这种很抽象的命题，而且甚至每个观察者都持有不一样的评判标准，建立这个优化目标非常的困难。</p>
 
-<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen%20Shot%202020-06-09%20at%204.59.44%20PM.png" alt="Screen Shot 2020-06-09 at 4.59.44 PM" style="zoom:67%;"></p>
+<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen Shot 2020-06-09 at 4.59.44 PM.png" alt="Screen Shot 2020-06-09 at 4.59.44 PM" style="zoom:67%;" /></p>
 
-<h1 id="single-image-super-resolution-models">
-<a class="anchor" href="#single-image-super-resolution-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>Single Image Super Resolution Models</h1>
+<h1 id="single-image-super-resolution-models">Single Image Super Resolution Models</h1>
 
 <p>在比较传统的观点下，根据不同的图像先验（Image Prior）使用方法，SISR模型是可以被分成prediction model，edge based methods，image statistical methods和 patch based（example-based）methods的。在其中，在神经网络方法提出前，patch based methods是SOTA。而后文中，SRDCN中证明了其本质就是patch based methods。</p>
 
-<h2 id="prediction-model">
-<a class="anchor" href="#prediction-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prediction Model</h2>
+<h2 id="prediction-model">Prediction Model</h2>
 
 <p>Prediction Model从Image Prior来看，是不使用数据集训练的，SR映射就是一个预先定义的数学公式，其中比较流行的方法就是bilinear, bicubic这样此类插值算法，由于这类插值算法通过在local pixel之间进行加权平均，他们的结果，会体现出比较好的像素光滑性（吐槽，视觉效果上，光滑大概是反而不好的，么得对比度）</p>
 
 <p>但是要讲这两个算法前，先要声明插值核（Interpolation Kernels）和最近邻插值算法（Nearest Neighbor）</p>
 
-<h3 id="interpolation-kernels">
-<a class="anchor" href="#interpolation-kernels" aria-hidden="true"><span class="octicon octicon-link"></span></a>Interpolation Kernels</h3>
+<h3 id="interpolation-kernels">Interpolation Kernels</h3>
 
 <p>在<a href="https://www.researchgate.net/publication/276034240_Linear_Methods_for_Image_Interpolation">Linear Methods for Image Interpolation</a>一文中，给出了如下的Prediction Model的形式：</p>
 
@@ -313,10 +308,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 \(Z(v)(x, y)=\sum_{m,n \in Z} v_{m,n}K(x-m,y-n)\)
 一般在\(K\)上，还会被设计有一些很好的性质，比如$K$被设计成一个张量积，\(K(x,y)=K_1(x)K_2(y)\)，其中\(K_1\)是对称的</p>
 
-<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen%20Shot%202020-06-10%20at%2011.07.53%20AM.png" alt="Screen Shot 2020-06-10 at 11.07.53 AM"></p>
+<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen Shot 2020-06-10 at 11.07.53 AM.png" alt="Screen Shot 2020-06-10 at 11.07.53 AM" /></p>
 
-<h3 id="nearest-neighbor">
-<a class="anchor" href="#nearest-neighbor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nearest Neighbor</h3>
+<h3 id="nearest-neighbor">Nearest Neighbor</h3>
 
 <p>最近邻插值，很直白的说明了就是用附近的pixel进行插值：
 \(u(x,y)=v_{[x],[y]}\)
@@ -329,10 +323,9 @@ $[.]$就表示最邻近的位置，也由此，一般最邻近插值也被叫做
 \right.\)
 最近邻插值的插值核如下，非常的“最近邻“</p>
 
-<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen%20Shot%202020-06-10%20at%2011.31.35%20AM.png" alt="Screen Shot 2020-06-10 at 11.31.35 AM" style="zoom:50%;"></p>
+<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen Shot 2020-06-10 at 11.31.35 AM.png" alt="Screen Shot 2020-06-10 at 11.31.35 AM" style="zoom:50%;" /></p>
 
-<h3 id="bilinear">
-<a class="anchor" href="#bilinear" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bilinear</h3>
+<h3 id="bilinear">Bilinear</h3>
 
 <p>双线性插值是一个连续函数，其中的：\(\lfloor.\rfloor\)表示floor function，而$<x>=x-\lfloor x\rfloor$，具体形式如下：
 $$
@@ -346,12 +339,11 @@ $$
 K(x,y)=K_1(x)K_1(y), K_1(t)=(1-|t|)^+=max(1-|t|,0)
 $$</x></p>
 
-<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen%20Shot%202020-06-10%20at%2011.49.46%20AM.png" alt="Screen Shot 2020-06-10 at 11.49.46 AM" style="zoom:67%;"></p>
+<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen Shot 2020-06-10 at 11.49.46 AM.png" alt="Screen Shot 2020-06-10 at 11.49.46 AM" style="zoom:67%;" /></p>
 
 <p>在每个\([m,m+1]\times[n,n+1]\)内，插值都是附近的4个pixel的凸组合（如上图），这样的话，插值至少不会产生异常的over/undershoot至少在视觉上不突兀；其次双线性有仿射不变性：\(v_{m,n}=am+bn+c\)，则$u(x,y)=ax+by+c$</p>
 
-<h3 id="bicubic">
-<a class="anchor" href="#bicubic" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bicubic</h3>
+<h3 id="bicubic">Bicubic</h3>
 
 <p>双三次使用如下的插值核，其中\(\alpha\)是一个自由参数：
 \(K(x,y)=K_1(x)K_1(y),\;K_{1}(t)=\left\{\begin{array}{ll}
@@ -361,21 +353,19 @@ $$</x></p>
 \end{array}\right.\)
 下图的插值核使用的是\(\alpha=-0.5\)的参数</p>
 
-<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen%20Shot%202020-06-10%20at%2012.04.00%20PM.png" alt="Screen Shot 2020-06-10 at 12.04.00 PM" style="zoom:67%;"></p>
+<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen Shot 2020-06-10 at 12.04.00 PM.png" alt="Screen Shot 2020-06-10 at 12.04.00 PM" style="zoom:67%;" /></p>
 
 <p>可以看到的是，无论何种形式的Prediction Model，都没有一个learning的过程，真正做到了可理解的Prior利用过程；而是直接利用既有的所谓积累下来经验，去估计一个最好的插值核去进行超分辨率，甚至有些模型是没有调整的空间的。（胡言乱语：这样的话，信息量被高度压缩在一个很简单的经验公式里，大部分情况下，在效果上肯定会比把Prior嵌入到比较大的结构，无论是字典或者是神经网络，就比如下图，bicubic比SC模型和SRCNN效果上会差）</p>
 
-<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen%20Shot%202020-06-10%20at%2012.28.20%20PM.png" alt="Screen Shot 2020-06-10 at 12.28.20 PM" style="zoom:50%;"></p>
+<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen Shot 2020-06-10 at 12.28.20 PM.png" alt="Screen Shot 2020-06-10 at 12.28.20 PM" style="zoom:50%;" /></p>
 
-<h2 id="patch-based-model">
-<a class="anchor" href="#patch-based-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Patch-based Model</h2>
+<h2 id="patch-based-model">Patch-based Model</h2>
 
 <p>这里主要研究SRCNN模型，但是首先需要由通过稀疏表示的patch based模型做引子，在patch-based model研究历史上，Sparse Representation Super-Resolution是非常重要的起承转合的方法，为后来GPU算力大爆发时，SRCNN的出现做了铺垫。</p>
 
 <p>Patch based的想法是，把大的图像切割成一块块有相互覆盖的patches，然后在每个patch上，完成HR后，再把patches一块块拼接起来，当然其中一步步都要满足一些约束，使得生成的图片质量更好。</p>
 
-<h3 id="sparse-representation-super-resolution">
-<a class="anchor" href="#sparse-representation-super-resolution" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sparse Representation Super-Resolution</h3>
+<h3 id="sparse-representation-super-resolution">Sparse Representation Super-Resolution</h3>
 
 <p>SRCNN的话，和以稀疏编码为基础的representative external example-based SR有很深的关系，因此，为了理解SRCNN的patch based，应该先理解representative external example-based SR。下面以<a href="http://www.columbia.edu/~jw2966/papers/YWHM10-TIP.pdf">Image Super-Resolution via Sparse Representation</a>中的稀疏表示方法为例，下面简称该模型SRSR（Sparse Representation Super-Resolution）</p>
 
@@ -383,7 +373,7 @@ $$</x></p>
 
 <p>SRSR的pipeline中比较算力负担低的方案如下：</p>
 
-<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen%20Shot%202020-06-10%20at%204.11.41%20PM.png" alt="Screen Shot 2020-06-10 at 4.11.41 PM" style="zoom:40%;"></p>
+<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen Shot 2020-06-10 at 4.11.41 PM.png" alt="Screen Shot 2020-06-10 at 4.11.41 PM" style="zoom:40%;" /></p>
 
 <p>为了预训练字典，则SRSR的模型细节具体如下：</p>
 
@@ -489,7 +479,7 @@ F \boldsymbol{y} \\
 
 <p>然后按照如下算法训练基于 \(X\) 的字典</p>
 
-<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen%20Shot%202020-06-10%20at%208.11.13%20PM.png" alt="Screen Shot 2020-06-10 at 8.11.13 PM" style="zoom:43%;"></p>
+<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen Shot 2020-06-10 at 8.11.13 PM.png" alt="Screen Shot 2020-06-10 at 8.11.13 PM" style="zoom:43%;" /></p>
 
 <p>而在SRSR中，HR图像和LR图像是对于两个字典的，并且有数据集\(X^h,Y^l\)</p>
 
@@ -503,10 +493,9 @@ F \boldsymbol{y} \\
 
 <p>而经过训练的字典内部的信息可视化后如下，确实有点CNN Visualization卷积那味啊，后面在SRCNN中也将证    明其等价性。</p>
 
-<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen%20Shot%202020-06-10%20at%206.47.54%20PM.png" alt="Screen Shot 2020-06-10 at 6.47.54 PM" style="zoom:80%;"></p>
+<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen Shot 2020-06-10 at 6.47.54 PM.png" alt="Screen Shot 2020-06-10 at 6.47.54 PM" style="zoom:80%;" /></p>
 
-<h3 id="super-resolution-convolutional-neural-network">
-<a class="anchor" href="#super-resolution-convolutional-neural-network" aria-hidden="true"><span class="octicon octicon-link"></span></a>Super Resolution Convolutional Neural Network</h3>
+<h3 id="super-resolution-convolutional-neural-network">Super Resolution Convolutional Neural Network</h3>
 
 <p>SRCNN</p>
 
@@ -514,7 +503,7 @@ F \boldsymbol{y} \\
 
 <p>在<a href="https://arxiv.org/abs/1501.00092">Image Super-Resolution Using Deep Convolutional Networks</a>一文中，提出的SRCNN，在经过适当的训练之后，就达到了当时的SOTA水准</p>
 
-<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen%20Shot%202020-06-10%20at%2011.01.14%20PM.png" alt="Screen Shot 2020-06-10 at 11.01.14 PM" style="zoom:40%;"></p>
+<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen Shot 2020-06-10 at 11.01.14 PM.png" alt="Screen Shot 2020-06-10 at 11.01.14 PM" style="zoom:40%;" /></p>
 
 <table class="table table-bordered">
   <thead>
@@ -585,7 +574,7 @@ F \boldsymbol{y} \\
   </li>
 </ul>
 
-<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen%20Shot%202020-06-10%20at%206.57.57%20PM.png" alt="Screen Shot 2020-06-10 at 6.57.57 PM"></p>
+<p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen Shot 2020-06-10 at 6.57.57 PM.png" alt="Screen Shot 2020-06-10 at 6.57.57 PM" /></p>
 
 <ul>
   <li>
@@ -599,10 +588,9 @@ F \boldsymbol{y} \\
 
     <p>而在总体结构上来看，无论卷积神经网络做的事情，还是每个layer的效果，都是一致的。</p>
 
-    <p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen%20Shot%202020-06-11%20at%2010.19.14%20AM.png" alt="Screen Shot 2020-06-11 at 10.19.14 AM" style="zoom:60%;"></p>
+    <p style="text-align: center;"><img src="/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen Shot 2020-06-11 at 10.19.14 AM.png" alt="Screen Shot 2020-06-11 at 10.19.14 AM" style="zoom:60%;" /></p>
 
-    <h2 id="参考文献">
-<a class="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>参考文献</h2>
+    <h2 id="参考文献">参考文献</h2>
     <p>[1] Pascal Getreuer <a href="https://www.researchgate.net/publication/276034240_Linear_Methods_for_Image_Interpolation">Linear Methods for Image Interpolation</a></p>
 
     <p>[2] Chih-Yuan Yang , Chao Ma , and Ming-Hsuan Yang <a href="applewebdata://FDAB6DEE-E31C-4DCC-B4EF-A31D1B799D35/%5Bchrome-extension://cdonnmffkdaoajfknoeeecmchibpmkmg/assets/pdf/web/viewer.html?file=https://faculty.ucmerced.edu/mhyang/papers/eccv14_super.pdf%5D(chrome-extension://cdonnmffkdaoajfknoeeecmchibpmkmg/assets/pdf/web/viewer.html?file=https://faculty.ucmerced.edu/mhyang/papers/eccv14_super.pdf)">Single-Image Super-Resolution: A Benchmark</a></p>

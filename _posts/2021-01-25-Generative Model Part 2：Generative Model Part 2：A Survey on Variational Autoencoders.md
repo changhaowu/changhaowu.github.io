@@ -4,9 +4,13 @@ title: "Generative Model Part 2：A Survey on Variational Autoencoder"
 date: 2021-01-25
 image: /images/cover/C_ Abstraction3.jpeg         
 tags: [Generative-Model]
-toc: true
+toc: false
 published: false
 ---
+
+{: class="table-of-content"}
+* TOC
+{:toc}
 
 # Generative Model Part 2：A Survey on Variational Autoencoders 
 

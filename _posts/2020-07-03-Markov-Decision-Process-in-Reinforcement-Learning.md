@@ -4,9 +4,12 @@ title: "Markov Decision Process in Reinforcement Learning"
 date: 2020-07-03
 image: images/cover/F5.jpg
 tags: [Reinforcement-Learning]
-toc: true
+toc: false
 ---
 
+{: class="table-of-content"}
+* TOC
+{:toc}
 
 ## 引言
 

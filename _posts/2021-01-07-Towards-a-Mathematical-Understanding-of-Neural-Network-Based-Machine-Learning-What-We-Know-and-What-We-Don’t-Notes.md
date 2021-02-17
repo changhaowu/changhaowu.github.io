@@ -4,9 +4,12 @@ title: "Towards a Mathematical Understanding of Neural Network-Based Machine Lea
 date: 2021-01-07
 image: /images/cover/C_Scenery10.jpg         
 tags: [Paper-Notes]
-toc: true
+toc: false
 published: false
 ---
+{: class="table-of-content"}
+* TOC
+{:toc}
 
 # "Towards a Mathematical Understanding of Neural Network-Based Machine Learning: What We Know and What We Don’t" ——Notes
 

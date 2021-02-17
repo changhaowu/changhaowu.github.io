@@ -4,9 +4,13 @@ title: "PRML Chapt 1 Introduction Notes"
 date: 2021-01-01
 image: /images/cover/C_Design3.jpeg   
 tags: [PRML-Notes]
-toc: true
+toc: false
 published: true
 ---
+
+{: class="table-of-content"}
+* TOC
+{:toc}
 
 # Chapt-1-Introduction-Notes
 
