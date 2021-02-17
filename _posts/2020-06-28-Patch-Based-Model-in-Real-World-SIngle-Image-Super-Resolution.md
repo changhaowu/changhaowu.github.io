@@ -5,6 +5,7 @@ date: 2020-06-28
 image: images/cover/F3.jpg
 tags: [Computer-Vision]
 toc: true
+published: true
 ---
 
  深度学习在计算机视觉大成功的当下，我们也需要严格审慎的看待深度学习的各项应用，与handcraft的传统方法在特定问题上的比较，优化目标和现实目标的配准，以及深度学习超分辨率模型内部问题的解析。这篇文章主要关注超分辨率（SR）中单图像超分辨率（SISR）中Patch based model的应用，有前深度学习时代的SRSR(Super Resolution Via Sparse Representation)和SRCNN(Super Resolution Convolutional Nerual Network)，然后是基于统计模型的SRGAN和其加强版SRGAN
