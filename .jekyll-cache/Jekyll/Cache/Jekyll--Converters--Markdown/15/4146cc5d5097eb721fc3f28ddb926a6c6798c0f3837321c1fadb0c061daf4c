@@ -1,4 +1,19 @@
-I"�"<h2 id="understanding-convolutional-neural-networks-with-a-mathematical-model">Understanding Convolutional Neural Networks with A Mathematical Model</h2>
+I";'<ul class="table-of-content" id="markdown-toc">
+  <li><a href="#understanding-convolutional-neural-networks-with-a-mathematical-model" id="markdown-toc-understanding-convolutional-neural-networks-with-a-mathematical-model">Understanding Convolutional Neural Networks with A Mathematical Model</a>    <ul>
+      <li><a href="#the-proposal-of-problem" id="markdown-toc-the-proposal-of-problem">The proposal of problem</a></li>
+      <li><a href="#recos-model" id="markdown-toc-recos-model">RECOS Model</a></li>
+      <li><a href="#nonlinear-activation-function" id="markdown-toc-nonlinear-activation-function">Nonlinear Activation Function</a></li>
+      <li><a href="#advantages-of-cascaded-layers" id="markdown-toc-advantages-of-cascaded-layers">Advantages of Cascaded Layers</a>        <ul>
+          <li><a href="#two-layer-one-to-one-cascade" id="markdown-toc-two-layer-one-to-one-cascade">Two Layer One-to-One Cascade</a></li>
+          <li><a href="#one-layer-system" id="markdown-toc-one-layer-system">One Layer System</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#reference" id="markdown-toc-reference">Reference</a></li>
+</ul>
+
+<h2 id="understanding-convolutional-neural-networks-with-a-mathematical-model">Understanding Convolutional Neural Networks with A Mathematical Model</h2>
 
 <p>CNN(Convoulutional Neural Network)是一种受人眼识别物体的过程启发而实现的架构，其中比较有名的网络架构为Yann Lecun提出的LeNet-5和Hinton提出的AlexNet，平时我们使用CNN的时候都是一种基于感觉的来控制网络的结构，分配超参数，但是这样在模型规模越来越大的今天，这条路是会逐渐走到头的，因此，我们应该想办法对CNN进行一下Mathematical的分析。</p>
 

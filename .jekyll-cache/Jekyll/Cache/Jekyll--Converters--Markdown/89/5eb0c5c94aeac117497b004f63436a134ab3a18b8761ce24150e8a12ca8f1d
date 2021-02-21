@@ -1,4 +1,33 @@
-I"�}<h1 id="computational-optimal-transport-note-part-1-theoretical-foundations">Computational Optimal Transport Note Part 1: Theoretical Foundations</h1>
+I"f�<ul class="table-of-content" id="markdown-toc">
+  <li><a href="#computational-optimal-transport-note-part-1-theoretical-foundations" id="markdown-toc-computational-optimal-transport-note-part-1-theoretical-foundations">Computational Optimal Transport Note Part 1: Theoretical Foundations</a>    <ul>
+      <li><a href="#histograms-and-measures" id="markdown-toc-histograms-and-measures">Histograms and Measures</a></li>
+      <li><a href="#assignment-and-monge-problem" id="markdown-toc-assignment-and-monge-problem">Assignment and Monge Problem</a>        <ul>
+          <li><a href="#discrete-setting" id="markdown-toc-discrete-setting">Discrete Setting</a></li>
+          <li><a href="#pushing-forward-operator" id="markdown-toc-pushing-forward-operator">Pushing-forward Operator</a></li>
+          <li><a href="#pull-back-operator" id="markdown-toc-pull-back-operator">Pull-back Operator</a></li>
+          <li><a href="#measures-and-random-variables" id="markdown-toc-measures-and-random-variables">Measures and random variables</a></li>
+          <li><a href="#arbitrary-setting" id="markdown-toc-arbitrary-setting">Arbitrary Setting</a></li>
+        </ul>
+      </li>
+      <li><a href="#kantorovich-relaxation" id="markdown-toc-kantorovich-relaxation">Kantorovich Relaxation</a>        <ul>
+          <li><a href="#metric-properties-of-optimal-transport" id="markdown-toc-metric-properties-of-optimal-transport">Metric Properties of Optimal Transport</a></li>
+          <li><a href="#properties-of-optimal-transport-distance" id="markdown-toc-properties-of-optimal-transport-distance">Properties of Optimal Transport Distance</a>            <ul>
+              <li><a href="#weak-convergence" id="markdown-toc-weak-convergence">Weak Convergence</a></li>
+              <li><a href="#translations" id="markdown-toc-translations">Translations</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#dual-problem" id="markdown-toc-dual-problem">Dual Problem</a>        <ul>
+          <li><a href="#intuitive-presentation" id="markdown-toc-intuitive-presentation">Intuitive Presentation</a></li>
+        </ul>
+      </li>
+      <li><a href="#brenier-theorem" id="markdown-toc-brenier-theorem">Brenier Theorem</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="computational-optimal-transport-note-part-1-theoretical-foundations">Computational Optimal Transport Note Part 1: Theoretical Foundations</h1>
 
 <p>这一部分主要叙述关于计算最优传输的理论部分，和一般的数学问题一样，也是从最简单的情况开始一步步泛化 ，第一步是从两个 \(\sum\) 中的概率向量 \((\mathbf{a}, \mathbf{b})\) 出发的，而后拓展到两个离散测度 \((\alpha, \beta)\)，进一步到普通的两个任意测度的问题框架下</p>
 

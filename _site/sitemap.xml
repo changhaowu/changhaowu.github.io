@@ -1,65 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
 <url>
-<loc>https://changhaowu.github.io//2020/06/28/Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/</loc>
-<lastmod>2020-06-28T00:00:00+08:00</lastmod>
+  <loc>https://changhaowu.github.io/</loc>
+  <lastmod>2021-02-17T10:15:36+00:00</lastmod>
+  <priority>1.00</priority>
 </url>
 <url>
-<loc>https://changhaowu.github.io//2020/07/03/Markov-Decision-Process-in-Reinforcement-Learning/</loc>
-<lastmod>2020-07-03T00:00:00+08:00</lastmod>
+  <loc>https://changhaowu.github.io/about/</loc>
+  <lastmod>2021-02-17T10:15:36+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://changhaowu.github.io//2020/07/03/Understanding-Convolutional-Neural-Networks-with-A-Mathematical-Model/</loc>
-<lastmod>2020-07-03T00:00:00+08:00</lastmod>
+  <loc>https://changhaowu.github.io/Archive/</loc>
+  <lastmod>2021-02-17T10:15:36+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://changhaowu.github.io//2020/07/20/Launch-A-rocket!/</loc>
-<lastmod>2020-07-20T00:00:00+08:00</lastmod>
+  <loc>https://changhaowu.github.io/2021/02/02/Computational-Optimal-Transport-Note-Part-1/</loc>
+  <lastmod>2021-02-17T10:15:36+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://changhaowu.github.io//2020/08/06/Generative-Model-Part-0-Theoretical-Basis-of-Generative-Model/</loc>
-<lastmod>2020-08-06T00:00:00+08:00</lastmod>
+  <loc>https://changhaowu.github.io/2021/02/01/Computational-Optimal-Transport-Note-Part-0/</loc>
+  <lastmod>2021-02-17T10:15:36+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://changhaowu.github.io//2020/08/10/Generative-Model-Part-1-Autoencoders-in-Generative-Model/</loc>
-<lastmod>2020-08-10T00:00:00+08:00</lastmod>
+  <loc>https://changhaowu.github.io/2021/01/29/Optimal-Transport-Note-Part-2/</loc>
+  <lastmod>2021-02-17T10:15:36+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://changhaowu.github.io//2021/01/01/Pattern-Recongntion-and-Machinel-Learning-Chapt-1/</loc>
-<lastmod>2021-01-01T00:00:00+08:00</lastmod>
+  <loc>https://changhaowu.github.io/2021/01/20/Optimal-Transport-Note-Part-1/</loc>
+  <lastmod>2021-02-17T10:15:36+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://changhaowu.github.io//about/</loc>
+  <loc>https://changhaowu.github.io/page/2/</loc>
+  <lastmod>2021-02-17T10:15:36+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://changhaowu.github.io//Archive/</loc>
+  <loc>https://changhaowu.github.io/2021/01/01/Pattern-Recongntion-and-Machinel-Learning-Chapt-1/</loc>
+  <lastmod>2021-02-17T10:15:36+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>https://changhaowu.github.io//</loc>
+  <loc>https://changhaowu.github.io/2020/07/20/Launch-A-rocket!/</loc>
+  <lastmod>2021-02-17T10:15:36+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>https://changhaowu.github.io//tag/computer-vision/</loc>
+  <loc>https://changhaowu.github.io/2020/07/03/Understanding-Convolutional-Neural-Networks-with-A-Mathematical-Model/</loc>
+  <lastmod>2021-02-17T10:15:36+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>https://changhaowu.github.io//tag/reinforcement-learning/</loc>
+  <loc>https://changhaowu.github.io/2020/07/03/Markov-Decision-Process-in-Reinforcement-Learning/</loc>
+  <lastmod>2021-02-17T10:15:36+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>https://changhaowu.github.io//tag/cnn/</loc>
+  <loc>https://changhaowu.github.io/2020/06/28/Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/</loc>
+  <lastmod>2021-02-17T10:15:36+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>https://changhaowu.github.io//tag/numerical-computation/</loc>
+  <loc>https://changhaowu.github.io/page/3/</loc>
+  <lastmod>2021-02-17T10:15:36+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
-<url>
-<loc>https://changhaowu.github.io//tag/generative-model/</loc>
-</url>
-<url>
-<loc>https://changhaowu.github.io//tag/prml-notes/</loc>
-</url>
-<url>
-<loc>https://changhaowu.github.io//page/2/</loc>
-</url>
-<url>
-<loc>https://changhaowu.github.io//googleddcc1878cdf7e400.html</loc>
-<lastmod>2021-01-05T20:18:49+08:00</lastmod>
-</url>
+
+
 </urlset>

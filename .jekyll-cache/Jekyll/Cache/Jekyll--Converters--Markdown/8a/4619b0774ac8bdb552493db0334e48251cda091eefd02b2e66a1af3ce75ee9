@@ -1,4 +1,32 @@
-I"[t<h1 id="optimal-transport-note-part-1">Optimal Transport Note: Part 1</h1>
+I"'}<ul class="table-of-content" id="markdown-toc">
+  <li><a href="#optimal-transport-note-part-1" id="markdown-toc-optimal-transport-note-part-1">Optimal Transport Note: Part 1</a>    <ul>
+      <li><a href="#formulation-of-optimal-transport" id="markdown-toc-formulation-of-optimal-transport">Formulation of Optimal Transport</a>        <ul>
+          <li><a href="#monge-formulation" id="markdown-toc-monge-formulation">Monge Formulation</a></li>
+          <li><a href="#kantorovich-formulation" id="markdown-toc-kantorovich-formulation">Kantorovich Formulation</a></li>
+        </ul>
+      </li>
+      <li><a href="#special-cases" id="markdown-toc-special-cases">Special Cases</a>        <ul>
+          <li><a href="#optimal-transport-in-one-dimension" id="markdown-toc-optimal-transport-in-one-dimension">Optimal Transport in One Dimension</a>            <ul>
+              <li><a href="#theorem--21" id="markdown-toc-theorem--21">Theorem  2.1</a></li>
+              <li><a href="#corollary-22" id="markdown-toc-corollary-22">Corollary 2.2</a></li>
+              <li><a href="#proposition-23" id="markdown-toc-proposition-23">Proposition 2.3</a></li>
+              <li><a href="#proof-of-theorem-21" id="markdown-toc-proof-of-theorem-21">Proof of Theorem 2.1</a></li>
+            </ul>
+          </li>
+          <li><a href="#optimal-transport-for-discrete-measures" id="markdown-toc-optimal-transport-for-discrete-measures">Optimal Transport for Discrete Measures</a>            <ul>
+              <li><a href="#theorem-25-minkowskicarathéodory-theorem" id="markdown-toc-theorem-25-minkowskicarathéodory-theorem">Theorem 2.5. Minkowski–Carathéodory Theorem.</a></li>
+              <li><a href="#theorem-26-birkhoffs-theorem" id="markdown-toc-theorem-26-birkhoffs-theorem">Theorem 2.6. Birkhoff’s theorem</a></li>
+              <li><a href="#theorem-27-existence-of-optimal-transport-map-of-discrete-measurement" id="markdown-toc-theorem-27-existence-of-optimal-transport-map-of-discrete-measurement">Theorem 2.7 Existence of Optimal Transport Map of Discrete Measurement</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#reference" id="markdown-toc-reference">Reference</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="optimal-transport-note-part-1">Optimal Transport Note: Part 1</h1>
 
 <h2 id="formulation-of-optimal-transport">Formulation of Optimal Transport</h2>
 

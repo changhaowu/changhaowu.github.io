@@ -1,4 +1,25 @@
-I"�:<h1 id="optimal-transport-note-part-2">Optimal Transport Note: Part 2</h1>
+I"@A<ul class="table-of-content" id="markdown-toc">
+  <li><a href="#optimal-transport-note-part-2" id="markdown-toc-optimal-transport-note-part-2">Optimal Transport Note: Part 2</a>    <ul>
+      <li><a href="#kantorovich-duality" id="markdown-toc-kantorovich-duality">Kantorovich Duality</a>        <ul>
+          <li><a href="#kantorovich-duality-1" id="markdown-toc-kantorovich-duality-1">Kantorovich Duality</a>            <ul>
+              <li><a href="#theorem-31-kantorovich-duality" id="markdown-toc-theorem-31-kantorovich-duality">Theorem 3.1. Kantorovich Duality</a></li>
+            </ul>
+          </li>
+          <li><a href="#fenchel-rockafeller-duality" id="markdown-toc-fenchel-rockafeller-duality">Fenchel-Rockafeller Duality</a>            <ul>
+              <li><a href="#theorem-32-fenchel-rockafellar-duality" id="markdown-toc-theorem-32-fenchel-rockafellar-duality">Theorem 3.2. Fenchel-Rockafellar Duality</a></li>
+              <li><a href="#lemma-33" id="markdown-toc-lemma-33">Lemma 3.3</a></li>
+              <li><a href="#theorem-34-hahn-banach-theorem分离定理" id="markdown-toc-theorem-34-hahn-banach-theorem分离定理">Theorem 3.4. Hahn-Banach Theorem（分离定理）</a></li>
+              <li><a href="#proof-of--fenchel-rockafellar-duality" id="markdown-toc-proof-of--fenchel-rockafellar-duality">Proof of  Fenchel-Rockafellar Duality</a></li>
+            </ul>
+          </li>
+          <li><a href="#proof-of-kantorovich-duality" id="markdown-toc-proof-of-kantorovich-duality">Proof of Kantorovich Duality</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="optimal-transport-note-part-2">Optimal Transport Note: Part 2</h1>
 
 <h2 id="kantorovich-duality">Kantorovich Duality</h2>
 

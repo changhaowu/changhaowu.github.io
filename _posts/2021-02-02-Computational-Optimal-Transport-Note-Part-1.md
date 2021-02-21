@@ -2,7 +2,7 @@
 layout: post
 title: "Computational Optimal Transport Note Part 1: Theoretical Foundations"
 date: 2021-02-02
-image: /images/cover/C_Scenery7.jpeg   
+image: /images/cover/C_Scenery9.jpg   
 tags: [OTNotes]
 toc: false
 published: true
