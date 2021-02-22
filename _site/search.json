@@ -25,6 +25,14 @@
     } ,
   
     {
+      "title"    : "Generative Model Part 2：A Survey on Variational Autoencoder",
+      "category" : "",
+      "tags"     : "Generative-Model",
+      "url"      : "/2021/01/25/Generative-Model-Part-2-Generative-Model-Part-2-A-Survey-on-Variational-Autoencoders/",
+      "date"     : "2021-01-25 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Optimal Transport Note:Part 1",
       "category" : "",
       "tags"     : "OTNotes",
