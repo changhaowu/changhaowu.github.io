@@ -253,6 +253,7 @@ $$
 $$
 
 这样就可以把 $$z$$ 的随机性转移到 $$\epsilon$$ 上，先在抽象一些的问题设定下研究 $$Reparameterization \; Trick$$，在此基础上对 $$\phi$$ 求导，可以有一个 $$\nabla_{\boldsymbol{\phi}} f(\mathbf{z})$$ 的估计：
+
 $$
 \begin{aligned}
 \nabla_{\phi} \mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}[f(\mathbf{z})] &=\nabla_{\phi} \mathbb{E}_{p(\boldsymbol{\epsilon})}[f(\mathbf{z})] \\
@@ -263,6 +264,7 @@ $$
 
 更进一步，代入具体的函数 $$f(z) = \log p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})-\log q_{\phi}(\mathbf{z} \mid \mathbf{x})$$，构造一个蒙特卡洛估计
 $$\tilde{\mathcal{L}}_{\boldsymbol{\theta}, \phi}(\mathbf{x})$$：
+
 $$
 \begin{aligned}
 \boldsymbol{\epsilon} & \sim p(\boldsymbol{\epsilon})

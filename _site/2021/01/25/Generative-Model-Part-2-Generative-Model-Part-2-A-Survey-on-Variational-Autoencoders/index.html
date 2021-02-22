@@ -484,22 +484,24 @@ p_{\boldsymbol{\theta}}(\mathbf{x} \mid P a(\mathbf{x})) &amp;=p_{\boldsymbol{\t
 
 \[\mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}[f(\mathbf{z})]=\mathbb{E}_{p(\boldsymbol{\epsilon})}[f(\mathbf{z})]\]
 
-<p>这样就可以把 \(z\) 的随机性转移到 \(\epsilon\) 上，先在抽象一些的问题设定下研究 \(Reparameterization \; Trick\)，在此基础上对 \(\phi\) 求导，可以有一个 \(\nabla_{\boldsymbol{\phi}} f(\mathbf{z})\) 的估计：
-\(\begin{aligned}
+<p>这样就可以把 \(z\) 的随机性转移到 \(\epsilon\) 上，先在抽象一些的问题设定下研究 \(Reparameterization \; Trick\)，在此基础上对 \(\phi\) 求导，可以有一个 \(\nabla_{\boldsymbol{\phi}} f(\mathbf{z})\) 的估计：</p>
+
+\[\begin{aligned}
 \nabla_{\phi} \mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}[f(\mathbf{z})] &amp;=\nabla_{\phi} \mathbb{E}_{p(\boldsymbol{\epsilon})}[f(\mathbf{z})] \\
 &amp;=\mathbb{E}_{p(\boldsymbol{\epsilon})}\left[\nabla_{\boldsymbol{\phi}} f(\mathbf{z})\right] \\
 &amp; \simeq \nabla_{\boldsymbol{\phi}} f(\mathbf{z})
-\end{aligned}\)</p>
+\end{aligned}\]
 
 <p>更进一步，代入具体的函数 \(f(z) = \log p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})-\log q_{\phi}(\mathbf{z} \mid \mathbf{x})\)，构造一个蒙特卡洛估计
-\(\tilde{\mathcal{L}}_{\boldsymbol{\theta}, \phi}(\mathbf{x})\)：
-\(\begin{aligned}
+\(\tilde{\mathcal{L}}_{\boldsymbol{\theta}, \phi}(\mathbf{x})\)：</p>
+
+\[\begin{aligned}
 \boldsymbol{\epsilon} &amp; \sim p(\boldsymbol{\epsilon})
 \\
 \mathbf{z} &amp;=\mathbf{g}(\boldsymbol{\phi}, \mathbf{x}, \boldsymbol{\epsilon}) 
 \\
 \tilde{\mathcal{L}}_{\boldsymbol{\theta}, \phi}(\mathbf{x}) &amp;=\log p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})-\log q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})
-\end{aligned}\)</p>
+\end{aligned}\]
 
 <p>可以证明 \(\nabla_{\boldsymbol{\theta}, \phi} \tilde{\mathcal{L}}_{\boldsymbol{\theta}, \phi}(\mathbf{x})\) 是 \(\nabla_{\boldsymbol{\theta}, \phi} \tilde{\mathcal{L}}_{\boldsymbol{\theta}, \boldsymbol{\phi}}(\mathbf{x} ; \boldsymbol{\epsilon})\) 无偏估计：</p>
 
