@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Generative Model Part 2：A Survey on Variational Autoencoder</title>
+  <meta name='description' content='“Thanks for visiting my blog”'>
+
+  <link rel="canonical" href="https://changhaowu.github.io//2021/01/25/Generative-Model-Part-2-A-Survey-on-Variational-Autoencoders/">
+  <link rel="alternate" type="application/rss+xml" title="Truth and Logic" href="/feed.xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+      
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Yellowtail&display=swap" rel="stylesheet">
+      
+  <!-- Ionicons -->
+  <link href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css" rel="stylesheet">
+
+  <style>
+  
+  .text-left{text-align:left}.text-right{text-align:right}.text-center{text-align:center}.text-justify{text-align:justify}.block{display:block}.inline-block{display:inline-block}.inline{display:inline}.vertical-center{display:flex;align-items:center;justify-content:center}.show{display:block}.hide{display:none}.invisible{visibility:hidden}.float-left{float:left}.float-right{float:right}.no-padding{padding:0}.no-margin{margin:0}.list-reset{list-style-type:none;margin:0;padding:0}.clearfix::after,.clearfix ::before{content:"";display:table;clear:both}.screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px;word-wrap:normal !important}/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:0.35em 0.75em 0.625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}body,h1,h2,h3,h4,h5,h6,p,blockquote,pre,dl,dd,ol,ul,fieldset,legend,figure,hr{margin:0;padding:0}li>ul,li>ol{margin-bottom:0}table{border-collapse:collapse;border-spacing:0}h1,h2,h3,h4,h5,h6,ul,ol,dl,blockquote,p,address,hr,table,fieldset,figure,pre{margin-bottom:30px}ul,ol,dd{margin-left:30px}.highlight{background:#f7f7f7}.highlighter-rouge .highlight{background:#eef}.highlight .c{color:#998;font-style:italic}.highlight .err{color:#a61717;background-color:#e3d2d2}.highlight .k{font-weight:bold}.highlight .o{font-weight:bold}.highlight .cm{color:#998;font-style:italic}.highlight .cp{color:#999;font-weight:bold}.highlight .c1{color:#998;font-style:italic}.highlight .cs{color:#999;font-weight:bold;font-style:italic}.highlight .gd{color:#000;background-color:#fdd}.highlight .gd .x{color:#000;background-color:#faa}.highlight .ge{font-style:italic}.highlight .gr{color:#a00}.highlight .gh{color:#999}.highlight .gi{color:#000;background-color:#dfd}.highlight .gi .x{color:#000;background-color:#afa}.highlight .go{color:#888}.highlight .gp{color:#555}.highlight .gs{font-weight:bold}.highlight .gu{color:#aaa}.highlight .gt{color:#a00}.highlight .kc{font-weight:bold}.highlight .kd{font-weight:bold}.highlight .kp{font-weight:bold}.highlight .kr{font-weight:bold}.highlight .kt{color:#458;font-weight:bold}.highlight .m{color:#099}.highlight .s{color:#d14}.highlight .na{color:#008080}.highlight .nb{color:#0086B3}.highlight .nc{color:#458;font-weight:bold}.highlight .no{color:#008080}.highlight .ni{color:#800080}.highlight .ne{color:#900;font-weight:bold}.highlight .nf{color:#900;font-weight:bold}.highlight .nn{color:#555}.highlight .nt{color:#000080}.highlight .nv{color:#008080}.highlight .ow{font-weight:bold}.highlight .w{color:#bbb}.highlight .mf{color:#099}.highlight .mh{color:#099}.highlight .mi{color:#099}.highlight .mo{color:#099}.highlight .sb{color:#d14}.highlight .sc{color:#d14}.highlight .sd{color:#d14}.highlight .s2{color:#d14}.highlight .se{color:#d14}.highlight .sh{color:#d14}.highlight .si{color:#d14}.highlight .sx{color:#d14}.highlight .sr{color:#009926}.highlight .s1{color:#d14}.highlight .ss{color:#990073}.highlight .bp{color:#999}.highlight .vc{color:#008080}.highlight .vg{color:#008080}.highlight .vi{color:#008080}.highlight .il{color:#099}.container{max-width:790px;padding-left:20px;padding-right:20px;margin:0 auto}.container-full{max-width:100%;padding-left:20px;padding-right:20px;margin:0 auto}.row{display:flex;flex-wrap:wrap;flex:0 1 auto;flex-direction:row;box-sizing:border-box;margin-left:-20px;margin-right:-20px}.col{padding-left:20px;padding-right:20px}[class^="col-"]{flex:auto}.col-0{width:0%}.col-1{width:8.3333333333%}.col-2{width:16.6666666667%}.col-3{width:25%}.col-4{width:33.3333333333%}.col-5{width:41.6666666667%}.col-6{width:50%}.col-7{width:58.3333333333%}.col-8{width:66.6666666667%}.col-9{width:75%}.col-10{width:83.3333333333%}.col-11{width:91.6666666667%}.col-12{width:100%}.push-0{margin-left:0%}.push-1{margin-left:8.3333333333%}.push-2{margin-left:16.6666666667%}.push-3{margin-left:25%}.push-4{margin-left:33.3333333333%}.push-5{margin-left:41.6666666667%}.push-6{margin-left:50%}.push-7{margin-left:58.3333333333%}.push-8{margin-left:66.6666666667%}.push-9{margin-left:75%}.push-10{margin-left:83.3333333333%}.push-11{margin-left:91.6666666667%}.push-12{margin-left:100%}.pull-0{margin-right:0%}.pull-1{margin-right:8.3333333333%}.pull-2{margin-right:16.6666666667%}.pull-3{margin-right:25%}.pull-4{margin-right:33.3333333333%}.pull-5{margin-right:41.6666666667%}.pull-6{margin-right:50%}.pull-7{margin-right:58.3333333333%}.pull-8{margin-right:66.6666666667%}.pull-9{margin-right:75%}.pull-10{margin-right:83.3333333333%}.pull-11{margin-right:91.6666666667%}.pull-12{margin-right:100%}@media (max-width: 992px){.col-d-0{width:0%}.col-d-1{width:8.3333333333%}.col-d-2{width:16.6666666667%}.col-d-3{width:25%}.col-d-4{width:33.3333333333%}.col-d-5{width:41.6666666667%}.col-d-6{width:50%}.col-d-7{width:58.3333333333%}.col-d-8{width:66.6666666667%}.col-d-9{width:75%}.col-d-10{width:83.3333333333%}.col-d-11{width:91.6666666667%}.col-d-12{width:100%}.push-d-0{margin-left:0%}.push-d-1{margin-left:8.3333333333%}.push-d-2{margin-left:16.6666666667%}.push-d-3{margin-left:25%}.push-d-4{margin-left:33.3333333333%}.push-d-5{margin-left:41.6666666667%}.push-d-6{margin-left:50%}.push-d-7{margin-left:58.3333333333%}.push-d-8{margin-left:66.6666666667%}.push-d-9{margin-left:75%}.push-d-10{margin-left:83.3333333333%}.push-d-11{margin-left:91.6666666667%}.push-d-12{margin-left:100%}.pull-d-0{margin-right:0%}.pull-d-1{margin-right:8.3333333333%}.pull-d-2{margin-right:16.6666666667%}.pull-d-3{margin-right:25%}.pull-d-4{margin-right:33.3333333333%}.pull-d-5{margin-right:41.6666666667%}.pull-d-6{margin-right:50%}.pull-d-7{margin-right:58.3333333333%}.pull-d-8{margin-right:66.6666666667%}.pull-d-9{margin-right:75%}.pull-d-10{margin-right:83.3333333333%}.pull-d-11{margin-right:91.6666666667%}.pull-d-12{margin-right:100%}}@media (max-width: 768px){.col-t-0{width:0%}.col-t-1{width:8.3333333333%}.col-t-2{width:16.6666666667%}.col-t-3{width:25%}.col-t-4{width:33.3333333333%}.col-t-5{width:41.6666666667%}.col-t-6{width:50%}.col-t-7{width:58.3333333333%}.col-t-8{width:66.6666666667%}.col-t-9{width:75%}.col-t-10{width:83.3333333333%}.col-t-11{width:91.6666666667%}.col-t-12{width:100%}.push-t-0{margin-left:0%}.push-t-1{margin-left:8.3333333333%}.push-t-2{margin-left:16.6666666667%}.push-t-3{margin-left:25%}.push-t-4{margin-left:33.3333333333%}.push-t-5{margin-left:41.6666666667%}.push-t-6{margin-left:50%}.push-t-7{margin-left:58.3333333333%}.push-t-8{margin-left:66.6666666667%}.push-t-9{margin-left:75%}.push-t-10{margin-left:83.3333333333%}.push-t-11{margin-left:91.6666666667%}.push-t-12{margin-left:100%}.pull-t-0{margin-right:0%}.pull-t-1{margin-right:8.3333333333%}.pull-t-2{margin-right:16.6666666667%}.pull-t-3{margin-right:25%}.pull-t-4{margin-right:33.3333333333%}.pull-t-5{margin-right:41.6666666667%}.pull-t-6{margin-right:50%}.pull-t-7{margin-right:58.3333333333%}.pull-t-8{margin-right:66.6666666667%}.pull-t-9{margin-right:75%}.pull-t-10{margin-right:83.3333333333%}.pull-t-11{margin-right:91.6666666667%}.pull-t-12{margin-right:100%}}@media (max-width: 576px){.col-m-0{width:0%}.col-m-1{width:8.3333333333%}.col-m-2{width:16.6666666667%}.col-m-3{width:25%}.col-m-4{width:33.3333333333%}.col-m-5{width:41.6666666667%}.col-m-6{width:50%}.col-m-7{width:58.3333333333%}.col-m-8{width:66.6666666667%}.col-m-9{width:75%}.col-m-10{width:83.3333333333%}.col-m-11{width:91.6666666667%}.col-m-12{width:100%}.push-m-0{margin-left:0%}.push-m-1{margin-left:8.3333333333%}.push-m-2{margin-left:16.6666666667%}.push-m-3{margin-left:25%}.push-m-4{margin-left:33.3333333333%}.push-m-5{margin-left:41.6666666667%}.push-m-6{margin-left:50%}.push-m-7{margin-left:58.3333333333%}.push-m-8{margin-left:66.6666666667%}.push-m-9{margin-left:75%}.push-m-10{margin-left:83.3333333333%}.push-m-11{margin-left:91.6666666667%}.push-m-12{margin-left:100%}.pull-m-0{margin-right:0%}.pull-m-1{margin-right:8.3333333333%}.pull-m-2{margin-right:16.6666666667%}.pull-m-3{margin-right:25%}.pull-m-4{margin-right:33.3333333333%}.pull-m-5{margin-right:41.6666666667%}.pull-m-6{margin-right:50%}.pull-m-7{margin-right:58.3333333333%}.pull-m-8{margin-right:66.6666666667%}.pull-m-9{margin-right:75%}.pull-m-10{margin-right:83.3333333333%}.pull-m-11{margin-right:91.6666666667%}.pull-m-12{margin-right:100%}}@media (max-width: 992px){.col-d-0{width:0%}.col-d-1{width:8.3333333333%}.col-d-2{width:16.6666666667%}.col-d-3{width:25%}.col-d-4{width:33.3333333333%}.col-d-5{width:41.6666666667%}.col-d-6{width:50%}.col-d-7{width:58.3333333333%}.col-d-8{width:66.6666666667%}.col-d-9{width:75%}.col-d-10{width:83.3333333333%}.col-d-11{width:91.6666666667%}.col-d-12{width:100%}.push-d-0{margin-left:0%}.push-d-1{margin-left:8.3333333333%}.push-d-2{margin-left:16.6666666667%}.push-d-3{margin-left:25%}.push-d-4{margin-left:33.3333333333%}.push-d-5{margin-left:41.6666666667%}.push-d-6{margin-left:50%}.push-d-7{margin-left:58.3333333333%}.push-d-8{margin-left:66.6666666667%}.push-d-9{margin-left:75%}.push-d-10{margin-left:83.3333333333%}.push-d-11{margin-left:91.6666666667%}.push-d-12{margin-left:100%}.pull-d-0{margin-right:0%}.pull-d-1{margin-right:8.3333333333%}.pull-d-2{margin-right:16.6666666667%}.pull-d-3{margin-right:25%}.pull-d-4{margin-right:33.3333333333%}.pull-d-5{margin-right:41.6666666667%}.pull-d-6{margin-right:50%}.pull-d-7{margin-right:58.3333333333%}.pull-d-8{margin-right:66.6666666667%}.pull-d-9{margin-right:75%}.pull-d-10{margin-right:83.3333333333%}.pull-d-11{margin-right:91.6666666667%}.pull-d-12{margin-right:100%}}@media (max-width: 768px){.col-t-0{width:0%}.col-t-1{width:8.3333333333%}.col-t-2{width:16.6666666667%}.col-t-3{width:25%}.col-t-4{width:33.3333333333%}.col-t-5{width:41.6666666667%}.col-t-6{width:50%}.col-t-7{width:58.3333333333%}.col-t-8{width:66.6666666667%}.col-t-9{width:75%}.col-t-10{width:83.3333333333%}.col-t-11{width:91.6666666667%}.col-t-12{width:100%}.push-t-0{margin-left:0%}.push-t-1{margin-left:8.3333333333%}.push-t-2{margin-left:16.6666666667%}.push-t-3{margin-left:25%}.push-t-4{margin-left:33.3333333333%}.push-t-5{margin-left:41.6666666667%}.push-t-6{margin-left:50%}.push-t-7{margin-left:58.3333333333%}.push-t-8{margin-left:66.6666666667%}.push-t-9{margin-left:75%}.push-t-10{margin-left:83.3333333333%}.push-t-11{margin-left:91.6666666667%}.push-t-12{margin-left:100%}.pull-t-0{margin-right:0%}.pull-t-1{margin-right:8.3333333333%}.pull-t-2{margin-right:16.6666666667%}.pull-t-3{margin-right:25%}.pull-t-4{margin-right:33.3333333333%}.pull-t-5{margin-right:41.6666666667%}.pull-t-6{margin-right:50%}.pull-t-7{margin-right:58.3333333333%}.pull-t-8{margin-right:66.6666666667%}.pull-t-9{margin-right:75%}.pull-t-10{margin-right:83.3333333333%}.pull-t-11{margin-right:91.6666666667%}.pull-t-12{margin-right:100%}}@media (max-width: 576px){.col-m-0{width:0%}.col-m-1{width:8.3333333333%}.col-m-2{width:16.6666666667%}.col-m-3{width:25%}.col-m-4{width:33.3333333333%}.col-m-5{width:41.6666666667%}.col-m-6{width:50%}.col-m-7{width:58.3333333333%}.col-m-8{width:66.6666666667%}.col-m-9{width:75%}.col-m-10{width:83.3333333333%}.col-m-11{width:91.6666666667%}.col-m-12{width:100%}.push-m-0{margin-left:0%}.push-m-1{margin-left:8.3333333333%}.push-m-2{margin-left:16.6666666667%}.push-m-3{margin-left:25%}.push-m-4{margin-left:33.3333333333%}.push-m-5{margin-left:41.6666666667%}.push-m-6{margin-left:50%}.push-m-7{margin-left:58.3333333333%}.push-m-8{margin-left:66.6666666667%}.push-m-9{margin-left:75%}.push-m-10{margin-left:83.3333333333%}.push-m-11{margin-left:91.6666666667%}.push-m-12{margin-left:100%}.pull-m-0{margin-right:0%}.pull-m-1{margin-right:8.3333333333%}.pull-m-2{margin-right:16.6666666667%}.pull-m-3{margin-right:25%}.pull-m-4{margin-right:33.3333333333%}.pull-m-5{margin-right:41.6666666667%}.pull-m-6{margin-right:50%}.pull-m-7{margin-right:58.3333333333%}.pull-m-8{margin-right:66.6666666667%}.pull-m-9{margin-right:75%}.pull-m-10{margin-right:83.3333333333%}.pull-m-11{margin-right:91.6666666667%}.pull-m-12{margin-right:100%}}@media (max-width: 992px){.col-d-0{width:0%}.col-d-1{width:8.3333333333%}.col-d-2{width:16.6666666667%}.col-d-3{width:25%}.col-d-4{width:33.3333333333%}.col-d-5{width:41.6666666667%}.col-d-6{width:50%}.col-d-7{width:58.3333333333%}.col-d-8{width:66.6666666667%}.col-d-9{width:75%}.col-d-10{width:83.3333333333%}.col-d-11{width:91.6666666667%}.col-d-12{width:100%}.push-d-0{margin-left:0%}.push-d-1{margin-left:8.3333333333%}.push-d-2{margin-left:16.6666666667%}.push-d-3{margin-left:25%}.push-d-4{margin-left:33.3333333333%}.push-d-5{margin-left:41.6666666667%}.push-d-6{margin-left:50%}.push-d-7{margin-left:58.3333333333%}.push-d-8{margin-left:66.6666666667%}.push-d-9{margin-left:75%}.push-d-10{margin-left:83.3333333333%}.push-d-11{margin-left:91.6666666667%}.push-d-12{margin-left:100%}.pull-d-0{margin-right:0%}.pull-d-1{margin-right:8.3333333333%}.pull-d-2{margin-right:16.6666666667%}.pull-d-3{margin-right:25%}.pull-d-4{margin-right:33.3333333333%}.pull-d-5{margin-right:41.6666666667%}.pull-d-6{margin-right:50%}.pull-d-7{margin-right:58.3333333333%}.pull-d-8{margin-right:66.6666666667%}.pull-d-9{margin-right:75%}.pull-d-10{margin-right:83.3333333333%}.pull-d-11{margin-right:91.6666666667%}.pull-d-12{margin-right:100%}}@media (max-width: 768px){.col-t-0{width:0%}.col-t-1{width:8.3333333333%}.col-t-2{width:16.6666666667%}.col-t-3{width:25%}.col-t-4{width:33.3333333333%}.col-t-5{width:41.6666666667%}.col-t-6{width:50%}.col-t-7{width:58.3333333333%}.col-t-8{width:66.6666666667%}.col-t-9{width:75%}.col-t-10{width:83.3333333333%}.col-t-11{width:91.6666666667%}.col-t-12{width:100%}.push-t-0{margin-left:0%}.push-t-1{margin-left:8.3333333333%}.push-t-2{margin-left:16.6666666667%}.push-t-3{margin-left:25%}.push-t-4{margin-left:33.3333333333%}.push-t-5{margin-left:41.6666666667%}.push-t-6{margin-left:50%}.push-t-7{margin-left:58.3333333333%}.push-t-8{margin-left:66.6666666667%}.push-t-9{margin-left:75%}.push-t-10{margin-left:83.3333333333%}.push-t-11{margin-left:91.6666666667%}.push-t-12{margin-left:100%}.pull-t-0{margin-right:0%}.pull-t-1{margin-right:8.3333333333%}.pull-t-2{margin-right:16.6666666667%}.pull-t-3{margin-right:25%}.pull-t-4{margin-right:33.3333333333%}.pull-t-5{margin-right:41.6666666667%}.pull-t-6{margin-right:50%}.pull-t-7{margin-right:58.3333333333%}.pull-t-8{margin-right:66.6666666667%}.pull-t-9{margin-right:75%}.pull-t-10{margin-right:83.3333333333%}.pull-t-11{margin-right:91.6666666667%}.pull-t-12{margin-right:100%}}@media (max-width: 576px){.col-m-0{width:0%}.col-m-1{width:8.3333333333%}.col-m-2{width:16.6666666667%}.col-m-3{width:25%}.col-m-4{width:33.3333333333%}.col-m-5{width:41.6666666667%}.col-m-6{width:50%}.col-m-7{width:58.3333333333%}.col-m-8{width:66.6666666667%}.col-m-9{width:75%}.col-m-10{width:83.3333333333%}.col-m-11{width:91.6666666667%}.col-m-12{width:100%}.push-m-0{margin-left:0%}.push-m-1{margin-left:8.3333333333%}.push-m-2{margin-left:16.6666666667%}.push-m-3{margin-left:25%}.push-m-4{margin-left:33.3333333333%}.push-m-5{margin-left:41.6666666667%}.push-m-6{margin-left:50%}.push-m-7{margin-left:58.3333333333%}.push-m-8{margin-left:66.6666666667%}.push-m-9{margin-left:75%}.push-m-10{margin-left:83.3333333333%}.push-m-11{margin-left:91.6666666667%}.push-m-12{margin-left:100%}.pull-m-0{margin-right:0%}.pull-m-1{margin-right:8.3333333333%}.pull-m-2{margin-right:16.6666666667%}.pull-m-3{margin-right:25%}.pull-m-4{margin-right:33.3333333333%}.pull-m-5{margin-right:41.6666666667%}.pull-m-6{margin-right:50%}.pull-m-7{margin-right:58.3333333333%}.pull-m-8{margin-right:66.6666666667%}.pull-m-9{margin-right:75%}.pull-m-10{margin-right:83.3333333333%}.pull-m-11{margin-right:91.6666666667%}.pull-m-12{margin-right:100%}}img[data-action="zoom"]{cursor:pointer;cursor:-webkit-zoom-in;cursor:-moz-zoom-in}.zoom-img,.zoom-img-wrap{position:relative;z-index:666;-webkit-transition:all 300ms;-o-transition:all 300ms;transition:all 300ms}img.zoom-img{cursor:pointer;cursor:-webkit-zoom-out;cursor:-moz-zoom-out}.zoom-overlay{z-index:420;background:#fff;position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:0;-webkit-transition:opacity 300ms;-o-transition:opacity 300ms;transition:opacity 300ms}.zoom-overlay-open .zoom-overlay{opacity:1}.zoom-overlay-open,.zoom-overlay-transitioning{cursor:default}/*!
+Animate.css - http://daneden.me/animate
+Licensed under the MIT license
+
+Copyright (c) 2013 Daniel Eden
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/.animated{-webkit-animation-duration:0.7s;animation-duration:0.7s;-webkit-animation-fill-mode:both;animation-fill-mode:both}.animated.hinge{-webkit-animation-duration:2s;animation-duration:2s}@-webkit-keyframes bounce{0%,20%,50%,80%,100%{-webkit-transform:translateY(0);transform:translateY(0)}40%{-webkit-transform:translateY(-30px);transform:translateY(-30px)}60%{-webkit-transform:translateY(-15px);transform:translateY(-15px)}}@keyframes bounce{0%,20%,50%,80%,100%{-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}40%{-webkit-transform:translateY(-30px);-ms-transform:translateY(-30px);transform:translateY(-30px)}60%{-webkit-transform:translateY(-15px);-ms-transform:translateY(-15px);transform:translateY(-15px)}}.bounce{-webkit-animation-name:bounce;animation-name:bounce}@-webkit-keyframes flash{0%,50%,100%{opacity:1}25%,75%{opacity:0}}@keyframes flash{0%,50%,100%{opacity:1}25%,75%{opacity:0}}.flash{-webkit-animation-name:flash;animation-name:flash}@-webkit-keyframes pulse{0%{-webkit-transform:scale(1);transform:scale(1)}50%{-webkit-transform:scale(1.1);transform:scale(1.1)}100%{-webkit-transform:scale(1);transform:scale(1)}}@keyframes pulse{0%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}50%{-webkit-transform:scale(1.1);-ms-transform:scale(1.1);transform:scale(1.1)}100%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}.pulse{-webkit-animation-name:pulse;animation-name:pulse}@-webkit-keyframes rubberBand{0%{-webkit-transform:scale(1);transform:scale(1)}30%{-webkit-transform:scaleX(1.25) scaleY(0.75);transform:scaleX(1.25) scaleY(0.75)}40%{-webkit-transform:scaleX(0.75) scaleY(1.25);transform:scaleX(0.75) scaleY(1.25)}60%{-webkit-transform:scaleX(1.15) scaleY(0.85);transform:scaleX(1.15) scaleY(0.85)}100%{-webkit-transform:scale(1);transform:scale(1)}}@keyframes rubberBand{0%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}30%{-webkit-transform:scaleX(1.25) scaleY(0.75);-ms-transform:scaleX(1.25) scaleY(0.75);transform:scaleX(1.25) scaleY(0.75)}40%{-webkit-transform:scaleX(0.75) scaleY(1.25);-ms-transform:scaleX(0.75) scaleY(1.25);transform:scaleX(0.75) scaleY(1.25)}60%{-webkit-transform:scaleX(1.15) scaleY(0.85);-ms-transform:scaleX(1.15) scaleY(0.85);transform:scaleX(1.15) scaleY(0.85)}100%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}.rubberBand{-webkit-animation-name:rubberBand;animation-name:rubberBand}@-webkit-keyframes shake{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}10%,30%,50%,70%,90%{-webkit-transform:translateX(-10px);transform:translateX(-10px)}20%,40%,60%,80%{-webkit-transform:translateX(10px);transform:translateX(10px)}}@keyframes shake{0%,100%{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}10%,30%,50%,70%,90%{-webkit-transform:translateX(-10px);-ms-transform:translateX(-10px);transform:translateX(-10px)}20%,40%,60%,80%{-webkit-transform:translateX(10px);-ms-transform:translateX(10px);transform:translateX(10px)}}.shake{-webkit-animation-name:shake;animation-name:shake}@-webkit-keyframes swing{20%{-webkit-transform:rotate(15deg);transform:rotate(15deg)}40%{-webkit-transform:rotate(-10deg);transform:rotate(-10deg)}60%{-webkit-transform:rotate(5deg);transform:rotate(5deg)}80%{-webkit-transform:rotate(-5deg);transform:rotate(-5deg)}100%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}}@keyframes swing{20%{-webkit-transform:rotate(15deg);-ms-transform:rotate(15deg);transform:rotate(15deg)}40%{-webkit-transform:rotate(-10deg);-ms-transform:rotate(-10deg);transform:rotate(-10deg)}60%{-webkit-transform:rotate(5deg);-ms-transform:rotate(5deg);transform:rotate(5deg)}80%{-webkit-transform:rotate(-5deg);-ms-transform:rotate(-5deg);transform:rotate(-5deg)}100%{-webkit-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg)}}.swing{-webkit-transform-origin:top center;-ms-transform-origin:top center;transform-origin:top center;-webkit-animation-name:swing;animation-name:swing}@-webkit-keyframes tada{0%{-webkit-transform:scale(1);transform:scale(1)}10%,20%{-webkit-transform:scale(0.9) rotate(-3deg);transform:scale(0.9) rotate(-3deg)}30%,50%,70%,90%{-webkit-transform:scale(1.1) rotate(3deg);transform:scale(1.1) rotate(3deg)}40%,60%,80%{-webkit-transform:scale(1.1) rotate(-3deg);transform:scale(1.1) rotate(-3deg)}100%{-webkit-transform:scale(1) rotate(0);transform:scale(1) rotate(0)}}@keyframes tada{0%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}10%,20%{-webkit-transform:scale(0.9) rotate(-3deg);-ms-transform:scale(0.9) rotate(-3deg);transform:scale(0.9) rotate(-3deg)}30%,50%,70%,90%{-webkit-transform:scale(1.1) rotate(3deg);-ms-transform:scale(1.1) rotate(3deg);transform:scale(1.1) rotate(3deg)}40%,60%,80%{-webkit-transform:scale(1.1) rotate(-3deg);-ms-transform:scale(1.1) rotate(-3deg);transform:scale(1.1) rotate(-3deg)}100%{-webkit-transform:scale(1) rotate(0);-ms-transform:scale(1) rotate(0);transform:scale(1) rotate(0)}}.tada{-webkit-animation-name:tada;animation-name:tada}@-webkit-keyframes wobble{0%{-webkit-transform:translateX(0%);transform:translateX(0%)}15%{-webkit-transform:translateX(-25%) rotate(-5deg);transform:translateX(-25%) rotate(-5deg)}30%{-webkit-transform:translateX(20%) rotate(3deg);transform:translateX(20%) rotate(3deg)}45%{-webkit-transform:translateX(-15%) rotate(-3deg);transform:translateX(-15%) rotate(-3deg)}60%{-webkit-transform:translateX(10%) rotate(2deg);transform:translateX(10%) rotate(2deg)}75%{-webkit-transform:translateX(-5%) rotate(-1deg);transform:translateX(-5%) rotate(-1deg)}100%{-webkit-transform:translateX(0%);transform:translateX(0%)}}@keyframes wobble{0%{-webkit-transform:translateX(0%);-ms-transform:translateX(0%);transform:translateX(0%)}15%{-webkit-transform:translateX(-25%) rotate(-5deg);-ms-transform:translateX(-25%) rotate(-5deg);transform:translateX(-25%) rotate(-5deg)}30%{-webkit-transform:translateX(20%) rotate(3deg);-ms-transform:translateX(20%) rotate(3deg);transform:translateX(20%) rotate(3deg)}45%{-webkit-transform:translateX(-15%) rotate(-3deg);-ms-transform:translateX(-15%) rotate(-3deg);transform:translateX(-15%) rotate(-3deg)}60%{-webkit-transform:translateX(10%) rotate(2deg);-ms-transform:translateX(10%) rotate(2deg);transform:translateX(10%) rotate(2deg)}75%{-webkit-transform:translateX(-5%) rotate(-1deg);-ms-transform:translateX(-5%) rotate(-1deg);transform:translateX(-5%) rotate(-1deg)}100%{-webkit-transform:translateX(0%);-ms-transform:translateX(0%);transform:translateX(0%)}}.wobble{-webkit-animation-name:wobble;animation-name:wobble}@-webkit-keyframes bounceIn{0%{opacity:0;-webkit-transform:scale(0.3);transform:scale(0.3)}50%{opacity:1;-webkit-transform:scale(1.05);transform:scale(1.05)}70%{-webkit-transform:scale(0.9);transform:scale(0.9)}100%{opacity:1;-webkit-transform:scale(1);transform:scale(1)}}@keyframes bounceIn{0%{opacity:0;-webkit-transform:scale(0.3);-ms-transform:scale(0.3);transform:scale(0.3)}50%{opacity:1;-webkit-transform:scale(1.05);-ms-transform:scale(1.05);transform:scale(1.05)}70%{-webkit-transform:scale(0.9);-ms-transform:scale(0.9);transform:scale(0.9)}100%{opacity:1;-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}.bounceIn{-webkit-animation-name:bounceIn;animation-name:bounceIn}@-webkit-keyframes bounceInDown{0%{opacity:0;-webkit-transform:translateY(-2000px);transform:translateY(-2000px)}60%{opacity:1;-webkit-transform:translateY(30px);transform:translateY(30px)}80%{-webkit-transform:translateY(-10px);transform:translateY(-10px)}100%{-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes bounceInDown{0%{opacity:0;-webkit-transform:translateY(-2000px);-ms-transform:translateY(-2000px);transform:translateY(-2000px)}60%{opacity:1;-webkit-transform:translateY(30px);-ms-transform:translateY(30px);transform:translateY(30px)}80%{-webkit-transform:translateY(-10px);-ms-transform:translateY(-10px);transform:translateY(-10px)}100%{-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}}.bounceInDown{-webkit-animation-name:bounceInDown;animation-name:bounceInDown}@-webkit-keyframes bounceInLeft{0%{opacity:0;-webkit-transform:translateX(-2000px);transform:translateX(-2000px)}60%{opacity:1;-webkit-transform:translateX(30px);transform:translateX(30px)}80%{-webkit-transform:translateX(-10px);transform:translateX(-10px)}100%{-webkit-transform:translateX(0);transform:translateX(0)}}@keyframes bounceInLeft{0%{opacity:0;-webkit-transform:translateX(-2000px);-ms-transform:translateX(-2000px);transform:translateX(-2000px)}60%{opacity:1;-webkit-transform:translateX(30px);-ms-transform:translateX(30px);transform:translateX(30px)}80%{-webkit-transform:translateX(-10px);-ms-transform:translateX(-10px);transform:translateX(-10px)}100%{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}}.bounceInLeft{-webkit-animation-name:bounceInLeft;animation-name:bounceInLeft}@-webkit-keyframes bounceInRight{0%{opacity:0;-webkit-transform:translateX(2000px);transform:translateX(2000px)}60%{opacity:1;-webkit-transform:translateX(-30px);transform:translateX(-30px)}80%{-webkit-transform:translateX(10px);transform:translateX(10px)}100%{-webkit-transform:translateX(0);transform:translateX(0)}}@keyframes bounceInRight{0%{opacity:0;-webkit-transform:translateX(2000px);-ms-transform:translateX(2000px);transform:translateX(2000px)}60%{opacity:1;-webkit-transform:translateX(-30px);-ms-transform:translateX(-30px);transform:translateX(-30px)}80%{-webkit-transform:translateX(10px);-ms-transform:translateX(10px);transform:translateX(10px)}100%{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}}.bounceInRight{-webkit-animation-name:bounceInRight;animation-name:bounceInRight}@-webkit-keyframes bounceInUp{0%{opacity:0;-webkit-transform:translateY(2000px);transform:translateY(2000px)}60%{opacity:1;-webkit-transform:translateY(-30px);transform:translateY(-30px)}80%{-webkit-transform:translateY(10px);transform:translateY(10px)}100%{-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes bounceInUp{0%{opacity:0;-webkit-transform:translateY(2000px);-ms-transform:translateY(2000px);transform:translateY(2000px)}60%{opacity:1;-webkit-transform:translateY(-30px);-ms-transform:translateY(-30px);transform:translateY(-30px)}80%{-webkit-transform:translateY(10px);-ms-transform:translateY(10px);transform:translateY(10px)}100%{-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}}.bounceInUp{-webkit-animation-name:bounceInUp;animation-name:bounceInUp}@-webkit-keyframes bounceOut{0%{-webkit-transform:scale(1);transform:scale(1)}25%{-webkit-transform:scale(0.95);transform:scale(0.95)}50%{opacity:1;-webkit-transform:scale(1.1);transform:scale(1.1)}100%{opacity:0;-webkit-transform:scale(0.3);transform:scale(0.3)}}@keyframes bounceOut{0%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}25%{-webkit-transform:scale(0.95);-ms-transform:scale(0.95);transform:scale(0.95)}50%{opacity:1;-webkit-transform:scale(1.1);-ms-transform:scale(1.1);transform:scale(1.1)}100%{opacity:0;-webkit-transform:scale(0.3);-ms-transform:scale(0.3);transform:scale(0.3)}}.bounceOut{-webkit-animation-name:bounceOut;animation-name:bounceOut}@-webkit-keyframes bounceOutDown{0%{-webkit-transform:translateY(0);transform:translateY(0)}20%{opacity:1;-webkit-transform:translateY(-20px);transform:translateY(-20px)}100%{opacity:0;-webkit-transform:translateY(2000px);transform:translateY(2000px)}}@keyframes bounceOutDown{0%{-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}20%{opacity:1;-webkit-transform:translateY(-20px);-ms-transform:translateY(-20px);transform:translateY(-20px)}100%{opacity:0;-webkit-transform:translateY(2000px);-ms-transform:translateY(2000px);transform:translateY(2000px)}}.bounceOutDown{-webkit-animation-name:bounceOutDown;animation-name:bounceOutDown}@-webkit-keyframes bounceOutLeft{0%{-webkit-transform:translateX(0);transform:translateX(0)}20%{opacity:1;-webkit-transform:translateX(20px);transform:translateX(20px)}100%{opacity:0;-webkit-transform:translateX(-2000px);transform:translateX(-2000px)}}@keyframes bounceOutLeft{0%{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}20%{opacity:1;-webkit-transform:translateX(20px);-ms-transform:translateX(20px);transform:translateX(20px)}100%{opacity:0;-webkit-transform:translateX(-2000px);-ms-transform:translateX(-2000px);transform:translateX(-2000px)}}.bounceOutLeft{-webkit-animation-name:bounceOutLeft;animation-name:bounceOutLeft}@-webkit-keyframes bounceOutRight{0%{-webkit-transform:translateX(0);transform:translateX(0)}20%{opacity:1;-webkit-transform:translateX(-20px);transform:translateX(-20px)}100%{opacity:0;-webkit-transform:translateX(2000px);transform:translateX(2000px)}}@keyframes bounceOutRight{0%{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}20%{opacity:1;-webkit-transform:translateX(-20px);-ms-transform:translateX(-20px);transform:translateX(-20px)}100%{opacity:0;-webkit-transform:translateX(2000px);-ms-transform:translateX(2000px);transform:translateX(2000px)}}.bounceOutRight{-webkit-animation-name:bounceOutRight;animation-name:bounceOutRight}@-webkit-keyframes bounceOutUp{0%{-webkit-transform:translateY(0);transform:translateY(0)}20%{opacity:1;-webkit-transform:translateY(20px);transform:translateY(20px)}100%{opacity:0;-webkit-transform:translateY(-2000px);transform:translateY(-2000px)}}@keyframes bounceOutUp{0%{-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}20%{opacity:1;-webkit-transform:translateY(20px);-ms-transform:translateY(20px);transform:translateY(20px)}100%{opacity:0;-webkit-transform:translateY(-2000px);-ms-transform:translateY(-2000px);transform:translateY(-2000px)}}.bounceOutUp{-webkit-animation-name:bounceOutUp;animation-name:bounceOutUp}@-webkit-keyframes fadeIn{0%{opacity:0}100%{opacity:1}}@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}.fadeIn{-webkit-animation-name:fadeIn;animation-name:fadeIn}@-webkit-keyframes fadeInDown{0%{opacity:0;-webkit-transform:translateY(-20px);transform:translateY(-20px)}100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes fadeInDown{0%{opacity:0;-webkit-transform:translateY(-20px);-ms-transform:translateY(-20px);transform:translateY(-20px)}100%{opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}}.fadeInDown{-webkit-animation-name:fadeInDown;animation-name:fadeInDown}@-webkit-keyframes fadeInDownBig{0%{opacity:0;-webkit-transform:translateY(-2000px);transform:translateY(-2000px)}100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes fadeInDownBig{0%{opacity:0;-webkit-transform:translateY(-2000px);-ms-transform:translateY(-2000px);transform:translateY(-2000px)}100%{opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}}.fadeInDownBig{-webkit-animation-name:fadeInDownBig;animation-name:fadeInDownBig}@-webkit-keyframes fadeInLeft{0%{opacity:0;-webkit-transform:translateX(-20px);transform:translateX(-20px)}100%{opacity:1;-webkit-transform:translateX(0);transform:translateX(0)}}@keyframes fadeInLeft{0%{opacity:0;-webkit-transform:translateX(-20px);-ms-transform:translateX(-20px);transform:translateX(-20px)}100%{opacity:1;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}}.fadeInLeft{-webkit-animation-name:fadeInLeft;animation-name:fadeInLeft}@-webkit-keyframes fadeInLeftBig{0%{opacity:0;-webkit-transform:translateX(-2000px);transform:translateX(-2000px)}100%{opacity:1;-webkit-transform:translateX(0);transform:translateX(0)}}@keyframes fadeInLeftBig{0%{opacity:0;-webkit-transform:translateX(-2000px);-ms-transform:translateX(-2000px);transform:translateX(-2000px)}100%{opacity:1;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}}.fadeInLeftBig{-webkit-animation-name:fadeInLeftBig;animation-name:fadeInLeftBig}@-webkit-keyframes fadeInRight{0%{opacity:0;-webkit-transform:translateX(20px);transform:translateX(20px)}100%{opacity:1;-webkit-transform:translateX(0);transform:translateX(0)}}@keyframes fadeInRight{0%{opacity:0;-webkit-transform:translateX(20px);-ms-transform:translateX(20px);transform:translateX(20px)}100%{opacity:1;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}}.fadeInRight{-webkit-animation-name:fadeInRight;animation-name:fadeInRight}@-webkit-keyframes fadeInRightBig{0%{opacity:0;-webkit-transform:translateX(2000px);transform:translateX(2000px)}100%{opacity:1;-webkit-transform:translateX(0);transform:translateX(0)}}@keyframes fadeInRightBig{0%{opacity:0;-webkit-transform:translateX(2000px);-ms-transform:translateX(2000px);transform:translateX(2000px)}100%{opacity:1;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}}.fadeInRightBig{-webkit-animation-name:fadeInRightBig;animation-name:fadeInRightBig}@-webkit-keyframes fadeInUp{0%{opacity:0;-webkit-transform:translateY(20px);transform:translateY(20px)}100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes fadeInUp{0%{opacity:0;-webkit-transform:translateY(20px);-ms-transform:translateY(20px);transform:translateY(20px)}100%{opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}}.fadeInUp{-webkit-animation-name:fadeInUp;animation-name:fadeInUp}@-webkit-keyframes fadeInUpBig{0%{opacity:0;-webkit-transform:translateY(2000px);transform:translateY(2000px)}100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes fadeInUpBig{0%{opacity:0;-webkit-transform:translateY(2000px);-ms-transform:translateY(2000px);transform:translateY(2000px)}100%{opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}}.fadeInUpBig{-webkit-animation-name:fadeInUpBig;animation-name:fadeInUpBig}@-webkit-keyframes fadeOut{0%{opacity:1}100%{opacity:0}}@keyframes fadeOut{0%{opacity:1}100%{opacity:0}}.fadeOut{-webkit-animation-name:fadeOut;animation-name:fadeOut}@-webkit-keyframes fadeOutDown{0%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}100%{opacity:0;-webkit-transform:translateY(20px);transform:translateY(20px)}}@keyframes fadeOutDown{0%{opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}100%{opacity:0;-webkit-transform:translateY(20px);-ms-transform:translateY(20px);transform:translateY(20px)}}.fadeOutDown{-webkit-animation-name:fadeOutDown;animation-name:fadeOutDown}@-webkit-keyframes fadeOutDownBig{0%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}100%{opacity:0;-webkit-transform:translateY(2000px);transform:translateY(2000px)}}@keyframes fadeOutDownBig{0%{opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}100%{opacity:0;-webkit-transform:translateY(2000px);-ms-transform:translateY(2000px);transform:translateY(2000px)}}.fadeOutDownBig{-webkit-animation-name:fadeOutDownBig;animation-name:fadeOutDownBig}@-webkit-keyframes fadeOutLeft{0%{opacity:1;-webkit-transform:translateX(0);transform:translateX(0)}100%{opacity:0;-webkit-transform:translateX(-20px);transform:translateX(-20px)}}@keyframes fadeOutLeft{0%{opacity:1;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}100%{opacity:0;-webkit-transform:translateX(-20px);-ms-transform:translateX(-20px);transform:translateX(-20px)}}.fadeOutLeft{-webkit-animation-name:fadeOutLeft;animation-name:fadeOutLeft}@-webkit-keyframes fadeOutLeftBig{0%{opacity:1;-webkit-transform:translateX(0);transform:translateX(0)}100%{opacity:0;-webkit-transform:translateX(-2000px);transform:translateX(-2000px)}}@keyframes fadeOutLeftBig{0%{opacity:1;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}100%{opacity:0;-webkit-transform:translateX(-2000px);-ms-transform:translateX(-2000px);transform:translateX(-2000px)}}.fadeOutLeftBig{-webkit-animation-name:fadeOutLeftBig;animation-name:fadeOutLeftBig}@-webkit-keyframes fadeOutRight{0%{opacity:1;-webkit-transform:translateX(0);transform:translateX(0)}100%{opacity:0;-webkit-transform:translateX(20px);transform:translateX(20px)}}@keyframes fadeOutRight{0%{opacity:1;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}100%{opacity:0;-webkit-transform:translateX(20px);-ms-transform:translateX(20px);transform:translateX(20px)}}.fadeOutRight{-webkit-animation-name:fadeOutRight;animation-name:fadeOutRight}@-webkit-keyframes fadeOutRightBig{0%{opacity:1;-webkit-transform:translateX(0);transform:translateX(0)}100%{opacity:0;-webkit-transform:translateX(2000px);transform:translateX(2000px)}}@keyframes fadeOutRightBig{0%{opacity:1;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}100%{opacity:0;-webkit-transform:translateX(2000px);-ms-transform:translateX(2000px);transform:translateX(2000px)}}.fadeOutRightBig{-webkit-animation-name:fadeOutRightBig;animation-name:fadeOutRightBig}@-webkit-keyframes fadeOutUp{0%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}100%{opacity:0;-webkit-transform:translateY(-20px);transform:translateY(-20px)}}@keyframes fadeOutUp{0%{opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}100%{opacity:0;-webkit-transform:translateY(-20px);-ms-transform:translateY(-20px);transform:translateY(-20px)}}.fadeOutUp{-webkit-animation-name:fadeOutUp;animation-name:fadeOutUp}@-webkit-keyframes fadeOutUpBig{0%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}100%{opacity:0;-webkit-transform:translateY(-2000px);transform:translateY(-2000px)}}@keyframes fadeOutUpBig{0%{opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}100%{opacity:0;-webkit-transform:translateY(-2000px);-ms-transform:translateY(-2000px);transform:translateY(-2000px)}}.fadeOutUpBig{-webkit-animation-name:fadeOutUpBig;animation-name:fadeOutUpBig}@-webkit-keyframes flip{0%{-webkit-transform:perspective(400px) translateZ(0) rotateY(0) scale(1);transform:perspective(400px) translateZ(0) rotateY(0) scale(1);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}40%{-webkit-transform:perspective(400px) translateZ(150px) rotateY(170deg) scale(1);transform:perspective(400px) translateZ(150px) rotateY(170deg) scale(1);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}50%{-webkit-transform:perspective(400px) translateZ(150px) rotateY(190deg) scale(1);transform:perspective(400px) translateZ(150px) rotateY(190deg) scale(1);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}80%{-webkit-transform:perspective(400px) translateZ(0) rotateY(360deg) scale(0.95);transform:perspective(400px) translateZ(0) rotateY(360deg) scale(0.95);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}100%{-webkit-transform:perspective(400px) translateZ(0) rotateY(360deg) scale(1);transform:perspective(400px) translateZ(0) rotateY(360deg) scale(1);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}}@keyframes flip{0%{-webkit-transform:perspective(400px) translateZ(0) rotateY(0) scale(1);-ms-transform:perspective(400px) translateZ(0) rotateY(0) scale(1);transform:perspective(400px) translateZ(0) rotateY(0) scale(1);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}40%{-webkit-transform:perspective(400px) translateZ(150px) rotateY(170deg) scale(1);-ms-transform:perspective(400px) translateZ(150px) rotateY(170deg) scale(1);transform:perspective(400px) translateZ(150px) rotateY(170deg) scale(1);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}50%{-webkit-transform:perspective(400px) translateZ(150px) rotateY(190deg) scale(1);-ms-transform:perspective(400px) translateZ(150px) rotateY(190deg) scale(1);transform:perspective(400px) translateZ(150px) rotateY(190deg) scale(1);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}80%{-webkit-transform:perspective(400px) translateZ(0) rotateY(360deg) scale(0.95);-ms-transform:perspective(400px) translateZ(0) rotateY(360deg) scale(0.95);transform:perspective(400px) translateZ(0) rotateY(360deg) scale(0.95);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}100%{-webkit-transform:perspective(400px) translateZ(0) rotateY(360deg) scale(1);-ms-transform:perspective(400px) translateZ(0) rotateY(360deg) scale(1);transform:perspective(400px) translateZ(0) rotateY(360deg) scale(1);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}}.animated.flip{-webkit-backface-visibility:visible;-ms-backface-visibility:visible;backface-visibility:visible;-webkit-animation-name:flip;animation-name:flip}@-webkit-keyframes flipInX{0%{-webkit-transform:perspective(400px) rotateX(90deg);transform:perspective(400px) rotateX(90deg);opacity:0}40%{-webkit-transform:perspective(400px) rotateX(-10deg);transform:perspective(400px) rotateX(-10deg)}70%{-webkit-transform:perspective(400px) rotateX(10deg);transform:perspective(400px) rotateX(10deg)}100%{-webkit-transform:perspective(400px) rotateX(0deg);transform:perspective(400px) rotateX(0deg);opacity:1}}@keyframes flipInX{0%{-webkit-transform:perspective(400px) rotateX(90deg);-ms-transform:perspective(400px) rotateX(90deg);transform:perspective(400px) rotateX(90deg);opacity:0}40%{-webkit-transform:perspective(400px) rotateX(-10deg);-ms-transform:perspective(400px) rotateX(-10deg);transform:perspective(400px) rotateX(-10deg)}70%{-webkit-transform:perspective(400px) rotateX(10deg);-ms-transform:perspective(400px) rotateX(10deg);transform:perspective(400px) rotateX(10deg)}100%{-webkit-transform:perspective(400px) rotateX(0deg);-ms-transform:perspective(400px) rotateX(0deg);transform:perspective(400px) rotateX(0deg);opacity:1}}.flipInX{-webkit-backface-visibility:visible !important;-ms-backface-visibility:visible !important;backface-visibility:visible !important;-webkit-animation-name:flipInX;animation-name:flipInX}@-webkit-keyframes flipInY{0%{-webkit-transform:perspective(400px) rotateY(90deg);transform:perspective(400px) rotateY(90deg);opacity:0}40%{-webkit-transform:perspective(400px) rotateY(-10deg);transform:perspective(400px) rotateY(-10deg)}70%{-webkit-transform:perspective(400px) rotateY(10deg);transform:perspective(400px) rotateY(10deg)}100%{-webkit-transform:perspective(400px) rotateY(0deg);transform:perspective(400px) rotateY(0deg);opacity:1}}@keyframes flipInY{0%{-webkit-transform:perspective(400px) rotateY(90deg);-ms-transform:perspective(400px) rotateY(90deg);transform:perspective(400px) rotateY(90deg);opacity:0}40%{-webkit-transform:perspective(400px) rotateY(-10deg);-ms-transform:perspective(400px) rotateY(-10deg);transform:perspective(400px) rotateY(-10deg)}70%{-webkit-transform:perspective(400px) rotateY(10deg);-ms-transform:perspective(400px) rotateY(10deg);transform:perspective(400px) rotateY(10deg)}100%{-webkit-transform:perspective(400px) rotateY(0deg);-ms-transform:perspective(400px) rotateY(0deg);transform:perspective(400px) rotateY(0deg);opacity:1}}.flipInY{-webkit-backface-visibility:visible !important;-ms-backface-visibility:visible !important;backface-visibility:visible !important;-webkit-animation-name:flipInY;animation-name:flipInY}@-webkit-keyframes flipOutX{0%{-webkit-transform:perspective(400px) rotateX(0deg);transform:perspective(400px) rotateX(0deg);opacity:1}100%{-webkit-transform:perspective(400px) rotateX(90deg);transform:perspective(400px) rotateX(90deg);opacity:0}}@keyframes flipOutX{0%{-webkit-transform:perspective(400px) rotateX(0deg);-ms-transform:perspective(400px) rotateX(0deg);transform:perspective(400px) rotateX(0deg);opacity:1}100%{-webkit-transform:perspective(400px) rotateX(90deg);-ms-transform:perspective(400px) rotateX(90deg);transform:perspective(400px) rotateX(90deg);opacity:0}}.flipOutX{-webkit-animation-name:flipOutX;animation-name:flipOutX;-webkit-backface-visibility:visible !important;-ms-backface-visibility:visible !important;backface-visibility:visible !important}@-webkit-keyframes flipOutY{0%{-webkit-transform:perspective(400px) rotateY(0deg);transform:perspective(400px) rotateY(0deg);opacity:1}100%{-webkit-transform:perspective(400px) rotateY(90deg);transform:perspective(400px) rotateY(90deg);opacity:0}}@keyframes flipOutY{0%{-webkit-transform:perspective(400px) rotateY(0deg);-ms-transform:perspective(400px) rotateY(0deg);transform:perspective(400px) rotateY(0deg);opacity:1}100%{-webkit-transform:perspective(400px) rotateY(90deg);-ms-transform:perspective(400px) rotateY(90deg);transform:perspective(400px) rotateY(90deg);opacity:0}}.flipOutY{-webkit-backface-visibility:visible !important;-ms-backface-visibility:visible !important;backface-visibility:visible !important;-webkit-animation-name:flipOutY;animation-name:flipOutY}@-webkit-keyframes lightSpeedIn{0%{-webkit-transform:translateX(100%) skewX(-30deg);transform:translateX(100%) skewX(-30deg);opacity:0}60%{-webkit-transform:translateX(-20%) skewX(30deg);transform:translateX(-20%) skewX(30deg);opacity:1}80%{-webkit-transform:translateX(0%) skewX(-15deg);transform:translateX(0%) skewX(-15deg);opacity:1}100%{-webkit-transform:translateX(0%) skewX(0deg);transform:translateX(0%) skewX(0deg);opacity:1}}@keyframes lightSpeedIn{0%{-webkit-transform:translateX(100%) skewX(-30deg);-ms-transform:translateX(100%) skewX(-30deg);transform:translateX(100%) skewX(-30deg);opacity:0}60%{-webkit-transform:translateX(-20%) skewX(30deg);-ms-transform:translateX(-20%) skewX(30deg);transform:translateX(-20%) skewX(30deg);opacity:1}80%{-webkit-transform:translateX(0%) skewX(-15deg);-ms-transform:translateX(0%) skewX(-15deg);transform:translateX(0%) skewX(-15deg);opacity:1}100%{-webkit-transform:translateX(0%) skewX(0deg);-ms-transform:translateX(0%) skewX(0deg);transform:translateX(0%) skewX(0deg);opacity:1}}.lightSpeedIn{-webkit-animation-name:lightSpeedIn;animation-name:lightSpeedIn;-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}@-webkit-keyframes lightSpeedOut{0%{-webkit-transform:translateX(0%) skewX(0deg);transform:translateX(0%) skewX(0deg);opacity:1}100%{-webkit-transform:translateX(100%) skewX(-30deg);transform:translateX(100%) skewX(-30deg);opacity:0}}@keyframes lightSpeedOut{0%{-webkit-transform:translateX(0%) skewX(0deg);-ms-transform:translateX(0%) skewX(0deg);transform:translateX(0%) skewX(0deg);opacity:1}100%{-webkit-transform:translateX(100%) skewX(-30deg);-ms-transform:translateX(100%) skewX(-30deg);transform:translateX(100%) skewX(-30deg);opacity:0}}.lightSpeedOut{-webkit-animation-name:lightSpeedOut;animation-name:lightSpeedOut;-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}@-webkit-keyframes rotateIn{0%{-webkit-transform-origin:center center;transform-origin:center center;-webkit-transform:rotate(-200deg);transform:rotate(-200deg);opacity:0}100%{-webkit-transform-origin:center center;transform-origin:center center;-webkit-transform:rotate(0);transform:rotate(0);opacity:1}}@keyframes rotateIn{0%{-webkit-transform-origin:center center;-ms-transform-origin:center center;transform-origin:center center;-webkit-transform:rotate(-200deg);-ms-transform:rotate(-200deg);transform:rotate(-200deg);opacity:0}100%{-webkit-transform-origin:center center;-ms-transform-origin:center center;transform-origin:center center;-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);opacity:1}}.rotateIn{-webkit-animation-name:rotateIn;animation-name:rotateIn}@-webkit-keyframes rotateInDownLeft{0%{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(-90deg);transform:rotate(-90deg);opacity:0}100%{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(0);transform:rotate(0);opacity:1}}@keyframes rotateInDownLeft{0%{-webkit-transform-origin:left bottom;-ms-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);opacity:0}100%{-webkit-transform-origin:left bottom;-ms-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);opacity:1}}.rotateInDownLeft{-webkit-animation-name:rotateInDownLeft;animation-name:rotateInDownLeft}@-webkit-keyframes rotateInDownRight{0%{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(90deg);transform:rotate(90deg);opacity:0}100%{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(0);transform:rotate(0);opacity:1}}@keyframes rotateInDownRight{0%{-webkit-transform-origin:right bottom;-ms-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg);opacity:0}100%{-webkit-transform-origin:right bottom;-ms-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);opacity:1}}.rotateInDownRight{-webkit-animation-name:rotateInDownRight;animation-name:rotateInDownRight}@-webkit-keyframes rotateInUpLeft{0%{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(90deg);transform:rotate(90deg);opacity:0}100%{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(0);transform:rotate(0);opacity:1}}@keyframes rotateInUpLeft{0%{-webkit-transform-origin:left bottom;-ms-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg);opacity:0}100%{-webkit-transform-origin:left bottom;-ms-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);opacity:1}}.rotateInUpLeft{-webkit-animation-name:rotateInUpLeft;animation-name:rotateInUpLeft}@-webkit-keyframes rotateInUpRight{0%{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(-90deg);transform:rotate(-90deg);opacity:0}100%{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(0);transform:rotate(0);opacity:1}}@keyframes rotateInUpRight{0%{-webkit-transform-origin:right bottom;-ms-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);opacity:0}100%{-webkit-transform-origin:right bottom;-ms-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);opacity:1}}.rotateInUpRight{-webkit-animation-name:rotateInUpRight;animation-name:rotateInUpRight}@-webkit-keyframes rotateOut{0%{-webkit-transform-origin:center center;transform-origin:center center;-webkit-transform:rotate(0);transform:rotate(0);opacity:1}100%{-webkit-transform-origin:center center;transform-origin:center center;-webkit-transform:rotate(200deg);transform:rotate(200deg);opacity:0}}@keyframes rotateOut{0%{-webkit-transform-origin:center center;-ms-transform-origin:center center;transform-origin:center center;-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);opacity:1}100%{-webkit-transform-origin:center center;-ms-transform-origin:center center;transform-origin:center center;-webkit-transform:rotate(200deg);-ms-transform:rotate(200deg);transform:rotate(200deg);opacity:0}}.rotateOut{-webkit-animation-name:rotateOut;animation-name:rotateOut}@-webkit-keyframes rotateOutDownLeft{0%{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(0);transform:rotate(0);opacity:1}100%{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(90deg);transform:rotate(90deg);opacity:0}}@keyframes rotateOutDownLeft{0%{-webkit-transform-origin:left bottom;-ms-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);opacity:1}100%{-webkit-transform-origin:left bottom;-ms-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg);opacity:0}}.rotateOutDownLeft{-webkit-animation-name:rotateOutDownLeft;animation-name:rotateOutDownLeft}@-webkit-keyframes rotateOutDownRight{0%{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(0);transform:rotate(0);opacity:1}100%{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(-90deg);transform:rotate(-90deg);opacity:0}}@keyframes rotateOutDownRight{0%{-webkit-transform-origin:right bottom;-ms-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);opacity:1}100%{-webkit-transform-origin:right bottom;-ms-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);opacity:0}}.rotateOutDownRight{-webkit-animation-name:rotateOutDownRight;animation-name:rotateOutDownRight}@-webkit-keyframes rotateOutUpLeft{0%{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(0);transform:rotate(0);opacity:1}100%{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(-90deg);transform:rotate(-90deg);opacity:0}}@keyframes rotateOutUpLeft{0%{-webkit-transform-origin:left bottom;-ms-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);opacity:1}100%{-webkit-transform-origin:left bottom;-ms-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);opacity:0}}.rotateOutUpLeft{-webkit-animation-name:rotateOutUpLeft;animation-name:rotateOutUpLeft}@-webkit-keyframes rotateOutUpRight{0%{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(0);transform:rotate(0);opacity:1}100%{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(90deg);transform:rotate(90deg);opacity:0}}@keyframes rotateOutUpRight{0%{-webkit-transform-origin:right bottom;-ms-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);opacity:1}100%{-webkit-transform-origin:right bottom;-ms-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg);opacity:0}}.rotateOutUpRight{-webkit-animation-name:rotateOutUpRight;animation-name:rotateOutUpRight}@-webkit-keyframes slideInDown{0%{opacity:0;-webkit-transform:translateY(-2000px);transform:translateY(-2000px)}100%{-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes slideInDown{0%{opacity:0;-webkit-transform:translateY(-2000px);-ms-transform:translateY(-2000px);transform:translateY(-2000px)}100%{-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}}.slideInDown{-webkit-animation-name:slideInDown;animation-name:slideInDown}@-webkit-keyframes slideInLeft{0%{opacity:0;-webkit-transform:translateX(-2000px);transform:translateX(-2000px)}100%{-webkit-transform:translateX(0);transform:translateX(0)}}@keyframes slideInLeft{0%{opacity:0;-webkit-transform:translateX(-2000px);-ms-transform:translateX(-2000px);transform:translateX(-2000px)}100%{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}}.slideInLeft{-webkit-animation-name:slideInLeft;animation-name:slideInLeft}@-webkit-keyframes slideInRight{0%{opacity:0;-webkit-transform:translateX(2000px);transform:translateX(2000px)}100%{-webkit-transform:translateX(0);transform:translateX(0)}}@keyframes slideInRight{0%{opacity:0;-webkit-transform:translateX(2000px);-ms-transform:translateX(2000px);transform:translateX(2000px)}100%{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}}.slideInRight{-webkit-animation-name:slideInRight;animation-name:slideInRight}@-webkit-keyframes slideOutLeft{0%{-webkit-transform:translateX(0);transform:translateX(0)}100%{opacity:0;-webkit-transform:translateX(-2000px);transform:translateX(-2000px)}}@keyframes slideOutLeft{0%{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}100%{opacity:0;-webkit-transform:translateX(-2000px);-ms-transform:translateX(-2000px);transform:translateX(-2000px)}}.slideOutLeft{-webkit-animation-name:slideOutLeft;animation-name:slideOutLeft}@-webkit-keyframes slideOutRight{0%{-webkit-transform:translateX(0);transform:translateX(0)}100%{opacity:0;-webkit-transform:translateX(2000px);transform:translateX(2000px)}}@keyframes slideOutRight{0%{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}100%{opacity:0;-webkit-transform:translateX(2000px);-ms-transform:translateX(2000px);transform:translateX(2000px)}}.slideOutRight{-webkit-animation-name:slideOutRight;animation-name:slideOutRight}@-webkit-keyframes slideOutUp{0%{-webkit-transform:translateY(0);transform:translateY(0)}100%{opacity:0;-webkit-transform:translateY(-2000px);transform:translateY(-2000px)}}@keyframes slideOutUp{0%{-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}100%{opacity:0;-webkit-transform:translateY(-2000px);-ms-transform:translateY(-2000px);transform:translateY(-2000px)}}.slideOutUp{-webkit-animation-name:slideOutUp;animation-name:slideOutUp}@-webkit-keyframes hinge{0%{-webkit-transform:rotate(0);transform:rotate(0);-webkit-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out}20%,60%{-webkit-transform:rotate(80deg);transform:rotate(80deg);-webkit-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out}40%{-webkit-transform:rotate(60deg);transform:rotate(60deg);-webkit-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out}80%{-webkit-transform:rotate(60deg) translateY(0);transform:rotate(60deg) translateY(0);-webkit-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out;opacity:1}100%{-webkit-transform:translateY(700px);transform:translateY(700px);opacity:0}}@keyframes hinge{0%{-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);-webkit-transform-origin:top left;-ms-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out}20%,60%{-webkit-transform:rotate(80deg);-ms-transform:rotate(80deg);transform:rotate(80deg);-webkit-transform-origin:top left;-ms-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out}40%{-webkit-transform:rotate(60deg);-ms-transform:rotate(60deg);transform:rotate(60deg);-webkit-transform-origin:top left;-ms-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out}80%{-webkit-transform:rotate(60deg) translateY(0);-ms-transform:rotate(60deg) translateY(0);transform:rotate(60deg) translateY(0);-webkit-transform-origin:top left;-ms-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out;opacity:1}100%{-webkit-transform:translateY(700px);-ms-transform:translateY(700px);transform:translateY(700px);opacity:0}}.hinge{-webkit-animation-name:hinge;animation-name:hinge}@-webkit-keyframes rollIn{0%{opacity:0;-webkit-transform:translateX(-100%) rotate(-120deg);transform:translateX(-100%) rotate(-120deg)}100%{opacity:1;-webkit-transform:translateX(0px) rotate(0deg);transform:translateX(0px) rotate(0deg)}}@keyframes rollIn{0%{opacity:0;-webkit-transform:translateX(-100%) rotate(-120deg);-ms-transform:translateX(-100%) rotate(-120deg);transform:translateX(-100%) rotate(-120deg)}100%{opacity:1;-webkit-transform:translateX(0px) rotate(0deg);-ms-transform:translateX(0px) rotate(0deg);transform:translateX(0px) rotate(0deg)}}.rollIn{-webkit-animation-name:rollIn;animation-name:rollIn}@-webkit-keyframes rollOut{0%{opacity:1;-webkit-transform:translateX(0px) rotate(0deg);transform:translateX(0px) rotate(0deg)}100%{opacity:0;-webkit-transform:translateX(100%) rotate(120deg);transform:translateX(100%) rotate(120deg)}}@keyframes rollOut{0%{opacity:1;-webkit-transform:translateX(0px) rotate(0deg);-ms-transform:translateX(0px) rotate(0deg);transform:translateX(0px) rotate(0deg)}100%{opacity:0;-webkit-transform:translateX(100%) rotate(120deg);-ms-transform:translateX(100%) rotate(120deg);transform:translateX(100%) rotate(120deg)}}.rollOut{-webkit-animation-name:rollOut;animation-name:rollOut}*,*::after,*::before{box-sizing:border-box}body{font-family:"Noto Sans TC",sans-serif;font-size:16px;line-height:26px;color:#212121;background-color:#fff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}body input,body textarea{border:1px solid #eee;outline:none}body input:focus:required:invalid,body textarea:focus:required:invalid{border-color:#e02f40}body input:required:valid,body textarea:required:valid{border-color:#34a74e}::placeholder{color:#666}*::selection{color:#fff;background-color:#d8534f}h1,h2,h3,h4,h5,h6{font-family:"Caveat",cursive;line-height:initial;letter-spacing:1px;text-transform:uppercase}h1{font-size:36px}h2{font-size:28px}h3{font-size:24px}h4{font-size:20px}h5{font-size:18px}h6{font-size:16px}blockquote{padding-left:20px;font-size:24px;line-height:34px;border-left:3px solid #d8534f;font-style:normal}blockquote cite{font-size:16px;font-style:normal;color:#7f7f7f}blockquote cite:before{content:'\2014' '\00a0'}@media only screen and (max-width: 576px){blockquote{font-size:21px;line-height:31px}}pre{overflow:auto;padding:15px;margin-bottom:0;font-size:14px;white-space:pre-wrap;word-wrap:break-word;word-break:break-all}img,.zoom-img-wrap{max-width:100%;height:auto;vertical-align:middle}img+em,.zoom-img-wrap+em{display:block;margin-top:15px;font-size:14px;line-height:22px;font-style:normal;font-weight:normal;text-align:center;color:#7f7f7f}a{text-decoration:none;color:#212121;transition:all .15s}a:hover{color:#000}hr{display:block;height:1px;margin:50px 0;border:0;background-color:#eee}.wow{visibility:hidden}.top{position:fixed;bottom:40px;right:-100px;z-index:1;width:40px;height:40px;line-height:40px;text-align:center;background-color:#eee;color:#212121;cursor:pointer;transition:all .25s ease;opacity:.7}.top.is-active{right:40px}.top:hover{opacity:1}@media only screen and (max-width: 768px){.top{bottom:25px}.top.is-active{right:30px}}.wrapper-page{margin-top:80px;margin-bottom:80px}@media only screen and (max-width: 576px){.wrapper-page{margin-top:50px;margin-bottom:50px}}.header{width:100%}.header-box{display:flex;align-items:center;margin-top:80px;padding-bottom:20px;border-bottom:1px solid #eee}.header-box .header__overlay{position:fixed;top:0;right:0;bottom:0;left:0;z-index:10;background-color:rgba(17,17,17,0.7);cursor:pointer;opacity:0;visibility:hidden;transition:all 0.5s ease}@media only screen and (max-width: 576px){.header-box{margin-top:50px}.header-box .header__overlay.is-visible{opacity:1;visibility:visible}}.logo__link{font-family:'Dancing Script', cursive;font-size:31px;line-height:50px;font-weight:700;text-decoration:none}.logo__link:hover{color:#000}.logo__image{max-height:50px}.main-nav{margin-left:auto}.main-nav__box .nav__list .nav__item{display:inline-block;margin-right:5px}.main-nav__box .nav__list .nav__link{position:relative;display:inline-block;padding:5px 10px;font-size:14px;transition:all .3s ease}.main-nav__box .nav__list .nav__link:hover{color:#fff}.main-nav__box .nav__list .nav__link:hover:after{height:100%}.main-nav__box .nav__list .nav__link:after{content:"";position:absolute;left:0;bottom:0;height:0;width:100%;z-index:-1;background-color:#212121;transition:all .3s ease}.main-nav__box .nav__close{display:none}.nav-buttons{margin-left:10px;line-height:initial}.nav-buttons .nav__icon{font-size:20px;cursor:pointer}.nav-buttons .nav__icon:first-child{margin-right:10px}.nav-buttons .nav__icon-menu{display:none}@media only screen and (max-width: 576px){.nav-buttons .nav__icon-menu{display:inline-block}}@media only screen and (max-width: 576px){.main-nav__box{position:fixed;right:-300px;top:0;z-index:100;height:100vh;min-height:100%;width:300px;transition:right 0.5s cubic-bezier(0.7, 0.4, 0, 1);background-color:#fff}.main-nav__box.is-open{right:0}.main-nav__box .nav__list{padding:50px 30px 30px}.main-nav__box .nav__list .nav__item{display:block;margin-right:0}.main-nav__box .nav__list .nav__link{display:block;margin:20px 0;padding:10px 0;text-align:center}.main-nav__box .nav__list .nav__link.is-active{margin:20px 0;padding:10px 15px}.main-nav__box .nav__close{position:absolute;top:30px;right:30px;display:inline-block;font-size:20px;cursor:pointer}}.search{position:fixed;top:0;left:0;right:0;bottom:0;z-index:-1;transform:scale(0.95);opacity:0;background:#fff;transition:all .25s ease}.search.is-visible{transform:scale(1);z-index:100;opacity:1;transition:all .25s ease}.search__box{width:60%;margin:0 auto;padding-top:250px}@media only screen and (max-width: 768px){.search__box{width:80%;padding-top:100px}}.search__group{position:relative;margin-bottom:30px}.search__group .search__close{position:absolute;right:0;top:17px;font-size:25px;cursor:pointer}.search__group .search__text{width:100%;padding:20px 18px 18px 0;font-family:'Fjalla One', Helvetica, Arial, sans-serif;font-size:28px;line-height:32px;border:none;border-bottom:3px solid #212121;color:#212121}.search__group .search__text::placeholder{font-weight:700;color:#bbb}.search__group .search__text::-ms-clear{display:none}.search-results-list{height:55vh;margin:0 0 0 -5px;padding:0 26px;list-style:decimal;font-weight:700;color:#bbb;overflow:auto;white-space:normal}.search-results-list .search-results__item{margin-bottom:20px}.search-results-list .search-results__link{font-size:16px;font-weight:400;line-height:24px;color:#3b3b3b;transition:all .15s}.search-results-list .search-results__link:hover{color:#000}.search-results-list .no-results{list-style:none;margin-left:-20px;font-size:16px;font-weight:400;color:#212121}.pagination{margin-top:30px}@media only screen and (max-width: 576px){.pagination{margin-top:0}}.pagination__list{text-align:center}.pagination__list .previous-link,.pagination__list .next-link,.pagination__list .prev-disabled,.pagination__list .next-disabled{display:inline-block;padding:10px 20px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;border-right:1px solid #eee}.pagination__list .next-link,.pagination__list .next-disabled{border-right:none}.pagination__list .prev-disabled,.pagination__list .next-disabled{color:#c6c6c6}.footer{padding:80px 20px 40px;text-align:center;background-color:#212121}.footer.footer-image{position:relative;background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#212121}.footer.footer-image:before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;opacity:.3;background:#212121}.footer .contact{position:relative;margin-bottom:25px}.footer .contact .contact__item{display:inline-block;margin:0 10px}.footer .contact .contact__link{display:inline-block;width:25px;height:25px;font-size:15px;line-height:25px;border-radius:25px;color:#fff;background-color:rgba(255,255,255,0.25)}.footer .contact .contact__link:hover{background-color:#d8534f}.footer .copyright{position:relative;font-size:13px;color:#fff}.footer .copyright .copyright__link{color:#ccc}.footer .copyright .copyright__link:hover{color:#fff}.hero{position:relative;margin-bottom:80px;overflow:hidden;background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#f5f5f5}.hero:before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;opacity:.3;background:#212121}.hero:after{content:"";display:table;min-height:350px;padding-top:60%}@media only screen and (max-width: 576px){.hero{margin-bottom:50px}}.hero__content{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;padding:20px;text-align:center;color:#fff}.hero__content .hero__title{font-size:36px;font-family:"Dancing Script",cursive}.hero__content .hero__subtitle{text-shadow:0 1px 5px rgba(0,0,0,0.1)}.hero__content .hero__title{margin-bottom:40px}.hero__content .hero__subtitle{font-size:20px;font-family:"Shadows Into Light",cursive;line-height:17px;padding-left:10px;border-left:5px solid #d8534f}@media only screen and (max-width: 576px){.hero__content .hero__title{font-size:26px}.hero__content .hero__subtitle{font-size:15px}}.article{margin-bottom:50px;padding-bottom:50px;border-bottom:1px solid #eee}.article__title{margin-bottom:20px;font-size:21px;font-family:"Shadows Into Light",cursive}.article__title a:hover{color:#d8534f}.article__excerpt{margin-bottom:20px;font-size:15px;font-family:"Noto Sans TC",sans-serif;line-height:25px;color:#7f7f7f}.article-info{font-size:13px;font-family:"Dancing Script",cursive;line-height:18px;letter-spacing:0.5px;color:#7f7f7f}.article-info a{display:inline-block;color:#3b3b3b;border-bottom:1px dotted #ccc}.article-info a:hover{color:#000}.article__tag:after{content:",";display:inline-block}.article__tag:last-child:after{content:""}.post__head{margin-bottom:40px}.post__head .post__title{margin-bottom:20px;font-size:33px;font-family:"Shadows Into Light",cursive;line-height:50px}.post-info{font-size:14px;font-family:"Dancing Script",cursive;line-height:18px;letter-spacing:0.5px;color:#7f7f7f}.post-info a{display:inline-block;color:#3b3b3b;border-bottom:1px dotted #ccc}.post-info a:hover{color:#000}.post-tags__tag:after{content:",";display:inline-block}.post-tags__tag:last-child:after{content:""}.post-image{display:block;margin-bottom:40px;background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#f5f5f5}.post-image:after{content:"";display:table;padding-top:60%}.post__share{margin-bottom:80px}@media only screen and (max-width: 576px){.post__share{margin-bottom:50px}}.share__list{text-align:center}.share__item{display:inline-block;margin-right:5px}.share__item:last-child{margin-right:0px}.share__link{display:inline-block;width:35px;height:35px;font-size:18px;line-height:35px;color:#fff;cursor:pointer}.share__link:hover{color:#fff}.share__link.share__twitter{background-color:#55acee}.share__link.share__facebook{background-color:#3b5999}.share__link.share__pinterest{background-color:#bd081c}.widget-recent{margin-bottom:50px}.widget-recent .widget__title{text-align:center}.recent-box{display:flex}.recent-box .recent-posts{width:30%;margin-left:5%}.recent-box .recent-posts:first-child{margin-left:0}@media only screen and (max-width: 576px){.recent-box{flex-wrap:wrap}.recent-box .recent-posts{width:100%;margin-left:0;margin-bottom:15px}}.recent-posts__image{position:relative;display:block;margin-bottom:15px;background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#f5f5f5}.recent-posts__image:hover:before{transition:.3s ease-in-out;opacity:1;visibility:visible}.recent-posts__image:before{content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.1);transition:.3s ease-in-out;opacity:0;visibility:hidden}.recent-posts__image:after{content:"";display:table;padding-top:70%}.recent-posts__title{margin-bottom:0;text-align:center}.widget-newsletter{padding:60px 30px;margin-bottom:50px;text-align:center;background-color:#f5f5f5}.newsletter-title{margin-bottom:15px;font-size:18px}.newsletter-subtitle{margin-bottom:30px}.newsletter-group{display:flex;align-items:center;justify-content:center}.newsletter-group .newsletter-email{height:45px;width:285px;max-width:100%;padding:15px;font-size:13px}.newsletter-group .newsletter-button{height:45px;width:120px;padding:10px 15px;font-size:12px;letter-spacing:1px;text-transform:uppercase;transition:all .15s;color:#fff;background-color:#212121;cursor:pointer}.newsletter-group .newsletter-button:hover{background-color:#d8534f}@media only screen and (max-width: 576px){.newsletter-group{flex-wrap:wrap}.newsletter-group .newsletter-email{margin-bottom:15px}}.page-head{margin-bottom:40px}.page-head .page-title{margin-bottom:20px;font-size:33px;line-height:50px}.page-image{display:block;margin-bottom:40px;background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#f5f5f5}.page-image:after{content:"";display:table;padding-top:60%}.archive-title{margin-bottom:80px;padding-left:15px;border-left:7px solid #d8534f}@media only screen and (max-width: 576px){.archive-title{margin-bottom:50px}}
+
+  </style>
+</head>
+
+
+
+
+
+<body>
+
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+
+  <!-- begin header -->
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        <div class="header-box">
+          <!-- begin logo -->
+          <div class="logo">
+            <a class="logo__link" href="/">
+            
+              Truth and Logic
+            
+            </a>
+          </div>
+          <!-- end logo -->
+          
+          
+
+          <!-- begin main-nav -->
+          <nav class="main-nav">
+
+            <div class="main-nav__box">
+              <i class="nav__close ion ion-md-close"></i>
+              <ul class="nav__list list-reset">
+                <li class="nav__item">
+                  <a href="/" class="nav__link">Home</a>
+                </li>
+                
+                  
+                
+                  
+                
+                <li class="nav__item">
+                  <a href="/about/" class="nav__link">About</a>
+                </li>
+                
+                  
+                
+                  
+                
+                <li class="nav__item">
+                  <a href="/Archive/" class="nav__link">Archive</a>
+                </li>
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+              </ul>
+            </div>
+
+          </nav>
+          <!-- end main-nav -->
+
+          <div class="nav-buttons">
+            <i class="nav__icon nav__icon-menu ion ion-md-menu"></i>
+            <i class="nav__icon nav__icon-search ion ion-md-search"></i>
+          </div>
+
+          <div class="header__overlay"></div>
+        </div>
+      </div>
+      <!-- begin search -->
+<div class="search">
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        <div class="search__box">
+          <div class="search__group">
+            <div class="search__close">
+              <i class="ion ion-md-close"></i>
+            </div>
+            <label for="js-search-input" class="screen-reader-text">Search for Blog</label>
+            <input type="text" id="js-search-input" class="search__text" autocomplete="off"
+              placeholder="Type to search...">
+          </div>
+          <ul id="js-results-container" class="search-results-list"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end search -->
+    </div>
+  </div>
+</header>
+<!-- end header -->
+
+  <!-- begin content -->
+  <main class="content" aria-label="Content">
+    <!-- begin wrapper-page -->
+    <div class="wrapper-page">
+      <div class="container">
+	<div class="row">
+		<div class="col col-12">
+			
+			<div class="post__head wow fadeInUp">
+				<h1 class="post__title">Generative Model Part 2：A Survey on Variational Autoencoder</h1>
+				<div class="post-info">
+					
+					<span class="post-tags">
+						posted in
+						
+							<a href="/tag/Generative-Model" class="post-tags__tag">Generative-Model</a>
+						
+					</span>
+					
+					<span class="post__meta">
+						<span class="post__date"> on <a href="">
+							<time datetime="2021-01-25T00:00:00+08:00">Jan 25, 2021</time></a>
+						</span>
+						<span class="article__author"> by <a href="/about/">Changhao Wu</a></span>
+					</span>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col col-12">
+			
+			<!-- begin post -->
+			<article class="post wow fadeInUp" data-wow-delay=".2s">
+	
+			
+				<div class="post-image" style="background-image: url('/images/cover/C_%20Abstraction3.jpeg')"></div>
+			
+	
+				<div class="post__content">
+                    <ul class="table-of-content" id="markdown-toc">
+  <li><a href="#generative-model-part-2a-survey-on-variational-autoencoder" id="markdown-toc-generative-model-part-2a-survey-on-variational-autoencoder">Generative Model Part 2：A Survey on Variational Autoencoder</a>    <ul>
+      <li><a href="#1--introduction" id="markdown-toc-1--introduction">1.  Introduction</a>        <ul>
+          <li><a href="#11--probabilistic-models-and-variational-inference" id="markdown-toc-11--probabilistic-models-and-variational-inference">1.1  Probabilistic Models and Variational Inference</a></li>
+          <li><a href="#12--parameterizing-conditional-distributions-with-neural-networks" id="markdown-toc-12--parameterizing-conditional-distributions-with-neural-networks">1.2  Parameterizing Conditional Distributions with Neural Networks</a></li>
+          <li><a href="#13--directed-graphical-models-and-neural-networks" id="markdown-toc-13--directed-graphical-models-and-neural-networks">1.3  Directed Graphical Models and Neural Networks</a></li>
+          <li><a href="#14--learning-in-fully-observed-models-with-neural-nets" id="markdown-toc-14--learning-in-fully-observed-models-with-neural-nets">1.4  Learning in Fully Observed Models with Neural Nets</a>            <ul>
+              <li><a href="#141-dataset" id="markdown-toc-141-dataset">1.4.1 Dataset</a></li>
+              <li><a href="#142-maximum-likelihood-and-minibatch-sgd" id="markdown-toc-142-maximum-likelihood-and-minibatch-sgd">1.4.2 Maximum Likelihood and Minibatch SGD</a></li>
+            </ul>
+          </li>
+          <li><a href="#15-intractabilities" id="markdown-toc-15-intractabilities">1.5 Intractabilities</a></li>
+        </ul>
+      </li>
+      <li><a href="#2-variational-autoencoders" id="markdown-toc-2-variational-autoencoders">2. Variational Autoencoders</a>        <ul>
+          <li><a href="#21-loss-function-evidence-lower-bound" id="markdown-toc-21-loss-function-evidence-lower-bound">2.1 Loss function (Evidence Lower Bound)</a></li>
+          <li><a href="#22-stochastic-gradient-based-optimization-of-the-elbo-reparameterization-trick" id="markdown-toc-22-stochastic-gradient-based-optimization-of-the-elbo-reparameterization-trick">2.2 Stochastic Gradient-Based Optimization of the ELBO (Reparameterization Trick)</a>            <ul>
+              <li><a href="#221-reparameterization-trick" id="markdown-toc-221-reparameterization-trick">2.2.1 Reparameterization Trick</a></li>
+              <li><a href="#222-computation-of-inference-distribution" id="markdown-toc-222-computation-of-inference-distribution">2.2.2 Computation of Inference Distribution</a></li>
+            </ul>
+          </li>
+          <li><a href="#23-estimation-of-the-marginal-likelihood" id="markdown-toc-23-estimation-of-the-marginal-likelihood">2.3 Estimation of the Marginal Likelihood</a></li>
+          <li><a href="#25-summary-of-training" id="markdown-toc-25-summary-of-training">2.5 Summary of Training</a>            <ul>
+              <li><a href="#251-data-preposscessing" id="markdown-toc-251-data-preposscessing">2.5.1 Data Preposscessing</a></li>
+              <li><a href="#252-network-architecture" id="markdown-toc-252-network-architecture">2.5.2 Network Architecture</a></li>
+              <li><a href="#253-loss-function" id="markdown-toc-253-loss-function">2.5.3 Loss Function</a></li>
+            </ul>
+          </li>
+          <li><a href="#24-challenges" id="markdown-toc-24-challenges">2.4 Challenges</a>            <ul>
+              <li><a href="#241-optimization-issues" id="markdown-toc-241-optimization-issues">2.4.1 Optimization issues</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#reference" id="markdown-toc-reference">Reference</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="generative-model-part-2a-survey-on-variational-autoencoder">Generative Model Part 2：A Survey on Variational Autoencoder</h1>
+
+<p>“VAE marrys graphical models and deep learning” —Diederik P. Kingma</p>
+
+<p>正如VAE的作者在《An Introduction to Variational Autoencoders》所言，VAE结合了概率模型，图模型，神经网络，成功的实现了对于复杂分布的拟合，建立在神经网络这样的标准的，高效的拟合器上，也可以利用梯度下降算法进行训练</p>
+
+<h2 id="1--introduction">1.  Introduction</h2>
+
+<p>这一部分中，主要叙述关于概率模型，神经网络，图模型的一些基础</p>
+
+<h3 id="11--probabilistic-models-and-variational-inference">1.1  Probabilistic Models and Variational Inference</h3>
+
+<p>概率模型中，\(\mathbf{X}\) 代表所有观察数据的集合，也是需要联合分布建模的对象，需要去逼近真实的分布 \(p^{*}(\mathbf{x})\) ，利用一个由 \(\boldsymbol{\theta}\) 控制的模型：</p>
+
+\[\mathbf{x} \sim p_{\boldsymbol{\theta}}(\mathbf{x})\]
+
+<p>而概率模型中，学习的本质是，寻找最适合的参数 \(\boldsymbol{\theta}\) 来逼近真实分布  \(p^{*}(\mathbf{x})\)</p>
+
+\[p_{\boldsymbol{\theta}}(\mathbf{x}) \approx p^{*}(\mathbf{x})\]
+
+<p>因此，希望 \(p^{*}(\mathbf{x})\) 足够灵活以逼近一个足够精确的模型</p>
+
+<p>上述模型被称为非条件概率模型，与此相对应的，还有一种模型被称为条件概率模型：</p>
+
+\[p_{\boldsymbol{\theta}}(\mathbf{y} \mid \mathbf{x}) \approx p^{*}(\mathbf{y} \mid \mathbf{x})\]
+
+<p>常被用于回归，分类问题，尽管条件概率模型与非条件概率模型会在理论上，是两种概率模型，但是实际上，非条件概率模型在实践上，是由观察数据集 \(\mathbf{X}\) 去建立 \(p_{\boldsymbol{\theta}}(\mathbf{x})\) ，因此与条件概率模型是等价的，在后面会详细叙述。</p>
+
+<h3 id="12--parameterizing-conditional-distributions-with-neural-networks">1.2  Parameterizing Conditional Distributions with Neural Networks</h3>
+
+<p>尽管提出了理论上的模型，但是需要具体的模型去进行计算，概率模型的建模才算完成</p>
+
+<p>可微神经网络，或者说神经网络，是常用的计算可行的，泛化性好的方案，作为函数拟合器，基于深度神经网络的模型，一样能做到可以学习概率密度函数。因此基于深度神经网络的概率模型，由于其计算可行性，以及对于神经网络有相当好的优化方案如随机梯度下降，因此作为文中的具体模型，写作 \(NeuralNet(.)\)</p>
+
+<p>比如利用神经网络去建模一个图片分类模型 \(p_{\boldsymbol{\theta}}(y \mid \mathbf{x})\) ，\(y\) 代表类， \(\mathbf{x}\) 代表图片：</p>
+
+\[\begin{aligned}
+\mathbf{p} &amp;=\text { NeuralNet }(\mathbf{x}) \\
+p_{\boldsymbol{\theta}}(y \mid \mathbf{x}) &amp;=\text { Categorical }(y ; \mathbf{p})
+\end{aligned}\]
+
+<p>特别注意的是，为了使得输出是一个概率模型，会利用如 softmax 层等作为 \(NeuralNet(.)\) 的最后一层来规范输出使 \(\sum_{i} p_{i}=1\)</p>
+
+<h3 id="13--directed-graphical-models-and-neural-networks">1.3  Directed Graphical Models and Neural Networks</h3>
+
+<p>到具体的概率模型建模时，使用有向无环图建立概率变量之间的联系，称为概率图模型，比如下图这样的：</p>
+
+<p style="text-align: center;"><img src="/images/2021-01-25-Generative Model Part 2：Generative Model Part 2：A Survey on Variational Autoencoders.md/440px-Graph_model.svg.png" alt="440px-Graph_model.svg" style="zoom:50%;" /></p>
+
+<p>于是在有向无环图建模下的概率模型，其联合概率可以写成：</p>
+
+\[p_{\boldsymbol{\theta}}\left(\mathbf{x}_{1}, \ldots, \mathbf{x}_{M}\right)=\prod_{j=1}^{M} p_{\boldsymbol{\theta}}\left(\mathbf{x}_{j} \mid P a\left(\mathbf{x}_{j}\right)\right)\]
+
+<p>\(P a\left(\mathbf{x}_{j}\right)\) 指代的是节点 \(j\) 的所有父节点，而对于根节点，定义其 \(P a\left(\mathbf{x}_{j}\right)\) 为空集</p>
+
+<p>为了具体的参数化有向无环图概率模型，利用神经网络建模，神经网络的输入是一个随机变量 \(\mathbf{x}\) 的父节点  \(P a(\mathbf{x})\)，输出的是概率分布 \(\eta\) ：</p>
+
+\[\begin{aligned}
+\boldsymbol{\eta} &amp;=\operatorname{Neural} \operatorname{Net}(P a(\mathbf{x})) \\
+p_{\boldsymbol{\theta}}(\mathbf{x} \mid P a(\mathbf{x})) &amp;=p_{\boldsymbol{\theta}}(\mathbf{x} \mid \boldsymbol{\eta})
+\end{aligned}\]
+
+<p>下面叙述如何学习这样的模型的参数</p>
+
+<h3 id="14--learning-in-fully-observed-models-with-neural-nets">1.4  Learning in Fully Observed Models with Neural Nets</h3>
+
+<p>在有向无环图概率模型中，如果在图中所有的随机变量都在数据中被观察到了，那么需要做到就是常规的 MLE 优化，计算，微分（Straightforward！）</p>
+
+<h4 id="141-dataset">1.4.1 Dataset</h4>
+
+<p>对采样过程有 \(i.i.d\) 假设</p>
+
+\[\mathcal{D}=\left\{\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(N)}\right\} \equiv\left\{\mathbf{x}^{(i)}\right\}_{i=1}^{N} \equiv \mathbf{x}^{(1: N)}\]
+
+<p>因此，利用取 \(\log\) 分解连乘有：</p>
+
+\[\log p_{\boldsymbol{\theta}}(\mathcal{D})=\sum_{\mathbf{x} \in \mathcal{D}} \log p_{\boldsymbol{\theta}}(\mathbf{x})\]
+
+<h4 id="142-maximum-likelihood-and-minibatch-sgd">1.4.2 Maximum Likelihood and Minibatch SGD</h4>
+
+<p>在 ML 标准中，优化在给出标准后，取寻找最优参数 \(\theta^*\) 使得标准最优，比如</p>
+
+\[\theta^* = \arg\min_{\theta} \sum_{\mathbf{x} \in \mathcal{D}} \log p_{\boldsymbol{\theta}}(\mathbf{x})\]
+
+<p>而常用的求解算法是随机梯度下降算法（SGD），当在整个数据集上进行一次梯度计算的话， 称为 batch gradient descent，但是当数据集很大的时候，更加适合用 minibatch SGD 来处理</p>
+
+<h3 id="15-intractabilities">1.5 Intractabilities</h3>
+
+<p>DLVM，深度隐变量模型，建立在隐空间上，隐空间中的变量是难以直接观察得到的，往往很难在数据中直接体现，但是确实存在着隐空间，以mnist手写体数据库来说的话，尽管手写体的维度时 \(28 \times 28\) 维，但是实际上在实践过程中，在手写过程中，大脑去构建手写体数字的结构时，想的是笔画多重，弯折怎么写，这部分思想过程可以归纳到隐空间建模上</p>
+
+<p>生成模型也是一样的，直接建立 \(p(\mathbf{x})\) 很难，但是可以通过一组隐变量来建模：</p>
+
+\[p_{\boldsymbol{\theta}}(\mathbf{x})=\int p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z}) d \mathbf{z} = \int p_{\boldsymbol{\theta}}(\mathbf{z}) p_{\boldsymbol{\theta}}(\mathbf{x} \mid \mathbf{z}) d \mathbf{z}\]
+
+<p>但是在实际建模中，上述的模型时很难计算的，即 DLVM 的不可处理性</p>
+
+<p>最大似然估计在 DLVM 需要解析的，或者估计出 \(p_{\boldsymbol{\theta}}(\mathbf{x})\)，再通过优化 \(p_{\boldsymbol{\theta}}(\mathbf{x})\) 找出 \(\theta^*\)，但是由于求解积分 \(p_{\boldsymbol{\theta}}(\mathbf{x})=\int p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z}) d \mathbf{z}\) 的过程，这个不能直接解析的做出，或估计出，通过 MLE 估计来优化是不可处理的，同时连带的，由于后验分布有计算公式：</p>
+
+\[p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})=\frac{p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})}{p_{\boldsymbol{\theta}}(\mathbf{x})}\]
+
+<p>因此后验分布也是不能计算的，如 MAP 等方法同样不能使用，为了解决不可处理性，生成模型中有几类方案，下面主要关注 Variational Autoencoders</p>
+
+<h2 id="2-variational-autoencoders">2. Variational Autoencoders</h2>
+
+<p>训练完成的 VAE ，从隐空间中采样 \(\boldsymbol{z}\)，利用解码器 \(p_{\boldsymbol{\theta}}(\mathbf{x} \mid \mathbf{z})\) 去复建出 \(\boldsymbol{X}\)，其模型如下所示</p>
+
+<p style="text-align: center;"><img src="/images/2021-01-25-Generative Model Part 2：Generative Model Part 2：A Survey on Variational Autoencoders.md/latent_encoder_graph.png" alt="latent_encoder_graph" style="zoom:30%;" /></p>
+
+<p>但是由于后验不可处理性，生成模型并无法直接根据数据集直接求解 \(p_{\boldsymbol{\theta}}(\mathbf{x} \mid \mathbf{z})\) ，有几种解决办法来处理这个问题。VAE 仍然从最大边际后验 \(p_{\theta}(\mathbf{x})\) 的想法出发，但是优化后验的一个下界来使后验变大（见后文 ELBO 部分），想法有借鉴自动编码器（Autoencoder），但是由于边际后验 \(p_{\boldsymbol{\theta}}(\mathbf{x})\) 不可处理性。VAE补全了自动编码器的前半部分，通过做一个参数推断模型 \(q_{\phi}(\mathbf{z} \mid \mathbf{x})\) 来替换 \(p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})\) 模拟编码器
+\(q_{\phi}(\mathbf{z} \mid \mathbf{x}) \approx p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})\)</p>
+
+<p style="text-align: center;"><img src="/images/2021-01-25-Generative Model Part 2：Generative Model Part 2：A Survey on Variational Autoencoders.md/VAE-illustration.png" alt="VAE-illustration" style="zoom:30%;" /></p>
+
+<p>正如上图所示，如果强调 VAE 的自动编码器的属性，则推断分布 \(q_{\phi}(\mathbf{z} \mid \mathbf{x})\) 构成了编码器，解码器则是 \(p_{\boldsymbol{\theta}}(\mathbf{x} \mid \mathbf{z})\)，当然如果能够直接求解 \(p_{\boldsymbol{\theta}}(\mathbf{x} \mid \mathbf{z})\) 是最好的，但是上述解码器是无法直接优化的，因此才需要再做一个编码器的推断分布 \(q_{\phi}(\mathbf{z} \mid \mathbf{x})\) ，有了推断分布后，就可以从其中采样 \(z\)，再镜像的利用解码器 \(p_{\boldsymbol{\theta}}(\mathbf{x} \mid \mathbf{z})\) 映射回数据空间后，利用交叉熵去算出 loss，利用 SGD 去优化编码器和解码器的参数 \(\phi,\theta\)</p>
+
+<p>在具体问题中，通过一个有向无环图结构来建模推断分布：</p>
+
+\[q_{\phi}(\mathbf{z} \mid \mathbf{x})=q_{\phi}\left(\mathbf{z}_{1}, \ldots, \mathbf{z}_{M} \mid \mathbf{x}\right)=\prod_{j=1}^{M} q_{\phi}\left(\mathbf{z}_{j} \mid P a\left(\mathbf{z}_{j}\right), \mathbf{x}\right)\]
+
+<p>为了具体的建模上述逼近，VAE 采用了两步，即 \(Evidence \; Lower \; Bound\) 来作为优化目标，同时在具体优化过程中采用了 \(Reparameterization\; Trick\) 来解决梯度的求解问题</p>
+
+<h3 id="21-loss-function-evidence-lower-bound">2.1 Loss function (Evidence Lower Bound)</h3>
+
+<p>边际后验 \(\log p_{\boldsymbol{\theta}}(\mathbf{x})\) 与 \(q_{\phi}(\mathbf{z} \mid \mathbf{x})\) 独立，因此通过重写成期望，可以推导出 \(\log p_{\boldsymbol{\theta}}(\mathbf{x})\) 等价于 ELBO 加一个KL散度</p>
+
+\[\begin{aligned}
+\log p_{\boldsymbol{\theta}}(\mathbf{x}) 
+&amp;=\mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}\left[\log p_{\boldsymbol{\theta}}(\mathbf{x})\right] 
+\\
+&amp;=\mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}\left[\log \left[\frac{p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})}{p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})}\right]\right]
+\\
+&amp;=\mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}\left[\log \left[\frac{p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})}{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})} \frac{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})}{p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})}\right]\right]
+\\
+&amp;= \mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}\left[\log \left[\frac{p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})}{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})} \frac{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})}{p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})}\right]\right]
+\\
+&amp;= \underbrace{\mathbb{E}_{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})}\left[\log \left[\frac{p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})}{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})}\right]\right]}_{=\mathcal{L}_{\boldsymbol{\theta}, \boldsymbol{\phi}}(\mathbf{x})\\(\mathrm{ELBO})}
++
+\underbrace{\mathbb{E}_{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})}\left[\log \left[\frac{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})}{p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})}\right]\right]}_{=D_{K L}\left(q_{\phi}(\mathbf{z} \mid \mathbf{x}) \| p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})\right)}
+
+\end{aligned}\]
+
+<p>那么最大后验近似于优化 \(\mathcal{L}_{\boldsymbol{\theta}, \boldsymbol{\phi}}(\mathbf{x})\) (ELBO)</p>
+
+\[\begin{aligned}
+\mathcal{L}_{\boldsymbol{\theta}, \boldsymbol{\phi}}(\mathbf{x}) 
+&amp;= \mathbb{E}_{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})}\left[\log p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})-\log q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})\right]
+\\
+ &amp;=\log p_{\boldsymbol{\theta}}(\mathbf{x})-D_{K L}\left(q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x}) \| p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})\right) \\
+&amp; \leq \log p_{\boldsymbol{\theta}}(\mathbf{x})
+\end{aligned}\]
+
+<p>而第二项KL散度，很巧妙的同时表达了两个距离：</p>
+
+<ol>
+  <li>ELBO和边际后验中间的距离</li>
+  <li>推断分布 \(q_{\phi}(\mathbf{z} \mid \mathbf{x})\) 与后验 \(p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})\) 的距离</li>
+</ol>
+
+<p>优化目标从边际后验到  \(\mathcal{L}_{\boldsymbol{\theta}, \boldsymbol{\phi}}(\mathbf{x})\) ，比起不可处理的边际后验， \(\mathcal{L}_{\boldsymbol{\theta}, \boldsymbol{\phi}}(\mathbf{x})\) 能够通过随机梯度下降进行优化，理论上来说优化 \(\mathcal{L}_{\boldsymbol{\theta}, \boldsymbol{\phi}}(\mathbf{x})\) 可以同时达成两个目标：</p>
+
+<ol>
+  <li>优化边际分布 \(\log p_{\boldsymbol{\theta}}(\mathbf{x})\) 的变分下界，使得边际分布不小，近似的达成最大似然的效果</li>
+  <li>使 \(\mathcal{L}_{\boldsymbol{\theta}, \boldsymbol{\phi}}(\mathbf{x})\) 第二项 \(-D_{K L}\left(q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x}) \| p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})\right)\) 变大，即使推断分布和后验分布的距离变小，得到一个更准确的编码器分布，一旦能够准确建模编码器分布，有助于优化解码器分布 \(p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})\)</li>
+</ol>
+
+<h3 id="22-stochastic-gradient-based-optimization-of-the-elbo-reparameterization-trick">2.2 Stochastic Gradient-Based Optimization of the ELBO (Reparameterization Trick)</h3>
+
+<h4 id="221-reparameterization-trick">2.2.1 Reparameterization Trick</h4>
+
+<p>给一个 \(i.i.d\) 数据集 \(\mathcal{D}\)，数据集产生 \(\mathcal{L}_{\theta, \phi}(\mathcal{D})\) 等价于 \(\sum_{\mathbf{x} \in \mathcal{D}} \mathcal{L}_{\theta, \phi}(\mathbf{x})\)，那么下面的讨论中，就变成计算 \(\mathcal{L}_{\theta, \phi}(\mathbf{x})\)，这样是等价的，采用梯度法去优化 \(\sum_{\mathbf{x} \in \mathcal{D}} \mathcal{L}_{\theta, \phi}(\mathbf{x})\)</p>
+
+<p>梯度 \(\nabla_{\boldsymbol{\theta}, \phi} \mathcal{L}_{\boldsymbol{\theta}, \boldsymbol{\phi}}(\mathbf{x})\) ，对于 \(\theta\) 有：</p>
+
+\[\begin{aligned}
+\nabla_{\boldsymbol{\theta}} \mathcal{L}_{\boldsymbol{\theta}, \phi}(\mathbf{x}) &amp;=\nabla_{\boldsymbol{\theta}} \mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}\left[\log p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})-\log q_{\phi}(\mathbf{z} \mid \mathbf{x})\right] \\
+
+&amp;=\mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}\left[\nabla_{\boldsymbol{\theta}}\left(\log p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})-\log q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})\right)\right] \\
+
+&amp; = \nabla_{\boldsymbol{\theta}}\left(\log p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})-\log q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})\right) \\
+
+&amp;=\nabla_{\boldsymbol{\theta}}\left(\log p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})\right)
+\end{aligned}\]
+
+<p>但是问题在于，由于之前对于 \(\phi\)，由于 \(z\) 是 \(\phi\) 的函数，这样梯度难以解析的直接计算</p>
+
+\[\begin{aligned}
+\nabla_{\phi} \mathcal{L}_{\theta, \phi}(\mathbf{x}) &amp;=\nabla_{\phi} \mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}\left[\log p_{\theta}(\mathbf{x}, \mathbf{z})-\log q_{\phi}(\mathbf{z} \mid \mathbf{x})\right] \\
+&amp; \neq \mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}\left[\nabla_{\phi}\left(\log p_{\theta}(\mathbf{x}, \mathbf{z})-\log q_{\phi}(\mathbf{z} \mid \mathbf{x})\right)\right]
+\end{aligned}\]
+
+<p>VAE 提供的解决办法是去构造一个 \(\nabla_{\phi} \mathcal{L}_{\theta, \phi}(\mathbf{x})\) 无偏估计 \(\nabla_{\boldsymbol{\theta}, \boldsymbol{\phi}} \tilde{\mathcal{L}}_{\boldsymbol{\theta}, \boldsymbol{\phi}}(\mathbf{x} ; \boldsymbol{\epsilon})\) ，即另一个技巧 \(Reparameterization \; Trick\)</p>
+
+<p>\(\nabla_{\phi} \mathcal{L}_{\theta, \phi}(\mathbf{x})\) 是由于计算 \(q_{\phi}(\mathbf{z} \mid \mathbf{x})\) 的期望，再此基础上算 \(\phi\) 的偏导数就导致难以解析的计算，这样就无法执行梯度下降算法，于是作者在 \(Reparameterization \; Trick\) 中设计了一个无偏统计量来估计 \(\nabla_{\phi} \mathcal{L}_{\theta, \phi}(\mathbf{x})\)：</p>
+
+<p style="text-align: center;"><img src="/images/2021-01-25-Generative Model Part 2：Generative Model Part 2：A Survey on Variational Autoencoders.md/Reparameterization-Trick.png" alt="Reparameterization-Trick" style="zoom:40%;" /></p>
+
+<p>如上图所示，构造一个噪声变量 \(\epsilon\) 有分布 \(p(\boldsymbol{\epsilon})\)，定义新的映射关系：\(\mathbf{z}=\mathbf{g}(\boldsymbol{\epsilon}, \boldsymbol{\phi}, \mathbf{x})\) 满足，其中 \(g(.)\) 未知，但是 \(\epsilon\) 相对的比较简单</p>
+
+\[\mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}[f(\mathbf{z})]=\mathbb{E}_{p(\boldsymbol{\epsilon})}[f(\mathbf{z})]\]
+
+<p>这样就可以把 \(z\) 的随机性转移到 \(\epsilon\) 上，先在抽象一些的问题设定下研究 \(Reparameterization \; Trick\)，在此基础上对 \(\phi\) 求导，可以有一个 \(\nabla_{\boldsymbol{\phi}} f(\mathbf{z})\) 的估计：</p>
+
+\[\begin{aligned}
+\nabla_{\phi} \mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}[f(\mathbf{z})] &amp;=\nabla_{\phi} \mathbb{E}_{p(\boldsymbol{\epsilon})}[f(\mathbf{z})] \\
+&amp;=\mathbb{E}_{p(\boldsymbol{\epsilon})}\left[\nabla_{\boldsymbol{\phi}} f(\mathbf{z})\right] \\
+&amp; \simeq \nabla_{\boldsymbol{\phi}} f(\mathbf{z})
+\end{aligned}\]
+
+<p>更进一步，代入具体的函数 \(f(z) = \log p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})-\log q_{\phi}(\mathbf{z} \mid \mathbf{x})\)，构造一个蒙特卡洛估计
+\(\tilde{\mathcal{L}}_{\boldsymbol{\theta}, \phi}(\mathbf{x})\)：</p>
+
+\[\begin{aligned}
+\boldsymbol{\epsilon} &amp; \sim p(\boldsymbol{\epsilon})
+\\
+\mathbf{z} &amp;=\mathbf{g}(\boldsymbol{\phi}, \mathbf{x}, \boldsymbol{\epsilon}) 
+\\
+\tilde{\mathcal{L}}_{\boldsymbol{\theta}, \phi}(\mathbf{x}) &amp;=\log p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})-\log q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})
+\end{aligned}\]
+
+<p>可以证明 \(\nabla_{\boldsymbol{\theta}, \phi} \tilde{\mathcal{L}}_{\boldsymbol{\theta}, \phi}(\mathbf{x})\) 是 \(\nabla_{\boldsymbol{\theta}, \phi} \tilde{\mathcal{L}}_{\boldsymbol{\theta}, \boldsymbol{\phi}}(\mathbf{x} ; \boldsymbol{\epsilon})\) 无偏估计：</p>
+
+\[\begin{aligned}
+\mathbb{E}_{p(\boldsymbol{\epsilon})}\left[\nabla_{\boldsymbol{\theta}, \phi} \tilde{\mathcal{L}}_{\boldsymbol{\theta}, \boldsymbol{\phi}}(\mathbf{x} ; \boldsymbol{\epsilon})\right] &amp;=\mathbb{E}_{p(\boldsymbol{\epsilon})}\left[\nabla_{\boldsymbol{\theta}, \boldsymbol{\phi}}\left(\log p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})-\log q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})\right)\right] \\
+&amp;=\nabla_{\boldsymbol{\theta}, \boldsymbol{\phi}}\left(\mathbb{E}_{p(\boldsymbol{\epsilon})}\left[\log p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})-\log q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})\right]\right) \\
+&amp;=\nabla_{\boldsymbol{\theta}, \phi} \mathcal{L}_{\boldsymbol{\theta}, \boldsymbol{\phi}}(\mathbf{x})
+\end{aligned}\]
+
+<p>在实际计算中，类似SGD的思想一样，利用多次比较“模糊”的计算来替换单次“精准”的计算，即直接计算：
+\(\nabla_{\boldsymbol{\theta, \phi}}\log p_{\theta}(\mathbf{x}  \mid \mathbf{z} )+\log p_{\phi}(\mathbf{z} )-\log q(\mathbf{z}  \mid \mathbf{x} )
+\quad
+\mathbf{z}  \text{ ～ } q(\mathbf{z}  \mid \mathbf{x} )\)
+当然这样说可能还是有一些抽象，下面会具体的举一个具体的隐空间 \(z\) 和相应的 \(\epsilon\) 的例子</p>
+
+<h4 id="222-computation-of-inference-distribution">2.2.2 Computation of Inference Distribution</h4>
+
+<p>在计算 \(\tilde{\mathcal{L}}_{\boldsymbol{\theta}, \phi}(\mathbf{x}) =\log p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})-\log q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})\) 的过程中，需要计算编码器/推断分布 \(\log q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})\)</p>
+
+\[\begin{aligned}
+\boldsymbol{\epsilon} &amp; \sim p(\boldsymbol{\epsilon})
+\\
+\mathbf{z} &amp;=\mathbf{g}(\boldsymbol{\phi}, \mathbf{x}, \boldsymbol{\epsilon}) 
+\\
+p(\boldsymbol{\epsilon}) &amp;= q_{\phi}(\mathbf{z} \mid \mathbf{x})\left|\operatorname{det}\left(\frac{\partial \mathbf{z}}{\partial \boldsymbol{\epsilon}}\right)\right|
+
+\end{aligned}\]
+
+<p>因此可以看出，选择一个合适的可逆变化 \(g(\epsilon)\) 会使得计算简化</p>
+
+\[\log q_{\phi}(\mathbf{z} \mid \mathbf{x})=\log p(\boldsymbol{\epsilon})-\log \left|\operatorname{det}\left(\frac{\partial \mathbf{z}}{\partial \boldsymbol{\epsilon}}\right)\right|\]
+
+<p>下面举一个具体计算中构造编码器分布 \(\log q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})\) 和 \(Reparameterization \; Trick\) 的例子：</p>
+
+<p>设隐空间 \(\mathbf{z}\) 服从正态分布，而条件分布 \(q_{\phi}(\mathbf{z} \mid \mathbf{x})\) 的参数通过编码器计算得到：</p>
+
+\[\begin{aligned}
+q_{\phi}(\mathbf{z} \mid \mathbf{x})  &amp;= \mathcal{N}(\mathbf{z} ; \boldsymbol{\mu}, \operatorname{diag}\left(\sigma^{2}\right))
+\\
+(\boldsymbol{\mu}, \log \boldsymbol{\sigma}) &amp;=\text { EncoderNeuralNet}_{\boldsymbol{\phi}}(\mathbf{x}) 
+\\
+q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x}) &amp;=\prod_{i} q_{\boldsymbol{\phi}}\left(z_{i} \mid \mathbf{x}\right)=\prod_{i} \mathcal{N}\left(z_{i} ; \mu_{i}, \sigma_{i}^{2}\right)
+\end{aligned}\]
+
+<p>这样直接算下去的话，之后无法反向传播，采用 \(Reparameterization \; Trick\)：</p>
+
+\[\begin{array}{l}
+\boldsymbol{\epsilon} \sim \mathcal{N}(0, \mathbf{I}) \\
+\mathbf{z}=\mu+\sigma \odot \epsilon
+\end{array}\]
+
+<p>进一步就可以计算编码器分布 \(\log q_{\phi}(\mathbf{z} \mid \mathbf{x})\) 为：
+\(\begin{aligned}
+\log q_{\phi}(\mathbf{z} \mid \mathbf{x}) &amp;=\log p(\boldsymbol{\epsilon})-\log d_{\boldsymbol{\phi}}(\mathbf{x}, \boldsymbol{\epsilon}) \\
+&amp;=\sum_{i} \log \mathcal{N}\left(\epsilon_{i} ; 0,1\right)-\log \sigma_{i}
+\end{aligned}\)</p>
+
+<h3 id="23-estimation-of-the-marginal-likelihood">2.3 Estimation of the Marginal Likelihood</h3>
+
+<p>边际似然可以利用编码器分布去构造：</p>
+
+\[\log p_{\boldsymbol{\theta}}(\mathbf{x})=\log \mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}\left[p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z}) / q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})\right]\]
+
+<p>而在数值上，上式可以利用蒙特卡洛法进行估计：</p>
+
+\[\log p_{\boldsymbol{\theta}}(\mathbf{x}) \approx \log \frac{1}{L} \sum_{l=1}^{L} p_{\boldsymbol{\theta}}\left(\mathbf{x}, \mathbf{z}^{(l)}\right) / q_{\boldsymbol{\phi}}\left(\mathbf{z}^{(l)} \mid \mathbf{x}\right)\]
+
+<p>当 \(L=1\) 时，这个式子就是 \(\mathcal{L}_{\theta, \phi}(\mathcal{x})\)</p>
+
+<h3 id="25-summary-of-training">2.5 Summary of Training</h3>
+
+<p>VAE，和GAN一样，最后通过从隐空间采样，然后用解码器映射到数据空间，生成数据，但是比起GAN通过去迭代训练生成器和判别器的结构，最后把生成器当作映射，VAE更加强调对于数据分布的理解</p>
+
+<ul>
+  <li>
+    <p>VAE 假设隐空间 \(\mathbf{z}\) 的编码器分布 \(q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})\) 服从一个高斯分布（强调模型的表达能力选择半三角作为高斯分布方差，反之选择对角矩阵作为方差），利用编码器把 \(\mathbf{x}\) 从数据空间映射到隐空间，输出分布的 \(\mu,\sigma\)</p>
+  </li>
+  <li>
+    <p>通过 \(Reparameterization \;trick\) 把 \(\mathbf{z}\) 的随机性转到 \(\epsilon\) 上，采样 \(\mathbf{z}\)</p>
+  </li>
+  <li>
+    <p>\(\mathbf{z}\) 经过解码器，利用交叉熵计算出后验分布 \(p(\mathbf{x}  \mid \mathbf{z} )\)，最后计算产生损失进行反向传播
+\(\mathcal{L}_{\theta, \phi}(\mathcal{\mathbf{x} }) = \log p_{\boldsymbol{\theta}}(\mathbf{x} \mid \mathbf{z}) +\log p(\mathbf{z}) -\log q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x}) \quad (L=1 )\)</p>
+  </li>
+</ul>
+
+<p>上式中，非常值得注意的一点是，后两项其实不去限定在 \(L=1\) 的条件下的话等价于 \(-D_{K L}\left(q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})\| p_{\theta}(\mathbf{z})\right)\) ，这样在训练过程中，隐空间的先验分布 \(p_{\theta}(\mathbf{z})\) 和解码器用来训练自己的分布 \(q_{\boldsymbol{\theta}}(\mathbf{x} \mid \mathbf{z})\) 不会偏离很远，这样就可以在时候进行生成时，隐空间中采样的 \(\mathbf{z}\) 会离之前解码器学习过的样本的数据流形太远</p>
+
+<p>下面借用 Tensorflow.org 开源的 <a href="https://www.tensorflow.org/tutorials/generative/cvae">Convolutional Variational Autoencoder</a> 的实现</p>
+
+<h4 id="251-data-preposscessing">2.5.1 Data Preposscessing</h4>
+
+<p>数据预处理中，对图像进行灰度-&gt;黑白处理，这样最后输出利用伯努利二项分布进行输出即可：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">preprocess_images</span><span class="p">(</span><span class="n">images</span><span class="p">):</span>
+  <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="p">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">images</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="mf">255.</span>
+  <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">images</span> <span class="o">&gt;</span> <span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">).</span><span class="n">astype</span><span class="p">(</span><span class="s">'float32'</span><span class="p">)</span>
+
+<span class="n">train_images</span> <span class="o">=</span> <span class="n">preprocess_images</span><span class="p">(</span><span class="n">train_images</span><span class="p">)</span>
+<span class="n">test_images</span> <span class="o">=</span> <span class="n">preprocess_images</span><span class="p">(</span><span class="n">test_images</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h4 id="252-network-architecture">2.5.2 Network Architecture</h4>
+
+<p>CVAE网络结构是一个一对耦合的解码器和编码器，解码器由两层卷机层和一层全联接层构成，解码器把数据映射到隐空间上（输出隐空间的参数），这里假设一个高斯分布作为隐空间的分布，为了实现 \(Reparameterization \; Trick\) 则给出了另一个服从标准正态分布的参数 \(\epsilon\)：</p>
+
+\[z=\mu+\sigma \odot \epsilon\]
+
+<p>然后解码器是编码器的镜像，镜像的全联接层后接了一层反卷积层</p>
+
+<p>利用解码器和编码器，可以进一步写出 encode(.), decode(.), sample(.),, reparameterize(.) 并封装到 CVAE 类中</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CVAE</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">Model</span><span class="p">):</span>
+  <span class="s">"""Convolutional variational autoencoder."""</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">CVAE</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">latent_dim</span> <span class="o">=</span> <span class="n">latent_dim</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">Sequential</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">InputLayer</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span>
+                <span class="n">filters</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">),</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span>
+                <span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">),</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Flatten</span><span class="p">(),</span>
+            <span class="c1"># No activation
+</span>            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">latent_dim</span> <span class="o">+</span> <span class="n">latent_dim</span><span class="p">),</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="bp">self</span><span class="p">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">Sequential</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">InputLayer</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">,)),</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">7</span><span class="o">*</span><span class="mi">7</span><span class="o">*</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">relu</span><span class="p">),</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Reshape</span><span class="p">(</span><span class="n">target_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">32</span><span class="p">)),</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2DTranspose</span><span class="p">(</span>
+                <span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">,</span>
+                <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">),</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2DTranspose</span><span class="p">(</span>
+                <span class="n">filters</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">,</span>
+                <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">),</span>
+            <span class="c1"># No activation
+</span>            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2DTranspose</span><span class="p">(</span>
+                <span class="n">filters</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">),</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+
+  <span class="o">@</span><span class="n">tf</span><span class="p">.</span><span class="n">function</span>
+  <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">eps</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="n">eps</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">latent_dim</span><span class="p">))</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="n">apply_sigmoid</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">mean</span><span class="p">,</span> <span class="n">logvar</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">num_or_size_splits</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mean</span><span class="p">,</span> <span class="n">logvar</span>
+
+  <span class="k">def</span> <span class="nf">reparameterize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">logvar</span><span class="p">):</span>
+    <span class="n">eps</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">mean</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">eps</span> <span class="o">*</span> <span class="n">tf</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logvar</span> <span class="o">*</span> <span class="p">.</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">mean</span>
+
+  <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">apply_sigmoid</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">apply_sigmoid</span><span class="p">:</span>
+      <span class="n">probs</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">probs</span>
+    <span class="k">return</span> <span class="n">logits</span>
+</code></pre></div></div>
+
+<h4 id="253-loss-function">2.5.3 Loss Function</h4>
+
+<p>然后计算损失函数的过程中，方差取的是 \(log var\) 防止数值上的问题，后验分布利用交叉熵计算即可，为了加速计算，只一次采样 \(z\) ：</p>
+
+\[\log p_{\boldsymbol{\theta}}(\mathbf{x} \mid \mathbf{z}) = - H(q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x}), p_{\boldsymbol{\theta}}(\mathbf{x} \mid \mathbf{z}))\]
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">compute_loss</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+  <span class="n">mean</span><span class="p">,</span> <span class="n">logvar</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">z</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">reparameterize</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">logvar</span><span class="p">)</span>
+  <span class="n">x_logit</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+  <span class="n">cross_ent</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">sigmoid_cross_entropy_with_logits</span><span class="p">(</span><span class="n">logits</span><span class="o">=</span><span class="n">x_logit</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">logpx_z</span> <span class="o">=</span> <span class="o">-</span><span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">cross_ent</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+  <span class="n">logpz</span> <span class="o">=</span> <span class="n">log_normal_pdf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+  <span class="n">logqz_x</span> <span class="o">=</span> <span class="n">log_normal_pdf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">logvar</span><span class="p">)</span>
+  <span class="k">return</span> <span class="o">-</span><span class="n">tf</span><span class="p">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">logpx_z</span> <span class="o">+</span> <span class="n">logpz</span> <span class="o">-</span> <span class="n">logqz_x</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h3 id="24-challenges">2.4 Challenges</h3>
+
+<p>VAE，和GAN一样，最后通过从隐空间采样，然后用解码器映射到数据空间，生成数据，但是和GAN不一样的是，GAN训练的是可能性（probability），即利用判别器去判断生成数据是真实数据的可能性，VAE仍然会去训练数据的分布（distribution），那么这一点也给VAE的训练带来的困难</p>
+
+<h4 id="241-optimization-issues">2.4.1 Optimization issues</h4>
+
+<p>整个训练过程中，VAE 都要去算数据的后验分布 \(p(x \mid z)\) 来进行优化，但是一开始训练时，解码器的效果会很差，无法把隐空间中的采样 \(z\) 映射到真实的数据流形上，那么此时计算出的 \(\mathcal{L}_{\theta, \phi}(\mathcal{x})\) 中 \(\log p_{\boldsymbol{\theta}}(\mathbf{x} \mid \mathbf{z})\) 很小，且优化很难，为了使 \(\mathcal{L}_{\theta, \phi}(\mathcal{x})\) 变大</p>
+
+\[\mathcal{L}_{\theta, \phi}(\mathcal{\mathbf{x} }) = \mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}[\log p_{\boldsymbol{\theta}}(\mathbf{x} \mid \mathbf{z}) +\log p(\mathbf{z}) -\log q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})]\]
+
+<p>后半部分 \(\mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}[\log p(\mathbf{z}) /q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})] =  -D_{K L}\left(q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})\| p_{\theta}(\mathbf{z})\right)\) 就会变大，又由KL散度的非负性，此时模型就会到达一个无意义的均衡点 \(\log p(\mathbf{z}) \approx \log q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})\)，此时编码器 \(q_{\phi}(\mathbf{z} \mid \mathbf{x})\) 没有性能去做有意义的编码，继而解码器很难把隐变量  \(\mathbf{z}\) 复建回数据流形上对应的 \(\mathbf{x}\)</p>
+
+<p>解决方法有在训练过程中，首先冻结（前面乘一个0～1之前的控制系数）KL散度这一正则项，在训练过程中逐步把KL散度解冻（但是解冻的速度选择就很有炼丹的味道，当解冻速度太快时，会落到上述的无意义均衡中，当解冻的速度慢了的话，那么会浪费时间，并且解码器确实无法得到有意义的训练）</p>
+
+<h2 id="reference">Reference</h2>
+
+<ol>
+  <li>Diederik P. Kingma and Max Welling (2019), “An Introduction to Variational Autoencoders”, Foundations and TrendsR in Machine Learning</li>
+  <li><a href="https://arxiv.org/search/stat?searchtype=author&amp;query=Kingma%2C+D+P">Diederik P Kingma</a>, <a href="https://arxiv.org/search/stat?searchtype=author&amp;query=Welling%2C+M">Max Welling</a> (2013), “Auto-Encoding Variational Bayes” (2013)</li>
+  <li><a href="https://arxiv.org/search/stat?searchtype=author&amp;query=Doersch%2C+C">Carl Doersch</a> (2016) “Tutorial on Variational Autoencoders”</li>
+  <li>Tensorflow Author  <a href="https://www.tensorflow.org/tutorials/generative/cvae">Convolutional Variational Autoencoder</a> Tensorflow Author</li>
+</ol>
+
+
+                </div>
+                
+	
+				<div class="post__share">
+					<ul class="share__list list-reset">
+						<li class="share__item">
+							<a class="share__link share__facebook"
+								href="https://www.facebook.com/sharer/sharer.php?u=https://changhaowu.github.io//2021/01/25/Generative-Model-Part-2-A-Survey-on-Variational-Autoencoders/"
+								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+								title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
+						</li>
+					
+						<li class="share__item">
+							<a class="share__link share__twitter"
+								href="https://twitter.com/intent/tweet?text=Generative%20Model%20Part%202:A%20Survey%20on%20Variational%20Autoencoder&url=https://changhaowu.github.io//2021/01/25/Generative-Model-Part-2-A-Survey-on-Variational-Autoencoders/"
+								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+								title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
+						</li>
+					
+						<li class="share__item">
+							<a class="share__link share__pinterest"
+								href="http://pinterest.com/pin/create/button/?url=https://changhaowu.github.io//2021/01/25/Generative-Model-Part-2-A-Survey-on-Variational-Autoencoders/&amp;media=https://changhaowu.github.io//images//images/cover/C_ Abstraction3.jpeg&amp;description=Generative%20Model%20Part%202:A%20Survey%20on%20Variational%20Autoencoder"
+								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+								title="Share on Pinterest" rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="widget-recent">
+					<h5 class="widget__title">Recommended for you</h5>
+					<div class="recent-box">
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
+									<a class="recent-posts__image wow fadeIn" href="/2021/02/02/Computational-Optimal-Transport-Note-Part-1/"
+										style="background-image: url('/images/cover/C_Scenery9.jpg')"></a>
+								
+									<p class="recent-posts__title"><a href="/2021/02/02/Computational-Optimal-Transport-Note-Part-1/">Computational Optimal Transport Note Part 1: Theoretical Foundations</a></p>
+							</div>
+						</div>
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
+									<a class="recent-posts__image wow fadeIn" href="/2021/02/01/Computational-Optimal-Transport-Note-Part-0/"
+										style="background-image: url('/images/cover/C_Scenery3.jpeg')"></a>
+								
+									<p class="recent-posts__title"><a href="/2021/02/01/Computational-Optimal-Transport-Note-Part-0/">Computational Optimal Transport Note Part 0: Introduction</a></p>
+							</div>
+						</div>
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
+									<a class="recent-posts__image wow fadeIn" href="/2021/01/29/Optimal-Transport-Note-Part-2/"
+										style="background-image: url('/images/cover/C_Scenery6.jpeg')"></a>
+								
+									<p class="recent-posts__title"><a href="/2021/01/29/Optimal-Transport-Note-Part-2/">Optimal Transport Note:Part 2</a></p>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+
+				<div class="widget-newsletter">
+					<h5 class="newsletter-title wow fadeInUp">Get Interesting News</h5>
+					<div class="newsletter-subtitle wow fadeInUp" data-wow-delay=".2s">Stay up to date! Get all the latest & gretest posts delivered straight to your inbox</div>
+					<form class="newsletter-form validate" action="//"
+						method="POST" id="membedded-subscribe-form" name="membedded-subscribe-form" target="_blank" novalidate>
+						<div class="newsletter-group">
+							<div class="newsletter-group-top">
+								<label class="screen-reader-text" for="mce-EMAIL">Enter your mail address</label>
+								<input class="newsletter-email required email" id="mce-EMAIL" type="text" name="EMAIL" placeholder="Enten your mail">
+							</div>
+							<input class="newsletter-button" id="membedded-subscribe" type="submit" name="subscribe" value="Subscribe">
+						</div>
+					</form>
+				</div>
+	
+	
+				 <!-- begin comments -->
+<div class="comments">
+  <div id="disqus_thread" class="comments__article"></div>
+  <script>
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = '//Karl Wu# Add your shortname for Disqus Comment. For example mr-brown.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+</div>
+<!-- end comments --> 
+	
+			</article>
+			<!-- end post -->
+		</div>
+	</div>
+</div>
+
+
+
+
+    </div>
+    <!-- end wrapper-page -->
+  </main> 
+  <!-- end content -->
+
+  <div class="top" title="Top"><i class="ion ion-ios-arrow-up"></i></div>
+  
+  <div class="container">
+  <div class="row">
+    <div class="col col-12">
+      <!-- begin footer -->
+      
+        <footer class="footer footer-image" style="background-image: url('/images/cover/A1.jpg')">
+          <div class="contact wow fadeInUp">
+  <ul class="contact__list list-reset">
+    
+      <li class="contact__item"><a href="https://twitter.com/" class="contact__link"><i class="ion ion-logo-twitter"></i></a></li>
+    
+
+    
+      <li class="contact__item"><a href="https://facebook.com/" class="contact__link"><i class="ion ion-logo-facebook"></i></a></li>
+    
+  
+     
+  
+    
+      <li class="contact__item"><a href="https://instagram.com/" class="contact__link"><i class="ion ion-logo-instagram"></i></a></li>
+    
+  
+     
+  </ul>
+</div>
+            <div class="copyright wow fadeInUp" data-wow-delay=".2s">2021 &copy; <a href="/" class="copyright__link">Truth and Logic</a>. Crafted & Designed by <a href="https://artemsheludko.github.io" class="copyright__link">Artem Sheludko</a>.</div>
+        </footer>
+      
+      <!-- end footer -->
+    </div>
+  </div>
+</div>
+  
+  <!-- begin javascript files -->
+<script src="/js/vendors/jquery-3.3.1.min.js"></script>
+<script src="/js/vendors/simple-jekyll-search.min.js"></script>
+<script>
+    SimpleJekyllSearch({
+    searchInput: document.getElementById("js-search-input"),
+    resultsContainer: document.getElementById("js-results-container"),
+    json: "/search.json",
+    searchResultTemplate: '<li class="search-results__item  wow fadeIn"><a class="search-results__link" href="{url}">{title}</a></li>',
+    noResultsText: '<li class="no-results">No results found</li>'
+  });
+</script>
+<script src="/js/vendors/instafeed.min.js"></script>
+<script src="/js/vendors/jquery.fitvids.js"></script>
+<script src="/js/vendors/transition.js"></script>
+<script src="/js/vendors/zoom.min.js"></script>
+<script src="/js/vendors/wow.min.js"></script>
+<script src="/js/common.js"></script>
+<!-- end javascript files -->
+  
+  <script type="text/x-mathjax-config">
+var font = "Neo-Euler";
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [['\\[','\\]']],
+        processEscapes: true,
+    },
+    "SVG":{
+        font:font
+    },
+    "HTML-CSS": {
+        webFont: font,
+        imageFont: font,
+        preferredFont: font,
+        availableFonts: [],
+        scale: 85,
+        mtextFontInherit: true
+    }
+}); </script> <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</body>
+
+</html>

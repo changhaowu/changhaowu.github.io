@@ -580,3 +580,5 @@ $$
 由此蒙日形式等价于康托洛维奇形式，$$T^{\dagger}$$ 是蒙日最优传输
 
 ## Reference
+
+1. Matthew Thorpe “Introduction to Optimal Transportation”

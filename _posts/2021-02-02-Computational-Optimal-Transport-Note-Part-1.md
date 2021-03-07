@@ -509,5 +509,9 @@ $$
 
 由于 $$\varphi $$ 是凸的，则几乎处处可微，由于 $$\alpha$$ 是一个密度，所以它也几乎处处可微，则可以定义最优传输 $$\pi=(\mathrm{Id}, \nabla \varphi)_{\#} \alpha$$
 
+## Reference
+
+1. Gabriel Peyre ,Marco Cuturi "[Computational Optimal Transport](https://arxiv.org/abs/1803.00567), Foundation and Trends"
+
 
 

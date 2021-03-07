@@ -52,5 +52,6 @@ published: true
 
 ## Reference
 
-@article{COTFNT, year = {2019}, volume = {11}, journal = {Foundations and Trends in Machine Learning}, title = {Computational Optimal Transport}, number = {5-6}, pages = {355--607} author = {Gabriel Peyr\’e and Marco Cuturi} }
+1. Gabriel Peyre, Marco Cuturi." [Computational Optimal Transport](https://arxiv.org/abs/1803.00567), Foundation and Trends"
+
 

@@ -121,4 +121,4 @@ $$
 
 关于估计误差，这部分是由数据集所导致的问题，以龙格现象为例，尽管对于数据集拟合的很好，但是逼近误差就很大了：
 
-<img src="/Users/karlwu/Documents/GitHub/changhaowu.github.io/images/2021-01-07-Towards-a-Mathematical-Understanding-of-Neural-Network-Based-Machine-Learning-What-We-Know-and-What-We-Dont-Note/Runge-phenomenon.png" alt="Runge-phenomenon" style="zoom:40%;" />
+<img src="/images/2021-01-07-Towards-a-Mathematical-Understanding-of-Neural-Network-Based-Machine-Learning-What-We-Know-and-What-We-Dont-Note/Runge-phenomenon.png" alt="Runge-phenomenon" style="zoom:40%;" />

@@ -339,3 +339,6 @@ $$
    $$
    
 
+## Reference
+
+1. Matthew Thorpe “Introduction to Optimal Transportation”
