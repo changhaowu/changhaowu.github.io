@@ -185,10 +185,10 @@ $$
 
 总之就是 $$Wasserstein$$ 距离有很多好处，为了使用之，在最优传输理论框架下，研究生成模型是有意义的：
 
-有分布 $$\mu, \nu$$，同时有传输代价；$$c(x,y):\mathcal{X} \times \mathcal{X} \rightarrow \mathbb{R}$$，可以定义$$ Wassterstein$$ 距离 $$W_{c}(\mu, \nu)$$
+有分布 $$\mu, \nu$$，同时有传输代价；$$c(x,y):\mathcal{X} \times \mathcal{X} \rightarrow \mathbb{R}$$，可以定义$$ Wassterstein$$ 距离 $$W_{c}(\mu, \nu)$$:
 
 $$
-W_{c}(\mu, \nu)=\min _{\gamma \in \mathcal{P}(\mathcal{X} \times \mathcal{X})}\left\{\int_{\mathcal{X} \times \mathcal{X}} c(x, y) \mathrm{d} \gamma(x, y) ; P_{1 \#}  \gamma=\mu, P_{2 \#}\gamma=\nu\right\}\
+W_{c}(\mu, \nu)=\min _{\gamma \in \mathcal{P}(\mathcal{X} \times \mathcal{X})}\left\{\int_{\mathcal{X} \times \mathcal{X}} c(x, y) \mathrm{d} \gamma(x, y) ; P_{1 \#}  \gamma=\mu, P_{2 \#}\gamma=\nu\right\}
 $$
 
 其中 $$P_{1 \#} $$ 为通过投影函数 $$ P_{1}(x, y)=x $$ 诱导的前向算子（把分布整体 $$\gamma$$ ，在投影前后质量不变的条件下的算子），而这样投影函数诱导的前向算子其实是映射到 $$\gamma$$ 的边际分布上，详细定义见 [OT-Notes1](https://changhaowu.github.io/2021/01/20/Optimal-Transport-Note-Part-1/) 中的定义，这里稍微带一笔：
@@ -196,9 +196,10 @@ $$
 对于生成映射 $$g: \mathcal{Z} \rightarrow \mathcal{X}$$，设想一个把分布中的所有点一起映射的映射 $$g_{\#}$$，同时通过测度 $$\zeta \in \mathcal{P}(\mathcal{Z})$$ ，要求其映射前后的质量不变，$$\forall B \subset \mathcal{X},\left(g_{\text {# }} \zeta\right)(B) \stackrel{\text { def. }}{=} \zeta\left(g^{-1}(B)\right)=\zeta(\{z \in \mathcal{Z} ; g(z) \in B\})$$
 
 下图中左图形象的展示了低维流形嵌入到高维数据空间，数据集生成离散的经验分布函数，而生成模型的任务就是通过控制参数 $$\theta$$ 最优化经验分布 $$\nu =\frac{1}{n} \sum_{j=1}^{n} \delta_{x_{j}}$$ 和 $$g_{\#} \zeta$$ 的 $$Wasserstein$$ 距离 $$W_{c}(g_{\theta \# } \zeta, \nu)$$，即
+
 $$
 \begin{aligned}
-\theta^* &= \arg \min _{\theta} E(\theta) = W_{c}\left(g_{\theta \# } \zeta, \nu\right)
+\theta^{*} &= \arg \min _{\theta} E(\theta) = W_{c}\left(g_{\theta \# } \zeta, \nu\right)
 \\
 &= \min _{\gamma \in \mathcal{P}(\mathcal{X} \times \mathcal{X})}\left\{\int_{\mathcal{X} \times \mathcal{X}} c(x, y) \mathrm{d} \gamma(x, y) ; P_{1 \#}  \gamma =\zeta, P_{2 \#}\gamma=\nu\right\}
 \end{aligned}
