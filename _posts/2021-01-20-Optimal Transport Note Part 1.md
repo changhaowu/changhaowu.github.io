@@ -61,7 +61,7 @@ $$
 
 换言之 $$\mu=\delta_{x_{1}}$$ 而 $$\nu=\frac{1}{2} \delta_{y_{1}}+\frac{1}{2} \delta_{y_{2}}$$ ，由于$$ \nu\left(\left\{y_{1}\right\}\right)=\frac{1}{2} $$，其不可能等于 $$\mu\left(T^{-1}\left(y_{1}\right)\right) \in\{0,1\}$$，因此传输映射 $$T$$ 不存在
 
-于是就可以定义蒙日形式的最优传输问题：$$ T: X \rightarrow Y \text { subject to } \nu=T_{\#} \mu$$
+对于上述的问题暂且不表，于是先定义蒙日形式的最优传输问题：$$ T: X \rightarrow Y \text { subject to } \nu=T_{\#} \mu$$
 
 $$
 \text { minimise } \mathbb{M}(T)=\int_{X} c(x, T(x)) \mathrm{d} \mu(x)

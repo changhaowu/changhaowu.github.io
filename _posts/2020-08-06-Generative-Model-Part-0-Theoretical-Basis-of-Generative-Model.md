@@ -170,7 +170,7 @@ $$
 \mathbf{x}=\boldsymbol{\mu}_{\theta}(\mathbf{z})+\boldsymbol{\sigma}_{\theta} \odot \boldsymbol{\epsilon}，\epsilon \sim \mathcal{N}\left(\mathbf{0}, \mathbb{I}_{D}\right)
 $$
 
-为了训练 VAE，需要知道编码器的真实分布 $$p_{\theta}(\mathbf{z} \mid \mathbf{x})$$，但是由于真实分布不可处理性，用一个 $$q_{\phi}(\mathbf{z} \mid \mathbf{x})=\mathcal{N}\left(\mathbf{z} \mid \boldsymbol{\mu}_{\phi}(\mathbf{x}), \mathbb{I}_{d} \boldsymbol{\sigma}_{\phi}^{2}(\mathbf{x})\right)$$ 逼近，其参数用神经网络给出，优化目标是 ELBO，是 $$\log(p(\mathbf{x}))$$ 的下逼近（由Jenson不等式得到，详细推导见 [VAE笔记](https://changhaowu.github.io/2021/01/25/Generative-Model-Part-2-Generative-Model-Part-2-A-Survey-on-Variational-Autoencoders/) 
+为了训练 VAE，需要知道编码器的真实分布 $$p_{\theta}(\mathbf{z} \mid \mathbf{x})$$，但是由于真实分布不可处理性，用一个 $$q_{\phi}(\mathbf{z} \mid \mathbf{x})=\mathcal{N}\left(\mathbf{z} \mid \boldsymbol{\mu}_{\phi}(\mathbf{x}), \mathbb{I}_{d} \boldsymbol{\sigma}_{\phi}^{2}(\mathbf{x})\right)$$ 逼近，其参数用神经网络给出，优化目标是 ELBO，是 $$\log(p(\mathbf{x}))$$ 的下逼近（由Jenson不等式得到，详细推导见 [VAE笔记](https://changhaowu.github.io/2021/01/25/Generative-Model-Part-2-A-Survey-on-Variational-Autoencoders/) 
 
 $$
 \left\{\theta^{*}, \phi^{*}\right\}=\underset{\theta, \phi}{\operatorname{argmax}} \mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}\left[\log \left(p_{\theta}(\mathbf{x} \mid \mathbf{z})\right)\right]-\mathrm{KL}\left(q_{\phi}(\mathbf{z} \mid \mathbf{x}) \| p(\mathbf{z})\right)

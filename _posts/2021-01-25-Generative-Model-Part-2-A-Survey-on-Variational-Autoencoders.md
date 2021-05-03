@@ -501,6 +501,8 @@ $$
 
 解决方法有在训练过程中，首先冻结（前面乘一个0～1之前的控制系数）KL散度这一正则项，在训练过程中逐步把KL散度解冻（但是解冻的速度选择就很有炼丹的味道，当解冻速度太快时，会落到上述的无意义均衡中，当解冻的速度慢了的话，那么会浪费时间，并且解码器确实无法得到有意义的训练）
 
+4,5,8(2)(3),9,10(2),13,14
+
 ## Reference
 
 1. Diederik P. Kingma and Max Welling (2019), “An Introduction to Variational Autoencoders”, Foundations and TrendsR in Machine Learning 

@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Generative Model Part 1:Intuition on Generative Model",
+      "category" : "",
+      "tags"     : "Generative-Model",
+      "url"      : "/2021/05/01/Generative-Model-Part-1-Intuition-on-Generative-Model/",
+      "date"     : "2021-05-01 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Computational Optimal Transport Note Part 1: Theoretical Foundations",
       "category" : "",
       "tags"     : "OTNotes",

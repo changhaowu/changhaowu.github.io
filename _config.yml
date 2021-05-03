@@ -63,6 +63,15 @@ jekyll-archives:
 url: "https://changhaowu.github.io/" # the base hostname & protocol for your site
 plugins:
   - jekyll-sitemap
+
+#plugins:
+#- jekyllfeed
+#name: Your Blog's Name
+#description: A description for your blog
+#url: http://your-blog-url.example.com
+#feed_items: 10
+#feed_update_period: daily
+#feed_update_frequency: 1
   
 
 kramdown:
@@ -82,7 +91,6 @@ defaults:
 
 include:
   - _pages
-
 
 
 # Tags
