@@ -219,3 +219,72 @@ $$
 
 这样约束变成了在满足 $$\| f \|_{L} \leq 1$$ 的函数中取康托罗维奇势能 $$\tilde{f}$$ 即可
 
+但是真正应用的时候，每次都完整计算一次 $$Wasserstein$$ 距离，这样计算量会爆炸的，因此训练一个以 $$w$$ 为参数的 $$f_{w}$$ 的神经网络作为 $$Wasserstein$$ 距离的估计，为了限制 $$f_{w}$$ 在 $$\| f \|_{L} \leq 1$$ 中，采用weight clip技巧
+
+整理一下 $$Wasserstein \; GAN$$ 的训练过程，可以总结出这样的loss function：
+
+$$
+\min_{\theta}\max _{w \in \mathcal{W}} \mathbb{E}_{x \sim \mathbb{P}_{r}}\left[f_{w}(x)\right]-\mathbb{E}_{z \sim p(z)}\left[f_{w}\left(g_{\theta}(z)\right]\right.
+$$
+
+那么有两件事情值得一提：
+
+1. 看起来和 vanilla-GAN 的 loss function 有异曲同工之妙：
+
+   $$
+   \min _{G} \max _{D} V(D, G)=\mathbb{E}_{\boldsymbol{x} \sim p_{\mathrm{data}}(\boldsymbol{x})}[f(D(\boldsymbol{x}))]+\mathbb{E}_{\mathbf{z} \sim p_{\boldsymbol{z}}(\mathbf{z})}[f(1-D(G(\mathbf{z}))]
+   $$
+   
+   没错，这一类设计优化函数的思想，也被总结为 IPM （Integral Probability Metric）
+
+2.  $$Wasserstein \; GAN$$ 的一个核心思想就是利用对偶问题，把 $$\theta$$ 从约束中化去，那么是否有在取别的 $$p$$ 的情况下，是否有别的对偶呢？有的，比如 Sobelev GAN 就利用 $$p=2$$ 的情况来设计算法：
+
+   $$
+   \sup _{f \in W^{1,2}(\mathcal{X}, \mu)} \mathbb{E}_{x \sim \mathbb{g_{\theta}}} f(x)-\mathbb{E}_{x \sim \mathbb{\mu_X}} f(x) \quad
+   W^{1,2}(\mathcal{X}, \mu)=\left\{f: \mathcal{X} \rightarrow \mathbb{R}, \int_{\mathcal{X}}\left\|\nabla_{x} f(x)\right\|^{2} \mu(x) d x<\infty\right\}
+   $$
+
+### Variational autoencoder
+
+关于 VAE 的基础部分，可以看[这一部分](https://changhaowu.github.io/2021/01/25/Generative-Model-Part-2-A-Survey-on-Variational-Autoencoders/)中关于 VAE的介绍，现在开始从直觉上仿照 autoencoder 的结构来构造 VAE：
+
+$$
+\begin{array}{l}
+\phi: \mathcal{X} \rightarrow \mathcal{F} \\
+\psi: \mathcal{F} \rightarrow \mathcal{X} \\
+\phi, \psi=\underset{\phi, \psi}{\arg \min }\|X-(\psi \circ \phi) X\|^{2}
+\end{array}
+$$
+
+类似的，在 VAE 中也有两个对应的耦合分布，生成分布（解码器）$$p_{\theta}(x\mid z)$$ 和推断分布（编码器）$$q_{\phi}(z\mid x)$$，那么问题变成了如何用这两个分布构造分布之间的复建误差：
+
+首先想到的是能在 VAE 框架下把 $$p(x)$$ 表达出来，然后用 $$Wasserstein$$ 距离做和经验分布的比较嘛？可惜即使是 VAE，一样做不到这样的效果，依然受制于 intractability:
+
+$$
+p(x)=\int p_{\theta}(x \mid z) p_{z}(z) d z = \sum_1^n  p_{\theta}(x \mid z_i) p_{z}(z_i)
+$$
+
+但是上式中 $$\int p_{\theta}(x \mid z) p_{z}(z) d z$$， 启发我们是否能用推断分布 $$q_{\phi}(z\mid x)$$ 作为 $$p_{z}(z)$$ 的替代呢？这样某种意义上也体现了复建的过程，可能 $$Evidence \; Lower \; Bound$$ 就是受此启发的：
+
+$$
+\begin{aligned}
+\log p_{\theta}(\mathbf{x})=& \mathbb{E}_{q_{\phi}(z \mid x)}\left[\log p_{\theta}(x)\right] \\
+=& \mathbb{E}_{q_{\phi}(z \mid x)}\left[\log \left[\frac{p_{\theta}(x, z)}{p_{\theta}(z \mid x)}\right]\right] \\
+=& \mathbb{E}_{q_{\phi}(z \mid x)}\left[\log \left[\frac{p_{\theta}(x, z)}{q_{\phi}(z \mid x)} \frac{q_{\phi}(z \mid x)}{p_{\theta}(z \mid x)}\right]\right] \\
+=& \mathbb{E}_{q_{\phi}(z \mid x)}\left[\log \left[\frac{p_{\theta}(x, z)}{q_{\phi}(z \mid x)} \frac{q_{\phi}(z \mid x)}{p_{\theta}(z \mid x)}\right]\right] \\
+=& \underbrace{\mathbb{E}_{q_{\phi}(z \mid x)}\left[\log \left[\frac{p_{\theta}(x, z)}{q_{\phi}(z \mid x)}\right]\right]}_{=L_{\theta, \phi}(x)}+\underbrace{\mathbb{E}_{q_{\phi}(z \mid x)}\left[\log \left[\frac{q_{\phi}(z \mid x)}{p_{\theta}(z \mid x)}\right]\right]}_{(E L B O)}
+\end{aligned}
+$$
+
+这一部分还是利用 MLE 的思想去做 $$\theta,\phi$$ 的优化，后面会给出一个不甚严谨证明：MLE 与 $$\min_{\theta,\phi}Distance$$ 是等价的
+
+把上式中的第一部分取出来，我们得到了一个 $$\log p_{\theta}(\mathbf{x})$$ 的下界，同时还可以进一步拆解：
+
+$$
+\begin{aligned}
+\mathrm{L}_{\theta, \phi}(\boldsymbol{x}) &=\mathbb{E}_{\mathrm{q}_{\phi}(z \mid x)}\left[\log p_{\theta}(\boldsymbol{x} \mid \boldsymbol{z})+\log p_{\theta}(\boldsymbol{z})-\log \mathrm{q}_{\phi}(\boldsymbol{z} \mid \boldsymbol{x})\right] \\
+&=\log \mathrm{p}_{\theta}(\boldsymbol{x})-\mathrm{D}_{\mathrm{KL}}\left(\mathrm{q}_{\phi}(\boldsymbol{z} \mid \boldsymbol{x}) \| \mathrm{p}_{\theta}(\boldsymbol{z} \mid \boldsymbol{\chi})\right) \\
+& \leqslant \log p_{\theta}(\boldsymbol{x})
+\end{aligned}
+$$
+
