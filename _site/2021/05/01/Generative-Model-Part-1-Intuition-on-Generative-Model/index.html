@@ -256,7 +256,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
               <li><a href="#wasserstein-gan" id="markdown-toc-wasserstein-gan">Wasserstein-GAN</a></li>
             </ul>
           </li>
-          <li><a href="#variational-autoencoder" id="markdown-toc-variational-autoencoder">Variational autoencoder</a></li>
+          <li><a href="#variational-autoencoder" id="markdown-toc-variational-autoencoder">Variational autoencoder</a>            <ul>
+              <li><a href="#vanilla-vae" id="markdown-toc-vanilla-vae">Vanilla-VAE</a></li>
+              <li><a href="#wasserstein-vae" id="markdown-toc-wasserstein-vae">Wasserstein VAE</a></li>
+            </ul>
+          </li>
+          <li><a href="#an-informal-proof-of-equivalent" id="markdown-toc-an-informal-proof-of-equivalent">An informal proof of Equivalent</a></li>
         </ul>
       </li>
     </ul>
@@ -475,6 +480,8 @@ D(p_{g},p_{data})&amp;=\max _{D} V(G, D) \\
 
 <h3 id="variational-autoencoder">Variational autoencoder</h3>
 
+<h4 id="vanilla-vae">Vanilla-VAE</h4>
+
 <p>关于 VAE 的基础部分，可以看<a href="https://changhaowu.github.io/2021/01/25/Generative-Model-Part-2-A-Survey-on-Variational-Autoencoders/">这一部分</a>中关于 VAE的介绍，现在开始从直觉上仿照 autoencoder 的结构来构造 VAE：</p>
 
 \[\begin{array}{l}
@@ -492,11 +499,19 @@ D(p_{g},p_{data})&amp;=\max _{D} V(G, D) \\
 <p>但是上式中 \(\int p_{\theta}(x \mid z) p_{z}(z) d z\)， 启发我们是否能用推断分布 \(q_{\phi}(z\mid x)\) 作为 \(p_{z}(z)\) 的替代呢？这样某种意义上也体现了复建的过程，可能 \(Evidence \; Lower \; Bound\) 就是受此启发的：</p>
 
 \[\begin{aligned}
-\log p_{\theta}(\mathbf{x})=&amp; \mathbb{E}_{q_{\phi}(z \mid x)}\left[\log p_{\theta}(x)\right] \\
-=&amp; \mathbb{E}_{q_{\phi}(z \mid x)}\left[\log \left[\frac{p_{\theta}(x, z)}{p_{\theta}(z \mid x)}\right]\right] \\
-=&amp; \mathbb{E}_{q_{\phi}(z \mid x)}\left[\log \left[\frac{p_{\theta}(x, z)}{q_{\phi}(z \mid x)} \frac{q_{\phi}(z \mid x)}{p_{\theta}(z \mid x)}\right]\right] \\
-=&amp; \mathbb{E}_{q_{\phi}(z \mid x)}\left[\log \left[\frac{p_{\theta}(x, z)}{q_{\phi}(z \mid x)} \frac{q_{\phi}(z \mid x)}{p_{\theta}(z \mid x)}\right]\right] \\
-=&amp; \underbrace{\mathbb{E}_{q_{\phi}(z \mid x)}\left[\log \left[\frac{p_{\theta}(x, z)}{q_{\phi}(z \mid x)}\right]\right]}_{=L_{\theta, \phi}(x)}+\underbrace{\mathbb{E}_{q_{\phi}(z \mid x)}\left[\log \left[\frac{q_{\phi}(z \mid x)}{p_{\theta}(z \mid x)}\right]\right]}_{(E L B O)}
+\log p_{\boldsymbol{\theta}}(\mathbf{x}) 
+&amp;=\mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}\left[\log p_{\boldsymbol{\theta}}(\mathbf{x})\right] 
+\\
+&amp;=\mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}\left[\log \left[\frac{p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})}{p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})}\right]\right]
+\\
+&amp;=\mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}\left[\log \left[\frac{p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})}{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})} \frac{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})}{p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})}\right]\right]
+\\
+&amp;= \mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}\left[\log \left[\frac{p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})}{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})} \frac{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})}{p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})}\right]\right]
+\\
+&amp;= \underbrace{\mathbb{E}_{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})}\left[\log \left[\frac{p_{\boldsymbol{\theta}}(\mathbf{x}, \mathbf{z})}{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})}\right]\right]}_{=\mathcal{L}_{\boldsymbol{\theta}, \boldsymbol{\phi}}(\mathbf{x})\\(\mathrm{ELBO})}
++
+\underbrace{\mathbb{E}_{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})}\left[\log \left[\frac{q_{\boldsymbol{\phi}}(\mathbf{z} \mid \mathbf{x})}{p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})}\right]\right]}_{=D_{K L}\left(q_{\phi}(\mathbf{z} \mid \mathbf{x}) \| p_{\boldsymbol{\theta}}(\mathbf{z} \mid \mathbf{x})\right)}
+
 \end{aligned}\]
 
 <p>这一部分还是利用 MLE 的思想去做 \(\theta,\phi\) 的优化，后面会给出一个不甚严谨证明：MLE 与 \(\min_{\theta,\phi}Distance\) 是等价的</p>
@@ -505,10 +520,37 @@ D(p_{g},p_{data})&amp;=\max _{D} V(G, D) \\
 
 \[\begin{aligned}
 \mathrm{L}_{\theta, \phi}(\boldsymbol{x}) &amp;=\mathbb{E}_{\mathrm{q}_{\phi}(z \mid x)}\left[\log p_{\theta}(\boldsymbol{x} \mid \boldsymbol{z})+\log p_{\theta}(\boldsymbol{z})-\log \mathrm{q}_{\phi}(\boldsymbol{z} \mid \boldsymbol{x})\right] \\
-&amp;=\log \mathrm{p}_{\theta}(\boldsymbol{x})-\mathrm{D}_{\mathrm{KL}}\left(\mathrm{q}_{\phi}(\boldsymbol{z} \mid \boldsymbol{x}) \| \mathrm{p}_{\theta}(\boldsymbol{z} \mid \boldsymbol{\chi})\right) \\
-&amp; \leqslant \log p_{\theta}(\boldsymbol{x})
+&amp;=\mathbb{E}_{q_{\phi}(z \mid x)}\left[\log p_{\theta}(x \mid z)\right]-D_{K	 L}\left[q_{\phi}(z \mid x) \| p_{\theta}(z)\right]
 \end{aligned}\]
 
+<p>上式中第一部分代表复建的误差，由推断分布编码成 \(z\) 的 \(x\) 与最后生成分布解码的 \(x\) 的误差越小，第一项越大，而第二部分控制最后用来抽样的 \(p_{z}(z)\)  于推断分布 \(q_{\phi}(z \mid x)\) 相差不远</p>
+
+<h4 id="wasserstein-vae">Wasserstein VAE</h4>
+
+<p>那么还是尝试用用生成分布去拟合经验分布这个角度来看 VAE 的过程，比起 GAN 去看映射到数据空间 \(X\) 的 \(g_{\theta}(z)\) 有多可能在数据流形附近，VAE 是通过衡量数据分布整体做的，因此生成分布的部分从 \(\mathcal{Z}\) 考虑即可，改写最优传输问题为：
+\(E(\theta)=\min _{\pi \in \mathcal{P}(Z \times \mathcal{X})}\left\{\int_{\mathcal{Z} \times \mathcal{X}} c\left(g_{\theta}(z), y\right) \mathrm{d} \pi(z, y) ; P_{1 \#} \pi= p_{\theta}, P_{2 \#} \pi=\mu_{X}\right\}\)
+编码分布 \(q_{\phi} = P_{1 \#} \pi\)，在约束中要等于 \(p_{\theta}\)，这一点在实用中很难达到，弱化成正则项写入优化目标：
+\(E_{\lambda}(\theta)=\min _{\pi}\left\{\int_{\mathcal{Z} \times \mathcal{X}} c\left(g_{\theta}(z), y\right) \mathrm{d} \pi(z, y)+\lambda D\left(P_{1 \#} \pi \mid p_{\theta}\right) ; P_{2 \#} \pi=\mu_{X}\right\}\)
+而第一项是从拟合一个分布的角度去优化生成分布和经验分布间的距离的</p>
+
+<h3 id="an-informal-proof-of-equivalent">An informal proof of Equivalent</h3>
+
+<p>两个视角（MLE 和 \(\min Distance(\mu \| \nu)\)）实际上做的事情是等价的
+$$
+\begin{aligned}
+\tilde{\mu}<em>{X}(x)&amp;=\frac{1}{n} \sum</em>{i=1}^{n} N\left(x_{i}, \sigma_{i}^{2}\right) 
+<br />
+&amp;\downarrow \lim <em>{\sigma</em>{i} \rightarrow 0}\tilde{\mu}<em>{X} \rightarrow \mu</em>{X} 
+<br />
+\arg \max <em>{\theta} p</em>{\theta}(x) &amp;\cong \arg \max_{\theta} \log p_{\theta}(x) 
+\</p>
+
+<p>\log p_{\theta}(x) &amp; = E_{\tilde{\mu}<em>{X}}\left[\log p</em>{\theta}(x)\right]  =E_{\tilde{\mu}<em>{X}}\left[\log \frac{p</em>{\theta}(x)}{\tilde{\mu}<em>{X}(x)} \cdot \tilde{\mu}</em>{X}(x)\right]
+<br />
+&amp; =-D_{KL}\left[\tilde{\mu}<em>{X} | p</em>{\theta}\right]+H\left[\tilde{\mu}_{x}\right]
+\end{aligned}
+$$
+因此优化经验分布和生成分布之间的距离是等价于 MLE 的</p>
 
                 </div>
                 
