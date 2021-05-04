@@ -302,18 +302,23 @@ $$
 #### Wasserstein VAE
 
 那么还是尝试用用生成分布去拟合经验分布这个角度来看 VAE 的过程，比起 GAN 去看映射到数据空间 $$X$$ 的 $$g_{\theta}(z)$$ 有多可能在数据流形附近，VAE 是通过衡量数据分布整体做的，因此生成分布的部分从 $$\mathcal{Z}$$ 考虑即可，改写最优传输问题为：
+
 $$
 E(\theta)=\min _{\pi \in \mathcal{P}(Z \times \mathcal{X})}\left\{\int_{\mathcal{Z} \times \mathcal{X}} c\left(g_{\theta}(z), y\right) \mathrm{d} \pi(z, y) ; P_{1 \#} \pi= p_{\theta}, P_{2 \#} \pi=\mu_{X}\right\}
 $$
+
 编码分布 $$q_{\phi} = P_{1 \#} \pi$$，在约束中要等于 $$p_{\theta}$$，这一点在实用中很难达到，弱化成正则项写入优化目标：
+
 $$
 E_{\lambda}(\theta)=\min _{\pi}\left\{\int_{\mathcal{Z} \times \mathcal{X}} c\left(g_{\theta}(z), y\right) \mathrm{d} \pi(z, y)+\lambda D\left(P_{1 \#} \pi \mid p_{\theta}\right) ; P_{2 \#} \pi=\mu_{X}\right\}
 $$
+
 而第一项是从拟合一个分布的角度去优化生成分布和经验分布间的距离的
 
 ### An informal proof of Equivalent
 
 两个视角（MLE 和 $$\min Distance(\mu \| \nu)$$）实际上做的事情是等价的
+
 $$
 \begin{aligned}
 \tilde{\mu}_{X}(x)&=\frac{1}{n} \sum_{i=1}^{n} N\left(x_{i}, \sigma_{i}^{2}\right) 
@@ -322,10 +327,10 @@ $$
 \\
 \arg \max _{\theta} p_{\theta}(x) &\cong \arg \max_{\theta} \log p_{\theta}(x) 
 \\
-
 \log p_{\theta}(x) & = E_{\tilde{\mu}_{X}}\left[\log p_{\theta}(x)\right]  =E_{\tilde{\mu}_{X}}\left[\log \frac{p_{\theta}(x)}{\tilde{\mu}_{X}(x)} \cdot \tilde{\mu}_{X}(x)\right]
 \\
 & =-D_{KL}\left[\tilde{\mu}_{X} \| p_{\theta}\right]+H\left[\tilde{\mu}_{x}\right]
 \end{aligned}
 $$
+
 因此优化经验分布和生成分布之间的距离是等价于 MLE 的
