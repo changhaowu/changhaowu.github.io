@@ -310,7 +310,6 @@ SRCNN在结构上很mind-simplicity，而在设计上采用全卷积的设计。
   \mathbf{L}(\theta) = \frac{1}{n}\sum_{i=1}^n \left\| F(\mathbf{Y_i};\theta)-\mathbf{X_i} \right\|
   $$
   而SRCNN的总体结构如下图所示，每层的运算都是卷积，因此硬件上可以给出支持使得模型运算加速：
-  
 
 {:refdef: style="text-align: center;"}
 ![Screen Shot 2020-06-10 at 6.57.57 PM](/images/2020-06-09-Patch-Based-Model-in-Real-World-SIngle-Image-Super-Resolution/Screen Shot 2020-06-10 at 6.57.57 PM.png)
@@ -340,7 +339,6 @@ SRCNN在结构上很mind-simplicity，而在设计上采用全卷积的设计。
   [4] Chao Dong, Chen Change Loy, Kaiming He, Xiaoou Tang [Image Super- Resolution Using Deep Convolutional Networks](https://arxiv.org/abs/1501.00092)
   
   [5] https://en.wikipedia.org/wiki/Image_scaling
-  
 
 
 

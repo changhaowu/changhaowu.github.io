@@ -5,6 +5,7 @@ date: 2021-01-20
 image: /images/cover/C_Scenery4.png       
 tags: [OTNotes]
 toc: false
+published: false
 ---
 
 {: class="table-of-content"}
@@ -427,7 +428,6 @@ $$
    $$
    \int_{\mathbb{R} \times \mathbb{R}} d(x-y) \mathrm{d} \pi^{\dagger}(x, y)=\int_{\mathbb{R} \times \mathbb{R}} d(x-y) \mathrm{d}\left(\left(F^{-1}, G^{-1}\right)_{\#} \mathcal{L}\right)(x, y)=\int_{0}^{1} d\left(F^{-1}(t)-G^{-1}(t)\right) \mathrm{d} t
    $$
-   
 
 ### Optimal Transport for Discrete Measures
 

@@ -5,7 +5,7 @@ date: 2021-01-29
 image: /images/cover/C_Scenery6.jpeg
 tags: [OTNotes]
 toc: false
-published: true
+published: false
 ---
 
 {: class="table-of-content"}
@@ -337,7 +337,6 @@ $$
    $$
    \inf _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)=\sup _{(\varphi, \psi) \in \Phi_{c}} \int_{X} \varphi(x) \mathrm{d} \mu(x)+\int_{Y} \psi(y) \mathrm{d} \nu(y)
    $$
-   
 
 ## Reference
 

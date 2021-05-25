@@ -1,4 +1,3 @@
----
 layout: post
 title: "Computational Optimal Transport Note Part 0: Introduction"
 date: 2021-02-01
@@ -8,7 +7,6 @@ toc: false
 published: true
 
 
----
 
 {: class="table-of-content"}
 * TOC
@@ -53,5 +51,4 @@ published: true
 ## Reference
 
 1. Gabriel Peyre, Marco Cuturi." [Computational Optimal Transport](https://arxiv.org/abs/1803.00567), Foundation and Trends"
-
 
