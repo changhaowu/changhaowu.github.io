@@ -5,7 +5,7 @@ date: 2021-05-01
 image: images/cover/C_Animal3.jpeg                   
 tags: [Generative-Model]
 toc: false
-published: false
+published: true
 
 ---
 
