@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2021-07-05-Geometric-Deep-Learning-Notes"
+title: "Geometric Deep Learning Notes"
 date: 2021-07-05
 image: images/cover/C_Street8.JPG               
 tags: [DL-Theory]
