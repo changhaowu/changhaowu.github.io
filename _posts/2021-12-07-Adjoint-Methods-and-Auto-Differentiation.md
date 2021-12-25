@@ -3,7 +3,7 @@ layout: post
 title: "Adjoint Methods, Automatic Differentiation"
 date: 2021-12-07
 image: images/cover/C_face1.png   
-tags: [Numerical Computation]
+tags: [Numerical-Computation]
 toc: false
 published: true
 ---
