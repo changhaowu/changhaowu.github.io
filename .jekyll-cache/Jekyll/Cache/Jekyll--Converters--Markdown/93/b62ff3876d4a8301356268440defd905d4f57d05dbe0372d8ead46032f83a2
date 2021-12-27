@@ -1,0 +1,48 @@
+I"A<ul class="table-of-content" id="markdown-toc">
+  <li><a href="#frequency-fourier-and-galerkin" id="markdown-toc-frequency-fourier-and-galerkin">Frequency Fourier and Galerkin</a>    <ul>
+      <li><a href="#low-frenquency-and-finite-linear-span" id="markdown-toc-low-frenquency-and-finite-linear-span">Low Frenquency and finite linear span</a></li>
+    </ul>
+  </li>
+  <li><a href="#reference" id="markdown-toc-reference">Reference</a></li>
+</ul>
+<h2 id="frequency-fourier-and-galerkin">Frequency Fourier and Galerkin</h2>
+
+<p>为了到达对于 Neural ODE 的更深入的理解，返回去看了d</p>
+
+<h3 id="low-frenquency-and-finite-linear-span">Low Frenquency and finite linear span</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CVAE</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">Model</span><span class="p">):</span>
+  <span class="s">"""Convolutional variational autoencoder."""</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">CVAE</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">latent_dim</span> <span class="o">=</span> <span class="n">latent_dim</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">Sequential</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">InputLayer</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span>
+                <span class="n">filters</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">),</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span>
+                <span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">),</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Flatten</span><span class="p">(),</span>
+            <span class="c1"># No activation
+</span>            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">latent_dim</span> <span class="o">+</span> <span class="n">latent_dim</span><span class="p">),</span>
+        <span class="p">]</span>
+
+  <span class="o">@</span><span class="n">tf</span><span class="p">.</span><span class="n">function</span>
+  <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">eps</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="n">eps</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">latent_dim</span><span class="p">))</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="n">apply_sigmoid</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+
+</code></pre></div></div>
+
+<p>####</p>
+
+<p style="text-align: center;"><img src="/images/2021-02-02-Computational-Optimal-Transport-Note-Part-1/Transport_Map_Visualization.png" alt="Transport_Map_Visualization" style="zoom:40%;" /></p>
+
+<h2 id="reference">Reference</h2>
+
+<p>[1] C.-C. Jay Kuo <a href="https://arxiv.org/abs/1609.04112">Understanding Convolutional Neural Networks with A Mathematical Model</a></p>
+:ET

@@ -1,0 +1,99 @@
+I"�-<ul class="table-of-content" id="markdown-toc">
+  <li><a href="#frequency-fourier-and-galerkin" id="markdown-toc-frequency-fourier-and-galerkin">Frequency Fourier and Galerkin</a>    <ul>
+      <li><a href="#low-frenquency-and-function-space" id="markdown-toc-low-frenquency-and-function-space">Low Frenquency and Function Space</a>        <ul>
+          <li><a href="#low-frequency-basis-is-adequate-for-fitting" id="markdown-toc-low-frequency-basis-is-adequate-for-fitting">Low Frequency basis is adequate for fitting</a></li>
+          <li><a href="#whats-function-space" id="markdown-toc-whats-function-space">What’s function space</a></li>
+        </ul>
+      </li>
+      <li><a href="#fourier-transform-and-application" id="markdown-toc-fourier-transform-and-application">Fourier Transform and Application</a></li>
+      <li><a href="#galerkin-basis-road-to-application-in-neural-network" id="markdown-toc-galerkin-basis-road-to-application-in-neural-network">Galerkin basis, Road to application in Neural Network?</a></li>
+    </ul>
+  </li>
+  <li><a href="#reference" id="markdown-toc-reference">Reference</a></li>
+</ul>
+<h2 id="frequency-fourier-and-galerkin">Frequency Fourier and Galerkin</h2>
+
+<p>为了到达对于 Neural ODE 的更深入的理解，需要跳出残差方程的约束，把每层神经网络都看作一个算子，于是可以和 PDE 联系到一起，利用 PDE 中已有的丰富的方法和理论来辅助优化神经网络。本文的图文资料来源于 <a href="http://arxiv.org/abs/1901.06523">Frequency Principle: Fourier Analysis Sheds Light on Deep Neural Networks</a> 和许志钦老师关于 Frequency Principle 的</p>
+
+<p>讲座，以及  <a href="http://alice.loria.fr/index.php/bruno-levy.html">Bruno Levy</a> 教授关于 <a href="http://www.gretsi.fr/peyresq12/documents/3-maillage4.pdf">Function Space</a> 的讲座以及维基百科提供的详尽资料</p>
+
+<h3 id="low-frenquency-and-function-space">Low Frenquency and Function Space</h3>
+
+<h4 id="low-frequency-basis-is-adequate-for-fitting">Low Frequency basis is adequate for fitting</h4>
+
+<p>Generally speaking, “Frequency” in pixels image corresponds to the rate of change of intensity across neighbouring pixels. 由此为基础，把图片通过傅立叶变换迁移到频域后滤掉高频部分来降噪等得到了理论保证，如下图所示</p>
+
+<p style="text-align: center;"><img src="/images/2021-12-25-Frequency-Fourier-Galerkin/Image_frequency.png" alt="Image_frequency" style="zoom:35%;" /></p>
+
+<p>左图只有一种颜色，所有的像素之间没有变化，因此只有低频信号，然而从自然中拍摄的右图中，为了表示各物体之间的差别，物体的边缘存在着edge，各个物体的颜色也不尽相同，像素之间存在着变化，则最后图像中就有比较高频的部分，而其中最极端的情况则为在一张白纸上，直接用黑笔画一条竖线，就会产生最高频的情况：</p>
+
+<p style="text-align: center;"><img src="/images/2021-12-25-Frequency-Fourier-Galerkin/black_line_in_white_paper.png" alt="black_line_in_white_paper" style="zoom:45%;" /></p>
+
+<p>很自然的可以想到，高频的部分中有很多的噪声，同时低频的部分噪声则相对较少，如果从函数拟合的角度去看高频低频部分，则会有更贴近神经网络的结论出现：</p>
+
+<p style="text-align: center;"><img src="/images/2021-12-25-Frequency-Fourier-Galerkin/spatial_domain.gif" alt="fourier_domain" style="zoom:100%;" /></p>
+
+<p>上图是按照训练时间的先后顺序来展示的，因此当要去拟合一个函数的时候，首先学习到的信号总是低频的，这些信号学习的是要去拟合函数的 landscape，然后再是到的 detail 部分, landscape 和 detail，这不就恰恰对应着之前的图片中低频信号和高频信号的关系嘛。</p>
+
+<p style="text-align: center;"><img src="/images/2021-12-25-Frequency-Fourier-Galerkin/fourier_domain.gif" alt="fourier_domain" style="zoom:100%;" /></p>
+
+<p>在上图傅立叶域上的可视化更好的展现了这个结论，因此神经网络学习时，首先学到的是低频的信号，然后再是高频的信号，而之前从图片里得到的结论是，高频信号往往对应着噪声，那么函数拟合中随着训练的深入，得到的过拟合的情况是否能理解成，拟合器过度学习了样本集中的噪声，导致了泛化性能的下降呢？</p>
+
+<p style="text-align: center;"><img src="/images/2021-12-25-Frequency-Fourier-Galerkin/Typical-relationship-for-capacity-and-generalization-error.jpeg" alt="Typical-relationship-for-capacity-and-generalization-error" style="zoom:80%;" /></p>
+
+<p>那么这提供了一种思想，即当我们想利用傅立叶基去拟合函数的时候，除了本身计算能力有限导致的妥协，需要把无限的函数拟合问题转化成有限维的情况来做，同时本身这样做就是合理的，因为这避免了泛化误差的提升</p>
+
+<h4 id="whats-function-space">What’s function space</h4>
+
+<p>一般的向量空间的例子，不妨就用欧几里得空间好了，对一个三维的欧式空间，其中任意的向量能由基表示：
+\(\begin{aligned}
+&amp;V=x e_{1}+y e_{2}+z e_{3} \\
+&amp;x=V \cdot e_{1} \\
+&amp;y=V \cdot e_{2} \\
+&amp;z=V \cdot e_{3}
+\end{aligned}\)
+其中的 $\cdot$ 运算为内积  $V \cdot W=V_{x} W_{x}+V_{y} W_{y}+V_{z} W_{z}$</p>
+
+<p>内积如此定义，有一个更物理意义上好的效果，如果现在有一组两个基 ${e_{1},e_{2}}$张成了一个二维的欧式空间，同时有一个三维的向量 $v$ ，利用投影得到 ${e_{1},e_{2}}$ 对其的最佳逼近 $W=\left(V \cdot e_{1}\right) e_{1}+\left(V \cdot e_{2}\right) e_{2}$。通过内积可以定义向量空间上的投影</p>
+
+<p style="text-align: center;"><img src="/images/2021-12-25-Frequency-Fourier-Galerkin/projection_space.png" alt="Typical-relationship-for-capacity-and-generalization-error" style="zoom:80%;" /></p>
+
+<h3 id="fourier-transform-and-application">Fourier Transform and Application</h3>
+
+<p>![projection_space](/Users/karlwu/Documents/GitHub/changhaowu.github.io/images/2021-12-25-Frequency-Fourier-Galerkin/projection_space.png</p>
+
+<h3 id="galerkin-basis-road-to-application-in-neural-network">Galerkin basis, Road to application in Neural Network?</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CVAE</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">Model</span><span class="p">):</span>
+  <span class="s">"""Convolutional variational autoencoder."""</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">CVAE</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">latent_dim</span> <span class="o">=</span> <span class="n">latent_dim</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">Sequential</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">InputLayer</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span>
+                <span class="n">filters</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">),</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span>
+                <span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">),</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Flatten</span><span class="p">(),</span>
+            <span class="c1"># No activation
+</span>            <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">latent_dim</span> <span class="o">+</span> <span class="n">latent_dim</span><span class="p">),</span>
+        <span class="p">]</span>
+
+  <span class="o">@</span><span class="n">tf</span><span class="p">.</span><span class="n">function</span>
+  <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">eps</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="n">eps</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">latent_dim</span><span class="p">))</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="n">apply_sigmoid</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+
+</code></pre></div></div>
+
+<p>####</p>
+
+<h2 id="reference">Reference</h2>
+
+<p>[1] C.-C. Jay Kuo <a href="https://arxiv.org/abs/1609.04112">Understanding Convolutional Neural Networks with A Mathematical Model</a></p>
+:ET

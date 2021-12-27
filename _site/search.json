@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Frequency Fourier and Galerkin",
+      "category" : "",
+      "tags"     : "NLP",
+      "url"      : "/2021/12/25/Frequency-Fourier-Galerkin/",
+      "date"     : "2021-12-25 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Adjoint Methods, Automatic Differentiation",
       "category" : "",
       "tags"     : "Numerical-Computation",
