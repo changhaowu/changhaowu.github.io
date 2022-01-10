@@ -14,49 +14,83 @@ published: true
 {:toc}
 ## Frequency Fourier and Galerkin 
 
-为了到达对于 Neural ODE 的更深入的理解，需要跳出残差方程的约束，把每层神经网络都看作一个算子，于是可以和 PDE 联系到一起，利用 PDE 中已有的丰富的方法和理论来辅助优化神经网络。本文的图文资料来源于 [Frequency Principle: Fourier Analysis Sheds Light on Deep Neural Networks](http://arxiv.org/abs/1901.06523) 和许志钦老师关于 Frequency Principle 的
+为了到达对于 Neural ODE 的更深入的理解，需要跳出残差方程的约束，把神经网络都看作一个算子，于是考虑是否可以和 PDE 联系到一起？利用 PDE 中已有的丰富的方法和理论来辅助优化神经网络，而PDE中对于特定的方程会做傅立叶变换来达到更好的处理，或者通过 Galerkin Method 来做一个逼近，这些启发了对于 Transformer 的研究
 
-讲座，以及  [Bruno Levy](http://alice.loria.fr/index.php/bruno-levy.html) 教授关于 [Function Space](http://www.gretsi.fr/peyresq12/documents/3-maillage4.pdf) 的讲座以及维基百科提供的详尽资料
+本文的第一的图文资料主要来源于 [Frequency Principle: Fourier Analysis Sheds Light on Deep Neural Networks](http://arxiv.org/abs/1901.06523) 和许志钦教授关于 Frequency Principle 的讲座
+
+第二部分感谢  [Bruno Levy](http://alice.loria.fr/index.php/bruno-levy.html) 教授关于 [Function Space](http://www.gretsi.fr/peyresq12/documents/3-maillage4.pdf) 的讲座，维基百科提供的详尽资料，以及 [Fourier Neural Operator]( http://arxiv.org/abs/2010.08895.)（虽然我到现在也没有搞懂为什么一个加入了时间的3DCNN能够如此好的处理 PDE 的预测问题）
+
+第三部分则由 [Shuhao Cao](https://scaomath.github.io/) 教授借助 PDE 中理论关于 Fourier transform 与 Galerkin Method 的结论，揭示了 Transformer 还可以从 Integral Transform 与 Galerkin Representation 视角下来研究，并对其展开优化
 
 ### Low Frenquency and Function Space
 
-#### Low Frequency basis is adequate for fitting
+#### Low Frequency basis is adequate for Representation
 
-Generally speaking, “Frequency" in pixels image corresponds to the rate of change of intensity across neighbouring pixels. 由此为基础，把图片通过傅立叶变换迁移到频域后滤掉高频部分来降噪等得到了理论保证，如下图所示
+首先取一个简单的例子引入关于傅立叶分析的观点，在图像处理中，频率往往代表着什么呢？Generally speaking, “Frequency" in pixels image corresponds to the rate of change of intensity across neighbouring pixels. 由此为基础，把图片通过傅立叶变换迁移到频域后滤掉高频部分来降噪等得到了理论保证，如下图所示：
 
 {:refdef: style="text-align: center;"}
 <img src="/images/2021-12-25-Frequency-Fourier-Galerkin/Image_frequency.png" alt="Image_frequency" style="zoom:30%;" />
 {:refdef}
 
-左图只有一种颜色，所有的像素之间没有变化，因此只有低频信号，然而从自然中拍摄的右图中，为了表示各物体之间的差别，物体的边缘存在着edge，各个物体的颜色也不尽相同，像素之间存在着变化，则最后图像中就有比较高频的部分，而其中最极端的情况则为在一张白纸上，直接用黑笔画一条竖线，就会产生最高频的情况：
+左图只有一种颜色，所有的像素之间没有变化，因此只有低频信号，然而从自然中拍摄的右图中，为了表示各物体之间的差别，物体的边缘存在着edge，各个物体的颜色也不尽相同，像素之间存在着变化，则右图中就有比较高频的部分。因此在图像处理中，与强调局部细节的CNN不同，傅立叶分析尝试利用一组全局的fourier filter对于图像进行剖析然后再处理，如下图：
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2021-12-25-Frequency-Fourier-Galerkin/fourier_cnn_filters.png" alt="Image_frequency" style="zoom:30%;" />
+{:refdef}
+
+而其中最极端的情况则为在一张白纸上，直接用黑笔画一条竖线，就会产生最高频的情况：
 
 {:refdef: style="text-align: center;"}
 <img src="/images/2021-12-25-Frequency-Fourier-Galerkin/black_line_in_white_paper.png" alt="black_line_in_white_paper" style="zoom:35%;" />
 {:refdef}
 
-很自然的可以想到，高频的部分中有很多的噪声，同时低频的部分噪声则相对较少，如果从函数拟合的角度去看高频低频部分，则会有更贴近神经网络的结论出现：
+为了位于空间域的图片转化到相应的频域上，定义二维图片上的傅里叶变换：
+
+$$
+F(k, l)=\sum_{i=0}^{N-1} \sum_{j=0}^{N-1} f(i, j) e^{-\iota 2 \pi\left(\frac{k i}{N}+\frac{l j}{N}\right)}
+$$
+
+由于之前的结论表明，高频部分强调的是细节，低频部分强调的是框架信息；高频的部分中有很多的噪声，同时低频的部分噪声则相对较少。因此很自然的引出图像中傅立叶分析的两个应用：
+
+- 图像压缩，通过傅立叶变换把左上的图片到频域上，滤掉高频的信息后，得到一个差不多的表示（左下）的同时，压缩了图片大小（可以看到右下的频谱图只用了中间一个小圆环范围的信息）
+  {:refdef: style="text-align: center;"}
+  <img src="/images/2021-12-25-Frequency-Fourier-Galerkin/Filtering+with+Fourier+transforms.jpeg" alt="Filtering+with+Fourier+transforms" style="zoom:55%;" />
+  {:refdef}
+- 图像去噪声，类似的处理，但是强调的是高频中的噪声较多这一特性
+
+图像处理中，傅立叶分析的结论很多，但是终究是要到更抽象的研究对象（函数）上的，后面会证明其实图像本身也可以纳入傅里叶分析在函数研究上的结论
+
+先看一些傅里叶分析在函数的角度的结论，这部分的结论更贴近神经网络：
 
 {:refdef: style="text-align: center;"}
 <img src="/images/2021-12-25-Frequency-Fourier-Galerkin/spatial_domain.gif" alt="fourier_domain" style="zoom:80%;" />
 {:refdef}
 
-上图是按照训练时间的先后顺序来展示的，因此当要去拟合一个函数的时候，首先学习到的信号总是低频的，这些信号学习的是要去拟合函数的 landscape，然后再是到的 detail 部分, landscape 和 detail，这不就恰恰对应着之前的图片中低频信号和高频信号的关系嘛。
+上图是按照训练时间的先后顺序来展示的，因此当要去拟合一个函数的时候，首先学习到的信号总是尝试去学习去拟合函数的 Landscape（框架），然后再是到的 Detail （细节）部分, Landscape 和 Detail，这不就恰恰对应着之前的图片中低频信号和高频信号的关系嘛，那么不妨在傅立叶域中观察刚才的学习行为：
 
 {:refdef: style="text-align: center;"}
 <img src="/images/2021-12-25-Frequency-Fourier-Galerkin/fourier_domain.gif" alt="fourier_domain" style="zoom:80%;" />
 {:refdef} 
 
-在上图傅立叶域上的可视化更好的展现了这个结论，因此神经网络学习时，首先学到的是低频的信号，然后再是高频的信号，而之前从图片里得到的结论是，高频信号往往对应着噪声，那么函数拟合中随着训练的深入，得到的过拟合的情况是否能理解成，拟合器过度学习了样本集中的噪声，导致了泛化性能的下降呢？
+因此对于在 Spatial domain上的函数做一个傅立叶变换，然后在上图傅立叶域上的可视化更好的展现了这个结论，因此神经网络学习时，首先学到的是低频的信号，然后再是高频的信号，而之前从图片里得到的结论是，高频信号往往对应着噪声，那么函数拟合中随着训练的深入，得到的过拟合的情况是否能理解成，拟合器过度学习了样本集中的噪声，导致了泛化性能的下降呢？
 
 {:refdef: style="text-align: center;"}
 <img src="/images/2021-12-25-Frequency-Fourier-Galerkin/Typical-relationship-for-capacity-and-generalization-error.jpeg" alt="Typical-relationship-for-capacity-and-generalization-error" style="zoom:60%;" />
 {:refdef} 
 
-那么这提供了一种思想，即当我们想利用傅立叶基去拟合函数的时候，除了本身计算能力有限导致的妥协，需要把无限的函数拟合问题转化成有限维的情况来做，同时本身这样做就是合理的，因为这避免了泛化误差的提升
+那么这提供了一种思想，即当我们想利用有限个傅立叶基去拟合函数的时候，除了本身计算能力有限导致的妥协，需要把无限的函数拟合问题转化成有限维的情况来做，同时本身这样做就是合理的，因为这避免了泛化误差的提升
+
+为了把图像统一进函数的研究中，我们定义一个 underlying domain $\Omega$ 和上面的映射 $X$： $\Omega \rightarrow X(\Omega)$ 映射到信号上，信号就是我们平时研究的数据，则对于数据的研究，是等价于研究这个signal map $X$ 的，那么图像分析里一大堆的结论当然是统一在关于函数上的傅里叶分析里的研究的：
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2021-12-25-Frequency-Fourier-Galerkin/Signal_map.png" alt="Signal_map" style="zoom:40%;" />
+{:refdef} 
 
 #### What's function space
 
-一般的向量空间的例子，不妨就用欧几里得空间好了，对一个三维的欧式空间，其中任意的向量能由基表示：
+那么之前展示了很多在函数空间中傅立叶分析的应用，可能读者吐槽了，到现在为止文章都没说过，函数空间是什么呢？
+
+函数空间是一类的特殊的向量空间，一般的向量空间的例子，不妨就用欧几里得空间好了，对一个三维的欧式空间，其中任意的向量能由三个标准基表示，当然也可以应用其他的基来表示：
 
 $$
 \begin{aligned}
@@ -67,20 +101,31 @@ $$
 \end{aligned}
 $$
 
-其中的 $\cdot$ 运算为内积  $V \cdot W=V_{x} W_{x}+V_{y} W_{y}+V_{z} W_{z}$
+而其中的 $\cdot$ 运算为内积  $V \cdot W=V_{x} W_{x}+V_{y} W_{y}+V_{z} W_{z}$，当然也有写成  $\langle V, W\rangle$ 的记法
 
-内积如此定义，有一个更物理意义上好的效果，如果现在有一组两个基 $\{e_{1},e_{2}\}$张成了一个二维的欧式空间，同时有一个三维的向量 $v$ ，利用投影得到 $\{e_{1},e_{2}\}$ 对其的最佳逼近 $W=\left(V \cdot e_{1}\right) e_{1}+\left(V \cdot e_{2}\right) e_{2}$。通过内积可以定义向量空间上的投影
+内积如此定义使其在物理意义上有一个好的可视化效果，即投影：
+
+如果现在有一组两个基 $\{e_{1},e_{2}\}$张成了一个二维的欧式空间，同时有一个三维的向量 $v$ ，利用投影得到 $\{e_{1},e_{2}\}$ 对其的最佳逼近 $W=\left(V \cdot e_{1}\right) e_{1}+\left(V \cdot e_{2}\right) e_{2}$。通过内积可以定义向量空间上的投影（内积大小就是在各个投影的基上的长度）：
 
 {:refdef: style="text-align: center;"}
 <img src="/images/2021-12-25-Frequency-Fourier-Galerkin/projection_space.png" alt="projection_space" style="zoom:25%;" />
 {:refdef} 
 
-一般的向量空间的理解很直观，那么把研究的对象换成函数，则问题就变成了：
+一般的向量空间的理解很直观，那么把研究的对象换成函数，我们发现，由于函数满足如下条件：
 
-- 如何定义函数空间中的基
-- 如何定义函数空间中的内积
+$$
+    \begin{aligned}
+    (f+g)(x) &=f(x)+g(x) \\
+    (c \cdot f)(x) &=c \cdot f(x)
+    \end{aligned}
+$$
 
-第一个问题研究有很多思路了，比如多项式基，以及之前定义的傅立叶基，问题在于如何定义函数空间中的内积，借助 $\delta$ 函数作为基 ，向量可以表示为 $u = \sum_i u_i \delta_i$
+这说明，把函数作为元素，加法和数乘按照平时的定义，函数这些元素一样可以构成一个向量空间，则问题就变成了：
+
+- 如何定义函数空间中的基？
+- 如何定义函数空间中的内积？
+
+第一个问题的研究有很多思路了，比如多项式基，以及之前定义的傅立叶基，问题在于如何定义函数空间中的内积，借助 $\delta$ 函数作为基 ，可以建立一个向量空间中的元素到函数空间中的元素 $u = \sum_i u_i \delta_i$ 的同构（证明暂且不表），参考向量空间中的两个向量的内积的定义：
 
 $$
 u \cdot v=\sum u_{i} v_{i}
@@ -90,7 +135,7 @@ $$
 <img src="/images/2021-12-25-Frequency-Fourier-Galerkin/dot_product_vector.png" alt="dot_product_vector" style="zoom:30%;" />
 {:refdef} 
 
-则对应到函数的情况则为：
+我们可以很自然的对应到函数空间中，两元素的内积的定义应当是在一个空间积分：
 
 $$
 f \cdot g=\int f(t) g(t) d t
@@ -100,7 +145,11 @@ $$
 <img src="/images/2021-12-25-Frequency-Fourier-Galerkin/inner_product_function.png" alt="inner_product_function" style="zoom:30%;" />
 {:refdef} 
 
-那么傅立叶基就是把函数在如下基上做投影 $f(x)=\Sigma \alpha_{i} \phi_{i}(x)$：
+对于多项式基，我们发现，偶数次幂的基和奇数次幂的基的内积是 0，说明这些基正交，而同为偶数次幂或者奇数次幂的基的投影则不是 0，这些基之间互有干涉
+
+可以拿出纸笔在纸上试试看画出二次函数和三次函数，四次函数的基，就会感受到这样定义的内积，确实反映出来多项式基的特点，也发现多项式函数并不是互相正交的
+
+那么从分析一个函数分解角度来说，在按照上面方法定义的内积下，多项式基可能并不是在理论上最适合用来研究的，那么傅立叶基呢？傅立叶基就是把函数在如下基上做投影 $f(x)=\Sigma \alpha_{i} \phi_{i}(x)$：
 
 $$
 \begin{aligned}
@@ -108,14 +157,6 @@ $$
 &\phi_{2 k}(x)=\sin (2 k \pi x) \\
 &\phi_{2 k+1}(x)=\cos (2 k \pi x)
 \end{aligned}
-$$
-
-### Fourier Transform and Application
-
-由傅立叶基的特性发现，不同频率的傅立叶基之间是两两正交的，$\phi_{i}(x) \cdot \phi_{j}(x) = \delta_{ij}$，这让傅立叶基是一组正交基。这一良好的性质使傅立叶变换的可视化意义非常的好，傅立叶变换把时域上的信号转化到频域上，定义方法是
-
-$$
-\hat{f}(\xi)=\int_{-\infty}^{\infty} f(x) e^{-2 \pi i t \xi} d t
 $$
 
 如果引入复数的话，由于 $\cos \varphi=\frac{e^{i \varphi}+e^{-i \varphi}}{2}, \quad \sin \varphi=\frac{e^{i \varphi}-e^{-i \varphi}}{2 i}$，则傅立叶基的表述会有一个更优美的表述：
@@ -126,31 +167,181 @@ f(t)=\sum_{n=-\infty}^{\infty} c_{n} e^{i 2 \pi n t}
 c_{n}=\frac{a_{n}-i b_{n}}{2}, \quad c_{-n}=\frac{a_{n}+i b_{n}}{2}
 $$
 
-在复变函数上，$\langle f, g\rangle=\int_{a}^{b} f(t) \overline{g(t)} \mathrm{d} t$ 内积的定义需要稍加修正，由于傅立叶基之间是正交的，这样积分的结果就是把每个基上对应需要的系数滤出来，如下图所示：
+在复变函数上，内积的定义需要稍加修正：
+
+$$
+\langle f, g\rangle=\int_{a}^{b} f(t) \overline{g(t)} \mathrm{d} t
+$$
+
+由傅立叶基的特性发现，不同频率的傅立叶基之间是两两正交的，对于每个不同频率的傅立叶基都有：
+
+$$
+\phi_{i}(x) \cdot \phi_{j}(x) = \delta_{ij}
+$$
+
+### Fourier Transform and Application
+
+傅立叶基是一组正交基。这一良好的性质使傅立叶变换的可视化意义非常的好，傅立叶变换把时域（time domain）/空间域（spatial domain）上的信号转化到频域上，定义方法是：
+
+$$
+\hat{f}(\xi)=\int_{-\infty}^{\infty} f(x) e^{-2 \pi i t \xi} d t
+$$
+
+由于傅立叶基之间是正交的，这样积分的结果就是把不同频率对应的 "傅立叶基"上对应需要的系数滤出来，之所以要强调傅立叶基，是因为除了之前定义的标准傅立叶基，也有其他的频率也可以用来定义傅立叶基，就像三维欧式空间中，除了标准基以外还有其他的基一样， $\xi$  控制着频率扫过整个 spatial domain 上的所有基来得到每个基上的投影，这就是所谓的时域变换到频域上，如下图所示：
 
 {:refdef: style="text-align: center;"}
 <img src="/images/2021-12-25-Frequency-Fourier-Galerkin/Fourier_transform_time_and_frequency_domains_(small).gif" alt="Fourier_transform_time_and_frequency_domains_(small)" style="zoom:100%;" />
 {:refdef} 
 
-具体把上图的展开写开的话，$f(t)=\sum_{k=-\infty}^{\infty} a_{k} e^{j k \omega_{0} t}$ 是一个傅立叶基表示的展开：
+举个例子的话，$f(t)=\sum_{k=-\infty}^{\infty} a_{k} e^{j k \omega_{0} t}$ 其傅立叶变换把各个基的系数滤了出来，因此是一个定义在各个频率上的delta函数的线性表示：
+
+
 $$
 F(\omega)=\sum_{k=-\infty}^{\infty} a_{k} \int_{-\infty}^{\infty} e^{j\left(k \omega_{0}-\omega\right) t} d t=2 \pi \sum_{k=-\infty}^{\infty} a_{k} \delta\left(\omega-k \omega_{0}\right)
 $$
+
 {:refdef: style="text-align: center;"}
-<img src="/images/2021-12-25-Frequency-Fourier-Galerkin/fourier_transform_fourier_series.png" alt="fourier_transform_fourier_series" style="zoom:10%;" />
+<img src="/images/2021-12-25-Frequency-Fourier-Galerkin/fourier_transform_fourier_series.png" alt="fourier_transform_fourier_series" style="zoom:20%;" />
 {:refdef} 
 
-对于一类特殊定义的变换，如傅立叶变换，拉普拉斯变换等，具有一个很特殊的定理，函数卷积的傅立叶变换是函数傅立叶变换的乘积：
+当然由于上面这个 $f(t)$ 的信号本就有些特殊，其由有限个傅立叶基构成，所以可视化效果上是离散的
+
+#### Convolution Theorem
+
+Generally，卷积的定义如下：
+
+$$
+(f * g)(t):=\int_{-\infty}^{\infty} f(\tau) g(t-\tau) d \tau
+$$
+
+通过上文中的介绍，读者显然对于这样的形式不陌生了，这不就是一个通过 $g$ 定义的内积嘛？
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2021-12-25-Frequency-Fourier-Galerkin/Convolution_of_box_signal_with_itself2.gif" alt="Convolution_of_box_signal_with_itself2" style="zoom:100%;" />
+{:refdef} 
+
+对应上图，再我们回忆平时定义在 CNN 中的卷积核的定义，卷积核扫过整个图片，在有类似信号的地方的响应较强，反之则响应较弱。当然平时定义在 CNN 中的卷积核为上面一般的 $g$ 的一种特殊情况，他有一个离散的，有限的支撑集：
+
+$$
+(f * g)[n]=\sum_{m=-M}^{M} f[n-m] g[m]
+$$
+
+对于一类特殊定义的变换，如傅立叶变换，$Z$ 变换等，有一个很特殊的定理，函数卷积的傅立叶变换是函数傅立叶变换的乘积：
+
 $$
 \mathcal{F}\{f * g\}=\mathcal{F}\{f\} \cdot \mathcal{F}\{g\}
 $$
+
 这样可以简化卷积的运算量，对于长度为 $ m $ 的序列，按照卷积的定义进行计算，需要做 $2 n-1$ 组对位乘法，其计算复杂度为 $\mathcal {O}(n^{2})$ ；而利用傅里叶变换将序列变换到频域上后，只需要一组对位乘法，利用傅里叶变换的快速算法之后，总的计算复杂度为 $\mathcal {O}(n\log n)$
 
-### Galerkin basis, Road to application in Neural Network?
+由于卷积定理的存在，让在 spatial domain 上定义的卷积和 frequency domain 上的乘积有了等价性，同时对于学习一个映射，用的基应当事 global 的卷积，而不是 local 的卷积这样一个想法， Fourier Neural Operator 被提了出来
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2021-12-25-Frequency-Fourier-Galerkin/fourier_cnn_filters.png" alt="fourier_cnn_filters" style="zoom:25%;" />
+{:refdef} 
+
+FNO（short for  Fourier Neural Operator ）的结构通过一个积分变换定义了一个算子 $K: v_{t} \mapsto v_{t+1}$
+
+$$
+K(v)(x)=\int \kappa(x, y) v(y) d y+W v(x)
+$$
+
+其中的 $\kappa(x, y)$ 核函数采用卷积来定义：
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2021-12-25-Frequency-Fourier-Galerkin/FNO_fourier_layer.png" alt="FNO_fourier_layer" style="zoom:25%;" />
+{:refdef} 
+
+Fourier Neural Operator 中会定义一个（spatial domain，time domain）的三维卷积核，则计算复杂度非常的高，于是利用卷积定理，问题等价于先通过傅立叶变换将 $v$ 变换到频域，在 Frequency Domain 上做线性变换后再逆变换回 Spatial Domain
+
+Fourier Neural Operator 总体的架构如下图所示，其中 $P,Q$ 是嵌入和投影算子：
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2021-12-25-Frequency-Fourier-Galerkin/Fourier_Neural_Operator_Structure.png" alt="Fourier_Neural_Operator_Structure" style="zoom:32%;" />
+{:refdef} 
+
+### Integral Transform and Galerkin method, Road to Application in Neural Network?
+
+如果说 Fourier Neural Operator 是建立在卷积定理上，利用了傅立叶变换可以加速卷积运算的过程，其核心还是利用卷积运算来做关于 Navier-Stokes 方程的解的预测的话，F-Net 和 Fourier Type Transformer 就是完全建立在对于 attention 机制的观察结果与积分变换的关联上：
+
+把 Softmax 从 attention mechanism 中移除的话可以看得更清楚，首先定义一些符号：
+
+$Q=y_{n \times d} W_{d \times d}^{Q}$，其中的 $y_{n \times d}$ 为通过embedding layer得到的嵌入sequence，与 $Q_{n \times d}，K_{n \times d}， V_{n \times d}$ 一致，其两个维度分别表示以位置排列的维度与以自由度（Degree of Freedom） 排列的维度，以 $Q_{n \times d}$ 为例，其列向量可以张成线性子空间，$\tilde\zeta_{q}(\cdot), \tilde\phi_{k}(\cdot), \tilde\psi_{v}(\cdot): \tilde\Omega \rightarrow \mathbb{R}^{n \times 1}$ 为 feature map 映射到自由度空间的基上： 
+
+$$
+Q=\left(\begin{array}{ll}
+\vert & \vert & \vert \\
+\tilde{q}_{1} \ldots & \tilde{q}_{i} \ldots&\tilde{q_{d}} \\
+\vert & \vert & \vert
+\end{array}\right)
+$$
+
+和行向量也可以张成对应线性子空间，$\zeta_{q}(\cdot), \phi_{k}(\cdot), \psi_{v}(\cdot): \Omega \rightarrow \mathbb{R}^{1 \times d}$ 为 feature map 把离散的 $$\{x_{i}\}_{i=1}^{n}$$ 映射到位置空间的基上：
+
+$$
+Q=\left(\begin{array}{ll}
+ ——  & q_1 & —— \\
+& \ldots & \\ 
+ —— & q_{j} & —— \\
+& \ldots &\\ 
+ —— & q_{n} & ——
+\end{array}\right)
+$$
+
+这两种理解分别构成了从自由度空间来理解的一组基和从序列位置理解的一组基，如果移除了 Vanilla Transformer 的attention 机制中的 Softmax 的话，则可以理解成：
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2021-12-25-Frequency-Fourier-Galerkin/Fourier_Type_Transformer.png" alt="Fourier_Type_Transformer" style="zoom:35%;" />
+{:refdef} 
+
+对于输出中的 $$\tilde{z}_{j}$$ ，可以理解成自由度空间中的第 $j$ 个基，对于其元素逐一分析 $$\left(\tilde{z}_{i}\right)_{j}$$，其中 $h = 1/n$
 
 
+$$
+\begin{aligned}
+\left(\tilde{\boldsymbol{z}}_{i}\right)_{j} &=
+h\left(Q K^{\top}\right)_{i} \tilde{\boldsymbol{v}}_{j}=
+h\left(\boldsymbol{q}_{i} \cdot \boldsymbol{k}_{1}, \ldots, \boldsymbol{q}_{i} \cdot \boldsymbol{k}_{l}, \ldots, \boldsymbol{q}_{i} \cdot \boldsymbol{k}_{n}\right)^{\top} \cdot \tilde{\boldsymbol{v}}_{j} 
+\\
+&=
+h \sum_{l=1}^{n}\left(\boldsymbol{q}_{i} \cdot \boldsymbol{k}_{l}\right)\left(\tilde{\boldsymbol{v}}_{j}\right)_{l} 
+\approx
+\int_{\Omega}\left(\zeta_{q}\left(x_{i}\right) \cdot \phi_{k}(\xi)\right) v_{j}(\xi) \mathrm{d} \xi,
+\end{aligned}
+$$
+
+而在 $$\left(\tilde{z}_{i}\right)_{j}$$ 遍取了各个 $x_{i}$ 之后，则可以理解成 
+
+$$
+\boldsymbol{z}_{i}\left(x_{i}\right) \approx \int_{\Omega}\left(\zeta_{q}\left(x_{i}\right) \cdot \phi_{k}(\xi)\right) \psi_{v}(\xi) \mathrm{d} \xi
+$$
+
+通过一个积分变换被变换到的，其核函数  $\kappa(x_i,\xi) = \zeta_{q}\left(x_{i}\right) \cdot \phi_{k}(\xi)$ ，由于积分变换中很经典的一类变换即 Fourier Transform，这样理解去掉 softmax 的 attention mechanism 的被称为 Fourier-Type Transformer
+
+
+那么一个很自然的改进就出现了，能否直接通过傅立叶变换来替代掉 attention mechanism 中的 dot-product 呢？这就是 FNet 的核心思路，通过把 dot-product 换成离散傅立叶变换（DFT）
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2021-12-25-Frequency-Fourier-Galerkin/FNet.png" alt="FNet" style="zoom:50%;" />
+{:refdef} 
+
+这样有两点好处：
+
+1. 无需学习核函数 $\kappa(x_i,\xi) = \zeta_{q}\left(x_{i}\right) \cdot \phi_{k}(\xi)$ ，这一部分的参数全部不需要学习了
+2. 离散傅立叶变换的复杂度为  $\mathcal {O} \left(N^{2}\right)$ ，可以通过 FFT 降低到 $\mathcal {O} \left(N \log N\right)$ 进一步降低复杂度
 
 
 
 ## Reference
+
+1. Xu, Zhi-Qin John, Yaoyu Zhang, Tao Luo, Yanyang Xiao, and Zheng Ma. “Frequency Principle: Fourier Analysis Sheds Light on Deep Neural Networks.” *Communications in Computational Physics* 28, no. 5 (June 2020): 1746–67. https://doi.org/10.4208/cicp.OA-2020-0085.
+2. “Ecole d’Eté En Traitement Du Signal et Des Imagess.” Lévy, Bruno. “Lecture 3: Function Spaces I,”  http://www.gretsi.fr/peyresq12/documents/3-maillage4.pdf.
+3. “Fourier Transform.” In *Wikipedia*, December 12, 2021. https://en.wikipedia.org/w/index.php?title=Fourier_transform&oldid=1059980489.
+4. Zongyi Li  “Fourier Neural Operator.” Accessed December 25, 2021. https://zongyi-li.github.io/blog/2020/fourier-pde/.
+5. Li, Zongyi, Nikola Kovachki, Kamyar Azizzadenesheli, Burigede Liu, Kaushik Bhattacharya, Andrew Stuart, and Anima Anandkumar. “Fourier Neural Operator for Parametric Partial Differential Equations.” *ArXiv:2010.08895 [Cs, Math]*, May 16, 2021. http://arxiv.org/abs/2010.08895.
+6. Cao, Shuhao. “Choose a Transformer: Fourier or Galerkin.” *ArXiv:2105.14995 [Cs, Math]*, November 1, 2021. http://arxiv.org/abs/2105.14995.
+7. Cao, Shuhao. “Galerkin Transformer: A One-Shot Experiment at NeurIPS 2021.” An Amateur Computational Mathematician, June 6, 2021. https://scaomath.github.io/blog/galerkin-transformer/.
+8. Lee-Thorp, James, Joshua Ainslie, Ilya Eckstein, and Santiago Ontanon. “FNet: Mixing Tokens with Fourier Transforms.” *ArXiv:2105.03824 [Cs]*, September 9, 2021. http://arxiv.org/abs/2105.03824.
+
+ 
 
