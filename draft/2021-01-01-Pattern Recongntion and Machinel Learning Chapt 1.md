@@ -5,7 +5,8 @@ date: 2021-01-01
 image: /images/cover/C_Design3.jpeg   
 tags: [PRML-Notes]
 toc: false
-published: true
+published: false
+# published: true
 ---
 
 {: class="table-of-content"}
