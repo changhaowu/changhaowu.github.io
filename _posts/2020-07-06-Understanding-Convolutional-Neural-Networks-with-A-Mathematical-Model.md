@@ -3,7 +3,7 @@ layout: post
 title: "Understanding Convolutional Neural Networks with A Mathematical Model"
 date: 2020-07-03
 image: images/cover/F1.jpg
-tags: [CNN]
+tags: [Theory]
 toc: false
 ---
 {: class="table-of-content"}

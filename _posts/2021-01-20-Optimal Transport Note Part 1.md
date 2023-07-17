@@ -27,7 +27,8 @@ published: true
 
 定义代价函数 $$c: X \times Y \rightarrow[0,+\infty]$$，测量运输 $$x \in X $$ 到 $$ y \in Y$$ 的代价
 
-定义传输映射 $$T: X \rightarrow Y$$ 将 $$u \in \mathcal{P}(X) $$ 传输到 $$  \nu \in \mathcal{P}(Y)$$，当
+<!-- 定义传输映射 $$T: X \rightarrow Y$$ 将 $$u \in \mathcal{P}(X) $$ 传输到 $$  \nu \in \mathcal{P}(Y)$$，当 -->
+定义传输映射 $$T: X \rightarrow Y$$ 将 $$\mu \in \mathcal{P}(X) $$ 传输到 $$  \nu \in \mathcal{P}(Y)$$，当
 
 $$
 \nu(B)=\mu\left(T^{-1}(B)\right) \quad  \forall \; \nu \text { -measurable } B

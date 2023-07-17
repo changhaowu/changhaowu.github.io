@@ -3,7 +3,7 @@
     {
       "title"    : "Frequency Fourier and Galerkin",
       "category" : "",
-      "tags"     : "NLP",
+      "tags"     : "Theory",
       "url"      : "/2021/12/25/Frequency-Fourier-Galerkin/",
       "date"     : "2021-12-25 00:00:00 +0800"
     } ,
@@ -59,7 +59,7 @@
     {
       "title"    : "Understanding Convolutional Neural Networks with A Mathematical Model",
       "category" : "",
-      "tags"     : "CNN",
+      "tags"     : "Theory",
       "url"      : "/2020/07/03/Understanding-Convolutional-Neural-Networks-with-A-Mathematical-Model/",
       "date"     : "2020-07-03 00:00:00 +0800"
     } ,

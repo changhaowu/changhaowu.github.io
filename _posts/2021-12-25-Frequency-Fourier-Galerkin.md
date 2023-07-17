@@ -3,7 +3,7 @@ layout: post
 title: "Frequency Fourier and Galerkin"
 date: 2021-12-25
 image: images/cover/C_Street1.jpeg              
-tags: [NLP]
+tags: [Theory]
 toc: false
 published: true
 ---
