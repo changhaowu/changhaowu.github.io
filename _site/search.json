@@ -3,17 +3,9 @@
     {
       "title"    : "Frequency Fourier and Galerkin",
       "category" : "",
-      "tags"     : "NLP",
+      "tags"     : "Theory",
       "url"      : "/2021/12/25/Frequency-Fourier-Galerkin/",
       "date"     : "2021-12-25 00:00:00 +0800"
-    } ,
-  
-    {
-      "title"    : "Adjoint Methods, Automatic Differentiation",
-      "category" : "",
-      "tags"     : "Numerical-Computation",
-      "url"      : "/2021/12/07/Adjoint-Methods-and-Auto-Differentiation/",
-      "date"     : "2021-12-07 00:00:00 +0800"
     } ,
   
     {
@@ -22,22 +14,6 @@
       "tags"     : "Generative-Model",
       "url"      : "/2021/05/01/Generative-Model-Part-1-Intuition-on-Generative-Model/",
       "date"     : "2021-05-01 00:00:00 +0800"
-    } ,
-  
-    {
-      "title"    : "Computational Optimal Transport Note Part 1: Theoretical Foundations",
-      "category" : "",
-      "tags"     : "OTNotes",
-      "url"      : "/2021/02/02/Computational-Optimal-Transport-Note-Part-1/",
-      "date"     : "2021-02-02 00:00:00 +0800"
-    } ,
-  
-    {
-      "title"    : "Computational Optimal Transport Note Part 0: Introduction",
-      "category" : "",
-      "tags"     : "OTNotes",
-      "url"      : "/2021/02/01/Computational-Optimal-Transport-Note-Part-0/",
-      "date"     : "2021-02-01 00:00:00 +0800"
     } ,
   
     {
@@ -65,14 +41,6 @@
     } ,
   
     {
-      "title"    : "PRML Chapt 1 Introduction Notes",
-      "category" : "",
-      "tags"     : "PRML-Notes",
-      "url"      : "/2021/01/01/Pattern-Recongntion-and-Machinel-Learning-Chapt-1/",
-      "date"     : "2021-01-01 00:00:00 +0800"
-    } ,
-  
-    {
       "title"    : "Generative Model Part 0：Theoretical Basis of Generative Model",
       "category" : "",
       "tags"     : "Generative-Model",
@@ -91,16 +59,8 @@
     {
       "title"    : "Understanding Convolutional Neural Networks with A Mathematical Model",
       "category" : "",
-      "tags"     : "CNN",
+      "tags"     : "Theory",
       "url"      : "/2020/07/03/Understanding-Convolutional-Neural-Networks-with-A-Mathematical-Model/",
-      "date"     : "2020-07-03 00:00:00 +0800"
-    } ,
-  
-    {
-      "title"    : "Markov Decision Process in Reinforcement Learning",
-      "category" : "",
-      "tags"     : "Reinforcement-Learning",
-      "url"      : "/2020/07/03/Markov-Decision-Process-in-Reinforcement-Learning/",
       "date"     : "2020-07-03 00:00:00 +0800"
     } ,
   
