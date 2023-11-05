@@ -6,10 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Optimal Transport Note:Part 2</title>
+  <title>2023-10-23-How-the-Economics-Machine-Works-Notes</title>
   <meta name='description' content='“Thanks for visiting my blog”'>
 
-  <link rel="canonical" href="https://changhaowu.github.io//2021/01/29/Optimal-Transport-Note-Part-2/">
+  <link rel="canonical" href="https://changhaowu.github.io//2023/10/23/Economics-Machine-Note/">
   <link rel="alternate" type="application/rss+xml" title="Truth and Logic" href="/feed.xml">
 
   <!-- Fonts -->
@@ -206,21 +206,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<div class="col col-12">
 			
 			<div class="post__head wow fadeInUp">
-				<h1 class="post__title">Optimal Transport Note:Part 2</h1>
+				<h1 class="post__title">2023-10-23-How-the-Economics-Machine-Works-Notes</h1>
 				<div class="post-info">
 					
 					<span class="post-tags">
 						posted in
 						
-							<!-- <a href="/tag/OTNotes" class="post-tags__tag">OTNotes</a> -->
-							<a href="/tag/OTNotes" class="post-tags__tag">OTNotes</a>
-							<!-- <a href="/tags.html#OTNotes" class="post-tag">OTNotes</a> -->
+							<!-- <a href="/tag/Econmics" class="post-tags__tag">Econmics</a> -->
+							<a href="/tag/Econmics" class="post-tags__tag">Econmics</a>
+							<!-- <a href="/tags.html#Econmics" class="post-tag">Econmics</a> -->
 						
 					</span>
 					
 					<span class="post__meta">
 						<span class="post__date"> on <a href="">
-							<time datetime="2021-01-29T00:00:00+08:00">Jan 29, 2021</time></a>
+							<time datetime="2023-10-23T00:00:00+08:00">Oct 23, 2023</time></a>
 						</span>
 						<span class="article__author"> by <a href="/about/">Changhao Wu</a></span>
 					</span>
@@ -239,25 +239,24 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<article class="post wow fadeInUp" data-wow-delay=".2s">
 	
 			
-				<div class="post-image" style="background-image: url('/images/cover/C_Scenery6.jpeg')"></div>
+				<div class="post-image" style="background-image: url('/images/cover/F3.jpg')"></div>
 			
 	
 				<div class="post__content">
                     <ul class="table-of-content" id="markdown-toc">
-  <li><a href="#optimal-transport-note-part-2" id="markdown-toc-optimal-transport-note-part-2">Optimal Transport Note: Part 2</a>    <ul>
-      <li><a href="#kantorovich-duality" id="markdown-toc-kantorovich-duality">Kantorovich Duality</a>        <ul>
-          <li><a href="#kantorovich-duality-1" id="markdown-toc-kantorovich-duality-1">Kantorovich Duality</a>            <ul>
-              <li><a href="#theorem-31-kantorovich-duality" id="markdown-toc-theorem-31-kantorovich-duality">Theorem 3.1. Kantorovich Duality</a></li>
+  <li><a href="#how-the-economic-machine-works" id="markdown-toc-how-the-economic-machine-works">How the Economic Machine Works</a>    <ul>
+      <li><a href="#the-transaction-based-measure-on-economic-machine" id="markdown-toc-the-transaction-based-measure-on-economic-machine">The Transaction-Based Measure on Economic Machine</a></li>
+      <li><a href="#the-template-three-fundemental-forces-in-economic" id="markdown-toc-the-template-three-fundemental-forces-in-economic">The Template: Three Fundemental Forces in Economic</a>        <ul>
+          <li><a href="#productivity-growth" id="markdown-toc-productivity-growth">Productivity Growth</a></li>
+          <li><a href="#the-two-debt-cycles" id="markdown-toc-the-two-debt-cycles">The Two Debt Cycles</a>            <ul>
+              <li><a href="#modern-monetary-system-through-the-transaction-based-measure" id="markdown-toc-modern-monetary-system-through-the-transaction-based-measure">Modern Monetary System Through the transaction-Based Measure</a>                <ul>
+                  <li><a href="#money" id="markdown-toc-money">Money</a></li>
+                  <li><a href="#credit" id="markdown-toc-credit">Credit</a></li>
+                  <li><a href="#the-evolution-of-monetary-system" id="markdown-toc-the-evolution-of-monetary-system">The Evolution of Monetary System</a></li>
+                </ul>
+              </li>
             </ul>
           </li>
-          <li><a href="#fenchel-rockafeller-duality" id="markdown-toc-fenchel-rockafeller-duality">Fenchel-Rockafeller Duality</a>            <ul>
-              <li><a href="#theorem-32-fenchel-rockafellar-duality" id="markdown-toc-theorem-32-fenchel-rockafellar-duality">Theorem 3.2. Fenchel-Rockafellar Duality</a></li>
-              <li><a href="#lemma-33" id="markdown-toc-lemma-33">Lemma 3.3</a></li>
-              <li><a href="#theorem-34-hahn-banach-theorem分离定理" id="markdown-toc-theorem-34-hahn-banach-theorem分离定理">Theorem 3.4. Hahn-Banach Theorem（分离定理）</a></li>
-              <li><a href="#proof-of--fenchel-rockafellar-duality" id="markdown-toc-proof-of--fenchel-rockafellar-duality">Proof of  Fenchel-Rockafellar Duality</a></li>
-            </ul>
-          </li>
-          <li><a href="#proof-of-kantorovich-duality" id="markdown-toc-proof-of-kantorovich-duality">Proof of Kantorovich Duality</a></li>
         </ul>
       </li>
       <li><a href="#reference" id="markdown-toc-reference">Reference</a></li>
@@ -265,277 +264,146 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   </li>
 </ul>
 
-<h1 id="optimal-transport-note-part-2">Optimal Transport Note: Part 2</h1>
+<h1 id="how-the-economic-machine-works">How the Economic Machine Works</h1>
 
-<h2 id="kantorovich-duality">Kantorovich Duality</h2>
+<p>In this blog post, I’ll share my reading notes on Ray Dalio’s “How the Economic Machine Works.” As someone who’s relatively new to economics, I’m deeply grateful to Dalio for his generosity in sharing his profound insights on the mechanics of economics. His work has significantly broadened my understanding of the subject.</p>
 
-<p>自然的，康托洛维奇最优的离散形式是一个标准的线性规划中的运输问题，那么很自然的，联想到应当可以定义康托洛维奇形式的对偶形式</p>
+<h2 id="the-transaction-based-measure-on-economic-machine">The Transaction-Based Measure on Economic Machine</h2>
 
-<h3 id="kantorovich-duality-1">Kantorovich Duality</h3>
+<p>Dalio introduces a foundational concept that diverges from classical economics. He depicts the modern credit monetary-based economy through what he terms the “Transaction-Based Approach.” Through this lens, we can view the economy as a cumulative result of individual transactions.</p>
 
-<h4 id="theorem-31-kantorovich-duality">Theorem 3.1. Kantorovich Duality</h4>
+<p>At the core of economics lies the transaction, which involves two primary entities:</p>
 
-<p>有 Polish space 和其上的测度 \((X, \mu)\) 和 \((Y, \nu)\) ，有传输代价函数 \(c: X \times Y \rightarrow[0,+\infty]\) 是 lower semi continuous的函数</p>
+<ul>
+  <li>a buyer, who brings both money and credit to the market</li>
+  <li>a seller, who provides a particular good or financial assets.</li>
+</ul>
 
-<p>类似之前的定义康托洛维奇传输代价 \(\mathbb{K}(\pi)\) ，在此之外再定义一个康托洛维奇对偶传输代价 \(\mathbb{J}(\varphi, \psi)\) 与相应空间 \((\varphi, \psi) \in \Phi_{c}\)：</p>
+<p>Moving up in complexity, a specific market represents the aggregated transactions related to a particular good. Broadening this idea, our global economy is essentially the sum of all such markets for every conceivable good.</p>
 
-\[\mathbb{J}: L^{1}(\mu) \times L^{1}(\nu) \rightarrow \mathbb{R}, \quad \mathbb{J}(\varphi, \psi)=\int_{X} \varphi \mathrm{d} \mu+\int_{Y} \psi \mathrm{d} \nu
-\\
-\Phi_{c}=\left\{(\varphi, \psi) \in L^{1}(\mu) \times L^{1}(\nu): \varphi(x)+\psi(y) \leq c(x, y)\right\}\]
+<p>Apart from categorizing all the markets on their trading qualities, we can also classify the transactions based on the buyers. The buyers can originate from:</p>
 
-<p>有 \(\mu \text { -almost } x \in X\) 且  \(\nu \text { -almost  } y \in Y\) 成立的不等式：</p>
+<ul>
+  <li>The private sector: Further broken down into households and businesses, both domestic and foreign.</li>
+  <li>The government sector: Illustrated by the US, the federal government allocates money to domestic goods and services, while the central bank has the capability to create money and primarily invest in financial assets.
+<!-- Using the US as an example, the federal government spends money on domestic goods and services. Meanwhile, the central bank has the ability to create money and spend mostly on financial assets. --></li>
+</ul>
 
-\[\min _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)=\sup _{(\varphi, \psi) \in \Phi_{c}} \mathbb{J}(\varphi, \psi)\]
+<p>In the transaction-based perspective, assuming a stable supply of the asset quantity, which shows short-term fluctuation, the asset’s price is influenced by both the money and credit expended on it. Given our modern credit-based economy, it’s easy to adjust the supply of spending in the market.
+<!-- In the transaction-based perspective, fixing supply of the asset quantity, which shows short-term fluctuation, the asset's price is determined by both the money and credit expended on it. Given our modern credit-based economy,  it's easy to adjust supply of spending in transactions market. --></p>
 
-<p>此为康托洛维奇对偶性的定义，若套用一个具体场景的话，不妨用 \(shippers \; problem\) 的例子</p>
+<p style="text-align: center;"><img src="images/2023-10-23-How-the-Economics-Machine-Works-Notes/Transaction_based_economics.png" alt="Transport_Map_Visualization" style="zoom:40%;" /></p>
 
-<p>煤矿主可以选择自己从矿 \(x\) 运输到工厂 \(y\)，这样所付出的的运输代价为 \(c(x,y)\) ，船主提出比起矿主自己运，可以由他来运，仅需要在起点和终点付出一笔装船费和卸货费为 \(\varphi(x),\psi(y)\)，当然为了使方案有说服力，显然几乎处处 \(\varphi(x)+\psi(y) \leq c(x, y)\) ，才能够使得矿主接受方案。那么康托洛维奇对偶性就是在说：最优传输代价应当等于由他人来运的成本价，下面在比较强的条件下给出证明：</p>
-
-<p>设康托洛维奇最优传输代价 \(M = \inf _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)\)，也可以进一步写成：</p>
-
-\[M=\inf _{\pi \in \mathcal{M}_{+}(X \times Y)} \sup _{(\varphi, \psi)}\left(\int_{X \times Y} c(x, y) \mathrm{d} \pi+\int_{X} \varphi \mathrm{d}\left(\mu-P_{\#}^{X} \pi\right)+\int_{Y} \psi \mathrm{d}\left(\nu-P_{\#}^{Y} \pi\right)\right)\]
-
-<p>由于 \((\varphi, \psi) \in C_{b}^{0}(X) \times C_{b}^{0}(Y)\)，则对于函数 \(\sup _{\varphi \in C_{b}^{0}(X)} \int_{X} \varphi \mathrm{d}\left(\mu-P_{\#}^{X} \pi\right)\) 有性质：</p>
-
-\[\sup _{\varphi \in C_{b}^{0}(X)} \int_{X} \varphi \mathrm{d}\left(\mu-P_{\#}^{X} \pi\right)=\left\{\begin{array}{ll}
-+\infty &amp; \text { if } \mu \neq P_{\#}^{X} \pi \\
-0 &amp; \text { else. }
-\end{array}\right.\]
-
-<p>因此为了取到下界，\(\mu,\nu\) 被限制在 \(P_{\#}^{X} \pi=\mu\) 和 \(P_{\#}^{X} \pi=\mu\) 上，即 \(\pi \in \Pi(\mu, \nu)\)，若假设 \(MiniMax=MaxMini\)，进一步整理则有：</p>
-
-\[M=\sup _{(\varphi, \psi)}\left(\int_{X} \varphi \mathrm{d} \mu+\int_{Y} \psi \mathrm{d} \nu+\inf _{\pi \in \mathcal{M}_{+}(X \times Y)} \int_{X \times Y} c(x, y)-\varphi(x)-\psi(y) \mathrm{d} \pi\right)\]
-
-<p>当 \(\varphi(x)+\psi(y) \leq c(x, y)\) 处处成立时，可以知道当 \((\varphi, \psi) \in \Phi_{c}\)，取 \(\pi \equiv 0 \in \mathcal{M}_{+}(X \times Y)\) 就可以使</p>
-
-\[\inf _{\pi \in \mathcal{M}_{+}(X \times Y)} \int_{X \times Y} c(x, y)-\varphi(x)-\psi(y) \mathrm{d} \pi=0\]
-
-<p>则有康托洛维奇对偶性成立：</p>
-
-\[\inf _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)=\sup _{(\varphi, \psi) \in \Phi_{c}} \int_{X} \varphi(x) \mathrm{d} \mu(x)+\int_{Y} \psi(y) \mathrm{d} \nu(y)\]
-
-<h3 id="fenchel-rockafeller-duality">Fenchel-Rockafeller Duality</h3>
-
-<p>之前在证明中用到的 Minimax Principle，即 \(sup \; inf = inf \; sup\)，这在凸函数时才成立，下面给出一些与凸函数相关的结果</p>
-
-<p>赋范线性空间 \(E\) 上有凸函数 \(\Theta: E \rightarrow \mathbb{R} \cup\{+\infty\}\)，其勒让德变换定义为：</p>
-
-\[\Theta^{*}\left(z^{*}\right)=\sup _{z \in E}\left(\left\langle z^{*}, z\right\rangle-\Theta(z)\right)\]
-
-<p>勒让德变换的低维形式，可以理解变换到导数，及其对应的 \(y\) 轴截距：</p>
-
-<p>\(\quad \quad \quad \quad (x, f(x)) \stackrel{\text { Lengendre }}{\longrightarrow}\left(p, f^{*}(p)\right) \quad \quad \quad \quad \quad\)            <img src="/images/2021-01-29-Optimal-Transport-Note-Part-2/400px-LegendreTransform1.png" alt="400px-LegendreTransform1" style="zoom:70%;" /></p>
-
-<h4 id="theorem-32-fenchel-rockafellar-duality">Theorem 3.2. Fenchel-Rockafellar Duality</h4>
-
-<p>利用勒让德变换，可以定义  Fenchel-Rockafellar 对偶</p>
-
-<p>赋范线性空间 \(E\) 上有凸函数 \(\Theta , \Xi : E \rightarrow \mathbb{R} \cup\{+\infty\}\)，若存在 \(z_{0} \in E,s.t \; \Theta\left(z_{0}\right)&lt;\infty, \Xi\left(z_{0}\right)&lt;\infty\) 且 \(\Theta\) 在 \(z_{0}\)，则：
-\(\inf _{E}(\Theta+\Xi)=\max _{z^{*} \in E^{*}}\left(-\Theta^{*}\left(-z^{*}\right)-\Xi^{*}\left(z^{*}\right)\right) .\)</p>
-
-<h4 id="lemma-33">Lemma 3.3</h4>
-
-<p>假设赋范线性空间 \(E\)：</p>
+<p>After delving into the concept of the Transaction-Based Lens as posited by Ray Dalio, I aim to briefly outline three key takeaways from the measure on economics, explaining their significance in understanding economic dynamics:</p>
 
 <ol>
-  <li>
-    <p>有凸函数 \(\Theta: E \rightarrow \mathbb{R} \cup\{+\infty\}\)，定义 \(epigraph \; A\) 也是凸的
-\(A=\{(z, t) \in E \times \mathbb{R}: t \geq \Theta(z)\}\)</p>
-  </li>
-  <li>
-    <p>有凹函数 \(\Theta: E \rightarrow \mathbb{R} \cup\{+\infty\}\)，定义 \(hypograph \; A\) 也是凹的
-\(B=\{(z, t) \in E \times \mathbb{R}: t \leq \Theta(z)\}\)</p>
-  </li>
-  <li>
-    <p>\(C \subset E\) 是凸集，则 \(C\) 的内点 \(\operatorname{int}(C)\) 是凸的</p>
-  </li>
-  <li>
-    <p>\(D \subset E\) 是凸集且 \(int(C) \neq \emptyset\) ，则 \(\bar{D}=\overline{\operatorname{int}(D)}\)</p>
-  </li>
+  <li>Understanding Market Dynamics through ‘Eigen-Transactions’</li>
 </ol>
 
-<h4 id="theorem-34-hahn-banach-theorem分离定理">Theorem 3.4. Hahn-Banach Theorem（分离定理）</h4>
+<p>In a transaction-based economy, one effective approach to dissecting market dynamics is by examining ‘eigen-transactions’, or representative transactions. This viewpoint allows us to interpret the reason for some irrational while deliberate strategies in the principle of traditional supply-demand relationship,two notable instances include:</p>
 
-<p>\(E\) 是拓扑向量空间，有非空，不相交，凸子集 \(A, B \subset E\) ，且有 \(A\) 是开集，则存在一个分离超平面分开 \(A, B\)</p>
+<ul>
+  <li>The governmental sector, exemplified by the FED, which created an unusual amount of money during the early phase of COVID-19.</li>
+  <li>Simultaneously, the private sector occasionally engaged in what appeared to be irrational transactions, the individuals prefer the confidence to condition, to judging the future price of the asset</li>
+</ul>
 
-<h4 id="proof-of--fenchel-rockafellar-duality">Proof of  Fenchel-Rockafellar Duality</h4>
-
-<p>通过勒让德变换可以写出：</p>
-
-\[-\Theta^{*}\left(-z^{*}\right)-\Xi^{*}\left(z^{*}\right)=\inf _{x, y \in E}\left(\Theta(x)+\Xi(y)+\left\langle z^{*}, x-y\right\rangle\right)\]
-
-<p>选择 \(y=x\) 则有：</p>
-
-\[\inf _{x \in E}(\Theta(x)+\Xi(x)) \geq \sup _{z^{*} \in E^{*}}\left(-\Theta^{*}\left(-z^{*}\right)-\Xi^{*}\left(z^{*}\right)\right)\]
-
-<p>设 \(M=\inf (\Theta+\Xi)\) ，这里证明完成了一半，下证 \(\sup _{z^{*} \in E^{*}}\left(-\Theta^{*}\left(-z^{*}\right)-\Xi^{*}\left(z^{*}\right)\right) \geq M\)</p>
-
-<p>设集合 \(A, B\)，且由引理知 \(A, B\) 是凸的</p>
-
-\[\begin{array}{l}
-A=\{(x, \lambda) \in E \times \mathbb{R}: \lambda \geq \Theta(x)\} \\
-B=\{(y, \sigma) \in E \times \mathbb{R}: \sigma \leq M-\Xi(y)\} .
-\end{array}\]
-
-<p>定义 \(C=\operatorname{int}(A)\) ，由引理知 \(C\) 也是凸的，且由于 \(C=\operatorname{int}(A)\)，知对于 \((x, \lambda) \in C\)</p>
-
-\[\lambda&gt;\Theta(x) \Rightarrow \lambda+\Xi(x)&gt;\Theta(x)+\Xi(x) \geq M\]
-
-<p>因此 \(B,C\) 不相交，且知 \(B,C\) 是凸的，非空的，由分离定理知存在超平面 \(\Phi(x, \lambda)=f(x)+k \lambda （linear \;f）\)分离 \(B,C\)</p>
-
-\[\begin{aligned}
-\forall(x, \lambda) &amp; \in C, &amp; &amp; f(x)+k \lambda \geq \alpha \\
-\forall(x, \lambda) &amp; \in B, &amp; &amp; f(x)+k \lambda \leq \alpha
-\end{aligned}\]
-
-<p>进一步的构造点列 \(\left(x_{n}, \lambda_{n}\right) \in C\) 逼近 \((x, \lambda) \in C\) ，\(\left(x_{n}, \lambda_{n}\right) \rightarrow(x, \lambda)\)，因此可知 \(f(x)+k \lambda \leftarrow f\left(x_{n}\right)+k \lambda_{n} \geq \alpha\) ，即：</p>
-
-\[\begin{array}{ll}
-\forall(x, \lambda) \in A, &amp; f(x)+k \lambda \geq \alpha \\
-\forall(x, \lambda) \in B, &amp; f(x)+k \lambda \leq \alpha
-\end{array}\]
-
-<p>当取一个 \(\left(z_{0}, \lambda\right) \in A\) 当 \(\lambda\) 充分大时，可知 \(k \geq 0\)</p>
-
-<p>下证 \(k&gt;0\)，利用反证法，当 \(k=0\)，有</p>
-
-\[\begin{aligned}
-\forall(x, \lambda) \in A, &amp; f(x) \geq \alpha &amp; \Longrightarrow &amp; f(x) \geq \alpha &amp; \forall x \in \operatorname{Dom}(\Theta) \\
-\forall(x, \lambda) \in B, &amp; f(x) \leq \alpha &amp; \Longrightarrow &amp; f(x) \leq \alpha &amp; \forall x \in \operatorname{Dom}(\Xi) .
-\end{aligned}\]
-
-<p>若有一个 \(z_{0}\)，有 \(\operatorname{Dom}(\Xi) \ni z_{0} \in \operatorname{Dom}(\Theta)\)，则 \(f\left(z_{0}\right)=\alpha\)，由 \(\Theta\) 的连续性就可以取一个邻域
-\(B\left(z_{0}, r\right) \subset \operatorname{Dom}(\Theta)\)，在其中的点 \(z_{0}+\delta z\) ，\(\| z \|&lt;r，|\delta|&lt;1\) 满足：</p>
-
-\[f\left(z_{0}+\delta z\right) \geq \alpha \quad \Longrightarrow \quad f\left(z_{0}\right)+\delta f(z) \geq \alpha \quad \Longrightarrow \quad \delta f(z) \geq 0\]
-
-<p>由于对于 \(\delta \in(-1,1)\)都满足，因此 \(f(z)=0 \text ， z \in B(0, r)\)，那么如此一样的在 \(E\) 上取满足的点，就有 \(f \equiv 0 \text { on } E\)，这会导致无意义的超平面，因此 \(k &gt; 0\)</p>
-
-<p>于是对于 \((z, \Theta(z)) \in A\) 有：</p>
-
-\[\begin{aligned}
-\Theta^{*}\left(-\frac{f}{k}\right) &amp;=\sup _{z \in E}\left(-\frac{f(z)}{k}-\Theta(z)\right) \\
-&amp;=-\frac{1}{k} \inf _{z \in E}(f(z)+k \Theta(z)) \\
-&amp; \leq-\frac{\alpha}{k}
-\end{aligned}\]
-
-<p>同时对 \((z, M-\Xi(z)) \in B\) 有：</p>
-
-\[\begin{aligned}
-\Xi^{*}\left(\frac{f}{k}\right) &amp;=\sup _{z \in E}\left(\frac{f(z)}{k}-\Xi(z)\right) \\
-&amp;=-M+\frac{1}{k} \sup _{z \in E}(f(z)+k(M-\Xi(z))) \\
-&amp; \leq-M+\frac{\alpha}{k}
-\end{aligned}\]
-
-<p>这可以导出不等式的另一半：</p>
-
-\[M \geq \sup _{z^{*} \in E^{*}}\left(-\Theta^{*}\left(-z^{*}\right)-\Xi^{*}\left(z^{*}\right)\right) \geq-\Theta^{*}\left(-\frac{f}{k}\right)-\Xi^{*}\left(\frac{f}{k}\right) \geq \frac{\alpha}{k}+M-\frac{\alpha}{k}=M\]
-
-<p>于是 Fenchel-Rockafellar 对偶得证，在 \(z^{*}=\frac{f}{k}\) 取最大值时：</p>
-
-\[\inf _{x \in E}(\Theta(x)+\Xi(x))=M=\sup _{z^{*} \in E^{*}}\left(-\Theta^{*}\left(-z^{*}\right)-\Xi^{*}\left(z^{*}\right)\right)\]
-
-<h3 id="proof-of-kantorovich-duality">Proof of Kantorovich Duality</h3>
-
-<p>康托洛维奇对偶性的证明分成两部分</p>
+<p>Given the prevailing circumstances. Such transactions can either bolster a stagnant economy or fuel an extraordinary bubble.</p>
 
 <ol>
-  <li>
-    <p>对于 \(\sup _{(\varphi, \psi) \in \Phi_{c}} J(\varphi, \psi) \leq \inf _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)\)，这部分在 \(p\)-almost 意义下证明即可：</p>
-
-    <p>对于 \((\varphi, \psi) \in \Phi_{C}\)，\(\pi \in \Pi(\mu, \nu)\)，取 \(A \subset X ， B \subset Y \; s.t \; \mu(A)=1,\nu(B)=1\)，以及代价不等式成立：
-\(\varphi(x)+\psi(y) \leq c(x, y) \quad \forall(x, y) \in A \times B\)
-有 \(\pi\left(A^{c} \times B^{c}\right) \leq \pi\left(A^{c} \times Y\right)+\pi\left(X \times B^{c}\right)=\mu\left(A^{c}\right)+\nu\left(B^{c}\right)=0\)，进一步有：
-\(\begin{aligned}
-\pi(A \times B) &amp;=\pi(X \times B)-\pi\left(A^{c} \times B\right) \\
-&amp;=\nu(B)-\pi\left(A^{c} \times Y\right)+\pi\left(A^{c} \times B^{c}\right) \\
-&amp;=1-\mu\left(A^{c}\right)+\pi\left(A^{c} \times B^{c}\right) \\
-&amp;=1
-\end{aligned}\)
-于是代价不等式在 \(\pi-\text { almost } (x, y)\) 成立：
-\(\mathbb{J}(\varphi, \psi)=\int_{X} \varphi \mathrm{d} \mu+\int_{Y} \psi \mathrm{d} \nu=\int_{X \times Y} \varphi(x)+\psi(y) \mathrm{d} \pi(x, y) \leq \int_{X \times Y} c(x, y) \mathrm{d} \pi(x, y)\)</p>
-  </li>
-  <li>
-    <p>另一半证明在 \(X, Y\) 是紧集， \(c\) 连续的条件下证明：</p>
-
-    <p>\(E=C_{b}^{0}(X \times Y)\) 有非负测度，于是有对偶空间 \(E^{*}=\mathcal{M}(X \times Y)\)，在 \(E\) 上定义：</p>
-
-\[\begin{array}{l}
-\Theta(u)=\left\{\begin{array}{ll}
-0 &amp; \text { if } u(x, y) \geq-c(x, y) \\
-+\infty &amp; \text { else }
-\end{array}\right. \\
-\Xi(u)=\left\{\begin{array}{ll}
-\int_{X} \varphi(x) \mathrm{d} \mu(x)+\int_{Y} \psi(y) \mathrm{d} \nu(y) &amp; \text { if } u(x, y)=\varphi(x)+\psi(y) \\
-+\infty &amp; \text { else. }
-\end{array}\right.
-\end{array}\]
-
-    <p>可以证明 \(\Theta,\Xi\) 是凸的，取 \(u, v\) 满足 \(\Theta(u), \Theta(v)&lt;+\infty\)，于是有 \(u(x, y) \geq-c(x, y)\)，\(v(x, y) \geq-c(x, y)\)</p>
-
-\[t u(x, y)+(1-t) v(x, y) \geq c(x, y)  \forall t \in [0,1]
-\\
-\Downarrow
-\\
-\Theta(t u+(1-t) v)=0=t \Theta(u)+(1-t) \Theta(v)\]
-
-    <p>因此 \(\Theta\) 是凸的，对于 \(\Xi\)，设 \(u(x, y)=\varphi_{1}(x)+\psi_{1}(y), v(x, y)=\varphi_{2}(x)+\psi_{2}(y)\)，则有：</p>
-
-\[\Xi(t u+(1-t) v)=\int_{X} t \varphi_{1}+(1-t) \varphi_{2} \mathrm{~d} \mu+\int_{Y} t \psi_{1}+(1-t) \psi_{2} \mathrm{~d} \nu=t \Xi(u)+(1-t) \Xi(v)\]
-
-    <p>因此 \(\Xi\) 也是凸的，因此有 Fenchel-Rockafellar 对偶性成立：</p>
-
-\[\inf _{u \in E}(\Theta(u)+\Xi(u))=\max _{\pi \in E^{*}}\left(-\Theta^{*}(-\pi)-\Xi^{*}(\pi)\right)\]
-
-    <p>对于左半部分 \(\inf _{u \in E}(\Theta(u)+\Xi(u))\)，可知：</p>
-
-\[\inf _{u \in E}(\Theta(u)+\Xi(u)) \geq
-\inf _{\varphi(x)+\psi(y) \geq-c(x, y) \\ \varphi \in L^{1}(\mu), \psi \in L^{\prime}(\nu)} \int_{X} \varphi(x) \mathrm{d} \mu(x)
-=-\sup _{(\varphi, \psi) \in \Phi_{c}} \mathbb{J}(\varphi, \psi)\]
-
-    <p>而对于右半部分 \(\max _{\pi \in E^{*}}\left(-\Theta^{*}(-\pi)-\Xi^{*}(\pi)\right)\)，代入勒让德变换的定义知：</p>
-
-\[\Theta^{*}(-\pi)=\sup _{u \in E}\left(-\int_{X \times Y} u \mathrm{~d} \pi-\Theta(u)\right)=\sup _{u \geq-c}-\int_{X \times Y} u \mathrm{~d} \pi=\sup _{u \leq c} \int_{X \times Y} u \mathrm{~d} \pi\]
-
-    <p>即 \(\Theta\) 的对偶：</p>
-
-\[\Theta^{*}(-\pi)=\left\{\begin{array}{ll}
-\int_{X \times Y} c(x, y) \mathrm{d} \pi &amp; \text { if } \pi \in \mathcal{M}_{+}(X \times Y) \\
-+\infty &amp; \text { else. }
-\end{array}\right.\]
-
-    <p>对于 \(\Xi^{*}\) 有：</p>
-
-\[\begin{equation}
-\begin{aligned}
-\Xi^{*}(\pi) &amp;=\sup _{u \in E}\left(\int_{X \times Y} u \mathrm{~d} \pi-\Xi(u)\right) \\
-&amp;=\sup _{u(x, y)=\varphi(x)+\psi(y)}\left(\int_{X \times Y} u \mathrm{~d} \pi-\int_{X} \varphi(x) \mathrm{d} \mu-\int_{Y} \psi(y) \mathrm{d} \nu\right) 
-\\
-&amp;=\sup _{u(x, y)=\varphi(x)+\psi(y)} \left( \int_{X} \varphi \mathrm{d}\left(P_{\#}^{X}-\mu\right)+\int_{Y} \psi \mathrm{d}\left(P_{\#}^{Y}-\nu\right)\right) 
-\\
-&amp;=\left\{\begin{array}{ll}
-0 &amp; \text { if } \pi \in \Pi(\mu, \nu) 
-\\
-+\infty &amp; \text { else. }
-\end{array}\right.
-\end{aligned}
-\end{equation}\]
-
-    <p>则右半部分  \(\max _{\pi \in E^{*}}\left(-\Theta^{*}(-\pi)-\Xi^{*}(\pi)\right)\) 等于：</p>
-
-\[\max _{\pi \in E^{*}}\left(-\Theta^{*}(-\pi)-\Xi^{*}(\pi)\right) = - \int_{X \times Y} c(x, y) \mathrm{d} \pi = - \min _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)\]
-
-    <p>因此康托洛维奇对偶性在 \(X, Y\) 是紧集， \(c\) 连续的条件下得证：</p>
-
-\[\inf _{\pi \in \Pi(\mu, \nu)} \mathbb{K}(\pi)=\sup _{(\varphi, \psi) \in \Phi_{c}} \int_{X} \varphi(x) \mathrm{d} \mu(x)+\int_{Y} \psi(y) \mathrm{d} \nu(y)\]
-  </li>
+  <li>The Role of ‘Credit Creation’ in Bridging Monetary Gaps</li>
 </ol>
+
+<p>Another pivotal aspect underscored by the transaction-based perspective is the concept of “credit creation”. When analyzing GDP statistics, some experts propose the concept of ‘velocity of money’ can account for how a GDP is sustained even with a relatively smaller money supply in the market. However, Dalio argues that the overlooked component bridging the gap between GDP and existing money is the formulation of credit within the economy. Interestingly, even if a market experiences an increase in money supply, a significant decline in formulated credit can still lead to price deflation.</p>
+
+<ol>
+  <li>Market-Participatory Creation of Financial Assets</li>
+</ol>
+
+<p>Contrary to the unique authority of the central bank, which creates money out of thin air, the creation of financial assets can be a more market-participatory action.From the standpoint of capital providers, purchasing financial assets is possessing adequate capital and entering into contracts with productive individuals in the economy, then expecting higher future returns. Conversely, from the borrowers’ viewpoint, they are the active producers in the market, confident that they can earn more in the future. Thus, they exchange some of their future earnings for current capital, used to enlarge their production of goods.
+  The creation of a financial asset, that can affect the amount of credit in the market, emerges not from institutional authority but from pure market behavior.</p>
+
+<!-- Conversely, from the borrowers' viewpoint, producing financial assets entails exchanging some future earnings for current capital, which is utilized to boost goods production.  -->
+<!-- The purchases of finanical asset, is from the viewpoint of capatial providers, they have adequate capitals, they make a contract with the productive individuals in economics, in exchange of the excessiv return in the future.
+The production of financial asset, vice versa, is from the viewpoint of borrowers, they are the active producers in the market, they trust themselves can earn more in the future, thus they sell some of their future reward for the current money used to enlarge their production of goods. 
+The creation of financial asset, that can affect the amount of credit in the market, just from the thin air, a pure market behavior.-->
+
+<h2 id="the-template-three-fundemental-forces-in-economic">The Template: Three Fundemental Forces in Economic</h2>
+
+<!-- this combination and permutation, we shall make a table, reference to evergrande, it will be more clear -->
+<p>Exploring the working mechanism of economic machines, please envision the Fourier decomposition:</p>
+
+<p style="text-align: center;"><img src="images/2023-10-23-How-the-Economics-Machine-Works-Notes/Fourier Decomposition.png" alt="Fourier Decomposition" style="zoom:50%;" /></p>
+
+<!-- while Dalio set up a easy-using three basises for the economics mechanism, these three basis can roughly approx the working of the economics: -->
+<p>Dalio provides an easy-to-grasp framework with three basis for understanding the economic mechanism. These three bases can roughly understand the workings of the economy:</p>
+
+<ul>
+  <li>Productivity Growth</li>
+  <li>Two Debt Cycles:
+    <ul>
+      <li>Long-term Debt Cycle</li>
+      <li>Short-term Debt Cycle</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="productivity-growth">Productivity Growth</h3>
+
+<!-- In the long run, the intrinsic driving is fueled by the producitivity growth, the reason is simple, even on a modern economics system with credit, the formed credit needed to pay-back in the future. While the development of science and technology will not easily erased from the world. From the viewpoint of the whole economics machine,  With the growth of producitivity, the capital formation in the past will easily payback in the future. 
+Taking the history of US as an example, the image shows the GDP per capita adjusted for the inflation, from the illustration, we find the growth of producitivity is relatively a steady process. Besides the Great Depression period, the economics machine crash down: -->
+
+<!-- In the long run, the intrinsic drive is fueled by productivity growth. The reason is simple: even in a modern economic system with credit, the created credit needs to be repaid in the future, on contrary, the advancements in science and technology will not be forced to erase from the world. Furthermore, from the viewpoint of the macro economic machine, with the growth of productivity, the capital invested in the past will more easily be repaid in the future. -->
+
+<p>In the long run, the intrinsic drive is fueled by productivity growth. The reasoning is straightforward: even in a modern economic system with credit, the generated credit needs to be repaid in the future. In contrast, the advancements in science and technology are enduring assets that will not be erased from the world. Furthermore, from the viewpoint of the macro-economic machine, with the growth of productivity, the capital invested in the past will be repaid more easily in the future.</p>
+
+<p>Taking the history of the US as an example, the image below shows the GDP per capita adjusted for inflation. From the data, we observe that the growth of productivity is relatively a steady process. Aside from the Great Depression period, economic downturns are less pronounced:</p>
+
+<p style="text-align: center;"><img src="images/2023-10-23-How-the-Economics-Machine-Works-Notes/Real_GDP_per_Capita.png" alt="Real_GDP_per_Capita" style="zoom:33%;" /></p>
+
+<p>Productivity growth, as depicted in the domestic market of the US, presents a macro-level perspective. Although individuals may have faced greater challenges during the Great Depression, thanks to the diligent work of the author of the diagram, we can compare the stock prices, which are relevant to individual people:</p>
+
+<p style="text-align: center;"><img src="images/2023-10-23-How-the-Economics-Machine-Works-Notes/Producitivity-credit_equity.png" alt="Producitivity-credit_equity" style="zoom:33%;" /></p>
+
+<p>Even when adjusted on a log-scale, the equity asset price experiences severe volatility, compared to the macro productivity measure: the GDP per capita in the market. Yet, the equity asset price clearly holds a strong relevance to the ordinary person in the economics machine. The question arises: during the Great Depression, did people suddenly forget the methods of productivity,  or did the symbols of productivity growth, these machines, suddenly revert to versions from decades prior? In analyzing this issue, we should consider another fundamental force in the economic machine: the two debt cycles.</p>
+
+<h3 id="the-two-debt-cycles">The Two Debt Cycles</h3>
+
+<!-- The debt cycles arise from the credit in the economics, if we observe the human society as a holistic entity, we find the economics cycles are repetitous patterns.  -->
+<p>Debt cycles emerge from the use of credit in economics. When we observe human society as a holistic entity, we notice that economic cycles are repetitive patterns in history.</p>
+
+<p>To illustrate the patterns do exist, Dalio uses Monopoly as an approximation to the real-world economic machine. This is due to the design of Monopoly: in the early stage of the game, “property is king”. As cash in the market decreases, the game enters the second stage where “money is king”. Furthermore, with the virtual introduction of a “bank”, which offers money with a deposit rate reward, and lends money to potential debtors, there will lead to the game to an interesting stage, where the borrowers squeeze the bank’s deposit while the debtors fail to pay back, symbolizing a debt crisis in the Monopoly game.</p>
+
+<!-- Monopoly with the clear rules, written in the reference books. For the real-world ecnomics machines, what we need is to extract some signs and rules. Under the transaction-based measure, we can re-define the propersity and depression, then the money and credit, to compose the monetary system. -->
+<p>Monopoly, with its clear rules written in the reference books, serves as a simplified model. For the real-world economic machines, our task is to extract some signs and rules. Under the transaction-based measure, we can redefine prosperity and depression, then examine money and credit to understand the monetary system.</p>
+
+<h4 id="modern-monetary-system-through-the-transaction-based-measure">Modern Monetary System Through the transaction-Based Measure</h4>
+
+<!-- The two fundemental element in modern monetary is money and credit. For sake of flexibility of fiscal policy, the government abondon the previous commodity element, compared to previous monetary system -->
+<p>The two fundamental elements in modern monetary systems are money and credit. For the sake of fiscal policy flexibility, the government shifted from the previous monetary system, which abandoned the previous commodity element, such as gold.</p>
+
+<h5 id="money">Money</h5>
+
+<!-- In Transaction-Based approach, the money is one way to settle the transaction. Compared to the credit, which gradual settle the payment in future time, money is the payment in current timestamp. Besides, Dalio seperate the total spending in US economy in transaction-based measure, the money, which stands for the currency and reserves in existence only about `$` 3 trillion, while the credit is about `$` 50 trillion, 15 times more than the money, that is to say that: -->
+
+<p>In the Transaction-Based approach, money is a means to settle transactions. Compared to credit, which gradually settles payments in the future, money facilitates payment in the current timestamp. Besides, Dalio separates the total spending in the US economy into two categories in the transaction-based measure: money, which stands for the currency and reserves in existence totals about <code class="language-plaintext highlighter-rouge">$</code> 3 trillion, while credit amounts to about <code class="language-plaintext highlighter-rouge">$</code> 50 trillion, 15 times more than the money. This implies:</p>
+
+<ol>
+  <li>Many people actually pay with credit when they settle their transaction</li>
+  <li>During a debt crisis, many people may discover their payment ability is less than the obligations of credit payment.</li>
+</ol>
+
+<h5 id="credit">Credit</h5>
+
+<p>Aside from the money that printed by the central bank, the individuals in the economics machine will also use capital formation to create the credit, from the air. 
+The borrowers and the debtors, make a contract to deliver in an timetable in the future time, the formed credit can be spent in the market, with no difference to the money.</p>
+
+<p>With the credit element in the spending, the buyers can borrow capitals from the borrowers,</p>
+
+<h5 id="the-evolution-of-monetary-system">The Evolution of Monetary System</h5>
 
 <h2 id="reference">Reference</h2>
 
-<ol>
-  <li>Matthew Thorpe “Introduction to Optimal Transportation”</li>
-</ol>
+<p>[1] C.-C. Jay Kuo <a href="https://arxiv.org/abs/1609.04112">Understanding Convolutional Neural Networks with A Mathematical Model</a></p>
 
                 </div>
                 
@@ -544,21 +412,21 @@ B=\{(y, \sigma) \in E \times \mathbb{R}: \sigma \leq M-\Xi(y)\} .
 					<ul class="share__list list-reset">
 						<li class="share__item">
 							<a class="share__link share__facebook"
-								href="https://www.facebook.com/sharer/sharer.php?u=https://changhaowu.github.io//2021/01/29/Optimal-Transport-Note-Part-2/"
+								href="https://www.facebook.com/sharer/sharer.php?u=https://changhaowu.github.io//2023/10/23/Economics-Machine-Note/"
 								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
 								title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
 						</li>
 					
 						<li class="share__item">
 							<a class="share__link share__twitter"
-								href="https://twitter.com/intent/tweet?text=Optimal%20Transport%20Note:Part%202&url=https://changhaowu.github.io//2021/01/29/Optimal-Transport-Note-Part-2/"
+								href="https://twitter.com/intent/tweet?text=2023-10-23-How-the-Economics-Machine-Works-Notes&url=https://changhaowu.github.io//2023/10/23/Economics-Machine-Note/"
 								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
 								title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
 						</li>
 					
 						<li class="share__item">
 							<a class="share__link share__pinterest"
-								href="http://pinterest.com/pin/create/button/?url=https://changhaowu.github.io//2021/01/29/Optimal-Transport-Note-Part-2/&amp;media=https://changhaowu.github.io//images//images/cover/C_Scenery6.jpeg&amp;description=Optimal%20Transport%20Note:Part%202"
+								href="http://pinterest.com/pin/create/button/?url=https://changhaowu.github.io//2023/10/23/Economics-Machine-Note/&amp;media=https://changhaowu.github.io//images/images/cover/F3.jpg&amp;description=2023-10-23-How-the-Economics-Machine-Works-Notes"
 								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
 								title="Share on Pinterest" rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
 						</li>
