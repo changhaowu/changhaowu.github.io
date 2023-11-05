@@ -15,7 +15,7 @@ published: true
 
 # How the Economic Machine Works
 
-In this blog post, I'll share my reading notes on Ray Dalio's "How the Economic Machine Works." As someone who's relatively new to economics, I'm deeply grateful to Dalio for his generosity in sharing his profound insights on the mechanics of economics. His work has significantly broadened my understanding of the subject.
+In this blog post, I'll share my reading notes on Ray Dalio's 'How the Economic Machine Works' As someone who's relatively new to economics, I'm deeply grateful to Dalio for his generosity in sharing his profound insights on the mechanics of economics. His work has significantly broadened my understanding of the subject.
 
 ## The Transaction-Based Measure on Economic Machine
 
@@ -49,15 +49,15 @@ After delving into the concept of the Transaction-Based Lens as posited by Ray D
     - The governmental sector, exemplified by the FED, which created an unusual amount of money during the early phase of COVID-19.
     - Simultaneously, the private sector occasionally engaged in what appeared to be irrational transactions, the individuals prefer the confidence to condition, to judging the future price of the asset
     
-    Given the prevailing circumstances. Such transactions can either bolster a stagnant economy or fuel an extraordinary bubble.
+    Given the prevailing circumstances. Such transactions can either ignite a depression economy or fuel an extraordinary bubble.
 
 2. The Role of 'Credit Creation' in Bridging Monetary Gaps
 
-    Another pivotal aspect underscored by the transaction-based perspective is the concept of "credit creation". When analyzing GDP statistics, some experts propose the concept of 'velocity of money' can account for how a GDP is sustained even with a relatively smaller money supply in the market. However, Dalio argues that the overlooked component bridging the gap between GDP and existing money is the formulation of credit within the economy. Interestingly, even if a market experiences an increase in money supply, a significant decline in formulated credit can still lead to price deflation.
+    Another pivotal aspect underscored by the transaction-based perspective is the concept of 'credit creation'. When analyzing GDP statistics, some experts propose the concept of 'velocity of money' can account for how a GDP is sustained even with a relatively smaller money supply in the market. However, Dalio argues that the overlooked component bridging the gap between GDP and existing money is the formulation of credit within the economy. Interestingly, even if a market experiences an increase in money supply, a significant decline in formulated credit can still lead to price deflation.
 
 3. Market-Participatory Creation of Financial Assets
 
-    Contrary to the unique authority of the central bank, which creates money out of thin air, the creation of financial assets can be a more market-participatory action.From the standpoint of capital providers, purchasing financial assets is possessing adequate capital and entering into contracts with productive individuals in the economy, then expecting higher future returns. Conversely, from the borrowers' viewpoint, they are the active producers in the market, confident that they can earn more in the future. Thus, they exchange some of their future earnings for current capital, used to enlarge their production of goods.
+    Contrary to the unique authority of the central bank, which creates money out of thin air, the creation of financial assets can be a more market-participatory action. From the standpoint of borrowers, purchasing financial assets is possessing adequate capital and entering into contracts with productive individuals in the economy, then expecting higher future returns. Conversely, from the debtors' viewpoint, they are the active producers in the market, confident that they can earn more in the future. Thus, they exchange some of their future earnings for current capital, used to enlarge their production of goods.
     The creation of a financial asset, that can affect the amount of credit in the market, emerges not from institutional authority but from pure market behavior.
 
 <!-- Conversely, from the borrowers' viewpoint, producing financial assets entails exchanging some future earnings for current capital, which is utilized to boost goods production.  -->
@@ -110,7 +110,7 @@ Even when adjusted on a log-scale, the equity asset price experiences severe vol
 <!-- The debt cycles arise from the credit in the economics, if we observe the human society as a holistic entity, we find the economics cycles are repetitous patterns.  -->
 Debt cycles emerge from the use of credit in economics. When we observe human society as a holistic entity, we notice that economic cycles are repetitive patterns in history.
 
-To illustrate the patterns do exist, Dalio uses Monopoly as an approximation to the real-world economic machine. This is due to the design of Monopoly: in the early stage of the game, "property is king". As cash in the market decreases, the game enters the second stage where "money is king". Furthermore, with the virtual introduction of a "bank", which offers money with a deposit rate reward, and lends money to potential debtors, there will lead to the game to an interesting stage, where the borrowers squeeze the bank's deposit while the debtors fail to pay back, symbolizing a debt crisis in the Monopoly game.
+To illustrate the patterns do exist, Dalio uses Monopoly as an approximation to the real-world economic machine. This is due to the design of Monopoly: in the early stage of the game, 'property is king'. As cash in the market decreases, the game enters the second stage where 'money is king'. Furthermore, with the virtual introduction of a 'bank', which offers money with a deposit rate reward, and lends money to potential debtors, there will lead to the game to an interesting stage, where the borrowers squeeze the bank's deposit while the debtors fail to pay back, symbolizing a debt crisis in the Monopoly game.
 
 <!-- Monopoly with the clear rules, written in the reference books. For the real-world ecnomics machines, what we need is to extract some signs and rules. Under the transaction-based measure, we can re-define the propersity and depression, then the money and credit, to compose the monetary system. -->
 Monopoly, with its clear rules written in the reference books, serves as a simplified model. For the real-world economic machines, our task is to extract some signs and rules. Under the transaction-based measure, we can redefine prosperity and depression, then examine money and credit to understand the monetary system.
@@ -131,13 +131,47 @@ In the Transaction-Based approach, money is a means to settle transactions. Comp
 
 ##### Credit
 
-Aside from the money that printed by the central bank, the individuals in the economics machine will also use capital formation to create the credit, from the air. 
-The borrowers and the debtors, make a contract to deliver in an timetable in the future time, the formed credit can be spent in the market, with no difference to the money.
+Aside from the money that printed by the central bank, individuals in the economics machine will also use capital formation to create the credit, seemingly out of thin air. 
+The borrowers and the debtors, enter a contract to repay at a scheduled future time, the formed credit can be spent in the market, with no distinction from money.
 
-With the credit element in the spending, the buyers can borrow capitals from the borrowers, 
+In an ideal process, the borrowers increase their productivity at a pace faster than the conventional payback rate.
+The debtor can benefit from the excess between their advanced producivity and the payback rate. And the borrowers, tend to agree on a payback rate in the contract that's faster than the productivity growth rate of the whole market.
 
+Delving deeper into the ideal process, Dalio uses a simple example about a whitewasher in his notes. But I want to retell his story, withnot losing the essence:
 
-##### The Evolution of Monetary System
+<!-- - Dalio invite the whitewasher to paint his office, and make a paper contract. Remember, wow, the famous Dalio.
+- The whitewasher actually have no adequate money to buy the materials, but he show the bank his contract. The manager of the bank, who is a friend of Dalio, lend the whitewasher the money.
+- With the money, the whitewasher go to the building materials saleman, instead of buy the materials with the full money, he pay in a plan, partially money, the residual in a contract to pay in the future.
+- Finally, the whitewasher finish the task in an excellent outcome, everyone in Bridgewater admire Dalio's new office. So the whitewasher get many contracts from the Bridgewater's employees. 
+  Remember, he bought the materials in credit, so he can rush to the materials saleman, buy a large amount of materials to prepare the offices painting contracts in Bridgewaters.
+- The story go to the end? Nope, remember the bank manager and the salesman, the bank manager can merge the credit of the whitewasher(A++ rank), into a asset package, sells in the debt market.
+  And the material salemans, he find a steady buyer of the materials, which make him confident to make a better futures contract with his material manufacturers. -->
+
+- Dalio invites the whitewasher to paint his office, and they make a paper contract. Remember, it's the famous Dalio.
+- The whitewasher actually has no adequate money to buy the materials, but he shows the bank his contract. The manager of the bank, who is a friend of Dalio, lends the whitewasher the money.
+- With the money, the whitewasher goes to the building materials salesman. Instead of buying the materials with the full amount, he pays partially, with the remainder in a contract to pay in the future.
+- Finally, the whitewasher completes the task excellently, everyone at Bridgewater admires Dalio's new office. So, the whitewasher gets many contracts from Bridgewater's employees.
+  Remember, he bought the materials on credit, so he can rush back to the materials salesman, buying a large amount of materials to prepare for the office painting contracts at Bridgewater.
+- Is the story over? Nope, remember the bank manager and the salesman? The bank manager can consolidate the whitewasher's credit (A++ rank) into an asset package, to sell in the debt market.
+  And the material salesman, finding a steady buyer, becomes confident enough to negotiate better futures contracts with his material manufacturers.
+
+<!-- The money paid in the ideal process is fewer than the credit, but individual in every chain of the process are pleased with the outcome. The whitewasher get the money, the bank manager get the interest, the material salesman get the money, the material manufacturer get the money, Dalio get the new office. This is the power of credit, it helps the creation demand alleviated from the burden of the commdity or money in previous mmonetary system. The creation of credit solely depends on the confidence of borrowers and debtors in the market. It indeed accelerate the positive producivity process.
+With the ideal process spreading the whole market, the market is in a self-reinforced prosperity state. -->
+
+The money paid in the ideal process is much less than the credit, but everyone in every chain of the process is pleased with the outcome. The whitewasher gets money, the bank manager earns from interest and the asset package, the material sectors get a steady order, and Dalio enjoys his new office. This is the power of credit, it alleviates the creation of demand from the burden of commodities or money in the previous monetary system. The creation of credit solely depends on the confidence of borrowers and lenders in the market. It indeed accelerates the positive productivity process.
+With the ideal process permeating the whole market, the market is in a self-reinforced prosperity state.
+
+<!-- While if you notice the news about real estate deleveraging in China, you can smartly assign the respective characters in China real estate market to the characters in previous story, the abuse of the credit can incur the disasters. The heavy burdens in the private downturn the economics development. -->
+However, if you follow the news about real estate deleveraging in China, you can easily map the respective characters in China's real estate market to the characters in the previous story. Abuse of credit can lead to disasters to the private sector, then hinders economic development.
+
+Aside from the confidence in a win-win structure during a capital formation, another consideration for investors is liquidity.
+
+- On Macro-level: `$` 3 trillion in money, compared to about `$` 50 trillion in credit
+- On Micro-level: as depicted in the previous story, the money spent in the process is less than the credit
+
+At a certain point, when a large number of people unilaterally convert financial assets to money, the price of financial assets will crash.
+
+##### The Revolution of Monetary Systems
 
 ## Reference
 
