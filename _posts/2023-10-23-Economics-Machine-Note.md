@@ -69,13 +69,41 @@ The creation of financial asset, that can affect the amount of credit in the mar
 ## The Template: Three Fundemental Forces in Economic
 
 <!-- this combination and permutation, we shall make a table, reference to evergrande, it will be more clear -->'
-Viewing the economic machine in the long run, take US as an example, 
+Exploring the working mechanism of economic machines, please envision the Fourier decomposition:
 
-In the economic machine, we can stimulate the supply of spending by using some fiscal methods, especially by enlarging the credit spent in the market. Meanwhile, the production of good and finanicial asset can be deferred from the spending, the latency between fluent spending and assets production cause cycles in economic. Focusing on the financial asset, why the credit promised in the previous moment is larger than the the actual pay-back ablitity in the market.
-Dalio classify the debt cycle into two types, the short-term cycle and the long-term cycle: 
+{:refdef: style="text-align: center;"}
+<img src="images/2023-10-23-How-the-Economics-Machine-Works-Notes/Fourier Decomposition.png" alt="Fourier Decomposition" style="zoom:50%;" />
+{:refdef}
 
-- Short-term debt cycle: 
+<!-- while Dalio set up a easy-using three basises for the economics mechanism, these three basis can roughly approx the working of the economics: -->
+Dalio provides an easy-to-grasp framework with three basis for understanding the economic mechanism. These three bases can roughly approximate the workings of the economy:
 
+- Productivity Growth
+- Short-term Debt Cycle
+- Longe-term Debt Cycle
+
+### Productivity Growth
+
+<!-- In the long run, the intrinsic driving is fueled by the producitivity growth, the reason is simple, even on a modern economics system with credit, the formed credit needed to pay-back in the future. While the development of science and technology will not easily erased from the world. From the viewpoint of the whole economics machine,  With the growth of producitivity, the capital formation in the past will easily payback in the future. 
+Taking the history of US as an example, the image shows the GDP per capita adjusted for the inflation, from the illustration, we find the growth of producitivity is relatively a steady process. Besides the Great Depression period, the economics machine crash down: -->
+
+<!-- In the long run, the intrinsic drive is fueled by productivity growth. The reason is simple: even in a modern economic system with credit, the created credit needs to be repaid in the future, on contrary, the advancements in science and technology will not be forced to erase from the world. Furthermore, from the viewpoint of the macro economic machine, with the growth of productivity, the capital invested in the past will more easily be repaid in the future. -->
+
+In the long run, the intrinsic drive is fueled by productivity growth. The reasoning is straightforward: even in a modern economic system with credit, the generated credit needs to be repaid in the future. In contrast, the advancements in science and technology are enduring assets that will not be erased from the world. Furthermore, from the viewpoint of the macro-economic machine, with the growth of productivity, the capital invested in the past will be repaid more easily in the future.
+
+Taking the history of the US as an example, the image below shows the GDP per capita adjusted for inflation. From the data, we observe that the growth of productivity is relatively a steady process. Aside from the Great Depression period, economic downturns are less pronounced:
+
+{:refdef: style="text-align: center;"}
+<img src="images/2023-10-23-How-the-Economics-Machine-Works-Notes/Real_GDP_per_Capita.png" alt="Real_GDP_per_Capita" style="zoom:33%;" />
+{:refdef}
+
+Productivity growth, as depicted in the domestic market of the US, presents a macro-level perspective. Although individuals may have faced greater challenges during the Great Depression, thanks to the diligent work of the author of the diagram, we can compare the stock prices, which are relevant to individual people:
+
+{:refdef: style="text-align: center;"}
+<img src="images/2023-10-23-How-the-Economics-Machine-Works-Notes/Producitivity-credit_equity.png" alt="Producitivity-credit_equity" style="zoom:33%;" />
+{:refdef}
+
+Even when adjusted on a log-scale, the equity asset price experiences severe volatility, compared to the macro productivity measure: the GDP per capita in the market. Yet, the equity asset price clearly holds a strong relevance to the ordinary person in the economics machine. The question arises: during the Great Depression, did people suddenly forget the methods of productivity,  or did the symbols of productivity growth, these machines, suddenly revert to versions from decades prior? In analyzing this issue, we should consider another fundamental force in the economic machine: the two debt cycles.
 
 # Reference
 
