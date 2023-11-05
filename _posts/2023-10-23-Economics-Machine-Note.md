@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2023-10-23-How-the-Economics-Machine-Works-Notes"
+title: "How-the-Economics-Machine-Works-Notes"
 date: 2023-10-23
 image: images/cover/F3.jpg     
 tags: [Econmics]
@@ -38,28 +38,27 @@ In the transaction-based perspective, assuming a stable supply of the asset quan
 <!-- In the transaction-based perspective, fixing supply of the asset quantity, which shows short-term fluctuation, the asset's price is determined by both the money and credit expended on it. Given our modern credit-based economy,  it's easy to adjust supply of spending in transactions market. -->
 
 {:refdef: style="text-align: center;"}
-<img src="images/2023-10-23-How-the-Economics-Machine-Works-Notes/Transaction_based_economics.png" alt="Transport_Map_Visualization" style="zoom:40%;" />
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Transaction_based_economics.png" alt="Transport_Map_Visualization" style="zoom:50%;" />
 {:refdef}
 
 After delving into the concept of the Transaction-Based Lens as posited by Ray Dalio, I aim to briefly outline three key takeaways from the measure on economics, explaining their significance in understanding economic dynamics:
 
 1. Understanding Market Dynamics through 'Eigen-Transactions'
 
-  In a transaction-based economy, one effective approach to dissecting market dynamics is by examining 'eigen-transactions', or representative transactions. This viewpoint allows us to interpret the reason for some irrational while deliberate strategies in the principle of traditional supply-demand relationship,two notable instances include:
-
-  - The governmental sector, exemplified by the FED, which created an unusual amount of money during the early phase of COVID-19.
-  - Simultaneously, the private sector occasionally engaged in what appeared to be irrational transactions, the individuals prefer the confidence to condition, to judging the future price of the asset
-
-  Given the prevailing circumstances. Such transactions can either bolster a stagnant economy or fuel an extraordinary bubble.
+    In a transaction-based economy, one effective approach to dissecting market dynamics is by examining 'eigen-transactions', or representative transactions. This viewpoint allows us to interpret the reason for some irrational while deliberate strategies in the principle of traditional supply-demand relationship,two notable instances include:
+    - The governmental sector, exemplified by the FED, which created an unusual amount of money during the early phase of COVID-19.
+    - Simultaneously, the private sector occasionally engaged in what appeared to be irrational transactions, the individuals prefer the confidence to condition, to judging the future price of the asset
+    
+    Given the prevailing circumstances. Such transactions can either bolster a stagnant economy or fuel an extraordinary bubble.
 
 2. The Role of 'Credit Creation' in Bridging Monetary Gaps
 
-  Another pivotal aspect underscored by the transaction-based perspective is the concept of "credit creation". When analyzing GDP statistics, some experts propose the concept of 'velocity of money' can account for how a GDP is sustained even with a relatively smaller money supply in the market. However, Dalio argues that the overlooked component bridging the gap between GDP and existing money is the formulation of credit within the economy. Interestingly, even if a market experiences an increase in money supply, a significant decline in formulated credit can still lead to price deflation.
+    Another pivotal aspect underscored by the transaction-based perspective is the concept of "credit creation". When analyzing GDP statistics, some experts propose the concept of 'velocity of money' can account for how a GDP is sustained even with a relatively smaller money supply in the market. However, Dalio argues that the overlooked component bridging the gap between GDP and existing money is the formulation of credit within the economy. Interestingly, even if a market experiences an increase in money supply, a significant decline in formulated credit can still lead to price deflation.
 
 3. Market-Participatory Creation of Financial Assets
 
-  Contrary to the unique authority of the central bank, which creates money out of thin air, the creation of financial assets can be a more market-participatory action.From the standpoint of capital providers, purchasing financial assets is possessing adequate capital and entering into contracts with productive individuals in the economy, then expecting higher future returns. Conversely, from the borrowers' viewpoint, they are the active producers in the market, confident that they can earn more in the future. Thus, they exchange some of their future earnings for current capital, used to enlarge their production of goods.
-  The creation of a financial asset, that can affect the amount of credit in the market, emerges not from institutional authority but from pure market behavior.
+    Contrary to the unique authority of the central bank, which creates money out of thin air, the creation of financial assets can be a more market-participatory action.From the standpoint of capital providers, purchasing financial assets is possessing adequate capital and entering into contracts with productive individuals in the economy, then expecting higher future returns. Conversely, from the borrowers' viewpoint, they are the active producers in the market, confident that they can earn more in the future. Thus, they exchange some of their future earnings for current capital, used to enlarge their production of goods.
+    The creation of a financial asset, that can affect the amount of credit in the market, emerges not from institutional authority but from pure market behavior.
 
 <!-- Conversely, from the borrowers' viewpoint, producing financial assets entails exchanging some future earnings for current capital, which is utilized to boost goods production.  -->
 <!-- The purchases of finanical asset, is from the viewpoint of capatial providers, they have adequate capitals, they make a contract with the productive individuals in economics, in exchange of the excessiv return in the future.
@@ -72,7 +71,7 @@ The creation of financial asset, that can affect the amount of credit in the mar
 Exploring the working mechanism of economic machines, please envision the Fourier decomposition:
 
 {:refdef: style="text-align: center;"}
-<img src="images/2023-10-23-How-the-Economics-Machine-Works-Notes/Fourier Decomposition.png" alt="Fourier Decomposition" style="zoom:50%;" />
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Fourier Decomposition.png" alt="Fourier Decomposition" style="zoom:80%;" />
 {:refdef}
 
 <!-- while Dalio set up a easy-using three basises for the economics mechanism, these three basis can roughly approx the working of the economics: -->
@@ -95,13 +94,13 @@ In the long run, the intrinsic drive is fueled by productivity growth. The reaso
 Taking the history of the US as an example, the image below shows the GDP per capita adjusted for inflation. From the data, we observe that the growth of productivity is relatively a steady process. Aside from the Great Depression period, economic downturns are less pronounced:
 
 {:refdef: style="text-align: center;"}
-<img src="images/2023-10-23-How-the-Economics-Machine-Works-Notes/Real_GDP_per_Capita.png" alt="Real_GDP_per_Capita" style="zoom:33%;" />
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Real_GDP_per_Capita.png" alt="Real_GDP_per_Capita" style="zoom:30%;" />
 {:refdef}
 
 Productivity growth, as depicted in the domestic market of the US, presents a macro-level perspective. Although individuals may have faced greater challenges during the Great Depression, thanks to the diligent work of the author of the diagram, we can compare the stock prices, which are relevant to individual people:
 
 {:refdef: style="text-align: center;"}
-<img src="images/2023-10-23-How-the-Economics-Machine-Works-Notes/Producitivity-credit_equity.png" alt="Producitivity-credit_equity" style="zoom:33%;" />
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Producitivity-credit_equity.png" alt="Producitivity-credit_equity" style="zoom:88%;" />
 {:refdef}
 
 Even when adjusted on a log-scale, the equity asset price experiences severe volatility, compared to the macro productivity measure: the GDP per capita in the market. Yet, the equity asset price clearly holds a strong relevance to the ordinary person in the economics machine. The question arises: during the Great Depression, did people suddenly forget the methods of productivity,  or did the symbols of productivity growth, these machines, suddenly revert to versions from decades prior? In analyzing this issue, we should consider another fundamental force in the economic machine: the two debt cycles.

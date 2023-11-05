@@ -1,4 +1,4 @@
-I"AA<ul class="table-of-content" id="markdown-toc">
+I"-A<ul class="table-of-content" id="markdown-toc">
   <li><a href="#how-the-economic-machine-works" id="markdown-toc-how-the-economic-machine-works">How the Economic Machine Works</a>    <ul>
       <li><a href="#the-transaction-based-measure-on-economic-machine" id="markdown-toc-the-transaction-based-measure-on-economic-machine">The Transaction-Based Measure on Economic Machine</a></li>
       <li><a href="#the-template-three-fundemental-forces-in-economic" id="markdown-toc-the-template-three-fundemental-forces-in-economic">The Template: Three Fundemental Forces in Economic</a>        <ul>
@@ -47,15 +47,14 @@
 <p>In the transaction-based perspective, assuming a stable supply of the asset quantity, which shows short-term fluctuation, the asset’s price is influenced by both the money and credit expended on it. Given our modern credit-based economy, it’s easy to adjust the supply of spending in the market.
 <!-- In the transaction-based perspective, fixing supply of the asset quantity, which shows short-term fluctuation, the asset's price is determined by both the money and credit expended on it. Given our modern credit-based economy,  it's easy to adjust supply of spending in transactions market. --></p>
 
-<p style="text-align: center;"><img src="images/2023-10-23-How-the-Economics-Machine-Works-Notes/Transaction_based_economics.png" alt="Transport_Map_Visualization" style="zoom:40%;" /></p>
+<p style="text-align: center;"><img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Transaction_based_economics.png" alt="Transport_Map_Visualization" style="zoom:50%;" /></p>
 
 <p>After delving into the concept of the Transaction-Based Lens as posited by Ray Dalio, I aim to briefly outline three key takeaways from the measure on economics, explaining their significance in understanding economic dynamics:</p>
 
 <ol>
-  <li>Understanding Market Dynamics through ‘Eigen-Transactions’</li>
+  <li>Understanding Market Dynamics through ‘Eigen-Transactions’
+  In a transaction-based economy, one effective approach to dissecting market dynamics is by examining ‘eigen-transactions’, or representative transactions. This viewpoint allows us to interpret the reason for some irrational while deliberate strategies in the principle of traditional supply-demand relationship,two notable instances include:</li>
 </ol>
-
-<p>In a transaction-based economy, one effective approach to dissecting market dynamics is by examining ‘eigen-transactions’, or representative transactions. This viewpoint allows us to interpret the reason for some irrational while deliberate strategies in the principle of traditional supply-demand relationship,two notable instances include:</p>
 
 <ul>
   <li>The governmental sector, exemplified by the FED, which created an unusual amount of money during the early phase of COVID-19.</li>
@@ -65,12 +64,8 @@
 <p>Given the prevailing circumstances. Such transactions can either bolster a stagnant economy or fuel an extraordinary bubble.</p>
 
 <ol>
-  <li>The Role of ‘Credit Creation’ in Bridging Monetary Gaps</li>
-</ol>
-
-<p>Another pivotal aspect underscored by the transaction-based perspective is the concept of “credit creation”. When analyzing GDP statistics, some experts propose the concept of ‘velocity of money’ can account for how a GDP is sustained even with a relatively smaller money supply in the market. However, Dalio argues that the overlooked component bridging the gap between GDP and existing money is the formulation of credit within the economy. Interestingly, even if a market experiences an increase in money supply, a significant decline in formulated credit can still lead to price deflation.</p>
-
-<ol>
+  <li>The Role of ‘Credit Creation’ in Bridging Monetary Gaps
+  Another pivotal aspect underscored by the transaction-based perspective is the concept of “credit creation”. When analyzing GDP statistics, some experts propose the concept of ‘velocity of money’ can account for how a GDP is sustained even with a relatively smaller money supply in the market. However, Dalio argues that the overlooked component bridging the gap between GDP and existing money is the formulation of credit within the economy. Interestingly, even if a market experiences an increase in money supply, a significant decline in formulated credit can still lead to price deflation.</li>
   <li>Market-Participatory Creation of Financial Assets</li>
 </ol>
 
@@ -87,7 +82,7 @@ The creation of financial asset, that can affect the amount of credit in the mar
 <!-- this combination and permutation, we shall make a table, reference to evergrande, it will be more clear -->
 <p>Exploring the working mechanism of economic machines, please envision the Fourier decomposition:</p>
 
-<p style="text-align: center;"><img src="images/2023-10-23-How-the-Economics-Machine-Works-Notes/Fourier Decomposition.png" alt="Fourier Decomposition" style="zoom:50%;" /></p>
+<p style="text-align: center;"><img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Fourier Decomposition.png" alt="Fourier Decomposition" style="zoom:80%;" /></p>
 
 <!-- while Dalio set up a easy-using three basises for the economics mechanism, these three basis can roughly approx the working of the economics: -->
 <p>Dalio provides an easy-to-grasp framework with three basis for understanding the economic mechanism. These three bases can roughly understand the workings of the economy:</p>
@@ -113,11 +108,11 @@ Taking the history of US as an example, the image shows the GDP per capita adjus
 
 <p>Taking the history of the US as an example, the image below shows the GDP per capita adjusted for inflation. From the data, we observe that the growth of productivity is relatively a steady process. Aside from the Great Depression period, economic downturns are less pronounced:</p>
 
-<p style="text-align: center;"><img src="images/2023-10-23-How-the-Economics-Machine-Works-Notes/Real_GDP_per_Capita.png" alt="Real_GDP_per_Capita" style="zoom:33%;" /></p>
+<p style="text-align: center;"><img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Real_GDP_per_Capita.png" alt="Real_GDP_per_Capita" style="zoom:30%;" /></p>
 
 <p>Productivity growth, as depicted in the domestic market of the US, presents a macro-level perspective. Although individuals may have faced greater challenges during the Great Depression, thanks to the diligent work of the author of the diagram, we can compare the stock prices, which are relevant to individual people:</p>
 
-<p style="text-align: center;"><img src="images/2023-10-23-How-the-Economics-Machine-Works-Notes/Producitivity-credit_equity.png" alt="Producitivity-credit_equity" style="zoom:33%;" /></p>
+<p style="text-align: center;"><img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Producitivity-credit_equity.png" alt="Producitivity-credit_equity" style="zoom:88%;" /></p>
 
 <p>Even when adjusted on a log-scale, the equity asset price experiences severe volatility, compared to the macro productivity measure: the GDP per capita in the market. Yet, the equity asset price clearly holds a strong relevance to the ordinary person in the economics machine. The question arises: during the Great Depression, did people suddenly forget the methods of productivity,  or did the symbols of productivity growth, these machines, suddenly revert to versions from decades prior? In analyzing this issue, we should consider another fundamental force in the economic machine: the two debt cycles.</p>
 
