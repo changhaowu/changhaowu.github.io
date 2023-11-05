@@ -68,7 +68,7 @@ The creation of financial asset, that can affect the amount of credit in the mar
 
 ## The Template: Three Fundemental Forces in Economic
 
-<!-- this combination and permutation, we shall make a table, reference to evergrande, it will be more clear -->'
+<!-- this combination and permutation, we shall make a table, reference to evergrande, it will be more clear -->
 Exploring the working mechanism of economic machines, please envision the Fourier decomposition:
 
 {:refdef: style="text-align: center;"}
@@ -76,11 +76,12 @@ Exploring the working mechanism of economic machines, please envision the Fourie
 {:refdef}
 
 <!-- while Dalio set up a easy-using three basises for the economics mechanism, these three basis can roughly approx the working of the economics: -->
-Dalio provides an easy-to-grasp framework with three basis for understanding the economic mechanism. These three bases can roughly approximate the workings of the economy:
+Dalio provides an easy-to-grasp framework with three basis for understanding the economic mechanism. These three bases can roughly understand the workings of the economy:
 
 - Productivity Growth
-- Short-term Debt Cycle
-- Longe-term Debt Cycle
+- Two Debt Cycles:
+  - Long-term Debt Cycle
+  - Short-term Debt Cycle
 
 ### Productivity Growth
 
@@ -105,6 +106,40 @@ Productivity growth, as depicted in the domestic market of the US, presents a ma
 
 Even when adjusted on a log-scale, the equity asset price experiences severe volatility, compared to the macro productivity measure: the GDP per capita in the market. Yet, the equity asset price clearly holds a strong relevance to the ordinary person in the economics machine. The question arises: during the Great Depression, did people suddenly forget the methods of productivity,  or did the symbols of productivity growth, these machines, suddenly revert to versions from decades prior? In analyzing this issue, we should consider another fundamental force in the economic machine: the two debt cycles.
 
-# Reference
+### The Two Debt Cycles
+
+<!-- The debt cycles arise from the credit in the economics, if we observe the human society as a holistic entity, we find the economics cycles are repetitous patterns.  -->
+Debt cycles emerge from the use of credit in economics. When we observe human society as a holistic entity, we notice that economic cycles are repetitive patterns in history.
+
+To illustrate the patterns do exist, Dalio uses Monopoly as an approximation to the real-world economic machine. This is due to the design of Monopoly: in the early stage of the game, "property is king". As cash in the market decreases, the game enters the second stage where "money is king". Furthermore, with the virtual introduction of a "bank", which offers money with a deposit rate reward, and lends money to potential debtors, there will lead to the game to an interesting stage, where the borrowers squeeze the bank's deposit while the debtors fail to pay back, symbolizing a debt crisis in the Monopoly game.
+
+<!-- Monopoly with the clear rules, written in the reference books. For the real-world ecnomics machines, what we need is to extract some signs and rules. Under the transaction-based measure, we can re-define the propersity and depression, then the money and credit, to compose the monetary system. -->
+Monopoly, with its clear rules written in the reference books, serves as a simplified model. For the real-world economic machines, our task is to extract some signs and rules. Under the transaction-based measure, we can redefine prosperity and depression, then examine money and credit to understand the monetary system.
+
+#### Modern Monetary System Through the transaction-Based Measure
+
+<!-- The two fundemental element in modern monetary is money and credit. For sake of flexibility of fiscal policy, the government abondon the previous commodity element, compared to previous monetary system -->
+The two fundamental elements in modern monetary systems are money and credit. For the sake of fiscal policy flexibility, the government shifted from the previous monetary system, which abandoned the previous commodity element, such as gold. 
+
+##### Money
+
+<!-- In Transaction-Based approach, the money is one way to settle the transaction. Compared to the credit, which gradual settle the payment in future time, money is the payment in current timestamp. Besides, Dalio seperate the total spending in US economy in transaction-based measure, the money, which stands for the currency and reserves in existence only about `$` 3 trillion, while the credit is about `$` 50 trillion, 15 times more than the money, that is to say that: -->
+
+In the Transaction-Based approach, money is a means to settle transactions. Compared to credit, which gradually settles payments in the future, money facilitates payment in the current timestamp. Besides, Dalio separates the total spending in the US economy into two categories in the transaction-based measure: money, which stands for the currency and reserves in existence totals about `$` 3 trillion, while credit amounts to about `$` 50 trillion, 15 times more than the money. This implies:
+
+1. Many people actually pay with credit when they settle their transaction
+2. During a debt crisis, many people may discover their payment ability is less than the obligations of credit payment.
+
+##### Credit
+
+Aside from the money that printed by the central bank, the individuals in the economics machine will also use capital formation to create the credit, from the air. 
+The borrowers and the debtors, make a contract to deliver in an timetable in the future time, the formed credit can be spent in the market, with no difference to the money.
+
+With the credit element in the spending, the buyers can borrow capitals from the borrowers, 
+
+
+##### The Evolution of Monetary System
+
+## Reference
 
 [1] C.-C. Jay Kuo [Understanding Convolutional Neural Networks with A Mathematical Model](https://arxiv.org/abs/1609.04112) 
