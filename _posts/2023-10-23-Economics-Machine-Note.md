@@ -171,9 +171,12 @@ Aside from the confidence in a win-win structure during a capital formation, ano
 
 At a certain point, when a large number of people unilaterally convert financial assets to money, the price of financial assets will crash.
 
-##### The Revolution of Monetary Systems
+##### The Reform of Monetary Systems
 
-Given the two fundemental elements, money printed by government sector and the credit formed in the market, we can introduce the modern monetary system in the transaction-based measure.
+Given the two fundemental elements, money printed by government sector and the credit formed in the market, we can introduce the reform history of monetary system in the transaction-based measure.
+
+- Bart system: Gold, Silver, Cooper, such kind of precious metal, act as the 
+
 
 
 ## Reference
