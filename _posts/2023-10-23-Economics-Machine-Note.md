@@ -71,7 +71,7 @@ The creation of financial asset, that can affect the amount of credit in the mar
 Exploring the working mechanism of economic machines, please envision the Fourier decomposition:
 
 {:refdef: style="text-align: center;"}
-<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Fourier Decomposition.png" alt="Fourier Decomposition" style="zoom:80%;" />
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Fourier Decomposition+Fundemental_Force.png" alt="Fourier Decomposition+Fundemental_Force" style="zoom:36%;" />
 {:refdef}
 
 <!-- while Dalio set up a easy-using three basises for the economics mechanism, these three basis can roughly approx the working of the economics: -->
@@ -172,6 +172,9 @@ Aside from the confidence in a win-win structure during a capital formation, ano
 At a certain point, when a large number of people unilaterally convert financial assets to money, the price of financial assets will crash.
 
 ##### The Revolution of Monetary Systems
+
+Given the two fundemental elements, money printed by government sector and the credit formed in the market, we can introduce the modern monetary system in the transaction-based measure.
+
 
 ## Reference
 
