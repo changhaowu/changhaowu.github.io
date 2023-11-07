@@ -171,12 +171,38 @@ Aside from the confidence in a win-win structure during a capital formation, ano
 
 At a certain point, when a large number of people unilaterally convert financial assets to money, the price of financial assets will crash.
 
-##### The Reform of Monetary Systems
+<!-- ##### The Reform of Monetary Systems -->
+##### The Evolution of Monetary Systems
 
-Given the two fundemental elements, money printed by government sector and the credit formed in the market, we can introduce the reform history of monetary system in the transaction-based measure.
+<!-- Given the two fundemental elements, money printed by government sector and the credit formed in the market, we can introduce the reform history of monetary system in the transaction-based measure. -->
 
-- Bart system: Gold, Silver, Cooper, such kind of precious metal, act as the 
+<!-- - Bart system: Gold, Silver, Cooper, such kind of precious metal, act as the settlement for transactions, where people exchange by trusting these precious metal's intrinsic value, the intrinsic value of the commdity is supported by the short-term low volatility of the supply of the commdity -->
 
+<!-- - Commdity system: With the development of national states, the government have the central bank, while in this period, the central bank had to anchor an exchange rate of its printed money with the commdity, based on the amount of commdity stored in the insurance storage, the central bank can leverage up the supply of national money, under the expectation of they can defend the future squeeze -->
+
+<!-- - Fiat system(Pure credit sytem): With the development of the financial system, the people, especially the government think the credit itself can act as the payment. The confidence between buyer and the seller in the market, can largely accerlate the development of the economy, since it remove the burden of limited supply of the commdity system on the rapid developing economy, which can be fueled by the flexibility of the fiscal policy of the government. 
+Take US as an example, US transformed its monetary system to fiat system in two stages, the first stage occurred in the domestic market, at the period of Great Depression, FDR led the government sector to a fiat system in domestic market, 
+collecting the gold from private sectors, this help the government sector has a large space to stimulate the economy.
+The Bretton Wood, anchor the US dollar to an exchange rate to gold, ended in Nixon Shock, afterthen, the dollar in international market, is supported by the power of US, the country itself, and the demand of the US dollar for an exchange currency in international market. -->
+
+With the explored two foundational elements—government-issued currency and market-formed credit, we can trace the evolution of monetary systems with a transaction-based perspective.
+
+- Barter System: Initially, societies operated on a barter system, where goods and services were exchanged directly. However, the limitations of this system, especially the need for a double coincidence of wants, eventually necessitated the adoption of more universally accepted mediums of exchange.
+
+- Commodity Money System: Precious metals like gold, silver, and copper gained popularity as mediums of exchange. Their intrinsic value, combined with their scarcity, ensured stability in supply. The defining characteristic of this era was the absence of a centralized banking system capable of managing money supply, with credit playing a minor role in commerce.
+
+- Gold Standard: With the emergence of nation-states, central banks were established to issue currency. This currency often had a fixed exchange rate to a commodity, like gold, held in reserve. The central bank could then manage the national money supply within the constraints of their gold reserves, pledging to maintain the convertibility at the set rate. On the flip side, this system allowed central banks to expand the money supply with the expectation that they could defend their currency during potential squeeze on their gold reserves.
+
+- Fiat System (Pure Credit System): The advancement of financial systems led to the recognition that credit could function as money. Governments, recognizing the limitations of commodity-backed currency on economic growth, transitioned to fiat systems where currency value is based on government decree and public trust in its stability. In the U.S., the transition occurred in stages: domestically during the Great Depression under FDR, who recalled gold to expand fiscal policy leeway, and internationally with the end of the Bretton Woods system during the Nixon Shock, after which the U.S. dollar's value was tied to the economic might of the U.S. and its demand as a reserve currency in global trade.
+
+<!-- The trends of the development of the monetary system, is towards:
+- the government control on its money in the market, which remove the anchor of commdity, to money printed by the central bank
+- Subsititute of the commdity, which provide its intrsinc value in the exchange to the credit, the confidence that the transcation can build up in the exchange -->
+
+he trajectory of monetary evolution underscores a shift towards:
+
+- Increased Governmental Control: Removing the commodity anchor allows governments to manage national currency more freely.
+- Credit as a Substitute for Commodity: Trust and creditworthiness in transactions have replaced the intrinsic value commodities provided, empowering economic exchanges and growth.
 
 
 ## Reference
