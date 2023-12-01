@@ -207,6 +207,52 @@ The trajectory of monetary evolution underscores a shift towards:
 
 #### The Two Debts Cycles
 
+With the introduction of money and credit, along with the evolution of monetary systems, we can now delve into the two debt cycles. While the long-term debt cycle is less commonly discussed in economic literature, the short-term cycle is more familiar to the general public.
+
+<!-- With the introduction of money, credit and the evolution of the monetary system, we can now explore the two debt cycles. The long term cycle is less researched in the economic field, while the short term cycle is more familiar to the public. -->
+
+##### Long-Term Debt Cycle
+
+<!-- At the introduction of the chapter, Dalio take an upgraded Monopoly equipped with a bank to show the basic mechanism of the Monopoly. 
+Take the Monopoly with bank, the long-term debt cycle refer to the process which the economics machine gradually push the debt level into an ending extent which no methods can help credit growth.
+In another viewpoint, the long-term debt cycle ended with the systematic run on the bank system in a economics machine. -->
+
+At the outset of this section, Dalio uses an advanced version of the game Monopoly, which includes a bank, to illustrate the basic mechanics of economic cycles. 
+In this enhanced Monopoly game, the long-term debt cycle refers to a process where the economic system gradually pushes the debt level to an unsustainable extent, eventually leading to a situation where no strategies can sustain credit growth. 
+In other words, the long-term debt cycle ends with a systemic run on the banking system within an economic framework.
+
+<!-- Thus, in the case of fiat money system, the long-term debt cycle actually is rare in the federal history, the worse case of Great Recession can be another Great Depression in the fiat system.
+Furthermore, to take the research sample, Dalio refer and induce some economics indexes from the Great Depression though the monetary system when Great Depression began is gold based system. -->
+
+Thus, in the context of a fiat money system, the long-term debt cycle is actually a rarity in federal history. The worst-case scenario, like the Great Recession, could potentially escalate to a crisis akin to the Great Depression in a fiat system. Furthermore, to provide empirical evidence, Dalio draws on various economic indicators from the Great Depression, although it's important to note that the monetary system when the Great Depression started was gold-based.
+
+Dalio included the long-term debt cycle top occurs in two logic indicators:
+- High levels of debt burden
+- Ineffective monetary policy in stimulating credit growth
+
+Regarding the first point, excluding the exceptional periods of WWI and WWII, we observe a significant debt burden level during the Great Depression. 
+To address the peak of the long-term debt cycle during this era, as part of his New Deal, FDR removed the U.S. from the gold standard domestically, expanding the government's fiscal policy capabilities. 
+The Roosevelt New Deal, a combination of various fiscal policies, successfully reversed the reinforcing downturn trend of the federal system. 
+Focusing on the four periods during President FDR's tenure, an analysis of the debt-to-GDP ratio reveals some interesting points:
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/debt_ratio_to_gdp.png" alt="debt_ratio_to_gdp" style="zoom:25%;" />
+{:refdef}
+
+- Under the Roosevelt New Deal, there's a noticeable increase in local debt, likely attributable to public works projects. 
+  These projects provided employment opportunities and elevated the U.S. infrastructure level. 
+  Iconic constructions of the era like the Hoover Dam, are still operational today.
+- Regarding the impact of World War II, particularly after the attack on Pearl Harbor in 1941, there was a shift from local and state debts to federal debts. 
+  This restructuring of federal debt, facilitated by the Public Debt Act of 1941, was part of a broader wartime strategy that centralized fiscal authority and economic planning at the federal level to mobilize resources for World War II. 
+  Following WWII, the world transitioned to the Bretton Woods system, where the centralization of fiscal power concerning debt remained with the federal government until today.
+
+As the exploration on the macro high levels of debt burden, we turn to the second point, the ineffective monetary policy in stimulating credit growth.
+
+
+
+
+
+##### 
 
 ## Reference
 
