@@ -246,13 +246,35 @@ Focusing on the four periods during President FDR's tenure, an analysis of the d
   This restructuring of federal debt, facilitated by the Public Debt Act of 1941, was part of a broader wartime strategy that centralized fiscal authority and economic planning at the federal level to mobilize resources for World War II. 
   Following WWII, the world transitioned to the Bretton Woods system, where the centralization of fiscal power concerning debt remained with the federal government until today.
 
-As the exploration on the macro high levels of debt burden, we turn to the second point, the ineffective monetary policy in stimulating credit growth.
 
+As we delve into the macro-level analysis of high debt burdens, we encounter the second critical issue: the diminishing effectiveness of monetary policy in stimulating credit growth. 
+<!-- This ineffectiveness is often the result of a cumulative leveraging process over decades. To illustrate there is a virtual gap in perspective of household debt service. The basic idea for observing household section is that the household sector is fundamental to the economics machine at the domestic level, forming the base upon which the government, financial, and corporate sectors are built. When the household sector cannot sustain additional debt—a situation quantifiable as a gap—the closer the total household debt level (including the total amount and annual service) in an economy approaches this gap, the less effective monetary policy becomes in stimulating credit growth. -->
 
+This ineffectiveness often stems from a decades-long cumulative leveraging process. To illustrate, consider the concept of a 'debt service gap' in the context of household debt. The household sector is fundamental to the economic machine at the domestic level, underpinning the government, financial, and corporate sectors. When households are stretched to their financial limits—a situation that can be quantified as a 'debt service gap'—the closer the total household debt level (both the aggregate amount and annual service costs) comes to this gap, the less effective monetary policy is at stimulating further credit growth.
 
+<!-- To depice the ineffective monetary policy when the gap is approached, Dalio depict a graph on household debt service to income ratio. -->
+To depict this phenomenon, Dalio presents a graph on the household debt service to disposable income ratio.
 
+{:refdef: style="text-align: center;"}
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/US_Household_Debt_Service_to_Income.png" alt="US_Household_Debt_Service_to_Income" style="zoom:25%;" />
+{:refdef}
 
-##### 
+- As the Roaring Twenties concluded, U.S. household debt service was approximately 10% of disposable income, with much of the credit creation concentrated in the stock market. However, between the stock market crash and the robust implementation of the Roosevelt New Deal, the household debt service level did not immediately drop; rather, it increased due to a reduction in income levels. Mere statistics can't fully express the real-life tragedies of that period.
+
+- The gap persists even within a fiat monetary system. However, thanks to the system's flexibility, the government can elevate the gap or employ adaptive fiscal policies to avert crisis-level defaults within the economic machine.
+
+  - At the onset of the Great Recession, the household debt service level was again at a critical gap, based on conditions at the time. Yet, with the fiat system and untypical fiscal policies like Quantitative Easing (QE), this level was managed, helping to prevent an economic collapse akin to the Great Depression.
+
+  {:refdef: style="text-align: center;"}
+  <img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Household_debt_to_GDP_income.png" alt="Household_debt_to_GDP_income" style="zoom:25%;" />
+  {:refdef}
+
+  - The Rhodium Group's research on household debt levels indicates that in both developed countries, like the U.S., and developing ones, such as China, when the ratio of Household Debt to Household Disposable Income reaches a relatively high level—around 120%—the household sector shows signs of strain, becoming increasingly resistant to additional debt. Consequently, stimulation policies, such as those targeting the real estate market, lose their effectiveness.
+  <!-- From the research of Rhodium Group on the household debt level, we can find that in both developed nations, like the U.S., and developing ones, such as China, when the index of Household Debt to Household Disposable Income reaches a relatively high level—around 120%—the household sector itself begins to exhibit diminishing returns, becoming increasingly resistant to further leveraging. The simulation policy on the real state market is not as effective as before. -->
+
+It's easier to understand that GDP is a macro-level metric, while household disposable income is a micro-level indicator, which more acutely reflects the economic pressures on individuals.
+
+##### Short-term Debt Cycle
 
 ## Reference
 
