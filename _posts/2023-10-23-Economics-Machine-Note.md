@@ -248,9 +248,8 @@ Focusing on the four periods during President FDR's tenure, an analysis of the d
 
 
 As we delve into the macro-level analysis of high debt burdens, we encounter the second critical issue: the diminishing effectiveness of monetary policy in stimulating credit growth. 
-<!-- This ineffectiveness is often the result of a cumulative leveraging process over decades. To illustrate there is a virtual gap in perspective of household debt service. The basic idea for observing household section is that the household sector is fundamental to the economics machine at the domestic level, forming the base upon which the government, financial, and corporate sectors are built. When the household sector cannot sustain additional debt—a situation quantifiable as a gap—the closer the total household debt level (including the total amount and annual service) in an economy approaches this gap, the less effective monetary policy becomes in stimulating credit growth. -->
 
-This ineffectiveness often stems from a decades-long cumulative leveraging process. To illustrate, consider the concept of a 'debt service gap' in the context of household debt. The household sector is fundamental to the economic machine at the domestic level, underpinning the government, financial, and corporate sectors. When households are stretched to their financial limits—a situation that can be quantified as a 'debt service gap'—the closer the total household debt level (both the aggregate amount and annual service costs) comes to this gap, the less effective monetary policy is at stimulating further credit growth.
+This ineffectiveness often stems from a decades-long cumulative leveraging process. To illustrate, consider the concept of a 'debt gap' in the context of household debt. The household sector is fundamental to the economic machine at the domestic level, underpinning the government, financial, and corporate sectors. When households are stretched to their financial limits—a situation that can be quantified as a 'debt service gap'—the closer the total household debt level (both the aggregate amount and annual service costs) comes to this gap, the less effective monetary policy is at stimulating further credit growth.
 
 <!-- To depice the ineffective monetary policy when the gap is approached, Dalio depict a graph on household debt service to income ratio. -->
 To depict this phenomenon, Dalio presents a graph on the household debt service to disposable income ratio.
@@ -274,7 +273,11 @@ To depict this phenomenon, Dalio presents a graph on the household debt service 
 
 It's easier to understand that GDP is a macro-level metric, while household disposable income is a micro-level indicator, which more acutely reflects the economic pressures on individuals.
 
+With discussion on the 
+
 ##### Short-term Debt Cycle
+
+
 
 ## Reference
 
