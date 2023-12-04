@@ -106,7 +106,7 @@ To illustrate the patterns do exist, Dalio uses Monopoly as an approximation to 
 
 Monopoly, with its clear rules written in the reference books, serves as a simplified model. For the real-world economic machines, our task is to extract some signs and rules. Under the transaction-based measure, we can redefine prosperity and depression, then examine money and credit to understand the monetary system.
 
-#### Modern Monetary System Through the transaction-Based Measure
+#### Modern Monetary System Through the Transaction-Based Measure
 
 The two fundamental elements in modern monetary systems are money and credit. For the sake of fiscal policy flexibility, the government shifted from the previous monetary system, which abandoned the previous commodity element, such as gold. 
 
