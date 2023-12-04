@@ -84,35 +84,28 @@ Dalio provides an easy-to-grasp framework with three basis for understanding the
 
 ### Productivity Growth
 
-<!-- In the long run, the intrinsic driving is fueled by the producitivity growth, the reason is simple, even on a modern economics system with credit, the formed credit needed to pay-back in the future. While the development of science and technology will not easily erased from the world. From the viewpoint of the whole economics machine,  With the growth of producitivity, the capital formation in the past will easily payback in the future. 
-Taking the history of US as an example, the image shows the GDP per capita adjusted for the inflation, from the illustration, we find the growth of producitivity is relatively a steady process. Besides the Great Depression period, the economics machine crash down: -->
-
-<!-- In the long run, the intrinsic drive is fueled by productivity growth. The reason is simple: even in a modern economic system with credit, the created credit needs to be repaid in the future, on contrary, the advancements in science and technology will not be forced to erase from the world. Furthermore, from the viewpoint of the macro economic machine, with the growth of productivity, the capital invested in the past will more easily be repaid in the future. -->
-
 In the long run, the intrinsic drive is fueled by productivity growth. The reasoning is straightforward: even in a modern economic system with credit, the generated credit needs to be repaid in the future. In contrast, the advancements in science and technology are enduring assets that will not be erased from the world. Furthermore, from the viewpoint of the macro-economic machine, with the growth of productivity, the capital invested in the past will be repaid more easily in the future.
 
 Taking the history of the US as an example, the image below shows the GDP per capita adjusted for inflation. From the data, we observe that the growth of productivity is relatively a steady process. Aside from the Great Depression period, economic downturns are less pronounced:
 
 {:refdef: style="text-align: center;"}
-<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Real_GDP_per_Capita.png" alt="Real_GDP_per_Capita" style="zoom:30%;" />
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Real_GDP_per_Capita.png" alt="Real_GDP_per_Capita" style="zoom:25%;" />
 {:refdef}
 
 Productivity growth, as depicted in the domestic market of the US, presents a macro-level perspective. Although individuals may have faced greater challenges during the Great Depression, thanks to the diligent work of the author of the diagram, we can compare the stock prices, which are relevant to individual people:
 
 {:refdef: style="text-align: center;"}
-<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Producitivity-credit_equity.png" alt="Producitivity-credit_equity" style="zoom:88%;" />
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Producitivity-credit_equity.png" alt="Producitivity-credit_equity" style="zoom:72%;" />
 {:refdef}
 
 Even when adjusted on a log-scale, the equity asset price experiences severe volatility, compared to the macro productivity measure: the GDP per capita in the market. Yet, the equity asset price clearly holds a strong relevance to the ordinary person in the economics machine. The question arises: during the Great Depression, did people suddenly forget the methods of productivity,  or did the symbols of productivity growth, these machines, suddenly revert to versions from decades prior? In analyzing this issue, we should consider another fundamental force in the economic machine: the two debt cycles.
 
 ### The Two Debt Cycles
 
-<!-- The debt cycles arise from the credit in the economics, if we observe the human society as a holistic entity, we find the economics cycles are repetitous patterns.  -->
 Debt cycles emerge from the use of credit in economics. When we observe human society as a holistic entity, we notice that economic cycles are repetitive patterns in history.
 
 To illustrate the patterns do exist, Dalio uses Monopoly as an approximation to the real-world economic machine. This is due to the design of Monopoly: in the early stage of the game, 'property is king'. As cash in the market decreases, the game enters the second stage where 'money is king'. Furthermore, with the virtual introduction of a 'bank', which offers money with a deposit rate reward, and lends money to potential debtors, there will lead to the game to an interesting stage, where the borrowers squeeze the bank's deposit while the debtors fail to pay back, symbolizing a debt crisis in the Monopoly game.
 
-<!-- Monopoly with the clear rules, written in the reference books. For the real-world ecnomics machines, what we need is to extract some signs and rules. Under the transaction-based measure, we can re-define the propersity and depression, then the money and credit, to compose the monetary system. -->
 Monopoly, with its clear rules written in the reference books, serves as a simplified model. For the real-world economic machines, our task is to extract some signs and rules. Under the transaction-based measure, we can redefine prosperity and depression, then examine money and credit to understand the monetary system.
 
 #### Modern Monetary System Through the transaction-Based Measure
@@ -251,11 +244,10 @@ As we delve into the macro-level analysis of high debt burdens, we encounter the
 
 This ineffectiveness often stems from a decades-long cumulative leveraging process. To illustrate, consider the concept of a 'debt gap' in the context of household debt. The household sector is fundamental to the economic machine at the domestic level, underpinning the government, financial, and corporate sectors. When households are stretched to their financial limits—a situation that can be quantified as a 'debt service gap'—the closer the total household debt level (both the aggregate amount and annual service costs) comes to this gap, the less effective monetary policy is at stimulating further credit growth.
 
-<!-- To depice the ineffective monetary policy when the gap is approached, Dalio depict a graph on household debt service to income ratio. -->
 To depict this phenomenon, Dalio presents a graph on the household debt service to disposable income ratio.
 
 {:refdef: style="text-align: center;"}
-<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/US_Household_Debt_Service_to_Income.png" alt="US_Household_Debt_Service_to_Income" style="zoom:25%;" />
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/US_Household_Debt_Service_to_Income.png" alt="US_Household_Debt_Service_to_Income" style="zoom:30%;" />
 {:refdef}
 
 - As the Roaring Twenties concluded, U.S. household debt service was approximately 10% of disposable income, with much of the credit creation concentrated in the stock market. However, between the stock market crash and the robust implementation of the Roosevelt New Deal, the household debt service level did not immediately drop; rather, it increased due to a reduction in income levels. Mere statistics can't fully express the real-life tragedies of that period.
@@ -265,17 +257,58 @@ To depict this phenomenon, Dalio presents a graph on the household debt service 
   - At the onset of the Great Recession, the household debt service level was again at a critical gap, based on conditions at the time. Yet, with the fiat system and untypical fiscal policies like Quantitative Easing (QE), this level was managed, helping to prevent an economic collapse akin to the Great Depression.
 
   {:refdef: style="text-align: center;"}
-  <img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Household_debt_to_GDP_income.png" alt="Household_debt_to_GDP_income" style="zoom:25%;" />
+  <img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Household_debt_to_GDP_income.png" alt="Household_debt_to_GDP_income" style="zoom:45%;" />
   {:refdef}
 
   - The Rhodium Group's research on household debt levels indicates that in both developed countries, like the U.S., and developing ones, such as China, when the ratio of Household Debt to Household Disposable Income reaches a relatively high level—around 120%—the household sector shows signs of strain, becoming increasingly resistant to additional debt. Consequently, stimulation policies, such as those targeting the real estate market, lose their effectiveness.
-  <!-- From the research of Rhodium Group on the household debt level, we can find that in both developed nations, like the U.S., and developing ones, such as China, when the index of Household Debt to Household Disposable Income reaches a relatively high level—around 120%—the household sector itself begins to exhibit diminishing returns, becoming increasingly resistant to further leveraging. The simulation policy on the real state market is not as effective as before. -->
 
 It's easier to understand that GDP is a macro-level metric, while household disposable income is a micro-level indicator, which more acutely reflects the economic pressures on individuals.
 
-With discussion on the 
+In discussing the indicators that signal the peak of a long-term debt crisis, Dalio underscores the underestimated perils of scenarios marked by financial asset bubbles and low inflation—conditions that can cause a bank run within the economic system. Historical events such as the Great Depression, Japan's Asset Price Bubble, and the 2007-2008 Global Financial Crisis illustrate the catastrophic potential of financial asset crises on the entire economic machine. Dalio identifies a critical juncture for these crises: the point at which fiscal policy has no room to maneuver, characterized by interest rates approaching 0%. Given the nature of financial assets, which are often leveraged with minimal money and substantial credit, the consequences of a run in such a context can be devastating.
+
+At the catastrophic turning point of the long-term debt cycle, four fundamental forces intertwine and dominate the economic machine before it can alleviate its debt burden and reenter a healthier state:
+
+- Debt reduction through defaults or restructuring
+- Austerity measures
+- Wealth redistribution
+- Debt monetization
+
+Depressions represent the contraction phase of the deleveraging process, with debt reduction—especially defaults—and austerity measures taking precedence. During this contraction phase, individual income levels inevitably fall as all sectors adopt austerity measures to protect their property. Additionally, the shrinkage of net worth can be explained by the idea of borrower creditworthiness, which hinges on two factors: their disposable incomes and their net worth. Similar to the ascent of the fiat monetary system, both disposable incomes and net worth face a downward spiral, causing the creditworthiness of borrowers to decline.
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/US_Household_debt_to_Net_Worth.png" alt="US_Household_debt_to_Net_Worth" style="zoom:45%;" />
+{:refdef}
+
+Coupled with the Household Debt to Disposable Income ratio, the contraction phase after a long-term debt cycle peak reveals an increase in individual debt levels during the depression stage. The decline in income and net worth occurs more rapidly than the pace at which debts are defaulted on. Again, mere statistics cannot fully convey the grim reality of those times. As borrowers’ creditworthiness declines, debtors tend to retract funds, which, under the properties of a fiat money system, is problematic because actual money in circulation is much less abundant than credit. It’s not a matter of morality, but debtors' fear of defaults indeed cause a severe cash flow crisis within the economic machine.
+
+
+During this depression stage, the private sector often lie down, adopting austerity measures. Conversely, a responsible government sector will implement counter-cyclical fiscal policies to bolster market spending. Dalio outlines three government actions during such times:
+
+- Initiatives to encourage credit creation
+- Relaxation of regulations compelling debtors to service their debts
+- Money printing and spending on goods, services, and financial assets
+
+The figures represent easing credit creation, money printing, and spending, respectively. Regulations on debt servicing are not within the purview of the Federal Reserve and are challenging to quantify.
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/government_fiscal_policy_in_depression.png" alt="government_fiscal_policy_in_depression" style="zoom:45%;" />
+{:refdef}
+
+When these three anomalies—credit easing, increased government spending, and relaxed debt servicing regulations—occur simultaneously, it's a clear sign that the economic machine is damped in a depression. Because these expansionary measures originate from the government sector, the improvement in the private sector's debt level will lag behind. Moreover, while the analysis of debtors is rooted in their psychology, statistical data on populations reveal that until the private sector's debt levels decrease to a sustainable level, the contraction will persist. During this stage, the will of most in private sectors, inevitably compel the government to intervene, either through increased fiscal budget or by the central bank monetizing the debt. Delving into the monetization of the debt, which central bank inject money into the economy includes purchasing government securities and private assets such as corporate securities, equities, and other financial instruments. The goal of these actions is to mitigate the contraction of credit, by an exceedingly increase money in economics machine.
+
+Wealth redistribution often comes into play as governments use taxation as a tool to balance budgets and address income inequality. Governments may impose taxes on the wealthy through various means, such as income and consumption taxes. While these taxes can bolster government revenues, they may also lead to a decrease in economic activity. This is because as the government draws on cash flows, it can inadvertently harm the normal functioning of businesses, prompting the wealthy to become more defensive and protective of their assets. Thus, an increase in government revenue can coincide with a direct loss in industries predominantly owned by wealthier individuals.
+
+From global perspective to consider wealth redistribution, wealthy individuals and corporations might attempt to safeguard their assets by converting them into other currencies or investing abroad if they perceive a threat from increased taxation or less favorable fiscal policies. This can lead to capital flight, which poses a significant risk to the foreign exchange stability of the country's economy. Countries with current account deficits are especially susceptible to such movements of capital, often prompting their central banks to print more money, which can devalue the currency. A depreciating currency may, in turn, trigger a rush towards more stable foreign currencies or inflation-hedge assets. Ultimately, the capital formation within the domestic market may diminish, outweighing the gains from taxes or hedging activities.
+
+<!-- On summarizing the long term debt cycle, the research point is on the deleveraging process, on the contraction process of deleveraging process, the austerity and debt reduction will dominate, this stage lasts for about two or three years. Then the economics machine will step into a slow process to recover, in which the government should apply fiscal policy to keep the nominal interest rates under the nominal growth to relieve the debt burden. -->
+
+In summarizing the long-term debt cycle, a key area of study is the deleveraging process. During the contraction phase of deleveraging, austerity measures and debt reduction typically take precedence. This stage can last around two to three years before the economy begins its slow journey to recovery. At this point, it's crucial for the government to implement fiscal policies designed to maintain nominal interest rates below the rate of nominal growth. Such policies aim to alleviate the overall debt burden, fostering a more sustainable economic environment.
 
 ##### Short-term Debt Cycle
+
+
+
+
 
 
 
