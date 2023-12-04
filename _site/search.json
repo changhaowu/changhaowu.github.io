@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "How-the-Economics-Machine-Works-Notes",
+      "category" : "",
+      "tags"     : "Econmics",
+      "url"      : "/2023/10/23/Economics-Machine-Note/",
+      "date"     : "2023-10-23 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Frequency Fourier and Galerkin",
       "category" : "",
       "tags"     : "Theory",
