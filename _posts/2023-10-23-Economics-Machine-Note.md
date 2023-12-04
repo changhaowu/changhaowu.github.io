@@ -300,51 +300,58 @@ In summarizing the long-term debt cycle, a key area of study is the deleveraging
 
 ##### Short-term Debt Cycle
 
-The short-term dent cycle, aka the business cycle, primarily controlled by the central banks' policies on:
-- tighten when these three conditions happens:
-  - high inflation 
-  - potential peak of a cycle indicated by the GDP gap, capacity utilization and the umemployment rate
-  - excessive credit growth
-- ease when the reverse conditions exist
+<!-- The short-term dent cycle, aka the business cycle, primarily controlled by the central banks' policies on: -->
+The short-term debt cycle, also known as the business cycle, is primarily influenced by the monetary policies of central banks. These policies typically:
+
+- Tighten under certain conditions:
+  - High inflation 
+  <!-- - potential peak of a cycle indicated by the GDP gap, capacity utilization and the umemployment rate -->
+  - Signs of a cycle peak indicated by GDP gap, capacity utilization, and the unemployment rate.
+  - Excessive credit growth
+- Ease when the opposite conditions are present.
 
 {:refdef: style="text-align: center;"}
 <img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/US_GDP_gap.png" alt="US_GDP_gap" style="zoom:30%;" />
 {:refdef}
 
-Illustratedd in the figure, the short-term debt cycle shows a more periodic property than its longer counterpart. Beyond simiply emphasis on the periodicity, Dalio split the short-term debt cycle into six phases-four in the expansion and two in the recession:
+As shown in the figure, the short-term debt cycle exhibits a more periodic nature compared to the longer-term cycle. Dalio divides the short-term debt cycle into six phases—four in expansion and two in recession:
 
-* the "early-cycle"(which typically lasts about five or six quarters): as the subsequent phase to the end of contraction phase of the previous cycle. In this phase, economics enjoys a high growth (in excess of 4%), with characters:
-  * low inflation
-  * fast credit growth
-  * growth in comsumpution, particular the demands for interest rate sensitive items
+<!-- * the "early-cycle"(which typically lasts about five or six quarters): as the subsequent phase to the end of contraction phase of the previous cycle. In this phase, economics enjoys a high growth (in excess of 4%), with characters: -->
+* The "Early-Cycle" (lasting about five or six quarters): Following the contraction phase of the previous cycle, this phase typically features:
+  * High growth (over 4%)
+  * Low inflation
+  * Rapid credit growth
+  * Increased comsumpution, especially in interest rate-sensitive items
 
-* the "mid-cycle"(which lasts an average of three or four quarters): The growth in previous slows substantially(i.e., to around 2%):
-  * inflation remain lows
-  * slower growth in consumption
-  * the rate of inventory accumlation declines
+* The "Mid-Cycle" (lasting around three or four quarters): Characterized by a substantial slowdown in growth (to around 2%):
+  * Inflation remains low
+  * Slower growth in consumption
+  * Decline in the rate of inventory accumulation
 
-* the “late-cycle“(which typically begins about two and a half years into expansion, depending on how much slack existed in the economy at the last recession’s trough): All growth will gradual peak in this stage, economic growth picks up to a moderate pace (i.e., around 3.5-4%)
-  * credit and demand growth still strong, while capacity constraint emerge, due to the inventory acculation declines
-  * trending higher inflation
-  * interest rate start to rise
+<!-- * the “late-cycle“(which typically begins about two and a half years into expansion, depending on how much slack existed in the economy at the last recession’s trough): All growth will gradual peak in this stage, economic growth picks up to a moderate pace (i.e., around 3.5-4%) -->
+* The “Late-Cycle” (beginning about two and a half years into expansion, depending on how much slack existed in the economy at the last recession’s trough): Growth peaks after this stage, with economic growth accelerating to a moderate pace (around 3.5-4%):
+  * Strong credit and demand growth, but capacity constraints emerge due to declining inventory accumulation
+  * Inflation trends higher
+  * Interest rates start to rise
 
-* the "tightening phase"(the top of the expansion stage):
-  * the inflation problem prompt central bank apply fiscal policy
-  * interest rate higher and contracted money supply
+* The "Tightening Phase" (the peak of expansion):
+  * Central banks respond to inflation problems with tighter fiscal policy
+  * Interest rates rise, and money supply contracts
 
-* the early part of the recession:
-  * the economics contracts
-  * slack return(measured iby GDP gap, capacity utilization and the unemployment rate)
+* Early Part of the Recession:
+  * Economic contraction
+  * The return of slack, as measured by the GDP gap, capacity utilization, and unemployment rate
 
-* the late part of the recession:
-  * the economics still downturn, with controlled inflation 
-  * the interest rate decline 
+* Late Part of the Recession:
+  * Ongoing economic downturn with controlled inflation
+  * Interest rates decline 
 
-While Dalio also emphasis there are some flexibility in the analysis structure of short-term debt cycle:
+<!-- While Dalio also emphasis there are some flexibility in the analysis structure of short-term debt cycle: -->
+While Dalio also highlights the flexibility in analyzing the short-term debt cycle:
 
-- the sequences of phases depend on some signal events, rather than simple timeline
-- the central bank fiscal policy style should take into consideration. The time varies with an aggressive or a conservative central bank
-- some structural factors influence should appended, such as China’s entry into the world economy, wars and natural disasters
+- The sequence of phases can depend on specific events, not just a simple timeline
+- The style of central bank policy (aggressive vs. conservative) can affect the timeline
+- Structural factors such as China’s entry into the world economy, wars, and natural disasters also play a role
 
 ## Reference
 
