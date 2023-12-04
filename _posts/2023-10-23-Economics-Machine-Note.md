@@ -32,10 +32,8 @@ Apart from categorizing all the markets on their trading qualities, we can also 
 
 - The private sector: Further broken down into households and businesses, both domestic and foreign.
 - The government sector: Illustrated by the US, the federal government allocates money to domestic goods and services, while the central bank has the capability to create money and primarily invest in financial assets.
-<!-- Using the US as an example, the federal government spends money on domestic goods and services. Meanwhile, the central bank has the ability to create money and spend mostly on financial assets. -->
 
 In the transaction-based perspective, assuming a stable supply of the asset quantity, which shows short-term fluctuation, the asset's price is influenced by both the money and credit expended on it. Given our modern credit-based economy, it's easy to adjust the supply of spending in the market.
-<!-- In the transaction-based perspective, fixing supply of the asset quantity, which shows short-term fluctuation, the asset's price is determined by both the money and credit expended on it. Given our modern credit-based economy,  it's easy to adjust supply of spending in transactions market. -->
 
 {:refdef: style="text-align: center;"}
 <img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Transaction_based_economics.png" alt="Transport_Map_Visualization" style="zoom:50%;" />
@@ -110,14 +108,11 @@ Monopoly, with its clear rules written in the reference books, serves as a simpl
 
 #### Modern Monetary System Through the transaction-Based Measure
 
-<!-- The two fundemental element in modern monetary is money and credit. For sake of flexibility of fiscal policy, the government abondon the previous commodity element, compared to previous monetary system -->
 The two fundamental elements in modern monetary systems are money and credit. For the sake of fiscal policy flexibility, the government shifted from the previous monetary system, which abandoned the previous commodity element, such as gold. 
 
 ##### Money
 
-<!-- In Transaction-Based approach, the money is one way to settle the transaction. Compared to the credit, which gradual settle the payment in future time, money is the payment in current timestamp. Besides, Dalio seperate the total spending in US economy in transaction-based measure, the money, which stands for the currency and reserves in existence only about `$` 3 trillion, while the credit is about `$` 50 trillion, 15 times more than the money, that is to say that: -->
-
-In the Transaction-Based approach, money is a means to settle transactions. Compared to credit, which gradually settles payments in the future, money facilitates payment in the current timestamp. Besides, Dalio separates the total spending in the US economy into two categories in the transaction-based measure: money, which stands for the currency and reserves in existence totals about `$` 3 trillion, while credit amounts to about `$` 50 trillion, 15 times more than the money. This implies:
+In the Transaction-Based approach, money is a means to settle transactions. Compared to credit, which gradually settles payments in the future, money facilitates payment in the current timestamp. Besides, Dalio separates the total spending in the US economy into two categories in the transaction-based measure: money, which stands for the currency and reserves in existence totals about `$` 3 trillion, while credit amounts to about `$` 50 trillion, 15 times more than the money, at his writing times. This implies:
 
 1. Many people actually pay with credit when they settle their transaction
 2. During a debt crisis, many people may discover their payment ability is less than the obligations of credit payment.
@@ -145,7 +140,7 @@ Delving deeper into the ideal process, Dalio uses a simple example about a white
 - With the money, the whitewasher goes to the building materials salesman. Instead of buying the materials with the full amount, he pays partially, with the remainder in a contract to pay in the future.
 - Finally, the whitewasher completes the task excellently, everyone at Bridgewater admires Dalio's new office. So, the whitewasher gets many contracts from Bridgewater's employees.
   Remember, he bought the materials on credit, so he can rush back to the materials salesman, buying a large amount of materials to prepare for the office painting contracts at Bridgewater.
-- Is the story over? Nope, remember the bank manager and the salesman? The bank manager can consolidate the whitewasher's credit (A++ rank) into an asset package, to sell in the debt market.
+- Is the story over? Nope, remember the bank manager and the salesman? The bank manager can consolidate the whitewasher's credit (A rank) into an asset package, to sell in the debt market.
   And the material salesman, finding a steady buyer, becomes confident enough to negotiate better futures contracts with his material manufacturers.
 
 <!-- The money paid in the ideal process is fewer than the credit, but individual in every chain of the process are pleased with the outcome. The whitewasher get the money, the bank manager get the interest, the material salesman get the money, the material manufacturer get the money, Dalio get the new office. This is the power of credit, it helps the creation demand alleviated from the burden of the commdity or money in previous mmonetary system. The creation of credit solely depends on the confidence of borrowers and debtors in the market. It indeed accelerate the positive producivity process.
@@ -164,7 +159,6 @@ Aside from the confidence in a win-win structure during a capital formation, ano
 
 At a certain point, when a large number of people unilaterally convert financial assets to money, the price of financial assets will crash.
 
-<!-- ##### The Reform of Monetary Systems -->
 ##### The Evolution of Monetary Systems
 
 <!-- Given the two fundemental elements, money printed by government sector and the credit formed in the market, we can introduce the reform history of monetary system in the transaction-based measure. -->
@@ -306,12 +300,52 @@ In summarizing the long-term debt cycle, a key area of study is the deleveraging
 
 ##### Short-term Debt Cycle
 
+The short-term dent cycle, aka the business cycle, primarily controlled by the central banks' policies on:
+- tighten when these three conditions happens:
+  - high inflation 
+  - potential peak of a cycle indicated by the GDP gap, capacity utilization and the umemployment rate
+  - excessive credit growth
+- ease when the reverse conditions exist
 
+{:refdef: style="text-align: center;"}
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/US_GDP_gap.png" alt="US_GDP_gap" style="zoom:45%;" />
+{:refdef}
 
+Illustratedd in the figure, the short-term debt cycle shows a more periodic property than its longer counterpart. Beyond simiply emphasis on the periodicity, Dalio split the short-term debt cycle into six phases-four in the expansion and two in the recession:
 
+* the "early-cycle"(which typically lasts about five or six quarters): as the subsequent phase to the end of contraction phase of the previous cycle. In this phase, economics enjoys a high growth (in excess of 4%), with characters:
+  * low inflation
+  * fast credit growth
+  * growth in comsumpution, particular the demands for interest rate sensitive items
 
+* the "mid-cycle"(which lasts an average of three or four quarters): The growth in previous slows substantially(i.e., to around 2%):
+  * inflation remain lows
+  * slower growth in consumption
+  * the rate of inventory accumlation declines
 
+* the “late-cycle“(which typically begins about two and a half years into expansion, depending on how much slack existed in the economy at the last recession’s trough): All growth will gradual peak in this stage, economic growth picks up to a moderate pace (i.e., around 3.5-4%)
+  * credit and demand growth still strong, while capacity constraint emerge, due to the inventory acculation declines
+  * trending higher inflation
+  * interest rate start to rise
+
+* the "tightening phase"(the top of the expansion stage):
+  * the inflation problem prompt central bank apply fiscal policy
+  * interest rate higher and contracted money supply
+
+* the early part of the recession:
+  * the economics contracts
+  * slack return(measured iby GDP gap, capacity utilization and the unemployment rate)
+
+* the late part of the recession:
+  * the economics still downturn, with controlled inflation 
+  * the interest rate decline 
+
+While Dalio also emphasis there are some flexibility in the analysis structure of short-term debt cycle:
+
+- the sequences of phases depend on some signal events, rather than simple timeline
+- the central bank fiscal policy style should take into consideration. The time varies with an aggressive or a conservative central bank
+- some structural factors influence should appended, such as China’s entry into the world economy, wars and natural disasters
 
 ## Reference
 
-[1] C.-C. Jay Kuo [Understanding Convolutional Neural Networks with A Mathematical Model](https://arxiv.org/abs/1609.04112) 
+[1] Ray Dalio 2015 [How the Economic Machine Works](https://www.bridgewater.com/research-and-insights/how-the-economic-machine-works) 
