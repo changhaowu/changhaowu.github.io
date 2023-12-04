@@ -87,13 +87,13 @@ In the long run, the intrinsic drive is fueled by productivity growth. The reaso
 Taking the history of the US as an example, the image below shows the GDP per capita adjusted for inflation. From the data, we observe that the growth of productivity is relatively a steady process. Aside from the Great Depression period, economic downturns are less pronounced:
 
 {:refdef: style="text-align: center;"}
-<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Real_GDP_per_Capita.png" alt="Real_GDP_per_Capita" style="zoom:25%;" />
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Real_GDP_per_Capita.png" alt="Real_GDP_per_Capita" style="zoom:28%;" />
 {:refdef}
 
 Productivity growth, as depicted in the domestic market of the US, presents a macro-level perspective. Although individuals may have faced greater challenges during the Great Depression, thanks to the diligent work of the author of the diagram, we can compare the stock prices, which are relevant to individual people:
 
 {:refdef: style="text-align: center;"}
-<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Producitivity-credit_equity.png" alt="Producitivity-credit_equity" style="zoom:72%;" />
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Producitivity-credit_equity.png" alt="Producitivity-credit_equity" style="zoom:80%;" />
 {:refdef}
 
 Even when adjusted on a log-scale, the equity asset price experiences severe volatility, compared to the macro productivity measure: the GDP per capita in the market. Yet, the equity asset price clearly holds a strong relevance to the ordinary person in the economics machine. The question arises: during the Great Depression, did people suddenly forget the methods of productivity,  or did the symbols of productivity growth, these machines, suddenly revert to versions from decades prior? In analyzing this issue, we should consider another fundamental force in the economic machine: the two debt cycles.
@@ -251,7 +251,7 @@ To depict this phenomenon, Dalio presents a graph on the household debt service 
   - At the onset of the Great Recession, the household debt service level was again at a critical gap, based on conditions at the time. Yet, with the fiat system and untypical fiscal policies like Quantitative Easing (QE), this level was managed, helping to prevent an economic collapse akin to the Great Depression.
 
   {:refdef: style="text-align: center;"}
-  <img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Household_debt_to_GDP_income.png" alt="Household_debt_to_GDP_income" style="zoom:45%;" />
+  <img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/Household_debt_to_GDP_income.png" alt="Household_debt_to_GDP_income" style="zoom:50%;" />
   {:refdef}
 
   - The Rhodium Group's research on household debt levels indicates that in both developed countries, like the U.S., and developing ones, such as China, when the ratio of Household Debt to Household Disposable Income reaches a relatively high level—around 120%—the household sector shows signs of strain, becoming increasingly resistant to additional debt. Consequently, stimulation policies, such as those targeting the real estate market, lose their effectiveness.
@@ -270,7 +270,7 @@ At the catastrophic turning point of the long-term debt cycle, four fundamental 
 Depressions represent the contraction phase of the deleveraging process, with debt reduction—especially defaults—and austerity measures taking precedence. During this contraction phase, individual income levels inevitably fall as all sectors adopt austerity measures to protect their property. Additionally, the shrinkage of net worth can be explained by the idea of borrower creditworthiness, which hinges on two factors: their disposable incomes and their net worth. Similar to the ascent of the fiat monetary system, both disposable incomes and net worth face a downward spiral, causing the creditworthiness of borrowers to decline.
 
 {:refdef: style="text-align: center;"}
-<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/US_Household_debt_to_Net_Worth.png" alt="US_Household_debt_to_Net_Worth" style="zoom:45%;" />
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/US_Household_debt_to_Net_Worth.png" alt="US_Household_debt_to_Net_Worth" style="zoom:30%;" />
 {:refdef}
 
 Coupled with the Household Debt to Disposable Income ratio, the contraction phase after a long-term debt cycle peak reveals an increase in individual debt levels during the depression stage. The decline in income and net worth occurs more rapidly than the pace at which debts are defaulted on. Again, mere statistics cannot fully convey the grim reality of those times. As borrowers’ creditworthiness declines, debtors tend to retract funds, which, under the properties of a fiat money system, is problematic because actual money in circulation is much less abundant than credit. It’s not a matter of morality, but debtors' fear of defaults indeed cause a severe cash flow crisis within the economic machine.
@@ -285,7 +285,7 @@ During this depression stage, the private sector often lie down, adopting auster
 The figures represent easing credit creation, money printing, and spending, respectively. Regulations on debt servicing are not within the purview of the Federal Reserve and are challenging to quantify.
 
 {:refdef: style="text-align: center;"}
-<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/government_fiscal_policy_in_depression.png" alt="government_fiscal_policy_in_depression" style="zoom:45%;" />
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/government_fiscal_policy_in_depression.png" alt="government_fiscal_policy_in_depression" style="zoom:80%;" />
 {:refdef}
 
 When these three anomalies—credit easing, increased government spending, and relaxed debt servicing regulations—occur simultaneously, it's a clear sign that the economic machine is damped in a depression. Because these expansionary measures originate from the government sector, the improvement in the private sector's debt level will lag behind. Moreover, while the analysis of debtors is rooted in their psychology, statistical data on populations reveal that until the private sector's debt levels decrease to a sustainable level, the contraction will persist. During this stage, the will of most in private sectors, inevitably compel the government to intervene, either through increased fiscal budget or by the central bank monetizing the debt. Delving into the monetization of the debt, which central bank inject money into the economy includes purchasing government securities and private assets such as corporate securities, equities, and other financial instruments. The goal of these actions is to mitigate the contraction of credit, by an exceedingly increase money in economics machine.
@@ -308,7 +308,7 @@ The short-term dent cycle, aka the business cycle, primarily controlled by the c
 - ease when the reverse conditions exist
 
 {:refdef: style="text-align: center;"}
-<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/US_GDP_gap.png" alt="US_GDP_gap" style="zoom:45%;" />
+<img src="/images/2023-10-23-How-the-Economics-Machine-Works-Notes/US_GDP_gap.png" alt="US_GDP_gap" style="zoom:30%;" />
 {:refdef}
 
 Illustratedd in the figure, the short-term debt cycle shows a more periodic property than its longer counterpart. Beyond simiply emphasis on the periodicity, Dalio split the short-term debt cycle into six phases-four in the expansion and two in the recession:
@@ -348,4 +348,12 @@ While Dalio also emphasis there are some flexibility in the analysis structure o
 
 ## Reference
 
-[1] Ray Dalio 2015 [How the Economic Machine Works](https://www.bridgewater.com/research-and-insights/how-the-economic-machine-works) 
+[1] Ray Dalio 2015. [How the Economic Machine Works](https://www.bridgewater.com/research-and-insights/how-the-economic-machine-works) 
+
+[2] Wikipedia [National debt of the United States](https://en.m.wikipedia.org/wiki/National_debt_of_the_United_States)
+
+[3] Logan Wright and Allen Feng 2020 [COVID-19 and China’s Household Debt Dilemma](https://rhg.com/research/china-household-debt/)
+
+[4] Barry Ritholtz 2011 [Long Term Stock Market Growth (1871-2010)](https://ritholtz.com/2011/01/long-term-stock-market-growth-1871-2010/)
+
+[5] VisualizingEconomics 2011 [Long-term real growth in US GDP per capita 1871-2009](https://www.visualizingeconomics.com/blog/2011/03/08/long-term-real-growth-in-us-gdp-per-capita-1871-2009)
