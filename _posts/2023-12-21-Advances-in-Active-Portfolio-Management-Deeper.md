@@ -128,7 +128,14 @@ Based on these points, Sharpe concludes that:
 
 ### Insight 2. Information Ratios Determine Added Value
 
-Individual preferences enter into the utilitu only in how individuals trade off residual return against risk.
+Individual preferences enter into the utilitu only in how individuals trade off residual return against risk. The information ratio is the manager's ratio of residual return to risk:
+
+$$
+I R_P=\frac{\alpha_P}{\omega_P}
+$$
+
+which can be asserted, that given a participant, more risk, means more residual return. Vice versa, more residual loss came from more risk.
+
 
 
 
