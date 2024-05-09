@@ -14,6 +14,11 @@ published: false
 {:toc}
 
 
+On the exchange rate of the currency, between the major economics machine in the world.
+
+The US dollar special stage brings the economics machine the special gain and loss
+
+
 <!-- Considering the total spending in a market is the aggregation of credit formulation and money, we now have an analysis strucuture to present a simplified yet illustrative explanation of Mainland China's real estate market.  -->
 
 <!-- Over a decades-long surge in real estate market, buyers have been gripped by a Fear of Missing Out (FOMO), 

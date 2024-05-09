@@ -29,30 +29,30 @@ On this chapter, the authors include three articles here:
 
   The framework in  context of active protfolio management is based on a decompostion equation: 
 
-  $$
+$$
   r_n(t) = \beta_n \cdot r_B(t) + \theta_n(t)
-  $$
+$$
 
   - $r_n(t)$: The return of asset $n$ at time $t$.
   - $\beta_n$: The sensitivity of asset $n$'s returns to the returns of the benchmark. This is often referred to as the asset's "beta."
   - $r_B(t)$: The return of the benchmark at time $t$.
   - $\theta_n(t)$: The residual or idiosyncratic(residual) return of asset $n$ at time $t$, which is independent of the benchmark.
-  
+
   This equation suggests that the return of an asset can be viewed as a combination of the return that is due to the market or benchmark (systematic risk) and the return that is unique to the asset itself (idiosyncratic risk).
 
   The Capital Asset Pricing Model states that the zero expected idiosyncratic return, while the 'smart' participatant in the market can craft the information $g$, yield non-zero expected idiosyncratic return $\alpha$
-  
+
   - $ E\left\{\theta_n\right\}=0 $
   - $ E\left\{\theta_n \mid g\right\} \equiv \alpha_n $
 
   The authors specialized denote $\alpha$ as the expected idiosyncratic return. To connect the forecast residual return with optimal portfolios, the Markowitz mean-variance optimization reveal that:
 
-  $$
+$$
   \begin{aligned}
   \text { Utility } & =\mathbf{h}^T \cdot \boldsymbol{\alpha}-\lambda \mathbf{h}^T \cdot \mathbf{V} \cdot \mathbf{h} \\
   & =\alpha_P-\lambda \omega_P^2
   \end{aligned}
-  $$
+$$
 
   Here the $\lambda$ is the risk-aversion parameter, and the $\omega$ measures risk. The optimal portfolio Q can be deduced from the deritvative of the utility, with $\alpha=2 \lambda \mathbf{V} \cdot \mathbf{h}_{\varrho}$. The risk-aversion vary, the optimal protfolio also vary.
 
@@ -134,7 +134,120 @@ $$
 I R_P=\frac{\alpha_P}{\omega_P}
 $$
 
-which can be asserted, that given a participant, more risk, means more residual return. Vice versa, more residual loss came from more risk.
+which can be asserted, that given a participant, more risk, means more residual return. Vice versa, more residual loss came from more risk. 
+
+- Understanding Information Ratios:
+  To illustrate the information ratios, the authors provide the following example, $\alpha_P = \omega_P \cdot I R_P$, normally distributed $\alpha$, with a risk level 2%, the probability to yield positive residual return:
+
+  $$
+  \begin{aligned}
+  \operatorname{Pr}\{\alpha>0\} 
+  & =\operatorname{Pr}\left\{\frac{\alpha-(I R \cdot \omega)}{\omega}>\frac{0-(I R \cdot \omega)}{\omega}\right\}
+  \\
+  & = \operatorname{Pr}\{Z>-I R\} = 1 - \Phi(-I R) = \Phi(I R)
+  \end{aligned}
+  $$
+
+  Under such a simplified case, the particiant in the market, will have a montonic function of performance with the information ratio. The higher the information ratio, the more likely it is that the participant realize positive redisual return in any period
+
+- Utility Analysis:
+  With $\alpha_P = \omega_P \cdot I R_P$, rewrite the utilitu function:
+
+  $$
+  \text { Utility }=I R_P \cdot \omega_P-\lambda \omega_P^2
+  $$
+
+  which provide the optimal case:
+
+  $$
+  \begin{aligned}
+  & \omega^*=\frac{I R_P}{2 \lambda} \\
+  & U^*=\frac{I R_P^2}{4 \lambda}
+  \end{aligned}
+  $$
+
+  The optimal level of the residual risk depends inversly on risk aversion $\lambda$ and directly on the information ratio $I R_P$. While the optimal utility outcome hints us no matter the risk aversion, the higher the information ratio, the better the outcome.
+
+
+### Insight 3. Allocate Risk Budget in Proportion to Information Ratios
+
+On this section, the authors consider the multiple different managers for choices, with their respective expected alpha $\alpha_n$, residual risk $\omega_n$, for sake of illustration, an added assumption of uncorrelated residual returns is made. An investor places a fraction $b_n$ on each manager:
+
+$$
+\begin{aligned}
+& \alpha_P=\sum_{n=1}^N h_n \cdot \alpha_n \\
+& \omega_P^2=\sum_{n=1}^N h_n^2 \cdot \omega_n^2
+\end{aligned}
+$$
+
+Merge them into the allocated utility, we get: 
+
+$$
+h_n^*=\frac{\alpha_n}{2 \lambda \omega_n^2} \Rightarrow \frac{I R_n}{2 \lambda \omega_n}
+$$
+
+In measure of information rate:
+
+$$
+b_n^* \cdot \omega_n=\frac{I R_n}{2 \lambda}
+$$
+
+The quantity $b_n^* \cdot \omega_n$ is defined as risk allocation, in multiple portfolio investment, investors allocate risk in proportion to information ratios. The single portfolio case, is the $b_n^* = 1$
+
+### Insight 4.Alphas Must Control for Skill, Volatility, and Expectations
+
+This insight shows how to process raw information into alphas, which are critical inputs for active management. The basic forecasting formula provides the best linear unbiased estimate of thre residual return, $\theta$, given the raw signal, $g$:
+
+$$
+E\{\theta \mid g\}=E\{\theta\}+\operatorname{Cov}\{\theta, g\} \cdot \operatorname{Var}^{-1}\{g\} \cdot[g-E\{g\}]
+$$
+
+With the assumption of the zero expected residual return, and $\alpha$ comes from the excessive expected, the formula can be simplified as:
+
+$$
+\alpha=\operatorname{Corr}\{\theta, g\} \cdot \operatorname{StDev}\{\theta\} \cdot\left[\frac{g-E\{g\}}{\operatorname{StDev}\{g\}}\right]
+$$
+
+The correlation of signal $g$ and relized residual return $\theta$ is the information coefficient $I C$, the standard deviation of the residual return is the residual risk $\omega$, and the normalized signal notated as $z$-score. The formula can be decomposited into an information coefficient, a volatility and a score:
+
+$$
+\alpha=I C \cdot \omega \cdot z
+$$
+
+- Understanding Skill
+
+  The measure of skill is presented in a form of correlation, which has a theortical maximum value of value, while in practice, the value is much lower. The authors provide a table of the correlation of the skill:
+
+  | SKILL | IC |
+  |:---:|:---:|
+  | average | 0.00 |
+  | good | 0.05 |
+  | great | 0.10 |
+
+  To quantitatively measure the skill impact on the predicting the accurate sign, the authors give the assumption that residual returns and forecast errors are normally distributed, to give the approximation of the frequency, I tried another approximation method:
+  $$
+  \begin{aligned}
+  fr & = \frac{\int_0^{\frac{ \pi}{4}}\left[\left(a^2+b^2\right)+\left(a^2-b^2\right) \cos 2 \theta\right] d \theta}{\int_{\frac{\pi}{4}}^{\frac{\pi}{2}}\left[\left(a^2+b^2\right)+\left(a^2-b^2\right) \cos 2 \theta\right] d \theta}
+  \\
+  & =\frac{\left(a^2+b^2\right) \frac{\pi}{4}+\frac{a^2-b^2}{2}}{\left(a^2+b^2\right) \frac{\pi}{4}-\frac{a^2-b^2}{2}}
+  \end{aligned}
+  $$
+
+  Where the ratio of $(a/b)^2 = (1+\rho)/(1-\rho)$ can be caculated from the correlation, 
+  where is the information coefficient $I C$, the correlation of input signal and realized return.
+
+  | SKILL | IC | Frequency |
+  |:---:|:---:|:---:|
+  | average | 0.00 | 50.00% |
+  | good | 0.05 | 51.59% |
+  | great | 0.10 | 53.18% |
+
+- Understand Volatility and $z$-score
+  The volatility is the dimension converter, transform the alpha in the dimension measured in the units of return. As the $I C$ and $z$-score is dimensionless. And the volatility is inversely proportional to the optimal holdings. 
+  While $z$-score is a control for expectations, the signal doesn't match expectations when the score differ from zero
+
+
+### Insight 5. The Fundamental Law of Active Management: Information Ratios Depend on Skill, Diversification, and Efficiency
 
 
 
