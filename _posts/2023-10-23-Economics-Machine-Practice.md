@@ -1,27 +1,84 @@
 ---
 layout: post
-title: "2023-10-23-How-the-Domestic-Economics-Machine-Works-Thoughts"
-date: 2023-10-23
-image: images/cover/F3.jpg     
+title: "How-the-Domestic-Economics-Machine-Works-Thoughts"
+date: 2024-06-23
+image: images/cover/C_Manga3.jpg 
 tags: [Econmics]
 toc: false
-published: false
+published: true
 
 ---
+
 
 {: class="table-of-content"}
 * TOC
 {:toc}
 
 
-On the exchange rate of the currency, between the major economics machine in the world.
+## Domestic Asset Anchoring and Housing Prices
 
-The US dollar special stage brings the economics machine the special gain and loss
+**Key takeaways for this sections:**
 
-Considering the total spending in a market is the aggregate of credit and money, we now have an analysis structure to present a simplified yet illustrative explanation of Mainland China's real estate market.
+### Housing Prices and Interest Rates
+- **Irrational Debt in the Private Sector**: The significant increase in housing prices over the past decade has led to substantial inflation of credit within the sector, causing market dynamics to deviate from the nationwide Return on Assets (ROA) level.
+- **Shadow Banking System**:  Beyond the debt issued by private sectors to commercial banks, the shadow banking system has been a major source of credit in the real estate market, exacerbating the problem.
 
-Over a decade-long surge in the real estate market, buyers have been gripped by a Fear of Missing Out (FOMO),
-and this sentiment is further fueled by nationwide low interest rates prevailing over the decade.
+### Relationship Between Housing Prices and Government Bond Yields
+- **Housing Prices**: Heavily influenced by buyer income levels and expectations, as well as the nationwide ROA level.
+- **Government Bond Yields**: Serve as the benchmark for overall asset yields. When housing yields fall below government bond yields, the attractiveness of real estate investment decreases.
+
+
+Let's start with the first section, which focuses on the relationship between housing prices and interest rates.
+
+Over the past decade, China's real estate market has experienced a surge driven by a Fear of Missing Out (FOMO) among buyers, 
+which has been supported by relatively low interest rates compared to the expectation of annual asset price increase rates。 
+Thus, we observe a decade-long strong consumption in real estate by the private sectors.
+<!-- 
+How to value the price of an asset, we can combine of expectation of future asset price with the current yield of the asset.
+Though the rent price of the real estate actually is irrational nationwidelly, the expectation of future asset price replace the rent price(ROA of house), as the main driver of the price of the asset. 
+-->
+
+To value an asset, we combine the expectation of future asset prices with the current yield of the asset. 
+Although the rent price of real estate is irrational nationwide, the expectation of future asset price increases has replaced the rent price (ROA of the house) as the main driver of the asset's price.
+
+<!-- Here lies a problem, if the person buy the house, without issue a debt to the bank, the person just remove the deposit in his bank account, to the previous house owner account, in this process, there is no creation of money. -->
+Here lies a problem, a person buys a house without issuing debt to the bank, they just transfer the deposit from their bank account to the previous homeowner's account. In this process, there is no creation of money. 
+While, in the fiat monetary system, even the elementary individual in the housing market use debt to purchase houses, the buyer issues a debt to the bank and makes a promised annual payback rate to the bank.
+Due to the strong confidence in future price rises, buyers, especially those purchasing near the peak of housing prices, often make unfavorable contracts with the bank, involving high debt and high amortization
+
+In the process of acquiring the debt issued by debtors, the bank benefits during the era of rising housing prices. 
+However, when housing prices fall, banks face problems as debtors' willingness to pay decreases sharply, which may trigger defaults. 
+<!-- when the era of bearing housing price, the bank will face some problems, they find their debters willingess to pay the debt is decrease sharply when the house price decrease, which may trigger default on debt.  -->
+Take the example of national debts issued by countries like Argentina; their debt prices in the debt market are relatively low. 
+<!-- Let's check the nation debts issued by these countries like Argentina, these debt price in debt market will be relatively low. -->
+Similar to national debt, debts prone to default should be priced lower than their original value. 
+<!-- Similar to the example of nation debt, the relatively easy-to-default debt price, should be lower than the original price,  -->
+The default case is extreme case, but the actual price of the debt held in bank shall fluctuate with the house price, the bearish market will harm the floating asset sheet of bank. 
+
+Do you think this ends here? No, it just reveals the start of another financial system beneath the surface—the shadow banking system, a major source of credit in the real estate market, exacerbates the problem.
+<!-- You think this comes to end? No, it just reveal the start to another financial system below the shadow, the shadow banking system, which is a major source of credit in the real estate market, exacerbates the problem. -->
+Housing price debts from the private sector are considered safe assets, allowing them to be traded in the market, Commercial banks, for the sake of liquidity recovery, sell bonds to non-bank financial institutions, which are part of the shadow banking system. Non-bank financial institutions then package the bonds and sell them to wealthy individuals in the private sector.
+
+{:refdef: style="text-align: center;"}
+<img src="/images/2024-06-23-How-the-Domestic-Economics-Machine-Works-Thoughts/shadow_bank_system.jpg" alt="shadow_bank_system" style="zoom:96%;" />
+{:refdef}
+
+These non-bank financial institutions are not strictly controlled by the government. They can go bankrupt without government support, leaving the defaulted debts to wealthy individuals in the private sector.
+<!-- These non-banl financial insitutions are not so controlled by the government, they can bankrupcy without the government support, leaving the default debts to the wealthy individuals in private sectors.  -->
+On the brokage of the real estate crisis in China, the demand for real estates debt from bank vanishes, forcing banks to hold long-term housing debt from the private sector.  
+This results in losses in the actual value of the debts and squeezes the banks' usable liquidity on their balance sheets. 
+
+
+
+
+
+
+
+
+<!-- Considering the total spending in a market is the aggregate of credit and money, we now have an analysis structure to present a simplified yet illustrative explanation of Mainland China's real estate market.
+
+Over a decade-long surge in the real estate market, buyers have been gripped by a Fear of Missing Out (FOMO), -->
+<!-- and this sentiment is further fueled by nationwide low interest rates prevailing over the decade.
 This has led to a gradual inflation of credit within this sector, to such an extent that the market dynamics are now changing.
 Following this line of reasoning, we validate the market from these two progressive levels.
 I will first examine the buyers in the market, then move to the total expenditure that the buyers can provide in the market:
@@ -37,13 +94,21 @@ Upon the analysis of the existing buyers and sellers in the market, we then move
 
 - Private Sector: Just slightly remove the strange decorating motivation like "wedding house", "education house" from the real estate, the future spending from private sector can be induced to the confidence that the purchased asset can be more valubale, otherwise, most people shall rent the houses instead of purchasing the houses, using an irrational credit that they may regret for decades. What should be noticed is that we talk about confidence, not the condition. In a roaring market, most buyers can not the ideally rational individuals, they are poor illness with FOMO, most people only observe the world day by day, week by week.
   For sake of the convenience of analyzing, we attribute the valuble to the price of asset, measured in the official currency in the nation. As we analyze, the amount of buyers in the total market has been exhausted, the remaining individuals from private sectors, they are in a state of superposition of both buyer and seller. 
-  Given an balanced ratio of buyer and seller in the total market, the other dynamics for rushing-in spending in the market rely on the holistic exchange process, that I refer huge amounts of individuals who hold the worse asset have the motivation to exchange for the better asset. From the holisitc market, the exchange shall rely on the economics development shared to most of the buyers in the market, whose dynamics rely on the rapid productivity increase in the market. While you see, as the China participating in the WTO for more than two decades, 
+  Given an balanced ratio of buyer and seller in the total market, the other dynamics for rushing-in spending in the market rely on the holistic exchange process, that I refer huge amounts of individuals who hold the worse asset have the motivation to exchange for the better asset. From the holisitc market, the exchange shall rely on the economics development shared to most of the buyers in the market, whose dynamics rely on the rapid productivity increase in the market. While you see, as the China participating in the WTO for more than two decades,  -->
 
-- Government Sector: Another segment in the market is the government sectors in China; we shall fully realize the competitive relationships between local governments, as one of the ”KPIs“ for local government is the urbanization progress. Based on the assumption of their competitive relationship, the local governments spread in China, are "reasonable" to apply the credit leverage to push the local land price to an irrational extent.
-Even in less developed regions like Guizhou, local governments have been able to issue substantial amounts of bonds, whose repayments rely on imaginatively planned development, in securing funds for numerous ill-conceived, negative-return infrastructure projects.
-This trend echoes the Japanese asset price bubble, reminding me of scenes from "Spirited Away," which depicts abandoned resorts and filled natural rivers in remote regions of Japan. Although the government can use a elf-deceptive method to isolate themselves from the legal risks accumulated in city investment companies.
-While the long term, we shall estimate the price of the land based on the population in the future; in regions like Guizhou with an expected net negative population flow, the government may not be able to pay the bonds, and the projects may be used to create the virtual estate for the gnome in Guizhou?
 
+
+
+## Over-allocation in the Domestic Bond Market and Housing Price Trends
+
+
+## Forex Pressure and Long-term Risks
+
+
+## Remedies in Conventional Economics
+
+
+## Conclusion: The Risk of Chronic Decline
 
 
 
@@ -51,4 +116,4 @@ While the long term, we shall estimate the price of the land based on the popula
 
 # Reference
 
-[1] C.-C. Jay Kuo [Understanding Convolutional Neural Networks with A Mathematical Model](https://arxiv.org/abs/1609.04112) 
+[1] TIMLONG [一文读懂中国的影子银行](https://www.cnblogs.com/timlong/p/6892434.html) 
