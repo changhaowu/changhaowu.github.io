@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2023-10-23-How-the-Economics-Machine-Works-Notes"
+title: "2023-10-23-How-the-Domestic-Economics-Machine-Works-Thoughts"
 date: 2023-10-23
 image: images/cover/F3.jpg     
 tags: [Econmics]
@@ -17,26 +17,6 @@ published: false
 On the exchange rate of the currency, between the major economics machine in the world.
 
 The US dollar special stage brings the economics machine the special gain and loss
-
-
-<!-- Considering the total spending in a market is the aggregation of credit formulation and money, we now have an analysis strucuture to present a simplified yet illustrative explanation of Mainland China's real estate market.  -->
-
-<!-- Over a decades-long surge in real estate market, buyers have been gripped by a Fear of Missing Out (FOMO), 
-and the sentiment further fueled by a decades-long nationwide low interest rates. 
-This has led to a gradual inflation of credit within this sector, to an extent that the game will turn down now. 
-Alongside this chain of induction, we validate the market from these two progressive levels, 
-I will first examine the buyers in the markete, as move to the total expenditure that the buyers can provide in the market: -->
-
-<!-- First, we research on the buyer perspective, the game of real estate market have absorb nearly all potential buyers into the market. On proving my point, an analysis of economic activities in two distinct sectors is conducted: -->
-
-<!-- - Private Sector: The housing market boom around 2015 extended its reach to smaller cities and rural areas. Under such circumstances, the pace of urbanization in China is likely to decelerate. The unusual urbanization pace in China is main push hand of the roaring housing price, as the family in the remote rural regions have been converted to the owner of the urban real estate. What's the next target, the imaginary buyers that from from the Belt and Road countries or the ancestors that have been buried in lands? Given the existing influx housing-holding population in cities, we can asset that potential real estate buyers, is expected to decrease. -->
-
-<!-- - Government Sector: Another buyer sector in the market is the government sectors in China, we shall fully realize the competitive relationships between local governements, as the one of the ”KPIs“ for local government is the urbanization progress. Based on the assumption of their competitive relationship, the local governments spreading in China, are "reasonable" to apply the credit leverage to push the local land price into an irrational extent. 
-Even in less developed regions like Kweichow, local governments have been able to issue substantial amounts of bonds, whose payment rely on the imaginery development, in securing funds for numerous meaningless, negative-return infrastructure projects.
-This trend echoes the Japanese asset price bubble, reminds me of scenes from "Spirited Away," which depicts abandoned resorts and filled natural rivers in remote regions of Japan. Although the government can use a self-deceiving method to isolate the legal risks cummlated in city investment companies. 
-In the long term, we shall estimate the price of the land based on the population in the future, that the lands like Kweichow with an expected net negative flow, the government may not be able to pay the bonds, and the projects may used to the virtual estate for the gnome in Kweichow? -->
-
-
 
 Considering the total spending in a market is the aggregate of credit and money, we now have an analysis structure to present a simplified yet illustrative explanation of Mainland China's real estate market.
 
