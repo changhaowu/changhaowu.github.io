@@ -63,13 +63,13 @@ On the brokage of the real estate crisis in China, the demand for real estates d
 This results in losses in the actual value of the debts and squeezes the banks' usable liquidity on their balance sheets. 
 
 
-Then we turn our insights into the relationship between housing prices and government bond yields
+Then we turn our insights into the micro perspective of the private sector, research the relationship between housing prices and government bond yields
 
 As an ordinary member in the Chineses private sector, the investment choices is in China is limited:
 - Equity market: the equity market in China faces some problems: 
-  - the single long strategy with choking-high P/E ratio when the stock go public
-  - the high volatility of the index price, with desperate low annual payback rate
-  - the high correlation of heavy shares with the housing market, makes it not a good choice for diversification
+  - the single long strategy with choking-high P/E ratio when the stock goes public
+  - the high volatility of the index price, with desperately low annual payback rate
+  - the high correlation of heavy shares with the housing market, making it not a good choice for diversification
 - Government bonds:
   - the government bonds in China are considered as the safest asset in the nation, with the lowest annual payback rate in the past era
 - Real estate:
@@ -78,7 +78,7 @@ As an ordinary member in the Chineses private sector, the investment choices is 
 Due to the equity market's weak performance, the conservative investors in China have been forced to choose between government bonds and real estate. 
 While after decade-long roaring market in real estate, the ROA(valued in return of rent to price) of real estate has been pushed to a irrational low level. 
 To reveal the irrational status of Chinese real estate market, we have made a comparison between the ROA of real estate and the annual payback rate of government bonds, 
-we find that the ROA of real estate is still lower than the annual payback rate of government bonds, which is reverse to the other international cities in the world.
+we find that the ROA of real estate is still lower than the annual payback rate of government bonds, which is the reverse of the other international cities in the world.
 
 Housing ROA (Adjusted for Property and Rental Income Taxes) in NYC, SF, Tokyo, and Shanghai (2019 and 2024):
 <!-- 
@@ -93,24 +93,6 @@ Housing ROA (Adjusted for Property and Rental Income Taxes) in NYC, SF, Tokyo, a
 | **Shanghai** | 2019 | 1.25% (Citywide)                         | Included in Price | 3.5%                  | 1.21% (Citywide)                               | 3.20%              | 3.20%                |
 |              | 2024 | 1.30% (Citywide)                         | Included in Price | 3.5%                  | 1.26% (Citywide)                               | 2.35%              | 2.35%                | -->
 
-
-<!-- | City         | Year | Gross ROA Components | Property Tax Rate | Rental Income Tax Rate | Net ROA (Post-Tax) | Bond Yield (Post-Tax) |
-|--------------|------|----------------------|-------------------|------------------------|---------------------|-----------------------|
-| New York|------|----------------------|-------------------|------------------------|---------------------|-----------------------|
-|              | 2019| &ensp; &ensp; &ensp; 4.97%                | &ensp; &ensp; 0.88%             | &ensp; &ensp; 15%                    | &ensp; &ensp; 3.48%               | &ensp; &ensp; 1.70%                 |
-|              | 2024 | &ensp;  &ensp; &ensp; 5.83%                | &ensp; &ensp; 0.88%             | &ensp; &ensp; 15%                    | &ensp; &ensp; 4.21%               | &ensp; &ensp; 3.57%                 |
-| San Francisco|------|----------------------|-------------------|------------------------|---------------------|-----------------------|
-|              | 2019 | &ensp; &ensp; &ensp; 5.74%                | &ensp; &ensp; 0.76%             | &ensp; &ensp; 15%                | &ensp; &ensp; 4.23%               | &ensp; &ensp; 1.70%                 |
-|              | 2024 | &ensp; &ensp; &ensp;  5.95%                | &ensp; &ensp; 0.76%             | &ensp; &ensp; 15%                    | &ensp; &ensp; 4.41%               | &ensp; &ensp; 3.57%                 |
-| Tokyo|------|----------------------|-------------------|------------------------|---------------------|-----------------------|
-|               |  2019 | &ensp; &ensp; &ensp; 2.45%                | &ensp; &ensp; 1.4%              | &ensp; &ensp; 20.4%                  | &ensp; &ensp; 0.84%               | &ensp; &ensp; -0.11%                |
-|              |  2024 | &ensp; &ensp; &ensp; 3.03%                | &ensp; &ensp; 1.4%              | &ensp; &ensp; 20.4%                  | &ensp; &ensp; 1.30%               | &ensp; &ensp; 0.20%                 |
-| Shanghai|------|----------------------|-------------------|------------------------|---------------------|-----------------------|
-|               |  2019 | &ensp; &ensp; &ensp; 1.69%                |Yet In Price              | &ensp; &ensp; 3.5%                   | &ensp; &ensp; 1.63%               | &ensp; &ensp; 3.20%                 |
-|              |   2024 | &ensp; &ensp; &ensp; 1.65%                |Yet In Price              | &ensp; &ensp; 3.5%                   | &ensp; &ensp; 1.59%               | &ensp; &ensp; 2.35%                 | -->
-
-
-
 | City         | Year | Gross ROA Components | Property Tax Rate | Rental Income Tax Rate | Net ROA             | 10Y Bond Yield        |
 |--------------|------|----------------------|-------------------|------------------------|---------------------|-----------------------|
 | New York     |------|----------------------|-------------------|------------------------|---------------------|-----------------------|
@@ -123,8 +105,8 @@ Housing ROA (Adjusted for Property and Rental Income Taxes) in NYC, SF, Tokyo, a
 |              | 2019 | &ensp; &ensp; &ensp; 2.45%                | &ensp; &ensp; 1.4%              | &ensp; &ensp; 20.4%                  | &ensp; &ensp; 0.84%               | &ensp; &ensp; -0.11%                |
 |              | 2024 | &ensp; &ensp; &ensp; 3.03%                | &ensp; &ensp; 1.4%              | &ensp; &ensp; 20.4%                  | &ensp; &ensp; 1.30%               | &ensp; &ensp; 0.20%                 |
 | Shanghai     |------|----------------------|-------------------|------------------------|---------------------|-----------------------|
-|              | 2019 | &ensp; &ensp; &ensp; 1.69%                | Yet In Price              | &ensp; &ensp; 3.5%                   | &ensp; &ensp; 1.63%               | &ensp; &ensp; 3.20%                 |
-|              | 2024 | &ensp; &ensp; &ensp; 1.65%                | Yet In Price              | &ensp; &ensp; 3.5%                   | &ensp; &ensp; 1.59%               | &ensp; &ensp; 2.35%                 |
+|              | 2019 | &ensp; &ensp; &ensp; 1.69%                | Included In Price              | &ensp; &ensp; 3.5%                   | &ensp; &ensp; **1.63%**               | &ensp; &ensp; 3.20%                 |
+|              | 2024 | &ensp; &ensp; &ensp; 1.65%                | Included In Price              | &ensp; &ensp; 3.5%                   | &ensp; &ensp; **1.59%**               | &ensp; &ensp; 2.35%                 |
 
 
 **Sources and Assumptions**:
@@ -153,7 +135,10 @@ Shanghai
 **Calculations**
 
 Net ROA (Post-Tax) is calculated as follows:
-\[ \text{Net ROA} = (\text{Gross ROA} - \text{Property Tax}) \times (1 - \text{Rental Income Tax Rate}) \]
+
+$$
+\text{Net ROA} = (\text{Gross ROA} - \text{Property Tax}) \times (1 - \text{Rental Income Tax Rate})
+$$
 
 For instance, for New York City in 2019 (City Centre):
 - Gross ROA: 4.97%
@@ -162,7 +147,10 @@ For instance, for New York City in 2019 (City Centre):
 - Net ROA: (4.97% - 0.88%) * (1 - 0.15) ≈ 3.48%
 
 Bond Yield (Post-Tax) is calculated as follows:
-\[ \text{Bond Yield (Post-Tax)} = \text{Bond Yield} \times (1 - \text{Tax Rate}) \]
+
+$$
+\text{Bond Yield (Post-Tax)} = \text{Bond Yield} \times (1 - \text{Tax Rate}) 
+$$
 
 For instance, for U.S. 10-Year Bond Yield in 2019:
 - Bond Yield: 2.00%
@@ -170,6 +158,16 @@ For instance, for U.S. 10-Year Bond Yield in 2019:
 - Bond Yield (Post-Tax): 2.00% * (1 - 0.15) = 1.70%
 
 This table provides a comparison of the ROA, adjusted for property and rental income taxes, as well as the 10-year bond yields and their post-tax values in New York City, San Francisco, Tokyo, and Shanghai for the years 2019 and 2024.
+To conclude:
+  <!-- - if we exclude the future price debt, solely on the ROA aspect of the asset, the house temporarily are not a clever asset for the private sectors. 
+  As the adjusted yield of Chinese treasury bond is still higher than the ROA of house. Compare to the mature real estate market, the ROA of house should be higher. -->
+  - If we exclude future price debt, focusing solely on the ROA aspect of the asset, housing temporarily is not a clever asset for the private sector. The adjusted yield of Chinese treasury bonds is still higher than the ROA of housing. 
+  Compared to mature real estate markets, the ROA of housing should be higher.
+  - We should then consider the factors on growth rate of house prices:
+    - The urbanization process in China seems to be slowing down, which means new buyers entering the market are diminishing.
+    - Existing homebuyers, estimated to be in the 26-35 age group, do not experience income growth as fast as expected. This means relatively low purchasing power from existing citizens.
+
+
 
 
 
