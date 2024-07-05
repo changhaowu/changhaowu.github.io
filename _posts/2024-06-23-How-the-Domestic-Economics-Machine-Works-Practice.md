@@ -191,21 +191,24 @@ Who needs the real estate as an asset?
   - The urbanization process in China shows a slowing-down trends, which means new buyers entering the market are diminishing.
   - The homebuyers in existing citizen sectors, estimated to be concentrated in the 26-35 age group, do not experience income growth as fast as expected. This means relatively low purchasing power from existing potential homebuyers. 
 
-
-Besides the diminish of the purchase power, 
+Besides the diminish of the purchase power, the leveraging rate in household sector is already too high. 
 
 
 
 
 ## Long-term Risks and Forex Pressure
 
-### Forex Outflows and Exchange Rate Stability
-- **Pressure of Forex Outflows**: The yield gap between domestic and international assets leads to capital outflows.
-- **Challenges to Exchange Rate Stability**: The impact of forex outflows on the RMB exchange rate.
+**Key Takeaways for this Section:**
 
-### Long-term Economic Risks
-- **Exchange Rate Risks**: Increasing difficulty in maintaining the stability of the RMB as it internationalizes.
-- **Systemic Risks**: The long-term side effects of short-term policies.
+### Long-term Risks
+- **Unforeseeable Economic Power**: The traditional model shows diminishing returns, while the potential for new models to generate compounded growth remains uncertain.
+- **Systemic Risks**: The long-term side effects of short-term policies centered around Local Government Financing Vehicles (LGFVs).
+
+### Forex Outflows and Exchange Rate Stability
+- **Pressure from Forex Outflows**: The yield gap between domestic and international assets leads to capital outflows.
+- **Challenges to Exchange Rate Stability**: The impact of these forex outflows on the stability of the RMB exchange rate.
+
+
 
 Let's us check what the domestic market works on. In the past three-years, the expansion from private enterprise sectors and traditional sectors is slow down, which can be supported by the official PMI data in China, which fell through 50 threshold regularly in the past three years. We can view the real estate as a pivotal power on the growth of these sectors. As the illustration of the inner circulation of real estate depicts, if the buyers power from private sectors are still dominate, the previous cycle can still be maintained, as well as the growth of the traditional production sectors. We shall admit the fact that the inner circulation below indeed is the previous engine. For all cities in China, as the real estate on the land, it is a bed news.
 
@@ -215,8 +218,6 @@ Let's us check what the domestic market works on. In the past three-years, the e
 
 In contrast, let's us consider some expansion from new productive forces, which is financed by the SGV funds from state operated economy shows a relatively strong development trend, which to some extent compound the impact on economy from the traditional economics sectors. The new productive forces, which is mainly composed of electric cars, lithumn powers and the solar energy, gradually replace the traditional sectors in the past three years, which can be supported by the CaiXin PMI data. 
 The relatively rich compounds in domestic market will enjoy a new circulation, as the new production sales will either sell to the foreign markert, or in the relatively rich areas, the inner circulation of new productive forces here will be 
-
-
 
 {:refdef: style="text-align: center;"}
 <iframe src="https://data.worldbank.org/share/widget?indicators=FM.LBL.BMNY.GD.ZS&skipRedirection=true&view=map&year=2023" width='750' height='500' frameBorder='0' scrolling="no" ></iframe>
