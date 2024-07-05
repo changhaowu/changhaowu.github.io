@@ -46,7 +46,7 @@ Do you think this ends here? No, it just reveals the start of another financial 
 Housing price debts from the private sector are considered safe assets, allowing them to be traded in the market, Commercial banks, for the sake of liquidity recovery, sell bonds to non-bank financial institutions, which are part of the shadow banking system. the non-bank financial institutions can act as a broker for the entity which are prone to be default, which can not be directly finance by commerical banks due to regulation issues.
 
 {:refdef: style="text-align: center;"}
-<img src="/images/2024-06-23-How-the-Domestic-Economics-Machine-Works-Thoughts/shadow_bank_system.jpg" alt="shadow_bank_system" style="zoom:96%;" />
+<img src="/images/2024-06-23-How-the-Domestic-Economics-Machine-Works-Thoughts/shadow_bank_system.jpg" alt="shadow_bank_system" style="zoom:88%;" />
 {:refdef}
 
 Moreover, non-bank financial institutions then package the bonds and sell them to wealthy individuals in the private sector.
@@ -110,7 +110,7 @@ we find that the ROA of real estate is still lower than the annual payback rate 
 
 Housing ROA (Adjusted for Property and Rental Income Taxes) in NYC, SF, Tokyo, and Shanghai (2019 and 2024):
 
-| City         | Year | Gross ROA Components | Property Tax Rate | Rental Income Tax Rate | Net ROA             | 10Y Bond Yield        |
+<!-- | City         | Year | Gross ROA Components | Property Tax Rate | Rental Income Tax Rate | Net ROA             | 10Y Bond Yield        |
 |--------------|------|----------------------|-------------------|------------------------|---------------------|-----------------------|
 | New York     |------|----------------------|-------------------|------------------------|---------------------|-----------------------|
 |              | 2019 | &ensp; &ensp; &ensp; 4.97%                | &ensp; &ensp; 0.88%             | &ensp; &ensp; 15%                    | &ensp; &ensp; 3.48%               | &ensp; &ensp; 1.70%                 |
@@ -123,7 +123,121 @@ Housing ROA (Adjusted for Property and Rental Income Taxes) in NYC, SF, Tokyo, a
 |              | 2024 | &ensp; &ensp; &ensp; 3.03%                | &ensp; &ensp; 1.4%              | &ensp; &ensp; 20.4%                  | &ensp; &ensp; 1.30%               | &ensp; &ensp; 0.20%                 |
 | Shanghai     |------|----------------------|-------------------|------------------------|---------------------|-----------------------|
 |              | 2019 | &ensp; &ensp; &ensp; 1.69%                | Included In Price              | &ensp; &ensp; 3.5%                   | &ensp; &ensp; **1.63%**               | &ensp; &ensp; 3.20%                 |
-|              | 2024 | &ensp; &ensp; &ensp; 1.65%                | Included In Price              | &ensp; &ensp; 3.5%                   | &ensp; &ensp; **1.59%**               | &ensp; &ensp; 2.35%                 |
+|              | 2024 | &ensp; &ensp; &ensp; 1.65%                | Included In Price              | &ensp; &ensp; 3.5%                   | &ensp; &ensp; **1.59%**               | &ensp; &ensp; 2.35%                 | -->
+
+
+<html>
+<head>
+<style>
+table {
+  font-family: Arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin: auto;
+}
+
+td, th {
+  border: 3px double #000; /* Double border style */
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+th {
+  background-color: white;
+  color: black;
+}
+</style>
+</head>
+<body>
+
+<table>
+  <tr>
+    <th>City</th>
+    <th>Year</th>
+    <th>Gross ROA Components</th>
+    <th>Property Tax Rate</th>
+    <th>Rental Income Tax Rate</th>
+    <th>Net ROA</th>
+    <th>10Y Bond Yield</th>
+  </tr>
+  <tr>
+    <td rowspan="2">New York</td>
+    <td>2019</td>
+    <td>4.97%</td>
+    <td>0.88%</td>
+    <td>15%</td>
+    <td>3.48%</td>
+    <td>1.70%</td>
+  </tr>
+  <tr>
+    <td>2024</td>
+    <td>5.83%</td>
+    <td>0.88%</td>
+    <td>15%</td>
+    <td>4.21%</td>
+    <td>3.57%</td>
+  </tr>
+  <tr>
+    <td rowspan="2">San Francisco</td>
+    <td>2019</td>
+    <td>5.74%</td>
+    <td>0.76%</td>
+    <td>15%</td>
+    <td>4.23%</td>
+    <td>1.70%</td>
+  </tr>
+  <tr>
+    <td>2024</td>
+    <td>5.95%</td>
+    <td>0.76%</td>
+    <td>15%</td>
+    <td>4.41%</td>
+    <td>3.57%</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Tokyo</td>
+    <td>2019</td>
+    <td>2.45%</td>
+    <td>1.4%</td>
+    <td>20.4%</td>
+    <td>0.84%</td>
+    <td>-0.11%</td>
+  </tr>
+  <tr>
+    <td>2024</td>
+    <td>3.03%</td>
+    <td>1.4%</td>
+    <td>20.4%</td>
+    <td>1.30%</td>
+    <td>0.20%</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Shanghai</td>
+    <td>2019</td>
+    <td>1.69%</td>
+    <td>Included In Price</td>
+    <td>3.5%</td>
+    <td><b>1.63%</b></td>
+    <td>3.20%</td>
+  </tr>
+  <tr>
+    <td>2024</td>
+    <td>1.65%</td>
+    <td>Included In Price</td>
+    <td>3.5%</td>
+    <td><b>1.59%</b></td>
+    <td>2.35%</td>
+  </tr>
+</table>
+
+</body>
+</html>
+
+
 
 
 **Sources and Assumptions**:
@@ -205,23 +319,67 @@ Besides the diminish of the purchase power, the leveraging rate in household sec
 - **Systemic Risks**: The long-term side effects of short-term policies centered around Local Government Financing Vehicles (LGFVs).
 
 ### Forex Outflows and Exchange Rate Stability
-- **Pressure from Forex Outflows**: The yield gap between domestic and international assets leads to capital outflows.
-- **Challenges to Exchange Rate Stability**: The impact of these forex outflows on the stability of the RMB exchange rate.
+- **Pressure from Forex Outflows**: The yield gap between domestic and international level leads to capital outflows.
+- **Challenges to Exchange Rate Stability**: The impact of these forex outflows on the stability of the RMB exchange rate. 
 
-
-
-Let's us check what the domestic market works on. In the past three-years, the expansion from private enterprise sectors and traditional sectors is slow down, which can be supported by the official PMI data in China, which fell through 50 threshold regularly in the past three years. We can view the real estate as a pivotal power on the growth of these sectors. As the illustration of the inner circulation of real estate depicts, if the buyers power from private sectors are still dominate, the previous cycle can still be maintained, as well as the growth of the traditional production sectors. We shall admit the fact that the inner circulation below indeed is the previous engine. For all cities in China, as the real estate on the land, it is a bed news.
+Let's us check what the domestic market works on. In the past three-years, the expansion from private enterprise sectors and traditional sectors is slow down, which can be supported by the official PMI data in China, which fell through 50 threshold regularly in the past three years. As the real estate works as a pivotal power on the growth of these sectors. The illustration depicts the inner circulation of real estate: 
 
 {:refdef: style="text-align: center;"}
 <img src="/images/2024-06-23-How-the-Domestic-Economics-Machine-Works-Thoughts/inner_loop.jpg" alt="shadow_bank_system" style="zoom:96%;" />
 {:refdef}
 
-In contrast, let's us consider some expansion from new productive forces, which is financed by the SGV funds from state operated economy shows a relatively strong development trend, which to some extent compound the impact on economy from the traditional economics sectors. The new productive forces, which is mainly composed of electric cars, lithumn powers and the solar energy, gradually replace the traditional sectors in the past three years, which can be supported by the CaiXin PMI data. 
-The relatively rich compounds in domestic market will enjoy a new circulation, as the new production sales will either sell to the foreign markert, or in the relatively rich areas, the inner circulation of new productive forces here will be 
+The illustration shows on, if we focus on the real estate, the main ecomomics subcompoents in the demostic market are already all involved in the circulation, including the sector that sell materials to the real estate developers. On the early stage of the inner loop, actually all compoments in the circulations will enjoy the expansion, the early is valued by the current ROA of the real estate.
+If the ROA of house in the urban area still stay in a rational range, the investment of traditional sectors will be meaningful, though we just draw two small circles standing for the housebuyer and the traditional factory sectors, while they are actually the largest componment valued in the population, even the consumption in the economics machine. 
 
-{:refdef: style="text-align: center;"}
-<iframe src="https://data.worldbank.org/share/widget?indicators=FM.LBL.BMNY.GD.ZS&skipRedirection=true&view=map&year=2023" width='750' height='500' frameBorder='0' scrolling="no" ></iframe>
-{:refdef}
+While there is always a point, as the buyers find the current ROA is not so satisfied, and the future growth seems to be a bubble, which is marked by a U-turn peak of the house price. When the peak happen, on the points, we simplify the main players in the circulation's thought:
+- the real estate developer and the material sellers behind the developer will face the pressure, as the housebuyers slows down their purchase-in, while as we always emphasize, the developers and material producers, will use credit to accerlate their expansion, which will be a disaster when the market turns to bearish.
+- The providers of mortgage or we called credit money, they holds a lot of bonds issued from the housebuyer, which will face a dump in actual value when the real estate market turns to bearish.
+- Among all material sales, there is a special material "land", the sector who sells lands, are willing to enjoy the GDP growth based on real estate or the investment on the infrastructure. While the marginal effect is shown on this sector. The payment pressure from the local government financing vehicles, which is more problematic than the real estate developer.
+If the buyers power from private sectors are still dominate, the previous cycle can still be maintained, as well as the growth of the traditional production sectors, which can be equalized to the GDP growth. While there is always a U-turn for the market. 
+
+In contrast, let's us consider some expansion from new productive forces, which is financed by the SGV funds from state operated economy shows a relatively strong development trend, which to some extent compound the impact on economy from the traditional economics sectors. The new productive forces, which is mainly composed of electric cars, lithumn powers and the solar energy, gradually replace the traditional sectors in the past three years, which can be supported by the CaiXin PMI data. At this point, we can observe:
+- the electric cars shows the strongest development, the circulation of electric car can simplify replace the real estate in the previous illustration, as electric cars indeed have a strong demand in the domestic market, even the foreign countries. 
+- the lithum power actually share the development from the electric cars, or we can understand the lithum power as the sample of the material providers in previous illustration, which can be supported by the strong demand from the electric cars. 
+- the solar energy development seems to be trapped in excess capacity, even considering the government has already encourge the solar installation in the rural areas. 
+
+On this progress, we shall classify these new production sectors by their ROA to their consumers. The electric cars performs best, as the electric car shows stronger power, integrated by higher automatic level, which indeed benefit the cosumers. In contrast, the solar panel performs worst, as the solar panel is not so useful for the individual comsumer in the domestic market, while the solar panel is mainly used in the rural areas, moreover, the repurchase from national electric infra drops, which worser the people's motivation to install the solar panel.
+
+Adam Smith mentioned in his work "The Wealth of Nations" that the purpose of production is consumption. Smith believed that the ultimate goal of all productive activities is to satisfy human consumption needs. Specifically, he wrote in Chapter VIII of Book I of "The Wealth of Nations":
+
+> "Consumption is the sole end and purpose of all production; and the interest of the producer ought to be attended to, only so far as it may be necessary for promoting that of the consumer."
+
+Smith argued that the core of economic activity is the production of goods and services to meet consumer needs and desires. He believed that the value of production is ultimately realized in consumption, and without consumer demand, production would be meaningless. Therefore, Smith's perspective emphasizes the importance of consumers in the economy, asserting that all productive activities should ultimately aim to satisfy consumer needs.
+
+This viewpoint is also widely recognized in contemporary economics, with many economists considering consumption to be the main driver of economic growth and prosperity.
+
+Temporarily, from domestic market, the electric car and related industry like lithum power can make up for some vanishing driving power from the traditional sectors. As the slow down of the electric car purchase power, the electric car and lithum battery will face the same problem as the traditional sectors, as what happen to the solar panel. 
+
+While when we consider the export, as the real estate can not be exported, while the electric car can. While for export the cars, China will face the tax pressure and trade war from foreign countries. 
+
+> According to the theory of comparative advantage, countries should focus on producing goods in which they have a relative efficiency advantage, and trade with others to achieve optimal resource allocation. This allows each country to specialize in what they do best, leading to mutual benefits from trade.
+
+On discussion on dumping and trade wars in the electric car sector. 
+You can consider the development of China's new energy vehicle (NEV) industry and the international response as a combination of the comparative advantage theory and the regulatory adjustments by various governments. This has also led to high tariffs and trade wars. Here are some key points:
+
+1. **Comparative Advantage Theory and Government Regulation**:
+    - According to comparative advantage theory, countries should focus on producing goods where they have a relative efficiency advantage, and trade to optimize resource allocation. China has a comparative advantage in NEV technology and manufacturing, thus it focuses on developing this sector and exporting NEVs to the international market.
+    - To solidify and expand this comparative advantage, the Chinese government has implemented various measures such as subsidies, tax incentives, and support for R&D. These measures have increased the competitiveness of Chinese NEVs in the global market.
+
+2. **Trade Wars and High Tariffs**:
+    - When a country's industry gains a significant international competitive advantage through government support, other countries may perceive this as unfair competition, especially if these support measures are seen as violating international trade rules. In response, other countries might impose countermeasures such as higher tariffs and anti-dumping duties to protect their domestic industries. These actions can lead to trade wars
+    - High tariffs: To counter the competition from Chinese NEVs, some countries have started imposing high tariffs on imported Chinese NEVs to protect their own automotive industries. For example, the US and the EU have imposed strict tariffs and initiated anti-dumping investigations on Chinese electric vehicles. These tariff measures are not only meant to protect domestic markets but also to respond to China's government support policies
+
+While the theory of comparative advantage advocates for free trade and optimal resource allocation, in reality, governments adjust policies based on their interests and market conditions. Such adjustments may include high tariffs and other trade measures to protect domestic markets. Therefore, the development of China's NEV industry reflects both the application of comparative advantage and the complex dynamics of international trade regulation.
+
+On the discussion of market centered or gov centered, 
+
+<p align="center">
+<iframe src="https://data.worldbank.org/share/widget?end=2023&indicators=FM.LBL.BMNY.GD.ZS&locations=CN-US-JP&skipRedirection=true&start=1960&view=chart" width='450' height='300' frameBorder='0' scrolling="no" ></iframe>
+</p>
+
+<p align="center">
+<iframe src="https://data.worldbank.org/share/widget?indicators=FM.LBL.BMNY.GD.ZS&skipRedirection=true&view=map&year=2023" width='450' height='300' frameBorder='0' scrolling="no" ></iframe>
+</p>
 
 
 
@@ -277,3 +435,4 @@ The relatively rich compounds in domestic market will enjoy a new circulation, a
 # Reference
 
 [1] TIMLONG [一文读懂中国的影子银行](https://www.cnblogs.com/timlong/p/6892434.html) 
+[2] Jipeng (Tony) Liu [Explaining the high M2/GDP ratio in China: a Credit Creation Perspective](https://jipengliu.com/post/china-m2/)
