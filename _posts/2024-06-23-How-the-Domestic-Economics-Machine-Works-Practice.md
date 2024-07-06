@@ -322,7 +322,11 @@ Besides the diminish of the purchase power, the leveraging rate in household sec
 - **Pressure from Forex Outflows**: The yield gap between domestic and international level leads to capital outflows.
 - **Challenges to Exchange Rate Stability**: The impact of these forex outflows on the stability of the RMB exchange rate. 
 
-Let's us check what the domestic market works on. In the past three-years, the expansion from private enterprise sectors and traditional sectors is slow down, which can be supported by the official PMI data in China, which fell through 50 threshold regularly in the past three years. As the real estate works as a pivotal power on the growth of these sectors. The illustration depicts the inner circulation of real estate: 
+Let's us check what the domestic market works on. This part is the motivation that helps me write the post. 
+As I entitle the blog as How the domestic economics machine works, it's the practice case, after I have read Dalio's paper about the Dalio's how ecomomics machine works. 
+
+In the past three-years, the expansion from private enterprise sectors and traditional sectors is slow down, which can be supported by the official PMI data in China, which fell through 50 threshold regularly in the past three years. 
+As the real estate works as a pivotal power on the growth of these sectors for decades years. The illustration simply depicts the inner circulation of real estate: 
 
 {:refdef: style="text-align: center;"}
 <img src="/images/2024-06-23-How-the-Domestic-Economics-Machine-Works-Thoughts/inner_loop.jpg" alt="shadow_bank_system" style="zoom:96%;" />
@@ -342,44 +346,104 @@ In contrast, let's us consider some expansion from new productive forces, which 
 - the lithum power actually share the development from the electric cars, or we can understand the lithum power as the sample of the material providers in previous illustration, which can be supported by the strong demand from the electric cars. 
 - the solar energy development seems to be trapped in excess capacity, even considering the government has already encourge the solar installation in the rural areas. 
 
-On this progress, we shall classify these new production sectors by their ROA to their consumers. The electric cars performs best, as the electric car shows stronger power, integrated by higher automatic level, which indeed benefit the cosumers. In contrast, the solar panel performs worst, as the solar panel is not so useful for the individual comsumer in the domestic market, while the solar panel is mainly used in the rural areas, moreover, the repurchase from national electric infra drops, which worser the people's motivation to install the solar panel.
+On this progress, we shall classify these new production sectors by their ROA to their consumers. The electric cars performs best, as the electric car shows stronger power, integrated by higher automatic level, which indeed benefit the cosumers. 
+In contrast, the solar panel performs worst, as the solar panel is not so useful for the individual comsumer in the domestic market, while the solar panel is mainly used in the rural areas, moreover, the repurchase from national electric infra drops, which worser the people's motivation to install the solar panel.
 
-Adam Smith mentioned in his work "The Wealth of Nations" that the purpose of production is consumption. Smith believed that the ultimate goal of all productive activities is to satisfy human consumption needs. Specifically, he wrote in Chapter VIII of Book I of "The Wealth of Nations":
+Adam Smith mentioned in his work "The Wealth of Nations" that the purpose of production is consumption. 
+Smith believed that the ultimate goal of all productive activities is to satisfy human consumption needs. Specifically, he wrote in Chapter VIII of Book I of "The Wealth of Nations":
 
-> "Consumption is the sole end and purpose of all production; and the interest of the producer ought to be attended to, only so far as it may be necessary for promoting that of the consumer."
+> Consumption is the sole end and purpose of all production; and the interest of the producer ought to be attended to, only so far as it may be necessary for promoting that of the consumer.
 
-Smith argued that the core of economic activity is the production of goods and services to meet consumer needs and desires. He believed that the value of production is ultimately realized in consumption, and without consumer demand, production would be meaningless. Therefore, Smith's perspective emphasizes the importance of consumers in the economy, asserting that all productive activities should ultimately aim to satisfy consumer needs.
+Smith argued that the core of economic activity is the production of goods and services to meet consumer needs and desires. 
+He believed that the value of production is ultimately realized in consumption, and without consumer demand, production would be meaningless. 
+Therefore, Smith's perspective emphasizes the importance of consumers in the economy, asserting that all productive activities should ultimately aim to satisfy consumer needs.
 
 This viewpoint is also widely recognized in contemporary economics, with many economists considering consumption to be the main driver of economic growth and prosperity.
+The real estate mode that in the past decade in China, actually fits the pattern, if we define the housebuyer's activity as a consumption, the real estate mode in China is a typical example of the Adam Smith's theory.
+Problem is that, there is always a day, that the overflow of the consumption will be stopped, as most of Chinese already has their house. 
 
-Temporarily, from domestic market, the electric car and related industry like lithum power can make up for some vanishing driving power from the traditional sectors. As the slow down of the electric car purchase power, the electric car and lithum battery will face the same problem as the traditional sectors, as what happen to the solar panel. 
+Temporarily, from domestic market, the electric car and related industry like lithum power can make up for some vanishing driving power from the real estate sectors. 
+As the slow down of the electric car purchase power, the electric car and lithum battery will face the same problem as the traditional sectors, as what happen to the solar panel. 
 
-While when we consider the export, as the real estate can not be exported, while the electric car can. While for export the cars, China will face the tax pressure and trade war from foreign countries. 
+While considering exports, it's clear that real estate cannot be exported, whereas electric cars can. 
+However, for exporting cars, China faces tax pressures and potential trade wars from foreign countries. 
+Referring to David Ricardo's comparative advantage theory:
 
-> According to the theory of comparative advantage, countries should focus on producing goods in which they have a relative efficiency advantage, and trade with others to achieve optimal resource allocation. This allows each country to specialize in what they do best, leading to mutual benefits from trade.
+> According to the theory of comparative advantage, countries should focus on producing goods in which they have a relative efficiency advantage, and trade with others to achieve optimal resource allocation. 
+This allows each country to specialize in what they do best, leading to mutual benefits.
 
-On discussion on dumping and trade wars in the electric car sector. 
-You can consider the development of China's new energy vehicle (NEV) industry and the international response as a combination of the comparative advantage theory and the regulatory adjustments by various governments. This has also led to high tariffs and trade wars. Here are some key points:
+In the context of dumping and trade wars in the electric car sector, 
+the development of China's new energy vehicle (NEV) industry and the international response can be seen as a blend of comparative advantage theory and the regulatory adjustments by various governments. 
+This has resulted in high tariffs and trade wars. Here are some key points:
 
 1. **Comparative Advantage Theory and Government Regulation**:
-    - According to comparative advantage theory, countries should focus on producing goods where they have a relative efficiency advantage, and trade to optimize resource allocation. China has a comparative advantage in NEV technology and manufacturing, thus it focuses on developing this sector and exporting NEVs to the international market.
-    - To solidify and expand this comparative advantage, the Chinese government has implemented various measures such as subsidies, tax incentives, and support for R&D. These measures have increased the competitiveness of Chinese NEVs in the global market.
+    - According to comparative advantage theory, countries should focus on producing goods where they have a relative efficiency advantage, and trade to optimize resource allocation. 
+    China has a comparative advantage in NEV technology and manufacturing, thus it focuses on developing this sector and exporting NEVs to the international market.
+    - To solidify and expand this comparative advantage, the Chinese government has implemented various measures such as subsidies, tax incentives, and support for R&D. 
+    These measures have increased the competitiveness of Chinese NEVs in the global market.
+    - *Additionally, in the domestic market, the NEV industry has adopted a development model similar to that of the real estate sector, 
+    leveraging significant amounts of future income through credit expansion. This has been facilitated by both optimistic enterprises and supportive local government financing platforms.*
 
 2. **Trade Wars and High Tariffs**:
-    - When a country's industry gains a significant international competitive advantage through government support, other countries may perceive this as unfair competition, especially if these support measures are seen as violating international trade rules. In response, other countries might impose countermeasures such as higher tariffs and anti-dumping duties to protect their domestic industries. These actions can lead to trade wars
-    - High tariffs: To counter the competition from Chinese NEVs, some countries have started imposing high tariffs on imported Chinese NEVs to protect their own automotive industries. For example, the US and the EU have imposed strict tariffs and initiated anti-dumping investigations on Chinese electric vehicles. These tariff measures are not only meant to protect domestic markets but also to respond to China's government support policies
+    - When a country's industry gains a significant international competitive advantage through government support, other countries may perceive this as unfair competition, 
+    especially if these support measures are seen as violating international trade rules. 
+    In response, other countries might impose countermeasures such as higher tariffs and anti-dumping duties to protect their domestic industries.
+    These actions can lead to trade wars.
+    - High tariffs: To counter the competition from Chinese NEVs, some countries have started imposing high tariffs on imported Chinese NEVs to protect their own automotive industries. 
+    For example, the US and the EU have imposed strict tariffs and initiated anti-dumping investigations on Chinese electric vehicles. 
+    These tariff measures are not only meant to protect domestic markets but also to respond to China's government support policies.
 
-While the theory of comparative advantage advocates for free trade and optimal resource allocation, in reality, governments adjust policies based on their interests and market conditions. Such adjustments may include high tariffs and other trade measures to protect domestic markets. Therefore, the development of China's NEV industry reflects both the application of comparative advantage and the complex dynamics of international trade regulation.
+While the theory of comparative advantage advocates for free trade and optimal resource allocation, in reality, governments adjust policies based on their interests and market conditions. 
+Such adjustments may include high tariffs and other trade measures to protect domestic markets. 
+Therefore, the development of China's NEV industry reflects both the application of comparative advantage and the complex dynamics of international trade regulation. 
+*Furthermore, as the international market reacts to China's competitive advantages bolstered by extensive leveraging, it's likely that consumer nations will increasingly resort to tariffs and trade barriers to shield their markets from perceived unfair competition.*
 
 On the discussion of market centered or gov centered, 
 
-<p align="center">
+<html>
+<head>
+<style>
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+iframe {
+  width: 100%;
+  height: 300px; /* Adjust height as needed */
+  border: 1px solid #ccc;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="column">
+    <iframe src="https://data.worldbank.org/share/widget?end=2023&indicators=FM.LBL.BMNY.GD.ZS&locations=CN-US-JP-GB&skipRedirection=true&start=1960&view=chart" width='100' height='100' frameBorder='0' scrolling="no" ></iframe>
+  </div>
+  <div class="column">
+    <iframe src="https://data.worldbank.org/share/widget?indicators=FM.LBL.BMNY.GD.ZS&skipRedirection=true&view=map&year=2023" width='100' height='100' frameBorder='0' scrolling="no" ></iframe>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+<!-- <p align="center">
 <iframe src="https://data.worldbank.org/share/widget?end=2023&indicators=FM.LBL.BMNY.GD.ZS&locations=CN-US-JP&skipRedirection=true&start=1960&view=chart" width='450' height='300' frameBorder='0' scrolling="no" ></iframe>
 </p>
 
 <p align="center">
 <iframe src="https://data.worldbank.org/share/widget?indicators=FM.LBL.BMNY.GD.ZS&skipRedirection=true&view=map&year=2023" width='450' height='300' frameBorder='0' scrolling="no" ></iframe>
-</p>
+</p> -->
 
 
 
