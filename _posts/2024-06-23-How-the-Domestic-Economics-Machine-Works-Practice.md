@@ -485,3 +485,4 @@ iframe {
 
 [1] TIMLONG [一文读懂中国的影子银行](https://www.cnblogs.com/timlong/p/6892434.html)
 [2] Jipeng (Tony) Liu [Explaining the high M2/GDP ratio in China: a Credit Creation Perspective](https://jipengliu.com/post/china-m2/)
+[3] 丹江湖上钓鱼翁 [繁华渐逝: 腹背受敌的中国经济](https://chinadigitaltimes.net/chinese/709477.html)
